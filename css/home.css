@@ -1,0 +1,750 @@
+@import url("https://fonts.googleapis.com/css?family=Acme|Lobster|Patua+One|Rubik|Sniglet");
+
+/*below the * represents all elements*/
+* {
+    box-sizing: border-box;
+}
+
+
+/*this property will hide all the left and right extra space*/
+
+section {
+    overflow-x: hidden;
+
+}
+/*below we create a variable and give value to variable then just call variable to gain access to the value*/
+:root {
+    --Sniglet-font: "Sniglet", cursive;
+    --Rubik: "Rubik", cursive;
+    --Patua: "Patua One", cursive;
+    --Lobster: "lobster", cursive;
+    --light-black: #2e2c2caf;
+    --bggradient: linear-gradient( #DC143C, #ff512f, #f88551);
+    --light-gray: rgba(255, 255, 255, 0.877);
+
+
+}
+
+/*below we use the variable*/
+header a {
+    font-family: var(--Sniglet-font);
+    font-size: 0.9em;
+    color: whitesmoke;
+    margin-bottom: 50px;
+
+}
+
+blockquote, .late {
+    font-family: lobster two;
+    font-size: 30px;
+    text-shadow:
+            0 -4px 6px #DC143C,
+            0 -6px 6px #c1173f,
+            0 -8px 9px #d42a5b,
+            0 -10px 12px #dc143c;
+
+}
+
+
+sub{
+    font-size: 10px;
+    margin-bottom: 10px;
+}
+/**Animations Styling for the project cards third section*/
+#one, #two, #three, #four {
+    transition: transform 0.3s ease-in;
+    transform-origin: top left;
+}
+
+#achievement, #contributions, #skillsP{
+    color:black;
+}
+
+
+/*This the the styling for the resume page*/
+
+
+.card{
+    box-shadow:
+            0 2px 2px rgba(0, 0, 0, 0.034),
+            0 6px 5px rgba(0, 0, 0, 0.048),
+            0 12px 10px rgba(0, 0, 0, 0.06),
+            0 22px 17px rgba(0, 0, 0, 0.072),
+            0 41px 33px rgba(0, 0, 0, 0.086),
+            0 100px 80px rgba(0, 0, 0, 0.12);
+
+}
+
+.card-title:hover{
+   color: red;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #ff512f;
+    min-width: 160px;
+    box-shadow: 0px 2px 15px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: #ffffff;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #dc143c;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+header .nav-item:last-child {
+    padding-right: 10.5em;
+}
+
+header .nav-item {
+    padding: 0.9em;
+}
+
+header .navbar-brand {
+    padding-left: 8rem;
+}
+
+header .nav-link:hover {
+    color: #411141;
+}
+
+header .row .col-md-7 {
+    padding: 22vmin 1vmin;
+    padding-bottom: 35vmin;
+}
+
+header .row .col-md-5 {
+    padding: 4.2vmin 1vmin;
+}
+
+header .row .col-md-5 img {
+    width: 90%;
+}
+
+header {
+    background: #ff512f;
+    /* fallback for old browsers */
+    background: var(--bggradient);
+}
+
+header .container .col-md-7 {
+    font-family: "Rubik", sans-serif;
+}
+
+header .container .col-md-7 h6 {
+    padding: 1vmin;
+    letter-spacing: 4px;
+}
+
+header .container .col-md-7 h1 {
+    font-size: 8.5vmin;
+    font-weight: bold;
+    padding: 0.1em 0em;
+}
+
+header .container .col-md-7 p {
+    padding: 1vmin 5vmin;
+}
+
+.primary-btn {
+    border-radius: 30px;
+    font-weight: bold;
+}
+
+/********** section 1 **************/
+
+.section-1 {
+    padding: 20vmin 0vmin;
+}
+
+.section-1 .row .col-md-6 .pray img {
+    position:relative;
+    opacity: 0.8;
+    width: 80%;
+    border-radius: 0.2em;
+}
+
+.section-1 .row .col-md-6:last-child {
+    position: relative;
+}
+
+.section-1 .row .col-md-6 .panel {
+    position: absolute;
+    top: 7vmin;
+    left: -18vmin;
+    background: white;
+    border-radius: 3px;
+    text-align: left;
+    padding: 13vmin 5vmin 20vmin 10vmin;
+    box-shadow: 0px 25px 42px rgba(0, 0, 0, 0.2);
+    font-family: var(--Rubik);
+    z-index: 1;
+}
+
+.section-1 .row .col-md-6 .panel h1 {
+    font-weight: bold;
+    padding: 0.4em 0;
+    font-size: 2em;
+}
+
+.section-1 .row .col-md-6 .panel p {
+    font-size: 0.9em;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+/*  Section 2  Some Features that made us unique*/
+
+.cover {
+    width: 100%;
+    height: 55vmin;
+    background:  linear-gradient(rgba(220,10,55,.2), rgba(225,105,193,.5)),
+    url("synapsis1.png");
+
+    background-size: 150%;
+    position: relative;
+
+}
+
+
+
+.cover .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+}
+
+.cover .content {
+    width: 100%;
+    height: 100%;
+    padding-top: 19vmin;
+}
+
+.cover .content > h1 {
+    font-family: var(--Patua);
+    font-size: 6vmin;
+    color: whitesmoke;
+}
+
+.cover .content > p {
+    font-family: var(--Rubik);
+    font-size: 2vmin;
+    color: #e5e5e5;
+}
+
+.numbers .rect {
+    position: relative;
+    z-index: 1;
+    background: white;
+    width: 17rem;
+    height: 15rem;
+    padding-top: 3.5vmin;
+    margin-top: 5rem;
+    margin-right: 2rem;
+    margin-left: 2rem;
+
+    border-radius: 0.5em;
+    box-shadow: 1px 2px 50px 0px rgba(255, 0, 0, 0.349);
+
+}
+
+.numbers {
+    margin-top: -15vmin;
+}
+
+.numbers .rect h1 {
+    font-size: 5rem;
+    color: tomato;
+}
+
+.numbers .rect > p {
+    font-family: var(--Patua);
+}
+
+.purchase > h1 {
+    padding-top: 15vmin;
+    padding-bottom: 0.1em;
+    font-family: var(--Lobster);
+}
+
+.purchase > p {
+    color: var(--light-black);
+    font-size: 3vmin;
+    padding-bottom: 10vmin;
+}
+
+.purchase .cards .card {
+    width: 22rem;
+    margin: 3vmin 3vmin;
+}
+
+.cards div {
+    padding: 0;
+    margin: 0;
+}
+
+.cards .title {
+    background: rgba(208, 241, 241, 0.199);
+    padding: 1.4em 2.5em;
+    font-size: 2vmin;
+}
+
+.card .card-text {
+    padding: 2.5rem 3rem;
+    color: var(--light-black);
+}
+
+.card-body .pricing {
+    background: rgba(208, 241, 241, 0.199);
+    border-top-right-radius: 170px;
+    border-top-left-radius: 170px;
+}
+
+.card-body .pricing > h1 {
+    font-size: 10vmin;
+    padding: 1em 0.5em;
+}
+
+/* Section 3 */
+
+.section-3 {
+    height: 70vmin;
+    margin-top: 15vmin;
+    background: var(--bggradient);
+}
+
+.section-3 .col-md-12 > h1 {
+    padding: 2em 0 0.5em 0;
+    color: whitesmoke;
+    font-size: 6vmin;
+}
+
+.section-3 .col-md-12 > p {
+    padding: 0 4em;
+    padding-bottom: 2em;
+    color: var(--light-gray);
+    font-size: 3vmin;
+}
+
+.section-3 .desktop {
+    background: white;
+    display: inline-block;
+    border-radius: 3em;
+    padding: 2vmin 4.5vmin;
+    margin: 1em;
+}
+
+.section-3 .desktop h3 {
+    font-size: 4vmin;
+}
+
+.section-3 .desktop p {
+    font-size: 2vmin;
+}
+
+/* Section Team */
+
+blockquote{
+    color: white;
+}
+
+.section-4 .container h1 {
+    font-size: 6vmin;
+    padding-top: 14vmin;
+}
+
+.section-4 .team {
+    padding: 10vmin 4vmin;
+}
+
+.section-4 .card {
+    width: 22em;
+    margin-top: 10vmin;
+}
+
+.section-4 .card .card-text {
+    padding: 0.5em;
+}
+
+.section-4 .card-body > a {
+    font-size: 1.5em;
+}
+
+.section-4 .carousel-item {
+    padding-left: 3rem;
+}
+
+.border-radius {
+    border-radius: 340px;
+    width: 60%;
+}
+
+footer {
+    background: rgba(0, 0, 0, 0.815);
+    overflow-x: hidden;
+    padding: 14vmin 18vmin;
+}
+
+footer p > span {
+    color: #ff512f;
+}
+
+footer input {
+    border: none !important;
+}
+
+footer input::placeholder {
+    color: white !important;
+}
+
+footer .input-group .input-group-text {
+    background: var(--bggradient);
+    border: none;
+}
+
+footer .row i {
+    color: #dd2476;
+}
+
+/* It is Adjacent sibling combinator */
+
+footer .column i + i {
+    padding: 0 0.5em;
+}
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.815);
+    z-index: 9999;
+    transition: all 1.5s ease;
+}
+
+
+
+.book-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 600px;
+}
+
+@keyframes initAnimation {
+    0% {
+        transform: rotateY(0deg);
+    }
+    100% {
+        transform: rotateY(-30deg);
+    }
+}
+
+.book {
+    width: 200px;
+    height: 300px;
+    position: relative;
+    transform-style: preserve-3d;
+    transform: rotateY(-30deg);
+    transition: 1s ease;
+    animation: 1s ease 0s 1 initAnimation;
+}
+
+.book:hover {
+    transform: rotateY(0deg);
+}
+
+.book > :first-child {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: red;
+    width: 200px;
+    height: 300px;
+    transform: translateZ(25px);
+    background-color: #01060f;
+    border-radius: 0 2px 2px 0;
+    box-shadow: 5px 5px 20px #666;
+    overflow: hidden;
+}
+
+.book::before {
+    overflow: hidden;
+    position: absolute;
+    content: ' ';
+    left: 0;
+    top: 3px;
+    width: 51px;
+    height: 294px;
+    transform: translateX(155px) rotateY(78deg);
+    background: blue linear-gradient(90deg,
+    #fff 0%,
+    #f9f9f9 5%,
+    #fff 10%,
+    #f9f9f9 15%,
+    #fff 20%,
+    #f9f9f9 25%,
+    #fff 30%,
+    #f9f9f9 35%,
+    #fff 40%,
+    #f9f9f9 45%,
+    #fff 50%,
+    #f9f9f9 55%,
+    #fff 60%,
+    #f9f9f9 65%,
+    #fff 70%,
+    #f9f9f9 75%,
+    #fff 80%,
+    #f9f9f9 85%,
+    #fff 90%,
+    #f9f9f9 95%,
+    #fff 100%
+    );
+}
+
+.book::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: ' ';
+    width: 200px;
+    height: 300px;
+    transform: translateZ(-25px);
+    background-color: #01060f;
+    border-radius: 0 2px 2px 0;
+    box-shadow: -10px 0 50px 10px #666;
+}
+
+.sticky{
+    position: fixed;
+    top:0;
+    width:100%;
+    background-color: rgba(0,0,0,0.815);
+    z-index: 9999;
+    transition: all 1.5s ease;
+}
+/*stroke -dasharray gives space in path spaces, we will get the exact path of each letter, use some js to get the length of each letter */
+
+#achievement,#contributions,#skills{
+    color: black;
+    align-items: center
+}
+
+
+
+/*this is letter s*/
+#logo path:nth-child(2){
+    stroke-dasharray: 493px;
+    stroke-dashoffset: 493px;
+    animation: line-anim 2s ease forwards 0.6s;
+
+
+
+}
+
+/*this is letter o*/
+
+#logo path:nth-child(3){
+    stroke-dasharray: 433px;
+    stroke-dashoffset: 433px;
+    animation: line-anim 2s ease forwards 0.9s;
+
+}
+
+/*this is letter f*/
+#logo path:nth-child(4){
+    stroke-dasharray: 316px;
+    stroke-dashoffset: 316px;
+    animation: line-anim 2s ease forwards 1.2s;
+
+}
+/*this is letter t*/
+#logo path:nth-child(5){
+    stroke-dasharray: 314px;
+    stroke-dashoffset: 314px;
+    animation: line-anim 2s ease forwards 1.5s;
+
+}
+/*this is letter w*/
+#logo path:nth-child(6){
+    stroke-dasharray: 638px;
+    stroke-dashoffset: 638px;
+    animation: line-anim 2s ease forwards 1.8s;
+
+
+}
+/*this is letter a*/
+#logo path:nth-child(7){
+    stroke-dasharray: 506px;
+    stroke-dashoffset: 506px;
+    animation: line-anim 2s ease forwards 2.1s;
+
+
+}
+/*this is letter r*/
+#logo path:nth-child(8){
+    stroke-dasharray: 246px;
+    stroke-dashoffset: 246px;
+    animation: line-anim 2s ease forwards 2.4s;
+
+
+}
+/*this is letter e*/
+#logo path:nth-child(9){
+    stroke-dasharray: 515px;
+    stroke-dashoffset: 515px;
+    animation: line-anim 2s ease forwards 2.4s;
+
+
+}
+/*this is letter d*/
+#logo path:nth-child(10){
+    stroke-dasharray: 571px;
+    stroke-dashoffset: 571px;
+    animation: line-anim 2s ease forwards 2.4s;
+
+
+}
+/*this is letter e*/
+#logo path:nth-child(11){
+    stroke-dasharray: 515px;
+    stroke-dashoffset: 515px;
+    animation: line-anim 2s ease forwards 2.4s;
+
+
+}
+/*this is letter e*/
+#logo path:nth-child(12){
+    stroke-dasharray: 355px;
+    stroke-dashoffset: 355px;
+    animation: line-anim 2s ease forwards 2.4s;
+
+
+}
+/*this is letter v*/
+#logo path:nth-child(13){
+    stroke-dasharray: 515px;
+    stroke-dashoffset: 515px;
+    animation: line-anim 2s ease forwards 2.4s;
+
+
+}
+/*this is letter l*/
+#logo path:nth-child(14){
+    stroke-dasharray: 239px;
+    stroke-dashoffset: 239px;
+    animation: line-anim 2s ease forwards 2.4s;
+
+
+}
+/*this is letter o*/
+#logo path:nth-child(15){
+    stroke-dasharray: 433px;
+    stroke-dashoffset: 433px;
+    animation: line-anim 2s ease forwards 2.4s;
+
+
+}
+/*this is letter p*/
+#logo path:nth-child(16){
+    stroke-dasharray: 581px;
+    stroke-dashoffset: 581px;
+    animation: line-anim 2s ease forwards 2.4s;
+
+
+}
+/*this is letter e*/
+#logo path:nth-child(17){
+    stroke-dasharray: 515px;
+    stroke-dashoffset: 515px;
+    animation: line-anim 2s ease forwards 2.4s;
+
+
+}
+/*this is letter f*/
+#logo path:nth-child(18){
+
+    stroke-dasharray: 246px;
+    stroke-dashoffset: 246px;
+    animation: line-anim 2s ease forwards 2.4s;
+
+
+}
+
+
+
+
+
+@keyframes line-anim {
+    to {
+        stroke-dashoffset: 0;
+    }
+
+}
+/*PROJECT CARDS FOR INDEX AND PORTFOLIO PAGE*/
+button#trial, #trial1, #trial2, #trial3,#trial4,
+/*the classes below are from portfolio page*/
+#trial5,#trial6,#trial7,#trial8 {
+    border-color: #f1bfdd;
+    border-radius: 5em;
+    background-color:#DC143C;
+}
+
+a{
+    font-style: oblique;
+    color: white;
+    font-size: medium;
+}
+
+.column {
+    float: left;
+    width: 33.33%;
+}
+
+
+container{
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+video{
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    display: block;
+    margin: 0 auto 20px auto;
+    box-shadow: rgba(0,0,0, .2) 0 0 30px
+}
+
+.tap{
+    display: inline-block;
+    padding: 10px 30px;
+    background: #7985FF;
+    color: #fff;
+    line-height: 1;
+    border-radius: 30px;
+    text-decoration: none;
+    transition: all .25s ease-out
+}
+.tap:hover{
+    background: #111;
+    color: #fff;
+    text-decoration: none;
+    box-shadow: rgba(0,0,0, .3) 0 0 30px
+}
+.tap:active{
+    transform: scale(0.9)
+}
+
+

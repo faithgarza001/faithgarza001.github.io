@@ -102,12 +102,15 @@ sub{
     display: block;
 }
 
-header .nav-item:last-child {
-    padding-right: 10.5em;
+.navbar-toggler{
+    background-color: #ff512f;
 }
 
+
+
 header .nav-item {
-    padding: 0.9em;
+    width: 100%; /* Ensures full width */
+    justify-content: space-between; /* Spacing items evenly */
 }
 
 header .navbar-brand {

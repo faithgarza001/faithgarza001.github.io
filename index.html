@@ -5,57 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Home</title>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
           crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="css/home.css" />
+    <link rel="stylesheet"  href="css/home.css" />
     <!--    <link rel="stylesheet" href="./mobile-style.css">-->
 </head>
 <body>
 <header>
-
     <div class="container-fluid p-0">
         <nav class="navbar navbar-expand-lg">
-            <a class="navbar-brand text-white" href="index.html">
-                <i class="fas fa-book-reader fa-2x mx-3 text-white"></i>Faith Garza</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                <i class="fas fa-align-right text-light"></i>
-            </button>
-
-
-
-            <div class="collapse navbar-collapse float-end justify-content-end" id="navbarNav">
-                <div class="mr-auto"></div>
-                <ul class="navbar-nav">
-                    <li class="nav-item dropdown">
-                        <div class="dropdown">
-                            <a href="" class="nav-link text-white">PROJECTS</a>
-                            <div class="dropdown-content">
-                                <a href="portfolio.html">Developer Projects</a>
-                                <a href="webDesign.html">UI/UX Design Projects</a>
-                            </div>
-                        </div>
-                    </li>
-                    <!-- <li class="nav-item">
-                         <a class="nav-link text-white" href="portfolio.html" >PORTFOLIO</a>
-                     </li>-->
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="videosMultimedia.html">VIDEOS</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <div class="dropdown">
-                            <a href="aboutMe.html" class="nav-link text-white">ABOUT</a>
-                            <div class="dropdown-content">
-                                <a href="resume.html">Resume</a>
-                                <a href="communityService.html">Community Service</a>
-                            </div>
-                        </div>
-                    </li>
-
-
-                </ul>
+            <div class="container-fluid">
+                <a class="navbar-brand text-white" href="#">Logo</a>
+                <!-- Navbar toggle button for mobile -->
+                <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <!-- Navbar links -->
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto p-3 mb-2 mb-lg-0 me-5">
+                        <!-- Home Link -->
+                        <li class="nav-item">
+                            <a class="nav-link text-white active me-5" aria-current="page" href="#">Home</a>
+                        </li>
+                        <!-- Portfolio Dropdown -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link text-white dropdown-toggle me-5" href="#" id="navbarDropdownPortfolio" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Portfolio
+                            </a>
+                            <ul class="dropdown-menu dropdown-content" aria-labelledby="navbarDropdownPortfolio">
+                                <li><a class="dropdown-item text-white" href="#">Designer Projects</a></li>
+                                <li><a class="dropdown-item text-white" href="#">Developer Projects</a></li>
+                            </ul>
+                        </li>
+                        <!-- About Me Dropdown -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-white me-5" href="#" id="navbarDropdownAbout" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                About Me
+                            </a>
+                            <ul class="dropdown-menu dropdown-content" aria-labelledby="navbarDropdownAbout">
+                                <li><a class="dropdown-item" href="#">Profile</a></li>
+                                <li><a class="dropdown-item" href="#">Community Initiatives</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </nav>
     </div>
@@ -156,26 +150,25 @@
                     <p class="card-title">HTML5,CSS,JS,NPM,Node JS</p>
                     <sub><b>Node.js is used in this project to manage interchange of data between the server and the user, while addressing separation of concerns. In addition, jquery integrates the front end utilizing DOM manipulation and HTML5, to display data.</b></sub><br>
                     <button id="trial" onclick="message()">
-                        <a class="nav-link text-white" href="https://weatherforecast01.herokuapp.com">Weather App
+                        <a class="nav-link text-white" href="https://express-weather-world.onrender.com">Weather App
                             <span class="sr-only">(current)</span>
                         </a>
                     </button>
                 </div>
                 <div class="rect" id="two">
-                    <p class="card-title">Angular</p>
-                    <p>Design to Code</p>
-
+                    <p class="card-title">Node.js Express Application</p>
+                    <sub><b>A robust RESTful API server using Node.js and Express, demonstrating proficiency in backend development, API design, and integration without relying on a traditional database. It showcases efficient data handling, security practices, and scalability considerations.</b></sub><br>
                     <button id="trial1">
-                        <a class="nav-link text-white" href="https://marvel-comicon.herokuapp.com/">UI/UX Web Design
+                        <a class="nav-link text-white" href="https://express-hello-world-lq3g.onrender.com/">AR Closet
                             <span class="sr-only">(current)</span>
                         </a>
                     </button>
                 </div>
                 <div class="rect" id="three">
                     <p class="card-title">Java</p>
-                    <p>Data Analytics</p>
+                    <sub><b>Ticketing system built with Java Spring Boot, emphasizing a simulated robust backend functionality, efficient data management, and seamless integration with modern web technologies. Enterprise-grade application development, RESTful API design, and relational database management.</b></sub><br>
                     <button id="trial2">
-                        <a class="nav-link text-white" href="#">BI Integration
+                        <a class="nav-link text-white" href="https://springdemo-43am.onrender.com">Spring Boot Tech Ticketing System
                             <span class="sr-only">(current)</span>
                         </a>
                     </button>
@@ -223,7 +216,7 @@
                                 <h5 class="card-title">E-Commerce Project</h5>
                             </div>
                             <p class="card-text">
-                                With supporting text below as a natural lead-in.
+                                This front-end showcase project embodies a modern, user-centric e-commerce platform, designed to provide a seamless shopping experience across various devices. It showcases best practices in UI/UX design, responsive web development, and integration with simulated backend services.
                             </p>
                             <div class="pricing">
                                 <h4>Front End ShowCase</h4>
@@ -327,11 +320,9 @@
     </div>
 </footer>
 
-<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
 
 <script src="js/main.js"></script>

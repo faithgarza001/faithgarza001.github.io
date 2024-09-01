@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+          crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/home.css" />
+    <!--    <link rel="stylesheet" href="./mobile-style.css">-->
+</head>
+<style>
+    body{
+        margin: 0;
+        min-height: 1000px;
+        font-family: 'Roboto Condensed';
+        padding: 100px 0 0;
+        background-color: #fafafa;
+        line-height: 1.7;
+    }
+    header{
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100%;
+        background: linear-gradient( #DC143C, #ff512f, #f88551);
+        transition: 1s;
+        padding: 0 100px;
+        box-sizing: border-box;
+    }
+    header.scrolled{
+        height: 100px;
+    }
+    header img.banner{
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        transition: 1s;
+
+    }
+    header.scrolled img.banner{
+        opacity: 0;
+    }
+    header .logo{
+        position: absolute;
+        top: calc(50% - 150px);
+        left: calc(50% - 150px);
+        transition: 1s;
+    }
+    header.scrolled .logo{
+        position: relative;
+        top: 10px;
+        left: 0;
+
+    }
+    header .logo img {
+        width: 300px;
+        transition: 1s;
+    }
+    header.scrolled .logo img {
+        width: 80px;
+    }
+    nav{
+        position: relative;
+        float: right;
+    }
+    nav ul{
+        margin: 0;
+        padding: 40px 0;
+        display: flex;
+        transition: 1s;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateX(100px);
+    }
+    header.scrolled nav ul{
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(0);
+    }
+    nav ul li{
+        list-style: none;
+    }
+    nav ul li a {
+        color: #fff;
+        padding: 10px 15px;
+        text-decoration: none;
+        transition: 1s;
+    }
+    nav ul li a{
+        background: #fff;
+        color:#262626;
+    }
+    nav ul li a:hover{
+        border-bottom: 2px solid white;
+
+    }
+    section{
+        padding: 100px;
+        box-sizing: border-box;
+        margin: 150px auto;
+    }
+    section h2{
+        margin: 0;
+        padding: 0;
+        font-size: 48px;
+    }
+    section p{
+        font-size: 18px;
+    }
+</style>
+<body>
+
+<!----THE HEADER BELOW IS BOOK ICON WITH NAME (LEFT SIDE SCREEN)----->
+<header>
+    <img class="banner" src="img/sapic.jpg" alt="">
+    <a href="#" class="logo"> <img alt="initials of F G in a monogram" src='img/monogram.png'/> </a>
+    <nav class="navbar navbar-expand-lg">
+
+
+
+        <!-------DROPDOWN NAVBAR------->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="mr-auto"></div>
+
+            <ul class="navbar-nav">
+
+                <!---HOME LINK---->
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html">HOME
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+
+                <!---PORTFOLIO LINK---
+                <li class="nav-item">
+                    <a class="nav-link" href="portfolio.html" >PORTFOLIO</a>
+                </li>-->
+                <li class="nav-item">
+                    <a class="nav-link" href="videosMultimedia.html">VIDEOS</a>
+                </li>
+
+                <!---ABOUT LINK WITH ADDITIONAL DROP DOWN ATTACHMENT---->
+                <!-- Inside your navbar section -->
+                <li class="nav-item dropdown">
+                    <!-- Use 'dropdown' class on parent div -->
+                    <div class="dropdown">
+                        <!-- Add 'dropdown-toggle' class and 'id="navbarDropdown"' -->
+                        <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">ABOUT</a>
+                        <!-- Add 'dropdown-menu' class to the div that contains dropdown items -->
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="resume.html">Resume</a>
+                            <a class="dropdown-item" href="communityService.html">Community Service</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+
+</header>
+<section>
+    <div class="position-absolute" id="carbon-block" style="margin:30px auto"></div>
+
+
+    <p>
+        🎨 About Me: Unveiling the Canvas of My Journey 🚀
+
+        Greetings! I'm Faith Garza, a versatile creative force on a mission to merge the worlds of design, software development, entrepreneurship, and STEM education. My life is an intricate tapestry woven with threads of innovation and passion.
+
+        🖥️ As a software developer, I navigate the digital realm with finesse, crafting elegant solutions that push boundaries and redefine possibilities. My code is not just lines; it's the manifestation of my commitment to making the world a more efficient and connected place.
+
+        💼 Entrepreneurship is my other realm. I'm driven by a relentless curiosity, constantly seeking opportunities to create, disrupt, and innovate. Whether it's launching startups, exploring new markets, or diving into the depths of business strategy, I thrive on the thrill of the entrepreneurial journey.
+
+        🌱 In my spare time, I don the cape of an education enthusiast, championing STEM integration with unwavering dedication. I believe that nurturing young minds in science, technology, engineering, and mathematics is pivotal for shaping a brighter future. Volunteering in this space allows me to give back to the community and empower the next generation of innovators.
+
+        🎨 Art is my sanctuary, my muse, and my truest form of expression. I firmly believe that art is the gateway to freedom—a means to transcend boundaries and communicate emotions that words cannot capture. My passion for art fuels my creativity and enriches every facet of my life.
+
+        In a world filled with pixels, algorithms, and entrepreneurship ventures, I strive to infuse every project, every endeavor, and every moment with the essence of artistry. I'm not just a designer, software developer, or entrepreneur—I'm a creator, a dreamer, and a relentless advocate for the fusion of technology, art, and education.
+
+        Join me on this exhilarating journey, where innovation knows no bounds, and together, we'll paint a brighter, more connected future on the canvas of possibility. 🚀🎨✨
+    </p>
+</section>
+
+
+<footer>
+    <div class="col-md-2 col-sm-12">
+        <h4 class="text-light">Contact Me</h4>
+        <p class="text-muted">Let's build together</p>
+        <div class="row text-center">
+            <!-- Team item-->
+
+            <div class="row text-light">
+                <ul>
+                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a></li>
+                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fab fa-twitter"></i></a></li>
+                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fab fa-instagram"></i></a></li>
+                    <li class="list-inline-item"><a href="https://www.linkedin.com/in/faith-garza1/" class="social-link"><i class="fab fa-linkedin"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+
+<script src="js/main.js"></script>
+
+</body>
+
+</html>
+

@@ -29,6 +29,11 @@ A robust ticketing system that streamlines issue tracking & support!
 🔹 LAMP Stack (Linux, Apache, MySQL, PHP) for solid infrastructure
 🔹 Secure & Scalable – Designed to handle high traffic with ease
 
+
+💡 These are just a few of the projects I’ve built! Want to see more? Dive into the project and explore the rest! 🚀🔍
+
+
+
 🛠️ Tech Toolbox
 💻 Languages: C#, JavaScript, Java, HTML, CSS
 📦 Frameworks & Tools: Node.js, Spring Boot, Razor Pages, Redis
@@ -36,9 +41,13 @@ A robust ticketing system that streamlines issue tracking & support!
 🔧 Mechatronics: Arduino, Raspberry Pi
 
 🌟 Fun Facts About Me
-🎮 Gamer by night, coder by day (or sometimes both at the same time) 🎮💻
-☕ Runs on coffee, but matcha is the real secret fuel 🍵
-🦄 BetaUnicorn? Because I’m always evolving & adding magic to my work! ✨
+🎮 While most people play games in their spare time, I prefer to build them! 🎮✨
+🔹 Unreal Engine & Blender – Crafting immersive game worlds 🌍
+🔹 Arduino + Joystick + Creativity – Because gaming hardware should be just as fun as the game itself! 🎛️
+
+📚 I’m an autodidact who thrives in the ever-evolving tech space 🚀💡. Learning fuels my passion, and I’m always on the lookout for the next challenge to tackle!
+
+🦄 BetaUnicorn? Because I’m constantly evolving & adding magic to my work! ✨
 
 📫 Let's Connect!
 🔗 LinkedIn | 🐦 Twitter | 🎨 ArtStation | 💻 Portfolio

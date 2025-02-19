@@ -24,11 +24,16 @@ for(let i = 0; i < logo.length; i++) {
 const displayMessage = () => {
     const weatherButton = document.getElementById('trial')
     weatherButton.addEventListener('click', event => {
-        alert('App loading')
+        alert('App loading this could take a few minutes please be patient, click ok.')
     })
 
 
 }
 displayMessage()
 
-
+document.addEventListener('DOMContentLoaded', function () {
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+});

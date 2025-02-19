@@ -9,14 +9,13 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
           crossorigin="anonymous">
     <link rel="stylesheet"  href="css/home.css" />
-    <!--    <link rel="stylesheet" href="./mobile-style.css">-->
 </head>
 <body>
 <header>
     <div class="container-fluid p-0">
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
-                <a class="navbar-brand text-white" href="#">Logo</a>
+                <a class="navbar-brand text-white" href="index.html">Logo</a>
                 <!-- Navbar toggle button for mobile -->
                 <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -26,7 +25,7 @@
                     <ul class="navbar-nav ms-auto p-3 mb-2 mb-lg-0 me-5">
                         <!-- Home Link -->
                         <li class="nav-item">
-                            <a class="nav-link text-white active me-5" aria-current="page" href="#">Home</a>
+                            <a class="nav-link text-white active me-5" aria-current="page" href="index.html">Home</a>
                         </li>
                         <!-- Portfolio Dropdown -->
                         <li class="nav-item dropdown">
@@ -147,10 +146,14 @@
         <div class="container-fluid text-center">
             <div class="numbers d-flex flex-md-row flex-wrap justify-content-center">
                 <div class="rect" id="one">
-                    <p class="card-title">HTML5,CSS,JS,NPM,Node JS</p>
-                    <sub><b>Node.js is used in this project to manage interchange of data between the server and the user, while addressing separation of concerns. In addition, jquery integrates the front end utilizing DOM manipulation and HTML5, to display data.</b></sub><br>
-                    <button id="trial" onclick="message()">
-                        <a class="nav-link text-white" href="https://express-weather-world.onrender.com">Weather App
+                    <div class="position-absolute top-0 end-0">
+                        <b data-bs-toggle="tooltip" data-bs-placement="right" title="This project leverages Node.js to facilitate efficient data exchange between the server and client while maintaining a clear separation of concerns. On the front end, jQuery enhances interactivity by manipulating the DOM and integrating seamlessly with HTML5 to dynamically display data."> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill mt-2 me-3" viewBox="0 0 16 16">
+                            <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/>
+                        </svg></b>
+                    </div>
+                    <img src="img/stormTrack.png" alt="Express" class="express" />
+                    <br><button id="trial" onclick="message()">
+                        <a class="nav-link text-white" href="https://express-weather-world.onrender.com">StormTrack App
                             <span class="sr-only">(current)</span>
                         </a>
                     </button>
@@ -207,8 +210,6 @@
                             </div>
                         </div>
                     </div>
-
-
                     <!--CARD TWO--->
                     <div class="card">
                         <div class="card-body">

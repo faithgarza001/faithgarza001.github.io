@@ -13,7 +13,7 @@ section {
 
 }
 /*below we create a variable and give value to variable then just call variable to gain access to the value*/
-:root {
+/*:root {
     --Sniglet-font: "Sniglet", cursive;
     --Rubik: "Rubik", cursive;
     --Patua: "Patua One", cursive;
@@ -23,6 +23,51 @@ section {
     --light-gray: rgba(255, 255, 255, 0.877);
 
 
+}*/
+:root {
+    /* Font Styles */
+    --Rubik: "Rubik", cursive;
+    --Patua: "Patua One", cursive;
+    --Lobster: "Lobster", cursive;
+
+    /* Primary Colors */
+    --primary-light: #E8E9F3;
+    --primary-gray: #CECECE;
+    --primary-dark-gray: #A6A6A8;
+    --primary-dark: #272635;
+    --primary-accent: #B1E5F2;
+
+    /* Secondary Enhancers */
+    --secondary-muted-lavender: #8A8FA3;
+    --secondary-periwinkle: #5B5F97;
+    --secondary-indigo: #3E3A5E;
+
+    /* Accent Colors */
+    --accent-coral: #E26D5A;
+    --accent-sunset-orange: #F4A259;
+    --accent-teal-mint: #64B6AC;
+    --accent-golden-yellow: #FFD166;
+
+    /* Background & Secondary Elements */
+    --background-light: #FAFAFA;
+    --background-gray: #D1D1D1;
+    --background-dark: #1B1D2A;
+
+    /* Text & Interactive Elements */
+    --text-steel-gray: #595F72;
+    --text-cream-peach: #F7ECE1;
+
+    /* UI Feedback Colors */
+    --success-green: #5DBB63;
+    --warning-yellow: #F4B400;
+    --error-red: #D1495B;
+
+    /* Updated UI Theme Gradient */
+    --light-black: #2e2c2caf;
+    --light-gray: rgba(255, 255, 255, 0.877);
+
+    /* Theme-Matching Linear Gradient */
+    --bggradient: linear-gradient(135deg, #272635, #5B5F97, #B1E5F2, #F4A259);
 }
 
 /*below we use the variable*/
@@ -35,15 +80,12 @@ header a {
 }
 
 blockquote, .late {
-    font-family: lobster two;
+    font-family: var(--Lobster);
     font-size: 30px;
-    text-shadow:
-            0 -4px 6px #DC143C,
-            0 -6px 6px #c1173f,
-            0 -8px 9px #d42a5b,
-            0 -10px 12px #dc143c;
-
+    text-shadow: 0px 0px 6px var(--accent-coral), 0px -1px 0px #C15866, 0 -8px 9px var(--secondary-periwinkle), 1px -3px 1px var(--primary-dark);
+    color: var(--primary-dark);
 }
+
 
 
 sub{
@@ -206,17 +248,17 @@ header .container .col-md-7 p {
 }
 
 /*  Section 2  Some Features that made us unique*/
-
 .cover {
     width: 100%;
     height: 55vmin;
-    background:  linear-gradient(rgba(220,10,55,.2), rgba(225,105,193,.5)),
-    url("synapsis1.png");
-
-    background-size: 150%;
+    background:
+            linear-gradient(rgba(39, 38, 53, 0.6), rgba(91, 95, 151, 0.5)), /* Dark-to-cool overlay */
+            url("synapsis1.png"); /* Background image */
+    background-size: cover;
+    background-position: center;
     position: relative;
-
 }
+
 
 
 
@@ -232,7 +274,7 @@ header .container .col-md-7 p {
 .cover .content {
     width: 100%;
     height: 100%;
-    padding-top: 19vmin;
+    padding-top: 12vmin;
 }
 
 .cover .content > h1 {
@@ -250,18 +292,22 @@ header .container .col-md-7 p {
 .numbers .rect {
     position: relative;
     z-index: 1;
-    background: white;
-    width: 17rem;
-    height: 15rem;
-    padding-top: 3.5vmin;
-    margin-top: 5rem;
-    margin-right: 2rem;
-    margin-left: 2rem;
-
-    border-radius: 0.5em;
-    box-shadow: 1px 2px 50px 0px rgba(255, 0, 0, 0.349);
-
+    background: var(--light-gray); /* Softer background for contrast */
+    width: 18rem;
+    height: 16rem;
+    padding-top: 3vmin;
+    margin: 4rem 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0px 4px 30px rgba(39, 38, 53, 0.3); /* Darker, subtle shadow */
+    border: 1px solid var(--light-black); /* Adds slight definition */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
+
+.numbers .rect:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 40px rgba(39, 38, 53, 0.5); /* Enhanced hover effect */
+}
+
 
 .numbers {
     margin-top: -15vmin;
@@ -751,3 +797,20 @@ video{
 }
 
 
+.rect {
+    position: relative;
+    width: 250px; /* Adjust width as needed */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.info-icon {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 18px; /* Adjust size if needed */
+    color: #007bff; /* Bootstrap primary blue */
+    cursor: pointer;
+}

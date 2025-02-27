@@ -295,12 +295,15 @@ header .container .col-md-7 p {
     background: var(--light-gray); /* Softer background for contrast */
     width: 18rem;
     height: 16rem;
-    padding-top: 3vmin;
     margin: 4rem 1.5rem;
     border-radius: 1rem;
     box-shadow: 0px 4px 30px rgba(39, 38, 53, 0.3); /* Darker, subtle shadow */
     border: 1px solid var(--light-black); /* Adds slight definition */
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.express {
+    flex-grow: 1; /* Allows the image to take up available space */
 }
 
 .numbers .rect:hover {
@@ -748,6 +751,7 @@ button#trial, #trial1, #trial2, #trial3,#trial4,
     border-color: #f1bfdd;
     border-radius: 5em;
     background-color:#DC143C;
+
 }
 
 a{

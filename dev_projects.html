@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Slide Transition Example</title>
+    <link rel="stylesheet"  href="css/home.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            width: 100%;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            flex-grow: 1;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .item_image {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            mask-image: var(--mask-gradient);
+            -webkit-mask-image: var(--mask-gradient);
+            will-change: mask-image, transform;
+        }
+
+        #dynamic-content {
+            max-width: 600px;
+            padding: 2rem;
+            color: white;
+            text-align: center;
+            font-size: 1.2rem;
+            background: rgba(0,0,0,0.5);
+            border-radius: 1rem;
+        }
+
+        #transition-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .slice {
+            flex: 1;
+            background: black;
+            transform: scaleY(0);
+            transform-origin: bottom;
+        }
+
+        nav.navbar {
+            z-index: 20;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <nav class="navbar navbar-expand-lg sticky-lg-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <img class="" src="img/testmonogram.png" alt="FG Monogram">
+            </a>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link transition-link" href="#">Storm Track</a></li>
+                    <li class="nav-item"><a class="nav-link transition-link" href="#">Fleet Pulse</a></li>
+                    <li class="nav-item"><a class="nav-link transition-link" href="#">Tech Ticketing System</a></li>
+                    <li class="nav-item"><a class="nav-link transition-link" href="#">Shop Swift</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="item_image">
+        <div id="dynamic-content"></div>
+    </div>
+
+    <div id="transition-overlay"></div>
+</div>
+
+<script>
+    /*const contentSnippets = [
+        "<div class='content-box'><h2>Title 1</h2><p>Description for content 1.</p></div>",
+        "<div class='content-box'><h2>Title 2</h2><p>Description for content 2.</p></div>",
+        "<div class='content-box'><h2>Title 3</h2><p>Description for content 3.</p></div>"
+    ];*/
+
+    const contentSnippets = [
+        // Snippet 1: StormTrack App
+        `<div class="rect" id="one" style="position: relative;">
+    <div class="position-absolute top-0 end-0">
+        <b class="links title" data-bs-toggle="tooltip" data-bs-placement="right" title="">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill mt-2 me-3" viewBox="0 0 16 16">
+                <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/>
+            </svg>
+        </b>
+    </div>
+    <a href="path_to_your_project_workflow" class="position-absolute start-0" style="left: -20px;">
+        <img src="img/UrbanAirWorkflow.png" alt="Express" class="express mb-3 w-25" />
+    </a>
+    <img src="img/stormTrack.png" alt="Express" class="express mb-3 w-75 h-75" />
+    <div class="card-footer">
+        <button id="trial" class="w-75 mt-4" onclick="message()">
+            <a class="nav-link text-white" href="https://express-weather-world.onrender.com">StormTrack App
+            </a>
+        </button>
+    </div>
+  </div>`,
+
+        // Snippet 2: FleetPulse App
+        `<div class="rect" id="two" style="position: relative;">
+    <div class="position-absolute top-0 end-0">
+      <b data-bs-toggle="tooltip" data-bs-placement="right" title="This project leverages Node.js to facilitate efficient data exchange between the server and client while maintaining a clear separation of concerns. On the front end, jQuery enhances interactivity by manipulating the DOM and integrating seamlessly with HTML5 to dynamically display data.">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill mt-2 me-3" viewBox="0 0 16 16">
+          <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/>
+        </svg>
+      </b>
+    </div>
+    <img src="img/fleetpulselogo.png" alt="FleetPulse Logo" class="express mb-3 w-75" />
+    <div class="card-footer">
+      <button id="trial4" class="w-75">
+        <a class="nav-link text-white" href="https://your-fleetpulse-url.com">Fleet Pulse
+        </a>
+      </button>
+    </div>
+  </div>`,
+
+        // Snippet 3: Tech Ticketing System
+        `<div class="rect" id="three">
+    <div class="position-absolute top-0 end-0">
+      <b data-bs-toggle="tooltip" data-bs-placement="right" title="Ticketing system built with Java Spring Boot, emphasizing a simulated robust backend functionality, efficient data management, and seamless integration with modern web technologies. Enterprise-grade application development, RESTful API design, and relational database management.">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill mt-2 me-3" viewBox="0 0 16 16">
+          <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/>
+        </svg>
+      </b>
+    </div>
+    <img src="img/techticketlogo.png" alt="tech logo" class="tech w-75 mb-2" />
+    <sub>
+      <b data-bs-toggle="tooltip" data-bs-placement="right" title="Ticketing system built with Java Spring Boot, emphasizing a simulated robust backend functionality, efficient data management, and seamless integration with modern web technologies. Enterprise-grade application development, RESTful API design, and relational database management."></b>
+    </sub>
+    <div class="card-footer">
+      <button id="trial2" class="mt-3" onclick="message()">
+        <a class="nav-link text-white text-nowrap" href="https://springdemo-43am.onrender.com">Tech Ticketing System
+        </a>
+      </button>
+    </div>
+  </div>`,
+
+        // Snippet 4: ShopSwift
+        `<div class="rect" id="four">
+    <div class="position-absolute top-0 end-0">
+      <b data-bs-toggle="tooltip" data-bs-placement="right" title="Ticketing system built with Java Spring Boot, emphasizing a simulated robust backend functionality, efficient data management, and seamless integration with modern web technologies. Enterprise-grade application development, RESTful API design, and relational database management.">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill mt-2 me-3" viewBox="0 0 16 16">
+          <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/>
+        </svg>
+      </b>
+    </div>
+    <img src="img/shopswiftlogo.png" alt="tech logo" class="tech w-75 mb-4" />
+    <div class="card-footer">
+      <button id="trial5" class="w-75 mt-2">
+        <a class="nav-link text-white" href="https://springdemo-43am.onrender.com">Shop Swift
+        </a>
+      </button>
+    </div>
+  </div>`
+    ];
+
+
+
+
+    let currentIndex = 0;
+
+    const gradients = {
+        start: "linear-gradient(0deg, black 0% 0%, transparent 0% 0%)",
+        mid: "linear-gradient(0deg, black 0% 50%, transparent 50% 100%)",
+        end: "linear-gradient(0deg, black 100% 100%, transparent 100% 100%)"
+    };
+
+    function updateContent() {
+        const $container = $("#dynamic-content");
+
+        gsap.to($container, {
+            duration: 0.4,
+            opacity: 0,
+            onComplete: () => {
+                $container.html(contentSnippets[currentIndex]);
+                gsap.to($container, { duration: 0.4, opacity: 1 });
+            }
+        });
+
+        // Animate gradient change
+        const tl = gsap.timeline();
+        tl.to(".item_image", {
+            duration: 0.5,
+            "--mask-gradient": gradients.mid
+        }).to(".item_image", {
+            duration: 0.5,
+            "--mask-gradient": gradients.end
+        });
+    }
+
+    function createSlices(num = 12) {
+        const overlay = document.getElementById("transition-overlay");
+        overlay.innerHTML = "";
+        for (let i = 0; i < num; i++) {
+            const slice = document.createElement("div");
+            slice.classList.add("slice");
+            overlay.appendChild(slice);
+        }
+    }
+
+    function playSliceTransition(callback) {
+        const slices = document.querySelectorAll(".slice");
+        const tl = gsap.timeline({
+            onComplete: () => callback && callback()
+        });
+
+        tl.to(slices, {
+            duration: 0.5,
+            scaleY: 1,
+            stagger: { amount: 0.3, from: "start" },
+            ease: "power2.inOut"
+        }).to(slices, {
+            duration: 0.5,
+            scaleY: 0,
+            stagger: { amount: 0.3, from: "end" },
+            ease: "power2.inOut"
+        }, "+=0.3");
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        createSlices();
+
+        // Show initial content
+        $("#dynamic-content").html(contentSnippets[currentIndex]);
+
+        const links = document.querySelectorAll("a.transition-link");
+        links.forEach((link, i) => {
+            link.addEventListener("click", (e) => {
+                e.preventDefault();
+                currentIndex = i;
+                playSliceTransition(() => updateContent());
+            });
+        });
+    });
+</script>
+</body>
+</html>

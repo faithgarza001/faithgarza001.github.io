@@ -1233,10 +1233,10 @@ footer    a {
 .container .glass svg {
     font-size: 2.5em;
     fill: #fff;
-}
+}*/
 
 
-/* From Uiverse.io by shlomo20
+
 .cards {
     position: relative;
     margin-top: 9rem;
@@ -1306,7 +1306,7 @@ footer    a {
     background-color: #edb899;
     color: #000;
     font-weight: 600;
-}*/
+}
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
 
@@ -2407,11 +2407,10 @@ body.light-mode .video-bg:before {
 
 .container .glass {
     position: relative;
-    width: 180px;
-    height: 200px;
     background: linear-gradient(#fff2, transparent);
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 25px 25px rgba(0, 0, 0, 0.25);
+    height: 10rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -2424,7 +2423,7 @@ body.light-mode .video-bg:before {
 
 .container:hover .glass {
     transform: rotate(0deg);
-    margin: 0 10px;
+    margin: 0 5px;
 }
 
 .container .glass::before {

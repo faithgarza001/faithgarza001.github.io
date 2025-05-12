@@ -102,6 +102,54 @@
            gap: 20px; /* Space between phone frames */
        }
 
+       .step-indicator {
+           display: flex;
+           align-items: center;
+           justify-content: center;
+           padding: 40px 20px;
+           font-family: 'Segoe UI', sans-serif;
+       }
+
+       .step-wrapper {
+           width:80%;
+           display: flex;
+           flex-direction: column;
+           align-items: center;
+           color: #ccc;
+       }
+
+       .circle {
+           width: 40px;
+           height: 40px;
+           border: 2px solid #555;
+           border-radius: 50%;
+           display: flex;
+           align-items: center;
+           justify-content: center;
+           font-weight: 600;
+           color: white;
+           background-color: transparent;
+       }
+
+       .circle.active {
+           border-color: white;
+           color: white;
+       }
+
+       .label {
+           margin-top: 10px;
+           font-size: 14px;
+           color: #aaa;
+       }
+
+       .line {
+           height: 2px;
+           width: 100%;
+           background-color: #444;
+           margin: 0 10px;
+       }
+
+
    </style>
 </head>
 <body>
@@ -269,18 +317,67 @@
                     </div>
                 </div>
             </div>
-
-            <div class="step-indicator">
-                <span class="step active">1</span>
-                <span class="step">2</span>
-                <span class="step">3</span>
-                <span class="step">4</span>
-            </div>
         </section>
-
+        <div class="step-indicator">
+            <div class="step-wrapper">
+                <div class="circle active">1</div>
+                <div class="label">First step</div>
+            </div>
+            <div class="line"></div>
+            <div class="step-wrapper">
+                <div class="circle">2</div>
+                <div class="label">Second step</div>
+            </div>
+            <div class="line"></div>
+            <div class="step-wrapper">
+                <div class="circle">3</div>
+                <div class="label">Third step</div>
+            </div>
+            <div class="line"></div>
+            <div class="step-wrapper">
+                <div class="circle">4</div>
+                <div class="label">Fourth step</div>
+            </div>
+        </div>
     </main>
+    <section class="text-light py-5 px-3 px-md-5">
+        <div class="container">
 
+            <!-- Interviews Section -->
+            <h2 class="fw-bold mb-3">Interviews</h2>
+            <p class="mb-4">
+                During the ideation phase of the project, I conducted user interviews to build new personas and to inform the design.
+                Together with the team, we prepared an interview script with 32 open-ended questions, focusing on our target audiences’
+                values, motivations, and daily routines. In 4 days, I recruited and interviewed 7 users remotely. We referenced the
+                user interview findings throughout the entire design process.
+            </p>
+            <ul class="text-secondary ps-3">
+                <li class="mb-1">What objectives influenced your questions?</li>
+                <li class="mb-1">How many users did you interview?</li>
+                <li class="mb-1">What were the main insights from the interviews?</li>
+                <li class="mb-1">How did you use your findings?</li>
+            </ul>
+
+            <!-- Personas Section -->
+            <h2 class="fw-bold mt-5 mb-3">Personas</h2>
+            <p class="mb-4">
+                We wanted to form a deeper understanding of our users' goals, needs, experiences, and behaviors. So, we created 4
+                personas for each of our user segments. They were based on user interviews and surveys, and we kept updating them
+                throughout the project as we gathered more data. We used these personas whenever we wanted to step out of ourselves
+                and reconsider our initial ideas.
+            </p>
+            <ul class="text-secondary ps-3">
+                <li class="mb-1">Why did you decide that you need personas?</li>
+                <li class="mb-1">What data did you use to build your personas?</li>
+                <li class="mb-1">What information did you specify for each persona?</li>
+                <li class="mb-1">How did the personas affect the design process?</li>
+                <li class="mb-1">At which stages of the design process did you reflect back on the personas?</li>
+            </ul>
+
+        </div>
+    </section>
 </div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

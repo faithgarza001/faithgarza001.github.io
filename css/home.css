@@ -1242,7 +1242,7 @@ footer    a {
     margin-top: 9rem;
 }
 
-.card {
+.card-color {
     z-index: 1;
     position: absolute;
     width: 254px;
@@ -1253,25 +1253,25 @@ footer    a {
     transform: translateX(0px) translateY(0px) perspective(905px) rotateX(0deg) rotateY(0deg) rotateZ(-8deg);
 }
 
-.card.one {
+.card-color.one {
     top: -140px;
     left: -180px;
     background: linear-gradient(180deg, #8f1c32 0%, #343275 100%);
 }
 
-.card.two {
+.card-color.two {
     top: -100px;
     left: -155px;
     background: linear-gradient(180deg, #e37cff 0%, #50a5dc 99%);
 }
 
-.card.three {
+.card-color.three {
     top: -70px;
     left: -100px;
     background: linear-gradient(180deg, #c0f901ba 0%, #e67eff 100%);
 }
 
-.card:hover {
+.card-color:hover {
     z-index: 4;
     transform: perspective(1000px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) !important;
     transition: all .5s ease-out;
@@ -1291,7 +1291,7 @@ footer    a {
     transform: perspective(2000px) rotateY(-90deg);
 }
 
-.card:hover .cardDetails {
+.card-color:hover .cardDetails {
     transform: perspective(2000px) rotateY(0deg);
 }
 
@@ -1856,7 +1856,7 @@ body.light-mode .video-bg:before {
 }
 
 .wrapper {
-    display: flex;
+    display: inline-flex;
     flex-grow: 1;
     overflow: hidden;
 }

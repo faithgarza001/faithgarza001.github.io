@@ -1567,7 +1567,244 @@ body.light-mode .video-bg:before {
         flex-shrink: 0;
     }
 }
+/*Header Book Element*/
+.book {
+    width: 200px;
+    height: 300px;
+    position: relative;
+    transform-style: preserve-3d;
+    transform: rotateY(-30deg);
+    transition: 1s ease;
+    animation: 1s ease 0s 1 initAnimation;
+}
 
+.book:hover {
+    transform: rotateY(0deg);
+}
+
+.book > :first-child {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: red;
+    width: 200px;
+    height: 300px;
+    transform: translateZ(25px);
+    background-color: #01060f;
+    border-radius: 0 2px 2px 0;
+    box-shadow: 5px 5px 20px #666;
+    overflow: hidden;
+}
+
+.book::before {
+    overflow: hidden;
+    position: absolute;
+    content: ' ';
+    left: 0;
+    top: 3px;
+    width: 51px;
+    height: 294px;
+    transform: translateX(155px) rotateY(78deg);
+    background: blue linear-gradient(90deg,
+    #fff 0%,
+    #f9f9f9 5%,
+    #fff 10%,
+    #f9f9f9 15%,
+    #fff 20%,
+    #f9f9f9 25%,
+    #fff 30%,
+    #f9f9f9 35%,
+    #fff 40%,
+    #f9f9f9 45%,
+    #fff 50%,
+    #f9f9f9 55%,
+    #fff 60%,
+    #f9f9f9 65%,
+    #fff 70%,
+    #f9f9f9 75%,
+    #fff 80%,
+    #f9f9f9 85%,
+    #fff 90%,
+    #f9f9f9 95%,
+    #fff 100%
+    );
+}
+
+.book::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: ' ';
+    width: 200px;
+    height: 300px;
+    transform: translateZ(-25px);
+    background-color: #01060f;
+    border-radius: 0 2px 2px 0;
+    box-shadow: -10px 0 50px 10px #666;
+}
+
+.sticky{
+    position: fixed;
+    top:0;
+    width:100%;
+    background-color: rgba(0,0,0,0.815);
+    z-index: 9999;
+    transition: all 1.5s ease;
+}
+/*stroke -dasharray gives space in path spaces, we will get the exact path of each letter, use some js to get the length of each letter*/
+
+#achievement,#contributions,#skills{
+    color: black;
+    align-items: center
+}
+
+
+
+/*this is letter s*/
+#logo path:nth-child(2){
+    stroke-dasharray: 493px;
+    stroke-dashoffset: 493px;
+    animation: line-anim 2s ease forwards 0.6s;
+
+
+
+}
+
+/*this is letter o*/
+
+#logo path:nth-child(3){
+    stroke-dasharray: 433px;
+    stroke-dashoffset: 433px;
+    animation: line-anim 2s ease forwards 0.9s;
+
+}
+
+/*this is letter f*/
+#logo path:nth-child(4){
+    stroke-dasharray: 316px;
+    stroke-dashoffset: 316px;
+    animation: line-anim 2s ease forwards 1.2s;
+
+}
+/*this is letter t*/
+#logo path:nth-child(5){
+    stroke-dasharray: 314px;
+    stroke-dashoffset: 314px;
+    animation: line-anim 2s ease forwards 1.5s;
+
+}
+/*this is letter w*/
+#logo path:nth-child(6){
+    stroke-dasharray: 638px;
+    stroke-dashoffset: 638px;
+    animation: line-anim 2s ease forwards 1.8s;
+
+
+}
+/*this is letter a*/
+#logo path:nth-child(7){
+    stroke-dasharray: 506px;
+    stroke-dashoffset: 506px;
+    animation: line-anim 2s ease forwards 2.1s;
+
+
+}
+/*this is letter r*/
+#logo path:nth-child(8){
+    stroke-dasharray: 246px;
+    stroke-dashoffset: 246px;
+    animation: line-anim 2s ease forwards 2.4s;
+
+
+}
+/*this is letter e*/
+#logo path:nth-child(9){
+    stroke-dasharray: 515px;
+    stroke-dashoffset: 515px;
+    animation: line-anim 2s ease forwards 2.4s;
+
+
+}
+/*this is letter d*/
+#logo path:nth-child(10){
+    stroke-dasharray: 571px;
+    stroke-dashoffset: 571px;
+    animation: line-anim 2s ease forwards 2.4s;
+
+
+}
+/*this is letter e*/
+#logo path:nth-child(11){
+    stroke-dasharray: 515px;
+    stroke-dashoffset: 515px;
+    animation: line-anim 2s ease forwards 2.4s;
+
+
+}
+/*this is letter e*/
+#logo path:nth-child(12){
+    stroke-dasharray: 355px;
+    stroke-dashoffset: 355px;
+    animation: line-anim 2s ease forwards 2.4s;
+
+
+}
+/*this is letter v*/
+#logo path:nth-child(13){
+    stroke-dasharray: 515px;
+    stroke-dashoffset: 515px;
+    animation: line-anim 2s ease forwards 2.4s;
+
+
+}
+/*this is letter l*/
+#logo path:nth-child(14){
+    stroke-dasharray: 239px;
+    stroke-dashoffset: 239px;
+    animation: line-anim 2s ease forwards 2.4s;
+
+
+}
+/*this is letter o*/
+#logo path:nth-child(15){
+    stroke-dasharray: 433px;
+    stroke-dashoffset: 433px;
+    animation: line-anim 2s ease forwards 2.4s;
+
+
+}
+/*this is letter p*/
+#logo path:nth-child(16){
+    stroke-dasharray: 581px;
+    stroke-dashoffset: 581px;
+    animation: line-anim 2s ease forwards 2.4s;
+
+
+}
+/*this is letter e*/
+#logo path:nth-child(17){
+    stroke-dasharray: 515px;
+    stroke-dashoffset: 515px;
+    animation: line-anim 2s ease forwards 2.4s;
+
+
+}
+/*this is letter f*/
+#logo path:nth-child(18){
+
+    stroke-dasharray: 246px;
+    stroke-dashoffset: 246px;
+    animation: line-anim 2s ease forwards 2.4s;
+
+
+}
+
+@keyframes line-anim {
+    to {
+        stroke-dashoffset: 0;
+    }
+
+}
 .notification {
     position: relative;
     &-number {

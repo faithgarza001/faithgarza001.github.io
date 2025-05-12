@@ -1245,7 +1245,7 @@ footer    a {
 .card-color {
     z-index: 1;
     position: absolute;
-    width: 254px;
+    width:12vw;
     height: 190px;
     border-radius: 10px;
     transition: all .5s ease-out;

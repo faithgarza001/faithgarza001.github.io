@@ -1239,14 +1239,15 @@ footer    a {
 
 .cards {
     position: relative;
-    margin-top: 9rem;
+    margin-top: 8rem;
+    margin-left: 5rem;
 }
 
 .card-color {
     z-index: 1;
     position: absolute;
-    width:12vw;
-    height: 190px;
+    width:100px;
+    height: 100px;
     border-radius: 10px;
     transition: all .5s ease-out;
     overflow: hidden;
@@ -1255,19 +1256,19 @@ footer    a {
 
 .card-color.one {
     top: -140px;
-    left: -180px;
+    left: -165px;
     background: linear-gradient(180deg, #8f1c32 0%, #343275 100%);
 }
 
 .card-color.two {
-    top: -100px;
-    left: -155px;
+    top: -135px;
+    left: -125px;
     background: linear-gradient(180deg, #e37cff 0%, #50a5dc 99%);
 }
 
 .card-color.three {
-    top: -70px;
-    left: -100px;
+    top: -133px;
+    left: -65px;
     background: linear-gradient(180deg, #c0f901ba 0%, #e67eff 100%);
 }
 
@@ -1278,9 +1279,6 @@ footer    a {
 }
 
 .cardDetails {
-    width: 55%;
-    height: 100%;
-    padding: 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -1301,7 +1299,6 @@ footer    a {
 }
 
 .cardDetailsButton {
-    padding: 3px 6px;
     border-radius: 25px;
     background-color: #edb899;
     color: #000;
@@ -2410,7 +2407,7 @@ body.light-mode .video-bg:before {
     background: linear-gradient(#fff2, transparent);
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 25px 25px rgba(0, 0, 0, 0.25);
-    height: 10rem;
+    height: 6rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -2439,6 +2436,11 @@ body.light-mode .video-bg:before {
     color: #fff;
 }
 .container .glass svg {
-    font-size: 2.5em;
+    font-size: 2em;
     fill: #fff;
+    margin-left: 20px;
+    padding-bottom: 10px;
+
 }
+
+

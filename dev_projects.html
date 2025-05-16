@@ -3,261 +3,352 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Slide Transition Example</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+          crossorigin="anonymous">
     <link rel="stylesheet"  href="css/home.css" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <style>
-        body {
-            margin: 0;
-            height: 100vh;
-            width: 100%;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .container {
-            flex-grow: 1;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .item_image {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            mask-image: var(--mask-gradient);
-            -webkit-mask-image: var(--mask-gradient);
-            will-change: mask-image, transform;
-        }
-
-        #dynamic-content {
-            max-width: 600px;
-            padding: 2rem;
-            color: white;
-            text-align: center;
-            font-size: 1.2rem;
-            background: rgba(0,0,0,0.5);
-            border-radius: 1rem;
-        }
-
-        #transition-overlay {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            pointer-events: none;
-            z-index: 10;
-        }
-
-        .slice {
-            flex: 1;
-            background: black;
-            transform: scaleY(0);
-            transform-origin: bottom;
-        }
-
-        nav.navbar {
-            z-index: 20;
-            position: relative;
-        }
-    </style>
 </head>
 <body>
-<div class="container">
-    <nav class="navbar navbar-expand-lg sticky-lg-top">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="index.html">
-                <img class="" src="img/testmonogram.png" alt="FG Monogram">
-            </a>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link transition-link" href="#">Storm Track</a></li>
-                    <li class="nav-item"><a class="nav-link transition-link" href="#">Fleet Pulse</a></li>
-                    <li class="nav-item"><a class="nav-link transition-link" href="#">Tech Ticketing System</a></li>
-                    <li class="nav-item"><a class="nav-link transition-link" href="#">Shop Swift</a></li>
-                </ul>
+<div class="video-bg">
+    <video width="320" height="240" autoplay loop muted>
+        <source src="https://assets.codepen.io/3364143/7btrrd.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</div>
+<div class="dark-light">
+    <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" /></svg>
+</div>
+<div class="app">
+      <div class="header">
+          <div class="header-profile">
+              <nav class="navbar">
+                  <ul class="nav nav-pills">
+                      <li class="nav-item"><a class="nav-link transition-link text-light" href="#">Storm Track</a></li>
+                      <li class="nav-item"><a class="nav-link transition-link text-light" href="#">Fleet Pulse</a></li>
+                      <li class="nav-item"><a class="nav-link transition-link text-light" href="#">Tech Ticketing System</a></li>
+                      <li class="nav-item"><a class="nav-link transition-link text-light" href="#">Shop Swift</a></li>
+                  </ul>
+              </nav>
+          </div>
+      </div>
+    <div class="wrapper">
+        <div class="left-side">
+            <div class="side-wrapper">
+                <div class="side-title">Apps</div>
+                <div class="side-menu">
+                    <a href="dev_projects.html">
+                        <svg viewBox="0 0 512 512">
+                            <g xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+                                <path d="M0 0h128v128H0zm0 0M192 0h128v128H192zm0 0M384 0h128v128H384zm0 0M0 192h128v128H0zm0 0" data-original="#bfc9d1" />
+                            </g>
+                            <path xmlns="http://www.w3.org/2000/svg" d="M192 192h128v128H192zm0 0" fill="currentColor" data-original="#82b1ff" />
+                            <path xmlns="http://www.w3.org/2000/svg" d="M384 192h128v128H384zm0 0M0 384h128v128H0zm0 0M192 384h128v128H192zm0 0M384 384h128v128H384zm0 0" fill="currentColor" data-original="#bfc9d1" />
+                        </svg>
+                        All Apps
+                    </a>
+                    <a href="#">
+                        <svg viewBox="0 0 488.932 488.932" fill="currentColor">
+                            <path d="M243.158 61.361v-57.6c0-3.2 4-4.9 6.7-2.9l118.4 87c2 1.5 2 4.4 0 5.9l-118.4 87c-2.7 2-6.7.2-6.7-2.9v-57.5c-87.8 1.4-158.1 76-152.1 165.4 5.1 76.8 67.7 139.1 144.5 144 81.4 5.2 150.6-53 163-129.9 2.3-14.3 14.7-24.7 29.2-24.7 17.9 0 31.8 15.9 29 33.5-17.4 109.7-118.5 192-235.7 178.9-98-11-176.7-89.4-187.8-187.4-14.7-128.2 84.9-237.4 209.9-238.8z" />
+                        </svg>
+                        Site Analytics
+                        <span class="notification-number updates">3</span>
+                    </a>
+                </div>
+            </div>
+            <div class="side-wrapper">
+                <div class="side-title">Categories</div>
+                <div class="side-menu">
+                    <a href="#">
+                        <svg viewBox="0 0 488.455 488.455" fill="currentColor">
+                            <path d="M287.396 216.317c23.845 23.845 23.845 62.505 0 86.35s-62.505 23.845-86.35 0-23.845-62.505 0-86.35 62.505-23.845 86.35 0" />
+                            <path d="M427.397 91.581H385.21l-30.544-61.059H133.76l-30.515 61.089-42.127.075C27.533 91.746.193 119.115.164 152.715L0 396.86c0 33.675 27.384 61.074 61.059 61.074h366.338c33.675 0 61.059-27.384 61.059-61.059V152.639c-.001-33.674-27.385-61.058-61.059-61.058zM244.22 381.61c-67.335 0-122.118-54.783-122.118-122.118s54.783-122.118 122.118-122.118 122.118 54.783 122.118 122.118S311.555 381.61 244.22 381.61z" />
+                        </svg>
+                        Photography
+                    </a>
+                    <a href="web_design.html">
+                        <svg viewBox="0 0 512 512" fill="currentColor">
+                            <circle cx="295.099" cy="327.254" r="110.96" transform="rotate(-45 295.062 327.332)" />
+                            <path d="M471.854 338.281V163.146H296.72v41.169a123.1 123.1 0 01121.339 122.939c0 3.717-.176 7.393-.5 11.027zM172.14 327.254a123.16 123.16 0 01100.59-120.915L195.082 73.786 40.146 338.281H172.64c-.325-3.634-.5-7.31-.5-11.027z" />
+                        </svg>
+                        Designer Projects
+                    </a>
+                    <a href="#">
+                        <svg viewBox="0 0 58 58" fill="currentColor">
+                            <path d="M57 6H1a1 1 0 00-1 1v44a1 1 0 001 1h56a1 1 0 001-1V7a1 1 0 00-1-1zM10 50H2v-9h8v9zm0-11H2v-9h8v9zm0-11H2v-9h8v9zm0-11H2V8h8v9zm26.537 12.844l-11 7a1.007 1.007 0 01-1.018.033A1.001 1.001 0 0124 36V22a1.001 1.001 0 011.538-.844l11 7a1.003 1.003 0 01-.001 1.688zM56 50h-8v-9h8v9zm0-11h-8v-9h8v9zm0-11h-8v-9h8v9zm0-11h-8V8h8v9z" />
+                        </svg>
+                        Videography
+                    </a>
+                    <a href="#">
+                        <svg viewBox="0 0 512 512" fill="currentColor">
+                            <path d="M499.377 46.402c-8.014-8.006-18.662-12.485-29.985-12.613a41.13 41.13 0 00-.496-.003c-11.142 0-21.698 4.229-29.771 11.945L198.872 275.458c25.716 6.555 47.683 23.057 62.044 47.196a113.544 113.544 0 0110.453 23.179L500.06 106.661C507.759 98.604 512 88.031 512 76.89c0-11.507-4.478-22.33-12.623-30.488zM176.588 302.344a86.035 86.035 0 00-3.626-.076c-20.273 0-40.381 7.05-56.784 18.851-19.772 14.225-27.656 34.656-42.174 53.27C55.8 397.728 27.795 409.14 0 416.923c16.187 42.781 76.32 60.297 115.752 61.24 1.416.034 2.839.051 4.273.051 44.646 0 97.233-16.594 118.755-60.522 23.628-48.224-5.496-112.975-62.192-115.348z" />
+                        </svg>
+                        Illustrations
+                    </a>
+                    <a href="#">
+                        <svg viewBox="0 0 512 512" fill="currentColor">
+                            <path d="M497 151H316c-8.401 0-15 6.599-15 15v300c0 8.401 6.599 15 15 15h181c8.401 0 15-6.599 15-15V166c0-8.401-6.599-15-15-15zm-76 270h-30c-8.401 0-15-6.599-15-15s6.599-15 15-15h30c8.401 0 15 6.599 15 15s-6.599 15-15 15zm0-180h-30c-8.401 0-15-6.599-15-15s6.599-15 15-15h30c8.401 0 15 6.599 15 15s-6.599 15-15 15z" />
+                            <path d="M15 331h196v60h-75c-8.291 0-15 6.709-15 15s6.709 15 15 15h135v-30h-30v-60h30V166c0-24.814 20.186-45 45-45h135V46c0-8.284-6.716-15-15-15H15C6.716 31 0 37.716 0 46v270c0 8.284 6.716 15 15 15z" />
+                        </svg>
+                        UI/UX
+                    </a>
+
+                </div>
+            </div>
+            <div class="side-wrapper">
+                <div class="side-title">Exposure To:</div>
+                <div class="side-menu">
+                    <a href="#">
+                        <svg viewBox="0 0 332 332" fill="currentColor">
+                            <path d="M282.341 8.283C275.765 2.705 266.211 0 253.103 0c-18.951 0-36.359 5.634-51.756 16.743-14.972 10.794-29.274 28.637-42.482 53.028-4.358 7.993-7.428 11.041-8.973 12.179h-26.255c-10.84 0-19.626 8.786-19.626 19.626 0 8.989 6.077 16.486 14.323 18.809l-.05.165h.589c1.531.385 3.109.651 4.757.651h18.833l-32.688 128.001c-7.208 27.848-10.323 37.782-11.666 41.24-1.445 3.711-3.266 7.062-5.542 10.135-.42-5.39-2.637-10.143-6.508-13.854-4.264-4.079-10.109-6.136-17.364-6.136-8.227 0-15.08 2.433-20.37 7.229-5.416 4.93-8.283 11.193-8.283 18.134 0 5.157 1.701 12.712 9.828 19.348 6.139 4.97 14.845 7.382 26.621 7.382 17.096 0 32.541-4.568 45.891-13.577 13.112-8.845 24.612-22.489 34.166-40.522 9.391-17.678 18.696-45.124 28.427-83.9l18.598-73.479h30.016c10.841 0 19.625-8.785 19.625-19.625s-8.784-19.626-19.625-19.626h-19.628c6.34-21.62 14.175-37.948 23.443-48.578 2.284-2.695 5.246-5.692 8.412-7.678-1.543 3.392-2.325 6.767-2.325 10.055 0 6.164 2.409 11.714 6.909 16.03 4.484 4.336 10.167 6.54 16.888 6.54 7.085 0 13.373-2.667 18.17-7.716 4.76-5.005 7.185-11.633 7.185-19.703.017-9.079-3.554-16.899-10.302-22.618z" />
+                        </svg>
+                        Mechatronics
+                    </a>
+                </div>
+            </div>
+            <div class="side-wrapper">
+                <div class="side-title">Resource Links</div>
+                <div class="side-menu">
+                    <!--   <a href="#">
+                           <svg viewBox="0 0 512 512" fill="currentColor">
+                               <path d="M467 0H45C20.186 0 0 20.186 0 45v422c0 24.814 20.186 45 45 45h422c24.814 0 45-20.186 45-45V45c0-24.814-20.186-45-45-45zM181 241c41.353 0 75 33.647 75 75s-33.647 75-75 75-75-33.647-75-75c0-8.291 6.709-15 15-15s15 6.709 15 15c0 24.814 20.186 45 45 45s45-20.186 45-45-20.186-45-45-45c-41.353 0-75-33.647-75-75s33.647-75 75-75 75 33.647 75 75c0 8.291-6.709 15-15 15s-15-6.709-15-15c0-24.814-20.186-45-45-45s-45 20.186-45 45 20.186 45 45 45zm180 120h30c8.291 0 15 6.709 15 15s-6.709 15-15 15h-30c-24.814 0-45-20.186-45-45V211h-15c-8.291 0-15-6.709-15-15s6.709-15 15-15h15v-45c0-8.291 6.709-15 15-15s15 6.709 15 15v45h45c8.291 0 15 6.709 15 15s-6.709 15-15 15h-45v135c0 8.276 6.724 15 15 15z" />
+                           </svg>
+                           Stock
+                       </a>-->
+                    <a href="#">
+                        <svg viewBox="0 0 511.441 511.441" fill="currentColor">
+                            <path d="M255.721 347.484L90.22 266.751v106.57l165.51 73.503 165.509-73.503V266.742z" />
+                            <path d="M511.441 189.361L255.721 64.617 0 189.361l255.721 124.744 195.522-95.378v111.032h30V204.092z" />
+                        </svg>
+                        Tutorials
+                    </a>
+                    <a href="#">
+                        <svg viewBox="0 0 512 512" fill="currentColor">
+                            <path d="M181 181h-60v60h60c16.54 0 30-13.46 30-30s-13.46-30-30-30zm0 0M181 271h-60v60h60c16.54 0 30-13.46 30-30s-13.46-30-30-30zm0 0M346 241c-19.555 0-36.238 12.54-42.438 30h84.875c-6.199-17.46-22.882-30-42.437-30zm0 0" />
+                            <path d="M436 0H75C33.648 0 0 33.648 0 75v362c0 41.352 33.648 75 75 75h361c41.352 0 76-33.648 76-75V75c0-41.352-34.648-75-76-75zM286 151h120v30H286zm-45 150c0 33.09-26.91 60-60 60H91V151h90c33.09 0 60 26.91 60 60 0 18.008-8.133 33.996-20.73 45 12.597 11.004 20.73 26.992 20.73 45zm180 0H303.562c6.196 17.46 22.883 30 42.438 30 16.012 0 30.953-8.629 38.992-22.516l25.957 15.032C397.58 346.629 372.687 361 346 361c-41.352 0-75-33.648-75-75s33.648-75 75-75 75 33.648 75 75zm0 0" />
+                        </svg>
+                        Behance
+                    </a>
+                    <a href="#">
+                        <svg viewBox="0 0 512 512" fill="currentColor">
+                            <path d="M352 0H64C28.704 0 0 28.704 0 64v320a16.02 16.02 0 009.216 14.496A16.232 16.232 0 0016 400c3.68 0 7.328-1.248 10.24-3.712L117.792 320H352c35.296 0 64-28.704 64-64V64c0-35.296-28.704-64-64-64z" />
+                            <path d="M464 128h-16v128c0 52.928-43.072 96-96 96H129.376L128 353.152V400c0 26.464 21.536 48 48 48h234.368l75.616 60.512A16.158 16.158 0 00496 512c2.336 0 4.704-.544 6.944-1.6A15.968 15.968 0 00512 496V176c0-26.464-21.536-48-48-48z" />
+                        </svg>
+                        Social Forum
+                    </a>
+                </div>
             </div>
         </div>
-    </nav>
+        <div class="main-container">
+            <!-- <div class="main-header">
+                 <a class="menu-link-main" href="#">All Apps</a>
+                 <div class="header-menu">
+                     <a class="main-header-link is-active" href="#">Desktop</a>
+                     <a class="main-header-link" href="#">Mobile</a>
+                     <a class="main-header-link" href="#">Web</a>
 
-    <div class="item_image">
-        <div id="dynamic-content"></div>
+                 </div>
+             </div>--->
+            <div class="content-wrapper">
+                <div class="hero-section">
+                    <div class="row grey_glassMorphism">
+                        <!-- Left Content Area -->
+                        <div class="left-content col-6">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="content-section d-flex justify-content-center flex-wrap gap-3">
+                    <div class="content-section-title">
+                        Applied Design & Engineering
+                    </div>
+                    <div class="row w-100 app-card">
+                        <div class="item_image">
+                            <div id="dynamic-content"></div>
+                        </div>
+
+                    </div>
+                    <div id="transition-overlay"></div>
+                </div>
+                <div class="content-section d-flex justify-content-center flex-wrap gap-3"">
+                <div class="content-section-title">
+                    System Features At-A-Glance
+                </div>
+                <div class="apps-card">
+                    <div class="app-card">
+
+                    </div>
+                    <div class="app-card">
+
+                    </div>
+                    <div class="app-card">
+
+                    </div>
+                </div>
+            </div>
+            <footer class="my-5" style="padding: 20px 0; font-size: 0.9rem;background-color: var(--content-bg)">
+                <div class="container">
+                    <div class="row align-items-start">
+
+
+                        <div class="col-md-3 mb-3">
+                            <h6>Profile</h6>
+                            <ul class="list-unstyled mb-2">
+                                <li><a href="about_me.html" class="text-decoration-none text-light">About Me</a></li>
+                                <li><a href="#skills" class="text-decoration-none text-light">Skills</a></li>
+                                <li><a href="#contact" class="text-decoration-none text-light">Contact</a></li>
+                            </ul>
+                        </div>
+
+
+                        <div class="col-md-3 mb-3">
+                            <h6>Resources</h6>
+                            <ul class="list-unstyled mb-2">
+                                <li><a href="/blog" class="text-decoration-none text-light">Blog</a></li>
+                                <li><a href="/resume.pdf" target="_blank" class="text-decoration-none text-light">Download Resume</a></li>
+                                <li><a href="/case-studies" class="text-decoration-none text-light">Case Studies</a></li>
+                                <li><a href="/style-guide" class="text-decoration-none text-light">Style Guide</a></li>
+                            </ul>
+                        </div>
+
+
+                        <div class="col-md-3 mb-3">
+                            <h6>Art Projects</h6>
+                            <ul class="list-unstyled mb-2">
+                                <li><a href="https://store.steampowered.com/developer/yourprofile" target="_blank" class="text-decoration-none text-light">
+                                    <i class="fab fa-steam"></i> Steam Projects
+                                </a></li>
+                                <li><a href="/unreal-projects" class="text-decoration-none text-light">
+                                    <i class="fas fa-gamepad"></i> Unreal Engine Work
+                                </a></li>
+                                <li><a href="https://yourartportfolio.com" target="_blank" class="text-decoration-none text-light">
+                                    <i class="fas fa-palette"></i> Art Portfolio
+                                </a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <h6>Stay Connected</h6>
+                            <form class="d-flex mb-2">
+                                <input type="email" placeholder="Email" required
+                                       style="padding: 5px 8px; width: 65%; border: none; border-radius: 4px 0 0 4px;">
+                                <button type="submit"
+                                        style="padding: 5px 12px; background-color: #ff6f61; color: white; border: none; border-radius: 0 4px 4px 0;">
+                                    Send Email
+                                </button>
+                            </form>
+                            <ul class="list-inline mb-0">
+                                <li class="list-inline-item"><a href="https://github.com/yourusername" target="_blank"><i class="fab fa-github text-light"></i></a></li>
+                                <li class="list-inline-item"><a href="https://linkedin.com/in/yourprofile" target="_blank"><i class="fab fa-linkedin-in text-light"></i></a></li>
+                                <li class="list-inline-item"><a href="https://twitter.com/yourprofile" target="_blank"><i class="fab fa-twitter text-light"></i></a></li>
+                                <li class="list-inline-item"><a href="https://dribbble.com/yourprofile" target="_blank"><i class="fab fa-dribbble text-light"></i></a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </footer>
+        </div>
     </div>
-
-    <div id="transition-overlay"></div>
 </div>
+<div class="overlay-app"></div>
 
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+
+<script src="js/main.js"></script>
 <script>
-    /*const contentSnippets = [
-        "<div class='content-box'><h2>Title 1</h2><p>Description for content 1.</p></div>",
-        "<div class='content-box'><h2>Title 2</h2><p>Description for content 2.</p></div>",
-        "<div class='content-box'><h2>Title 3</h2><p>Description for content 3.</p></div>"
-    ];*/
-
-    const contentSnippets = [
-        // Snippet 1: StormTrack App
-        `<div class="rect" id="one" style="position: relative;">
-    <div class="position-absolute top-0 end-0">
-        <b class="links title" data-bs-toggle="tooltip" data-bs-placement="right" title="">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill mt-2 me-3" viewBox="0 0 16 16">
-                <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/>
-            </svg>
-        </b>
-    </div>
-    <a href="path_to_your_project_workflow" class="position-absolute start-0" style="left: -20px;">
-        <img src="img/UrbanAirWorkflow.png" alt="Express" class="express mb-3 w-25" />
-    </a>
-    <img src="img/stormTrack.png" alt="Express" class="express mb-3 w-75 h-75" />
-    <div class="card-footer">
-        <button id="trial" class="w-75 mt-4" onclick="message()">
-            <a class="nav-link text-white" href="https://express-weather-world.onrender.com">StormTrack App
-            </a>
-        </button>
-    </div>
-  </div>`,
-
-        // Snippet 2: FleetPulse App
-        `<div class="rect" id="two" style="position: relative;">
-    <div class="position-absolute top-0 end-0">
-      <b data-bs-toggle="tooltip" data-bs-placement="right" title="This project leverages Node.js to facilitate efficient data exchange between the server and client while maintaining a clear separation of concerns. On the front end, jQuery enhances interactivity by manipulating the DOM and integrating seamlessly with HTML5 to dynamically display data.">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill mt-2 me-3" viewBox="0 0 16 16">
-          <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/>
-        </svg>
-      </b>
-    </div>
-    <img src="img/fleetpulselogo.png" alt="FleetPulse Logo" class="express mb-3 w-75" />
-    <div class="card-footer">
-      <button id="trial4" class="w-75">
-        <a class="nav-link text-white" href="https://your-fleetpulse-url.com">Fleet Pulse
-        </a>
-      </button>
-    </div>
-  </div>`,
-
-        // Snippet 3: Tech Ticketing System
-        `<div class="rect" id="three">
-    <div class="position-absolute top-0 end-0">
-      <b data-bs-toggle="tooltip" data-bs-placement="right" title="Ticketing system built with Java Spring Boot, emphasizing a simulated robust backend functionality, efficient data management, and seamless integration with modern web technologies. Enterprise-grade application development, RESTful API design, and relational database management.">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill mt-2 me-3" viewBox="0 0 16 16">
-          <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/>
-        </svg>
-      </b>
-    </div>
-    <img src="img/techticketlogo.png" alt="tech logo" class="tech w-75 mb-2" />
-    <sub>
-      <b data-bs-toggle="tooltip" data-bs-placement="right" title="Ticketing system built with Java Spring Boot, emphasizing a simulated robust backend functionality, efficient data management, and seamless integration with modern web technologies. Enterprise-grade application development, RESTful API design, and relational database management."></b>
-    </sub>
-    <div class="card-footer">
-      <button id="trial2" class="mt-3" onclick="message()">
-        <a class="nav-link text-white text-nowrap" href="https://springdemo-43am.onrender.com">Tech Ticketing System
-        </a>
-      </button>
-    </div>
-  </div>`,
-
-        // Snippet 4: ShopSwift
-        `<div class="rect" id="four">
-    <div class="position-absolute top-0 end-0">
-      <b data-bs-toggle="tooltip" data-bs-placement="right" title="Ticketing system built with Java Spring Boot, emphasizing a simulated robust backend functionality, efficient data management, and seamless integration with modern web technologies. Enterprise-grade application development, RESTful API design, and relational database management.">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill mt-2 me-3" viewBox="0 0 16 16">
-          <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/>
-        </svg>
-      </b>
-    </div>
-    <img src="img/shopswiftlogo.png" alt="tech logo" class="tech w-75 mb-4" />
-    <div class="card-footer">
-      <button id="trial5" class="w-75 mt-2">
-        <a class="nav-link text-white" href="https://springdemo-43am.onrender.com">Shop Swift
-        </a>
-      </button>
-    </div>
-  </div>`
-    ];
-
-
-
-
-    let currentIndex = 0;
-
-    const gradients = {
-        start: "linear-gradient(0deg, black 0% 0%, transparent 0% 0%)",
-        mid: "linear-gradient(0deg, black 0% 50%, transparent 50% 100%)",
-        end: "linear-gradient(0deg, black 100% 100%, transparent 100% 100%)"
-    };
-
-    function updateContent() {
-        const $container = $("#dynamic-content");
-
-        gsap.to($container, {
-            duration: 0.4,
-            opacity: 0,
-            onComplete: () => {
-                $container.html(contentSnippets[currentIndex]);
-                gsap.to($container, { duration: 0.4, opacity: 1 });
-            }
-        });
-
-        // Animate gradient change
-        const tl = gsap.timeline();
-        tl.to(".item_image", {
-            duration: 0.5,
-            "--mask-gradient": gradients.mid
-        }).to(".item_image", {
-            duration: 0.5,
-            "--mask-gradient": gradients.end
-        });
-    }
-
-    function createSlices(num = 12) {
-        const overlay = document.getElementById("transition-overlay");
-        overlay.innerHTML = "";
-        for (let i = 0; i < num; i++) {
-            const slice = document.createElement("div");
-            slice.classList.add("slice");
-            overlay.appendChild(slice);
-        }
-    }
-
-    function playSliceTransition(callback) {
-        const slices = document.querySelectorAll(".slice");
-        const tl = gsap.timeline({
-            onComplete: () => callback && callback()
-        });
-
-        tl.to(slices, {
-            duration: 0.5,
-            scaleY: 1,
-            stagger: { amount: 0.3, from: "start" },
-            ease: "power2.inOut"
-        }).to(slices, {
-            duration: 0.5,
-            scaleY: 0,
-            stagger: { amount: 0.3, from: "end" },
-            ease: "power2.inOut"
-        }, "+=0.3");
-    }
-
-    document.addEventListener("DOMContentLoaded", () => {
-        createSlices();
-
-        // Show initial content
-        $("#dynamic-content").html(contentSnippets[currentIndex]);
-
-        const links = document.querySelectorAll("a.transition-link");
-        links.forEach((link, i) => {
-            link.addEventListener("click", (e) => {
-                e.preventDefault();
-                currentIndex = i;
-                playSliceTransition(() => updateContent());
-            });
+    $(function () {
+        $(".menu-link").click(function () {
+            $(".menu-link").removeClass("is-active");
+            $(this).addClass("is-active");
         });
     });
+
+    $(function () {
+        $(".main-header-link").click(function () {
+            $(".main-header-link").removeClass("is-active");
+            $(this).addClass("is-active");
+        });
+    });
+
+    const dropdowns = document.querySelectorAll(".dropdown");
+    dropdowns.forEach((dropdown) => {
+        dropdown.addEventListener("click", (e) => {
+            e.stopPropagation();
+            dropdowns.forEach((c) => c.classList.remove("is-active"));
+            dropdown.classList.add("is-active");
+        });
+    });
+
+    $(".search-bar input")
+        .focus(function () {
+            $(".header").addClass("wide");
+        })
+        .blur(function () {
+            $(".header").removeClass("wide");
+        });
+
+    $(document).click(function (e) {
+        var container = $(".status-button");
+        var dd = $(".dropdown");
+        if (!container.is(e.target) && container.has(e.target).length === 0) {
+            dd.removeClass("is-active");
+        }
+    });
+
+    $(function () {
+        $(".dropdown").on("click", function (e) {
+            $(".content-wrapper").addClass("overlay");
+            e.stopPropagation();
+        });
+        $(document).on("click", function (e) {
+            if ($(e.target).is(".dropdown") === false) {
+                $(".content-wrapper").removeClass("overlay");
+            }
+        });
+    });
+
+    $(function () {
+        $(".status-button:not(.open)").on("click", function (e) {
+            $(".overlay-app").addClass("is-active");
+        });
+        $(".pop-up .close").click(function () {
+            $(".overlay-app").removeClass("is-active");
+        });
+    });
+
+    $(".status-button:not(.open)").click(function () {
+        $(".pop-up").addClass("visible");
+    });
+
+    $(".pop-up .close").click(function () {
+        $(".pop-up").removeClass("visible");
+    });
+
+    const toggleButton = document.querySelector('.dark-light');
+
+    toggleButton.addEventListener('click', () => {
+        document.body.classList.toggle('light-mode');
+        //change text-light to text-dark
+        const textElements = document.querySelectorAll('.text-light, .text-dark');
+        textElements.forEach((element) => {
+            element.classList.toggle('text-dark');
+            element.classList.toggle('text-light');
+        });
+
+    });
+    /*End of Light Dark Mode*/
+
 </script>
+
 </body>
+
 </html>
+
+

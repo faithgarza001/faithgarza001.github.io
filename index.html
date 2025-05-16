@@ -233,7 +233,7 @@
                     Tech Proficiency & Growth
                     </div>
                  <div class="row">
-                     <div class="app-card h-75 pb-5">
+                     <div class="app-card h-75">
                          <h5 class="fw-bold">
                          Skills
                          </h5>
@@ -301,7 +301,7 @@
                      </div>
                  </div>
                 </div>
-                <div class="content-section d-flex justify-content-center flex-wrap gap-3"">
+                <div class="content-section d-flex justify-content-center flex-wrap gap-3">
                     <div class="content-section-title">
                        Featured Projects
                     </div>
@@ -340,9 +340,9 @@
                             <div class="col-md-3 mb-3">
                                 <h6>Profile</h6>
                                 <ul class="list-unstyled mb-2">
-                                    <li><a href="about_me.html" class="text-decoration-none">About Me</a></li>
-                                    <li><a href="#skills" class="text-decoration-none">Skills</a></li>
-                                    <li><a href="#contact" class="text-decoration-none">Contact</a></li>
+                                    <li><a href="about_me.html" class="text-decoration-none text-light">About Me</a></li>
+                                    <li><a href="#skills" class="text-decoration-none text-light">Skills</a></li>
+                                    <li><a href="#contact" class="text-decoration-none text-light">Contact</a></li>
                                 </ul>
                             </div>
 
@@ -350,10 +350,10 @@
                             <div class="col-md-3 mb-3">
                                 <h6>Resources</h6>
                                 <ul class="list-unstyled mb-2">
-                                    <li><a href="/blog" class="text-decoration-none">Blog</a></li>
-                                    <li><a href="/resume.pdf" target="_blank" class="text-decoration-none">Download Resume</a></li>
-                                    <li><a href="/case-studies" class="text-decoration-none">Case Studies</a></li>
-                                    <li><a href="/style-guide" class="text-decoration-none">Style Guide</a></li>
+                                    <li><a href="/blog" class="text-decoration-none text-light">Blog</a></li>
+                                    <li><a href="/resume.pdf" target="_blank" class="text-decoration-none text-light">Download Resume</a></li>
+                                    <li><a href="/case-studies" class="text-decoration-none text-light">Case Studies</a></li>
+                                    <li><a href="/style-guide" class="text-decoration-none text-light">Style Guide</a></li>
                                 </ul>
                             </div>
 
@@ -361,13 +361,13 @@
                             <div class="col-md-3 mb-3">
                                 <h6>Art Projects</h6>
                                 <ul class="list-unstyled mb-2">
-                                    <li><a href="https://store.steampowered.com/developer/yourprofile" target="_blank" class="text-decoration-none">
+                                    <li><a href="https://store.steampowered.com/developer/yourprofile" target="_blank" class="text-decoration-none text-light">
                                         <i class="fab fa-steam"></i> Steam Projects
                                     </a></li>
-                                    <li><a href="/unreal-projects" class="text-decoration-none">
+                                    <li><a href="/unreal-projects" class="text-decoration-none text-light">
                                         <i class="fas fa-gamepad"></i> Unreal Engine Work
                                     </a></li>
-                                    <li><a href="https://yourartportfolio.com" target="_blank" class="text-decoration-none">
+                                    <li><a href="https://yourartportfolio.com" target="_blank" class="text-decoration-none text-light">
                                         <i class="fas fa-palette"></i> Art Portfolio
                                     </a></li>
                                 </ul>
@@ -383,16 +383,17 @@
                                     </button>
                                 </form>
                                 <ul class="list-inline mb-0">
-                                    <li class="list-inline-item"><a href="https://github.com/yourusername" target="_blank"><i class="fab fa-github"></i></a></li>
-                                    <li class="list-inline-item"><a href="https://linkedin.com/in/yourprofile" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
-                                    <li class="list-inline-item"><a href="https://twitter.com/yourprofile" target="_blank"><i class="fab fa-twitter"></i></a></li>
-                                    <li class="list-inline-item"><a href="https://dribbble.com/yourprofile" target="_blank"><i class="fab fa-dribbble"></i></a></li>
+                                    <li class="list-inline-item"><a href="https://github.com/yourusername" target="_blank"><i class="fab fa-github text-light"></i></a></li>
+                                    <li class="list-inline-item"><a href="https://linkedin.com/in/yourprofile" target="_blank"><i class="fab fa-linkedin-in text-light"></i></a></li>
+                                    <li class="list-inline-item"><a href="https://twitter.com/yourprofile" target="_blank"><i class="fab fa-twitter text-light"></i></a></li>
+                                    <li class="list-inline-item"><a href="https://dribbble.com/yourprofile" target="_blank"><i class="fab fa-dribbble text-light"></i></a></li>
                                 </ul>
                             </div>
 
                         </div>
                     </div>
                 </footer>
+
             </div>
         </div>
     </div>
@@ -479,6 +480,13 @@
 
     toggleButton.addEventListener('click', () => {
         document.body.classList.toggle('light-mode');
+        //change text-light to text-dark
+        const textElements = document.querySelectorAll('.text-light, .text-dark');
+        textElements.forEach((element) => {
+            element.classList.toggle('text-dark');
+            element.classList.toggle('text-light');
+        });
+
     });
 </script>
 

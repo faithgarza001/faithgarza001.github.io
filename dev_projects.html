@@ -26,10 +26,10 @@
           <div class="header-profile">
               <nav class="navbar">
                   <ul class="nav nav-pills">
-                      <li class="nav-item"><a class="nav-link transition-link text-light" href="#">Storm Track</a></li>
-                      <li class="nav-item"><a class="nav-link transition-link text-light" href="#">Fleet Pulse</a></li>
-                      <li class="nav-item"><a class="nav-link transition-link text-light" href="#">Tech Ticketing System</a></li>
-                      <li class="nav-item"><a class="nav-link transition-link text-light" href="#">Shop Swift</a></li>
+                      <li class="nav-item"><a class="nav-link transition-link text-light project-title" href="#">Storm Track</a></li>
+                      <li class="nav-item"><a class="nav-link transition-link text-light project-title" href="#">Fleet Pulse</a></li>
+                      <li class="nav-item"><a class="nav-link transition-link text-light project-title" href="#">Tech Ticketing System</a></li>
+                      <li class="nav-item"><a class="nav-link transition-link text-light project-title" href="#">Shop Swift</a></li>
                   </ul>
               </nav>
           </div>
@@ -47,7 +47,7 @@
                             <path xmlns="http://www.w3.org/2000/svg" d="M192 192h128v128H192zm0 0" fill="currentColor" data-original="#82b1ff" />
                             <path xmlns="http://www.w3.org/2000/svg" d="M384 192h128v128H384zm0 0M0 384h128v128H0zm0 0M192 384h128v128H192zm0 0M384 384h128v128H384zm0 0" fill="currentColor" data-original="#bfc9d1" />
                         </svg>
-                        All Apps
+                        Developer Projects
                     </a>
                     <a href="#">
                         <svg viewBox="0 0 488.932 488.932" fill="currentColor">
@@ -148,7 +148,6 @@
                      <a class="main-header-link is-active" href="#">Desktop</a>
                      <a class="main-header-link" href="#">Mobile</a>
                      <a class="main-header-link" href="#">Web</a>
-
                  </div>
              </div>--->
             <div class="content-wrapper">
@@ -164,26 +163,23 @@
                     <div class="content-section-title">
                         Applied Design & Engineering
                     </div>
-                    <div class="row w-100 app-card">
-                        <div class="item_image">
-                            <div id="dynamic-content"></div>
-                        </div>
+                    <div class="row w-100 project-card">
 
                     </div>
                     <div id="transition-overlay"></div>
                 </div>
-                <div class="content-section d-flex justify-content-center flex-wrap gap-3"">
+                <div class="content-section d-flex justify-content-center flex-wrap gap-3">
                 <div class="content-section-title">
-                    System Features At-A-Glance
+                  <span id="appName"></span>  Application Features At-A-Glance
                 </div>
                 <div class="apps-card">
-                    <div class="app-card">
+                    <div class="app-card" id="one">
 
                     </div>
-                    <div class="app-card">
+                    <div class="app-card" id="two">
 
                     </div>
-                    <div class="app-card">
+                    <div class="app-card" id="three">
 
                     </div>
                 </div>
@@ -250,6 +246,7 @@
                 </div>
             </footer>
         </div>
+        </div>
     </div>
 </div>
 <div class="overlay-app"></div>
@@ -262,89 +259,20 @@
 
 
 <script src="js/main.js"></script>
-<script>
-    $(function () {
-        $(".menu-link").click(function () {
-            $(".menu-link").removeClass("is-active");
-            $(this).addClass("is-active");
-        });
-    });
+<script type="module">
+  /*  import { DotLottie } from "https://cdn.jsdelivr.net/npm/@lottiefiles/dotlottie-web/+esm";
 
-    $(function () {
-        $(".main-header-link").click(function () {
-            $(".main-header-link").removeClass("is-active");
-            $(this).addClass("is-active");
-        });
-    });
+ const lottiePlayer = new DotLottie({
+     autoplay: true,
+     loop: true,
+     canvas: document.getElementById("canvas"),
+     src: "https://lottie.host/4db68bbd-31f6-4cd8-84eb-189de081159a/IGmMCqhzpt.lottie",
+ });
 
-    const dropdowns = document.querySelectorAll(".dropdown");
-    dropdowns.forEach((dropdown) => {
-        dropdown.addEventListener("click", (e) => {
-            e.stopPropagation();
-            dropdowns.forEach((c) => c.classList.remove("is-active"));
-            dropdown.classList.add("is-active");
-        });
-    });
-
-    $(".search-bar input")
-        .focus(function () {
-            $(".header").addClass("wide");
-        })
-        .blur(function () {
-            $(".header").removeClass("wide");
-        });
-
-    $(document).click(function (e) {
-        var container = $(".status-button");
-        var dd = $(".dropdown");
-        if (!container.is(e.target) && container.has(e.target).length === 0) {
-            dd.removeClass("is-active");
-        }
-    });
-
-    $(function () {
-        $(".dropdown").on("click", function (e) {
-            $(".content-wrapper").addClass("overlay");
-            e.stopPropagation();
-        });
-        $(document).on("click", function (e) {
-            if ($(e.target).is(".dropdown") === false) {
-                $(".content-wrapper").removeClass("overlay");
-            }
-        });
-    });
-
-    $(function () {
-        $(".status-button:not(.open)").on("click", function (e) {
-            $(".overlay-app").addClass("is-active");
-        });
-        $(".pop-up .close").click(function () {
-            $(".overlay-app").removeClass("is-active");
-        });
-    });
-
-    $(".status-button:not(.open)").click(function () {
-        $(".pop-up").addClass("visible");
-    });
-
-    $(".pop-up .close").click(function () {
-        $(".pop-up").removeClass("visible");
-    });
-
-    const toggleButton = document.querySelector('.dark-light');
-
-    toggleButton.addEventListener('click', () => {
-        document.body.classList.toggle('light-mode');
-        //change text-light to text-dark
-        const textElements = document.querySelectorAll('.text-light, .text-dark');
-        textElements.forEach((element) => {
-            element.classList.toggle('text-dark');
-            element.classList.toggle('text-light');
-        });
-
-    });
-    /*End of Light Dark Mode*/
-
+ // Example: change animation on click
+    document.getElementById("lottiePlayer").addEventListener("click", function () {
+        this.setAttribute("src", "https://lottie.host/7546fe3f-019a-4d00-9dbf-0df39de5e387/tkeuyP8zLe.lottie");
+    });*/
 </script>
 
 </body>

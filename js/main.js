@@ -339,3 +339,34 @@ if (navLinks.length > 0) {
     updateCards(firstApp);
 }
 
+
+/**About me Page**/
+$(function () {
+    $(".status-button:not(.open)").on("click", function (e) {
+        var popupType = $(this).data("popup");
+        if (popupType === "TTfinal") {
+            // Show TTfinal popup
+            if ($("#TTfinal-pop").length === 0) {
+          $("body").append(`
+              <div id="TTfinal-pop" class="">
+                  <div style="background:#fff;padding:2rem;border-radius:8px;max-width:90vw;max-height:90vh;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+                      <button class="close" style="position:absolute;top:10px;right:10px;font-size:1.5rem;background:none;border:none;">&times;</button>
+                      <img src="img/TTfinal.png" alt="TTfinal" style="max-width:100%;max-height:70vh;display:block;margin:0 auto;">
+                  </div>
+              </div>
+          `);
+                $("#TTfinal-pop .close").on("click", function () {
+                    $("#TTfinal-pop").remove();
+                    $(".overlay-app").removeClass("is-active");
+                });
+            }
+            $(".overlay-app").addClass("is-active");
+        } else {
+            $(".overlay-app").addClass("is-active");
+        }
+    });
+    $(".pop-up .close").click(function () {
+        $(".overlay-app").removeClass("is-active");
+        $(this).closest(".pop-up").remove();
+    });
+});

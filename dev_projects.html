@@ -173,13 +173,15 @@
                   <span id="appName"></span>  Application Features At-A-Glance
                 </div>
                 <div class="apps-card">
-                    <div class="app-card" id="one">
+                    <div class="app-card" id="one" style="height:500px !important;">
+
+
 
                     </div>
-                    <div class="app-card" id="two">
+                    <div class="app-card" id="two" style="height:500px !important;">
 
                     </div>
-                    <div class="app-card" id="three">
+                    <div class="app-card" id="three" style="height:500px !important;">
 
                     </div>
                 </div>
@@ -252,31 +254,45 @@
 <div class="overlay-app"></div>
 
 
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-
-
 <script src="js/main.js"></script>
 <script type="module">
-  /*  import { DotLottie } from "https://cdn.jsdelivr.net/npm/@lottiefiles/dotlottie-web/+esm";
+    import { DotLottie } from "https://cdn.jsdelivr.net/npm/@lottiefiles/dotlottie-web/+esm";
 
- const lottiePlayer = new DotLottie({
-     autoplay: true,
-     loop: true,
-     canvas: document.getElementById("canvas"),
-     src: "https://lottie.host/4db68bbd-31f6-4cd8-84eb-189de081159a/IGmMCqhzpt.lottie",
- });
+    new DotLottie({
+        autoplay: true,
+        loop: true,
+        canvas: document.getElementById("canvas"),
+        src: "https://lottie.host/3e24ec95-284e-43a1-abb8-342c449e7571/GlYuEWSKdC.lottie", // or .json file
+    });
 
- // Example: change animation on click
-    document.getElementById("lottiePlayer").addEventListener("click", function () {
-        this.setAttribute("src", "https://lottie.host/7546fe3f-019a-4d00-9dbf-0df39de5e387/tkeuyP8zLe.lottie");
-    });*/
+    document.getElementById("fleetPulse").onclick = function() {
+        //get the canvas element stop the animation
+        var canvas = document.getElementById("canvas");
+        canvas.style.display = "block";
+        //get the canvasTwo element stop the animation and hide it
+        var canvasTwo = document.getElementById("canvasTwo");
+        canvasTwo.style.display = "none";
+
+
+    };
+    //onclick of id=stormTrack display canvas 2 element
+    document.getElementById("stormTrack").onclick = function() {
+        //get the canvas element stop the animation
+        var canvas = document.getElementById("canvas");
+        canvas.style.display = "none";
+        var canvasTwo = document.getElementById("canvasTwo");
+        canvasTwo.style.display = "block";
+        new DotLottie({
+            autoplay: true,
+            loop: true,
+            canvas: document.getElementById("canvasTwo"),
+            src:"https://lottie.host/ef81b02d-b184-4b29-a4a5-b3a85061d778/vKmTGN9n9B.lottie"
+        })
+    };
 </script>
-
 </body>
-
 </html>
 
 

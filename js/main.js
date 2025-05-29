@@ -309,6 +309,26 @@ navLinks.forEach(link => {
         const selectedApp = this.textContent.trim();
         appNameElem.textContent = selectedApp;
         updateCards(selectedApp);
+        // Set the href attribute to the button with id of viewProject based  on link id
+        const viewProjectButton = document.getElementById('viewProject');
+        //switch based on selected app
+        switch (selectedApp) {
+            case 'Urban Air':
+                viewProjectButton.href = 'https://express-weather-world.onrender.com';
+                break;
+            case 'Fleet Pulse':
+                viewProjectButton.href = '#';
+                break;
+            case 'Tech Ticketing System':
+                viewProjectButton.href = 'https://springdemo-43am.onrender.com';
+                break;
+            case 'Shop Swift':
+                viewProjectButton.href = '#';
+                break;
+            default:
+                viewProjectButton.href = '#';
+        }
+
     });
 });
 
@@ -318,3 +338,4 @@ if (navLinks.length > 0) {
     appNameElem.textContent = firstApp;
     updateCards(firstApp);
 }
+

@@ -66,7 +66,25 @@ $(".status-button:not(.open)").click(function () {
 $(".pop-up .close").click(function () {
     $(".pop-up").removeClass("visible");
 });
+/*End of dav_projects.html*/
 
+/*Bootstrap Utilities*/
+
+/*Information Icon Hover*/
+
+const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl =>
+    new bootstrap.Tooltip(tooltipTriggerEl, {
+        html: true,
+        customClass: 'custom-tooltip',
+
+    })
+);
+
+
+/*Icon Hover End*/
+
+/*Light Dark Mode*/
 const toggleButton = document.querySelector('.dark-light');
 
 toggleButton.addEventListener('click', () => {
@@ -86,7 +104,7 @@ const appNameElem = document.getElementById('appName');
 const navLinks = document.querySelectorAll('.nav-link');
 
 
-//update data
+//update data dev_projects.html with the card data
 const cardData = {
     'Storm Track': [
 
@@ -313,7 +331,7 @@ navLinks.forEach(link => {
         const viewProjectButton = document.getElementById('viewProject');
         //switch based on selected app
         switch (selectedApp) {
-            case 'Urban Air':
+            case 'Storm Track':
                 viewProjectButton.href = 'https://express-weather-world.onrender.com';
                 break;
             case 'Fleet Pulse':
@@ -332,41 +350,114 @@ navLinks.forEach(link => {
     });
 });
 
+// Map project names to URLs
+const projectUrls = {
+    'Storm Track': 'https://express-weather-world.onrender.com',
+    'Fleet Pulse': 'https://your-fleet-pulse-url.com',
+    'Tech Ticketing System': 'https://springdemo-43am.onrender.com',
+    'Additional Projects': 'developer_projects.html'
+};
+
+let selectedProject = 'Storm Track'; // Default
+
+// Listen for nav link clicks
+document.querySelectorAll('.nav-link.project-title').forEach(link => {
+    link.addEventListener('click', function (e) {
+        selectedProject = this.textContent.trim();
+    });
+});
+
+// Set URL when "View Project" is clicked
+document.querySelector('.btn.btn-primary').addEventListener('click', function () {
+    const url = projectUrls[selectedProject] || '#';
+    window.open(url, '_blank'); // or use location.href = url; to open in same tab
+});
+
 // Optionally, initialize with the first app
 if (navLinks.length > 0) {
     const firstApp = navLinks[0].textContent.trim();
     appNameElem.textContent = firstApp;
     updateCards(firstApp);
 }
-
+/*End Update Information*/
 
 /**About me Page**/
 $(function () {
     $(".status-button:not(.open)").on("click", function (e) {
         var popupType = $(this).data("popup");
-        if (popupType === "TTfinal") {
-            // Show TTfinal popup
-            if ($("#TTfinal-pop").length === 0) {
-          $("body").append(`
-              <div id="TTfinal-pop" class="">
-                  <div style="background:#fff;padding:2rem;border-radius:8px;max-width:90vw;max-height:90vh;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;">
-                      <button class="close" style="position:absolute;top:10px;right:10px;font-size:1.5rem;background:none;border:none;">&times;</button>
-                      <img src="img/TTfinal.png" alt="TTfinal" style="max-width:100%;max-height:70vh;display:block;margin:0 auto;">
-                  </div>
-              </div>
-          `);
-                $("#TTfinal-pop .close").on("click", function () {
-                    $("#TTfinal-pop").remove();
-                    $(".overlay-app").removeClass("is-active");
-                });
-            }
-            $(".overlay-app").addClass("is-active");
-        } else {
-            $(".overlay-app").addClass("is-active");
-        }
+       switch (popupType) {
+           case "TTfinal":
+               // Show TTfinal popup
+               if ($("#TTfinal-pop").length === 0) {
+                   $("body").append(`
+                       <div id="TTfinal-pop" class="">
+                           <div style="background:#fff;padding:2rem;border-radius:8px;max-width:90vw;max-height:90vh;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+                               <button class="close" style="position:absolute;top:10px;right:10px;font-size:1.5rem;background:none;border:none;">&times;</button>
+                               <img src="img/TTfinal.png" alt="TTfinal" style="max-width:100%;max-height:70vh;display:block;margin:0 auto;">
+                           </div>
+                       </div>
+                   `);
+                   $("#TTfinal-pop .close").on("click", function () {
+                       $("#TTfinal-pop").remove();
+                       $(".overlay-app").removeClass("is-active");
+                   });
+               }
+               $(".overlay-app").addClass("is-active");
+               break;
+           case "studentReference":
+                // Show aguirreReference popup
+                if ($("#aguirreReference-pop").length === 0) {
+                     $("body").append(`
+                          <div id="studentReference-pop" class="">
+                            <div style="background:#fff;padding:2rem;border-radius:8px;max-width:90vw;max-height:90vh;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+                                 <button class="close" style="position:absolute;top:10px;right:10px;font-size:1.5rem;background:none;border:none;">&times;</button>
+                                 <img src="img/studentReference.png" alt="student reference" style="max-width:100%;max-height:70vh;display:block;margin:0 auto;">
+                            </div>
+                          </div>
+                     `);
+                     $("#aguirreReference-pop .close").on("click", function () {
+                          $("#aguirreReference-pop").remove();
+                          $(".overlay-app").removeClass("is-active");
+                     });
+                     }
+               // Add logic for aguirreReference popup here if needed
+               $(".overlay-app").addClass("is-active");
+               break;
+           default:
+               $(".overlay-app").addClass("is-active");
+               break;
+       }
     });
     $(".pop-up .close").click(function () {
         $(".overlay-app").removeClass("is-active");
         $(this).closest(".pop-up").remove();
     });
 });
+
+
+// Hide overlays on page load and on popstate (browser back/forward)
+function hideOverlays() {
+    document.getElementById('transition-overlay')?.classList.remove('active');
+    document.querySelector('.overlay-app')?.classList.remove('active');
+    // Or, if overlays use display/block:
+    document.getElementById('transition-overlay')?.style.setProperty('display', 'none');
+    document.querySelector('.overlay-app')?.style.setProperty('display', 'none');
+}
+
+window.addEventListener('DOMContentLoaded', hideOverlays);
+window.addEventListener('popstate', hideOverlays);
+
+document.querySelectorAll('.transition-link').forEach(link => {
+    link.addEventListener('click', function () {
+        const targetHref = this.getAttribute('data-href');
+        if (targetHref) {
+            document.getElementById('viewProject').setAttribute('href', targetHref);
+            // Update the browser URL
+            history.pushState({}, '', targetHref);
+        }
+    });
+});
+
+
+
+

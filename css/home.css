@@ -1827,8 +1827,7 @@ body.light-mode .video-bg:before {
 }
 
 .profile-img {
-    width: 32px;
-    height: 32px;
+
     border-radius: 50%;
     object-fit: cover;
     border: 2px solid var(--theme-color);
@@ -2394,6 +2393,7 @@ body.light-mode .video-bg:before {
         & + .app-card {
             margin-left: 0;
         }
+
     }
 }
 
@@ -2507,4 +2507,26 @@ section {
     height: 300px;
     display: block;
     position: static; /* or remove position-absolute if not needed */
+}
+
+
+/*Responsive Media Queries*/
+
+/*.profile-img on screens 412 or smaller */
+@media screen and (max-width: 412px) {
+    .profile-img {
+       display: none !important;
+    }
+    .header-profile svg {
+        width: 20px;
+    }
+    .header-menu a {
+        padding: 20px 16px;
+    }
+    .search-bar {
+        max-width: 100%;
+    }
+    .header-menu a.main-header-link {
+        display: none;
+    }
 }

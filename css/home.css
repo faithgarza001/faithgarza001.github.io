@@ -149,6 +149,7 @@ body.light-mode .video-bg:before {
 
 .header {
     display: flex;
+    justify-content: flex-end;
     align-items: center;
     flex-shrink: 0;
     height: 58px;
@@ -745,7 +746,7 @@ body.light-mode .video-bg:before {
 
 .apps-card {
     display: flex;
-    align-items: center;
+    align-items: stretch; /* Ensures all children have equal height */
     flex-wrap: wrap;
     width: calc(100% + 20px);
 }
@@ -758,8 +759,6 @@ body.light-mode .video-bg:before {
 
 .app-card {
     width: calc(33.3% - 20px);
-    height: 223px;
-    font-size: 12px;
     background-color: var(--content-bg);
     border-radius: 14px;
     border: 1px solid var(--theme-bg-color);
@@ -801,6 +800,7 @@ body.light-mode .video-bg:before {
 @media screen and (max-width: 1110px) {
     .app-card {
         width: calc(50% - 20px);
+
     }
     .app-card:last-child {
         margin-top: 20px;

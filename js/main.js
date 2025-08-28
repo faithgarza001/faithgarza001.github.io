@@ -59,10 +59,6 @@ $(function () {
     });
 });
 
-$(".status-button:not(.open)").click(function () {
-    $(".pop-up").addClass("visible");
-});
-
 $(".pop-up .close").click(function () {
     $(".pop-up").removeClass("visible");
 });
@@ -106,58 +102,60 @@ const navLinks = document.querySelectorAll('.nav-link');
 
 //update data dev_projects.html with the card data
 const cardData = {
-    'Storm Track': [
-
+    'Urban Air': [ // Changed 'Storm Track' to 'Urban Air'
         {
             "id": "one",
-            "title": "1. Real-Time Tracking",
-            "desc": "🚀 <strong>API Caching with Redis for Weather Data</strong><br><br>" +
+            "title": "1. Real-Time Air Quality Monitoring",
+            "desc": "🚀 <strong>Real-Time Air Quality Monitoring with Sensor Data & API Integration</strong><br><br>" +
                 "<u>What it shows:</u><br>" +
-                "• You understand backend optimization and API efficiency.<br><br>" +
+                "• You understand real-time data ingestion, processing, and API integration for environmental monitoring.<br><br>" +
                 "<u>Feature:</u><br>" +
-                "• When a user requests weather data for a location, check Redis first.<br>" +
-                "• If cached, return data instantly (lightning-fast).<br>" +
-                "• If not cached, call the API (e.g. OpenWeather), store the result in Redis with a TTL (Time To Live), and return it.<br><br>" +
+                "• Integrates with various air quality sensors (e.g., PM2.5, CO2, Ozone) and public APIs.<br>" +
+                "• Displays real-time air quality index (AQI) data for urban areas.<br>" +
+                "• Provides historical trends and predictive insights for pollution levels.<br><br>" +
                 "<u>Benefits:</u><br>" +
-                "• Faster response times.<br>" +
-                "• Reduced API costs and throttling.<br>" +
-                "• Production-level backend skill.<br><br>" +
+                "• Enhances public health awareness and environmental decision-making.<br>" +
+                "• Supports urban planning and policy development.<br>" +
+                "• Demonstrates IoT data handling and environmental data analysis.<br><br>" +
                 "<u>Resume Highlight:</u><br>" +
-                "“Implemented server-side caching using Redis to reduce API calls by 80% and improve response times by 50%.”"
+                "“Developed a real-time urban air quality monitoring system, integrating sensor data and public APIs to provide actionable environmental insights.”",
+            "skills": ["IoT Data Integration", "Real-time Data Processing", "API Integration (Environmental APIs)", "Data Streaming", "Backend Development (Node.js/Python)"]
         },
         {
             "id": "two",
-            "title": "2. Automated Alerts",
-            "desc": "🔔 <strong>Instant Notifications for Critical Events</strong><br><br>" +
+            "title": "2. Automated Alerting & Health Advisories",
+            "desc": "🔔 <strong>Automated Air Quality Alerts & Health Advisories</strong><br><br>" +
                 "<u>What it shows:</u><br>" +
-                "• You can build real-time communication features and event handling.<br><br>" +
+                "• Your ability to build proactive notification systems for critical environmental conditions.<br><br>" +
                 "<u>Feature:</u><br>" +
-                "• System monitors weather data continuously.<br>" +
-                "• Sends immediate alerts to users about severe weather events and anomalies.<br><br>" +
+                "• Sends immediate alerts to users based on predefined AQI thresholds or sudden pollution spikes.<br>" +
+                "• Provides personalized health advisories and recommendations (e.g., 'limit outdoor activity').<br><br>" +
                 "<u>Benefits:</u><br>" +
-                "• Timely user awareness.<br>" +
-                "• Enables preventive action.<br>" +
-                "• Improves user engagement and safety.<br><br>" +
+                "• Improves public safety and well-being.<br>" +
+                "• Enables timely preventive measures for sensitive groups.<br>" +
+                "• Demonstrates event-driven architecture and notification service integration.<br><br>" +
                 "<u>Resume Highlight:</u><br>" +
-                "“Developed automated alert system to notify users of critical weather changes, improving responsiveness and user safety.”"
+                "“Implemented an automated air quality alert system, delivering real-time health advisories based on environmental data thresholds.”",
+            "skills": ["Automated Alerting", "Event-Driven Architecture", "Notification Services (SMS/Email)", "Backend Logic", "Environmental Health Data"]
         },
         {
             "id": "three",
-            "title": "3. Comprehensive Reports",
-            "desc": "📊 <strong>Generate Detailed Analytics and Export Custom Reports</strong><br><br>" +
+            "title": "3. Geospatial Visualization & Reporting",
+            "desc": "📊 <strong>Interactive Geospatial Air Quality Visualization & Reporting</strong><br><br>" +
                 "<u>What it shows:</u><br>" +
-                "• Your ability to create insightful data visualizations and reporting features.<br><br>" +
+                "• Your expertise in geospatial data visualization and comprehensive reporting for environmental insights.<br><br>" +
                 "<u>Feature:</u><br>" +
-                "• Users can generate detailed weather reports with custom filters.<br>" +
-                "• Export reports in multiple formats for further analysis.<br><br>" +
+                "• Visualizes air quality data on interactive maps, showing pollution hotspots and trends.<br>" +
+                "• Generates detailed reports on air quality metrics, sources of pollution, and compliance.<br>" +
+                "• Supports custom data filtering and export options for research and policy.<br><br>" +
                 "<u>Benefits:</u><br>" +
-                "• Facilitates research and professional use.<br>" +
-                "• Enhances user experience with actionable insights.<br>" +
-                "• Simplifies data interpretation.<br><br>" +
+                "• Facilitates easy understanding of complex environmental data.<br>" +
+                "• Supports urban planning and policy development.<br>" +
+                "• Enhances data accessibility and actionable insights.<br><br>" +
                 "<u>Resume Highlight:</u><br>" +
-                "“Implemented comprehensive reporting tools, enabling users to generate and export customized weather analytics.”"
+                "“Developed interactive geospatial visualizations and comprehensive reporting tools for urban air quality data, supporting environmental analysis and policy.”",
+            "skills": ["Geospatial Data Visualization (Mapbox/Leaflet)", "Data Analytics", "Reporting Tools", "Frontend Development (HTML/CSS/JS)", "Backend Data Processing", "Environmental Data Science"]
         }
-
     ],
     'Fleet Pulse': [
         {
@@ -173,7 +171,8 @@ const cardData = {
                 "• Enhances fleet safety and compliance.<br>" +
                 "• Helps reduce accidents and improve driver accountability.<br><br>" +
                 "<u>Resume Highlight:</u><br>" +
-                "“Developed real-time fleet tracking system integrating GPS and driver behavior analytics, improving safety metrics by 30%.”"
+                "“Developed real-time fleet tracking system integrating GPS and driver behavior analytics, improving safety metrics by 30%.”",
+            "skills": ["GPS Integration (Google Maps API)", "Telematics Data Processing", "Real-time Data Streaming (MQTT/WebSockets)", "IoT Device Integration", "Geofencing"]
         },
         {
             "id": "two",
@@ -188,7 +187,8 @@ const cardData = {
                 "• Minimizes downtime and repair costs.<br>" +
                 "• Ensures vehicles operate efficiently and reliably.<br><br>" +
                 "<u>Resume Highlight:</u><br>" +
-                "“Implemented automated maintenance tracking and alert system reducing vehicle downtime by 25%.”"
+                "“Implemented automated maintenance tracking and alert system reducing vehicle downtime by 25%.”",
+            "skills": ["Automated Workflows (Cron Jobs/Azure Functions)", "Alerting Systems (Email/SMS via API)", "Database Management (SQL/NoSQL)", "Scheduled Tasks", "System Monitoring"]
         },
         {
             "id": "three",
@@ -203,13 +203,14 @@ const cardData = {
                 "• Optimizes operational costs.<br>" +
                 "• Enhances fleet productivity and sustainability.<br><br>" +
                 "<u>Resume Highlight:</u><br>" +
-                "“Built comprehensive analytics dashboard enabling data-driven decisions for fleet optimization.”"
+                "“Built comprehensive analytics dashboard enabling data-driven decisions for fleet optimization.”",
+            "skills": ["Business Intelligence (BI Tools like Power BI/Custom)", "Data Analytics", "Dashboard Development (React/Angular/Vue.js)", "SQL/NoSQL Database Queries", "Performance Metrics Analysis"]
         }
     ],
     'Tech Ticketing System': [
         {
             "id": "one",
-            "title": "1. Database Injection",
+            "title": "1. Database Management & Seeding",
             "desc": "💾 <strong>Automated Database Seeding for Testing and Development</strong><br><br>" +
                 "<u>What it shows:</u><br>" +
                 "• You understand database management and automation.<br><br>" +
@@ -222,11 +223,12 @@ const cardData = {
                 "• Ensures consistent data for debugging and demos.<br>" +
                 "• Demonstrates backend proficiency.<br><br>" +
                 "<u>Resume Highlight:</u><br>" +
-                "“Developed automated database seeding functionality to streamline testing and ensure consistent data environments.”"
+                "“Developed automated database seeding functionality to streamline testing and ensure consistent data environments.”",
+            "skills": ["Database Management (MySQL)", "Data Seeding (Spring Data JPA)", "SQL", "Backend Development (Java/Spring Boot)", "Testing & QA", "Maven", "Visual Studio Code"]
         },
         {
             "id": "two",
-            "title": "2. Password Encryption",
+            "title": "2. Secure User Authentication",
             "desc": "🔒 <strong>Secure User Authentication with Password Hashing</strong><br><br>" +
                 "<u>What it shows:</u><br>" +
                 "• You prioritize security in application development.<br><br>" +
@@ -236,27 +238,28 @@ const cardData = {
                 "• Compatible with modern authentication standards.<br><br>" +
                 "<u>Benefits:</u><br>" +
                 "• Protects user data from breaches.<br>" +
-                "• Builds trust with secure authentication practices.<br>" +
-                "• Demonstrates knowledge of security best practices.<br><br>" +
+                "• Builds trust with secure authentication practices.<br><br>" +
                 "<u>Resume Highlight:</u><br>" +
-                "“Implemented secure password hashing mechanisms to enhance user data protection and comply with industry standards.”"
+                "“Implemented secure password hashing mechanisms to enhance user data protection and comply with industry standards.”",
+            "skills": ["Security Best Practices", "Password Hashing (BCrypt)", "Authentication (Spring Security)", "Data Protection", "Java Development (JDK 8)", "Git"]
         },
         {
             "id": "three",
-            "title": "3. Role-Based Profiles",
-            "desc": "👥 <strong>Dynamic Role Management for Users</strong><br><br>" +
+            "title": "3. Role-Based Access Control & UI",
+            "desc": "👥 <strong>Dynamic Role Management for Users with Responsive UI</strong><br><br>" +
                 "<u>What it shows:</u><br>" +
-                "• You can implement flexible user role systems.<br><br>" +
+                "• You can implement flexible user role systems and design intuitive frontends.<br><br>" +
                 "<u>Feature:</u><br>" +
                 "• Supports multiple user roles (e.g., Technician, Client).<br>" +
                 "• Assigns permissions and access levels based on roles.<br>" +
-                "• Easily extendable for future roles and features.<br><br>" +
+                "• Frontend built with HTML, CSS, and Bootstrap for a responsive user experience.<br><br>" +
                 "<u>Benefits:</u><br>" +
                 "• Enhances application scalability.<br>" +
                 "• Improves user experience with tailored access.<br>" +
-                "• Demonstrates advanced backend design skills.<br><br>" +
+                "• Demonstrates advanced backend design and frontend development skills.<br><br>" +
                 "<u>Resume Highlight:</u><br>" +
-                "“Designed and implemented a role-based access control system to manage user permissions dynamically.”"
+                "“Designed and implemented a role-based access control system with a responsive front-end, enhancing user experience and system security.”",
+            "skills": ["Role-Based Access Control (RBAC)", "User Management", "Authorization (Spring Security)", "Frontend Development (Thymeleaf, HTML, CSS, Bootstrap)", "UI/UX Design", "Java Development (Spring Boot)", "Git"]
         }
     ],
     'Shop Swift': [
@@ -274,7 +277,8 @@ const cardData = {
                 "• Prevents stockouts and over-ordering.<br>" +
                 "• Streamlines warehouse and retail operations.<br><br>" +
                 "<u>Resume Highlight:</u><br>" +
-                "“Built predictive inventory management with real-time alerting, reducing stockouts by 40% and improving operational efficiency.”"
+                "“Built predictive inventory management with real-time alerting, reducing stockouts by 40% and improving operational efficiency.”",
+            "skills": ["Inventory Management Systems", "Real-time Data Processing", "Predictive Analytics (Python/R)", "Backend Development (ASP.NET Core/Spring Boot)", "Database Integration (SQL/NoSQL)"]
         },
         {
             "id": "two",
@@ -290,7 +294,8 @@ const cardData = {
                 "• Enables smarter marketing and retention strategies.<br>" +
                 "• Boosts repeat purchases and customer satisfaction.<br><br>" +
                 "<u>Resume Highlight:</u><br>" +
-                "“Developed full-stack customer analytics dashboard integrating BI and behavior tracking to inform personalized marketing and product strategy.”"
+                "“Developed full-stack customer analytics dashboard integrating BI and behavior tracking to inform personalized marketing and product strategy.”",
+            "skills": ["Customer Analytics", "Business Intelligence (BI)", "Data Modeling", "Dashboard Development (React/Vue.js)", "Personalization Algorithms"]
         },
         {
             "id": "three",
@@ -306,78 +311,242 @@ const cardData = {
                 "• Empowers stakeholders with actionable business data.<br>" +
                 "• Informs marketing, operations, and finance strategies.<br><br>" +
                 "<u>Resume Highlight:</u><br>" +
-                "“Created BI-powered KPI dashboard delivering real-time sales insights, increasing revenue visibility and supporting strategic decisions.”"
+                "“Created BI-powered KPI dashboard delivering real-time sales insights, increasing revenue visibility and supporting strategic decisions.”",
+            "skills": ["KPI Tracking", "Sales Analytics", "Data Visualization (Chart.js/D3.js)", "Filtering & Sorting", "UI/UX Design"]
+        }
+    ],
+    'ERP Operations': [
+        {
+            "id": "one",
+            "title": "1. Predictive Financial Forecasting",
+            "desc": "🔮 <strong>ML.NET-Powered Cash Flow & Cost Predictions</strong><br><br>" +
+                "<u>What it shows:</u><br>" +
+                "• Your expertise in integrating machine learning (ML.NET) for business intelligence.<br><br>" +
+                "<u>Feature:</u><br>" +
+                "• Leverages historical financial snapshots to forecast cash balance, material costs, and equipment costs.<br>" +
+                "• Provides confidence intervals for predictions, indicating reliability.<br><br>" +
+                "<u>Benefits:</u><br>" +
+                "• Enables proactive financial planning and risk mitigation.<br>" +
+                "• Optimizes resource allocation and budget management.<br><br>" +
+                "<u>Resume Highlight:</u><br>" +
+                "“Developed and integrated ML.NET models for predictive financial forecasting, improving budget accuracy by X% and reducing unexpected expenditures.”",
+            "skills": ["Machine Learning (ML.NET)", "Time Series Analysis (SSA Algorithm)", "Financial Modeling", "C# Development (ASP.NET Core)", "Data Science", "SQL Server"]
+        },
+        {
+            "id": "two",
+            "title": "2. What-If Scenario Analysis",
+            "desc": "📊 <strong>Interactive Cost Reduction Simulations</strong><br><br>" +
+                "<u>What it shows:</u><br>" +
+                "• Your ability to build analytical tools for strategic decision-making.<br><br>" +
+                "<u>Feature:</u><br>" +
+                "• Allows users to simulate the financial impact of cost reductions (e.g., material, equipment).<br>" +
+                "• Instantly visualizes changes in net profit and cash balance under different scenarios.<br><br>" +
+                "<u>Benefits:</u><br>" +
+                "• Empowers stakeholders to explore financial strategies without real-world risk.<br>" +
+                "• Facilitates data-driven decision-making for cost optimization.<br><br>" +
+                "<u>Resume Highlight:</u><br>" +
+                "“Implemented a dynamic 'What-If' scenario analyzer, enabling stakeholders to simulate financial impacts and optimize cost reduction strategies.”",
+            "skills": ["Scenario Modeling", "Financial Analysis", "Interactive Dashboards (Razor Pages/JavaScript)", "Frontend Development (HTML/CSS/jQuery)", "Data Manipulation (C# Backend)"]
+        },
+        {
+            "id": "three",
+            "title": "3. Integrated Financial Dashboard",
+            "desc": "📈 <strong>Comprehensive Overview of Key Financial Metrics</strong><br><br>" +
+                "<u>What it shows:</u><br>" +
+                "• Your skill in creating intuitive and data-rich user interfaces for complex financial data.<br><br>" +
+                "<u>Feature:</u><br>" +
+                "• Displays real-time KPIs (Cash Balance, AR/AP, Discounts).<br>" +
+                "• Presents interactive charts for cash flow, budget vs. actual, and AP aging.<br>" +
+                "• Includes smart maximizers for AP discounts and AR collections.<br><br>" +
+                "<u>Benefits:</u><br>" +
+                "• Centralized financial insights for quick decision-making.<br>" +
+                "• Improves financial transparency and operational efficiency.<br><br>" +
+                "<u>Resume Highlight:</u><br>" +
+                "“Designed and developed an interactive financial management dashboard, consolidating key metrics and predictive insights for executive decision support.”",
+            "skills": ["Dashboard Design (Razor Pages)", "Data Visualization (Chart.js)", "Frontend Development (HTML, Tailwind CSS, JavaScript)", "API Integration (ASP.NET Core RESTful APIs)", "UI/UX Principles", "SSRS (SQL Server Reporting Services) Integration"]
         }
     ]
 };
 
 function updateCards(appName) {
     const cards = cardData[appName];
-    if (!cards) return;
+    if (!cards) {
+        document.getElementById("one").innerHTML = "<h4>No specific features to display.</h4><p>Click 'View Project' for more details.</p>";
+        document.getElementById("two").innerHTML = "";
+        document.getElementById("three").innerHTML = "";
+        return;
+    }
     cards.forEach(card => {
         const el = document.getElementById(card.id);
         if (el) {
-            el.innerHTML = `<h4>${card.title}</h4><p>${card.desc}</p>`;
+            let skillsHtml = '';
+            if (card.skills && card.skills.length > 0) {
+                skillsHtml = '<p class="mt-3 text-sm text-gray-500"><strong>Skills Used:</strong> ' + card.skills.join(', ') + '</p>';
+            }
+            el.innerHTML = `<h4>${card.title}</h4><p>${card.desc}</p>${skillsHtml}`;
         }
     });
 }
 
-navLinks.forEach(link => {
-    link.addEventListener('click', function () {
-        const selectedApp = this.textContent.trim();
-        appNameElem.textContent = selectedApp;
-        updateCards(selectedApp);
-        // Set the href attribute to the button with id of viewProject based  on link id
-        const viewProjectButton = document.getElementById('viewProject');
-        //switch based on selected app
-        switch (selectedApp) {
-            case 'Storm Track':
-                viewProjectButton.href = 'https://express-weather-world.onrender.com';
-                break;
-            case 'Fleet Pulse':
-                viewProjectButton.href = '#';
-                break;
-            case 'Tech Ticketing System':
-                viewProjectButton.href = 'https://springdemo-43am.onrender.com';
-                break;
-            case 'Shop Swift':
-                viewProjectButton.href = '#';
-                break;
-            default:
-                viewProjectButton.href = '#';
-        }
-
-    });
-});
-
 // Map project names to URLs
 const projectUrls = {
-    'Storm Track': 'https://express-weather-world.onrender.com',
-    'Fleet Pulse': 'https://your-fleet-pulse-url.com',
+    'Urban Air': 'https://express-weather-world.onrender.com', // Changed 'Storm Track' to 'Urban Air'
+    'Fleet Pulse': '#', // Replace with actual URL
     'Tech Ticketing System': 'https://springdemo-43am.onrender.com',
+    'Shop Swift': '#', // Replace with actual URL
+    'ERP Operations': '/Finance', // Your ERP Operations dashboard URL
     'Additional Projects': 'developer_projects.html'
 };
 
-let selectedProject = 'Storm Track'; // Default
+let selectedProject = 'Urban Air'; // Default project on load, changed from 'Storm Track'
 
-// Listen for nav link clicks
-document.querySelectorAll('.nav-link.project-title').forEach(link => {
-    link.addEventListener('click', function (e) {
+navLinks.forEach(link => {
+    link.addEventListener('click', function () {
         selectedProject = this.textContent.trim();
+        appNameElem.textContent = selectedProject;
+        updateCards(selectedProject);
+
+        const viewProjectButton = document.getElementById('viewProject');
+        viewProjectButton.href = projectUrls[selectedProject] || '#'; // Set href from projectUrls
+
+        // Lottie animation logic
+        const canvases = [
+            document.getElementById("canvas"),
+            document.getElementById("canvasTwo"),
+            document.getElementById("canvasThree"),
+            document.getElementById("canvasFour")
+        ];
+        const lottieSources = [
+            "https://lottie.host/3e24ec95-284e-43a1-abb8-342c449e7571/GlYuEWSKdC.lottie", // Urban Air placeholder (was Storm Track)
+            "https://lottie.host/ef81b02d-b184-4b29-a4a5-b3a85061d778/vKmTGN9n9B.lottie", // Fleet Pulse placeholder
+            "https://lottie.host/9cd1a629-019b-4e41-9d08-5b9212beab64/SqOxF0MRas.lottie", // Tech Ticketing placeholder
+            "https://lottie.host/YOUR_ERP_OPERATIONS_LOTTIE_URL_HERE/animation.lottie" // ERP Operations placeholder
+        ];
+
+        function showCanvas(index) {
+            canvases.forEach((c, i) => {
+                c.style.display = i === index ? "block" : "none";
+                c.style.position = "relative";
+                c.style.left = "";
+                c.style.top = "";
+            });
+            // Ensure DotLottie is loaded before trying to use it
+            if (typeof DotLottie !== 'undefined') {
+                new DotLottie({
+                    autoplay: true,
+                    loop: true,
+                    canvas: canvases[index],
+                    src: lottieSources[index]
+                });
+            } else {
+                console.warn("DotLottie library not loaded. Cannot play Lottie animations.");
+            }
+        }
+
+        switch (selectedProject) {
+            case 'Urban Air': // Changed from 'Storm Track'
+                showCanvas(0);
+                break;
+            case 'Fleet Pulse':
+                showCanvas(1);
+                break;
+            case 'Tech Ticketing System':
+                showCanvas(2);
+                break;
+            case 'Shop Swift':
+                showCanvas(0); // Assign a canvas if applicable, or default
+                break;
+            case 'ERP Operations':
+                showCanvas(3);
+                break;
+            default:
+                // Hide all canvases if no specific project is selected or recognized
+                canvases.forEach(c => c.style.display = "none");
+                break;
+        }
     });
 });
 
+
 // Set URL when "View Project" is clicked
-document.querySelector('.btn.btn-primary').addEventListener('click', function () {
-    const url = projectUrls[selectedProject] || '#';
-    window.open(url, '_blank'); // or use location.href = url; to open in same tab
+document.getElementById('viewProject').addEventListener('click', function (e) {
+    // Prevent default navigation if the href is '#' or not set
+    if (this.href === window.location.origin + '/' || this.href === '#') {
+        e.preventDefault();
+        console.warn("Project URL is not set or is a placeholder. Please update projectUrls in main.js.");
+        // Optionally, display a user-friendly message on the UI
+        // alert("Project link not available yet!"); // Avoid using alert in production if possible
+    } else {
+        // Open in a new tab
+        window.open(this.href, '_blank');
+    }
 });
 
-// Optionally, initialize with the first app
+// Optionally, initialize with the first app on page load
 if (navLinks.length > 0) {
-    const firstApp = navLinks[0].textContent.trim();
-    appNameElem.textContent = firstApp;
-    updateCards(firstApp);
+    // IMPORTANT: You'll also need to update the ID in dev_projects.html for this to work correctly on initial load.
+    // Change <li id="stormTrack"...> to <li id="urbanAir"...>
+    const defaultAppElement = document.getElementById('urbanAir') || navLinks[0]; // Changed from 'stormTrack'
+    selectedProject = defaultAppElement.textContent.trim(); // Set selectedProject for initial load
+    appNameElem.textContent = selectedProject;
+    updateCards(selectedProject);
+
+    const viewProjectButton = document.getElementById('viewProject');
+    viewProjectButton.href = projectUrls[selectedProject] || '#';
+
+    // Manually trigger the canvas display for the default project
+    const canvases = [
+        document.getElementById("canvas"),
+        document.getElementById("canvasTwo"),
+        document.getElementById("canvasThree"),
+        document.getElementById("canvasFour")
+    ];
+    const lottieSources = [
+        "https://lottie.host/3e24ec95-284e-43a1-abb8-342c449e7571/GlYuEWSKdC.lottie", // Urban Air placeholder (was Storm Track)
+        "https://lottie.host/ef81b02d-b184-4b29-a4a5-b3a85061d778/vKmTGN9n9B.lottie", // Fleet Pulse placeholder
+        "https://lottie.host/9cd1a629-019b-4e41-9d08-5b9212beab64/SqOxF0MRas.lottie", // Tech Ticketing placeholder
+        "https://lottie.host/YOUR_ERP_OPERATIONS_LOTTIE_URL_HERE/animation.lottie" // ERP Operations placeholder
+    ];
+
+    function showCanvas(index) {
+        canvases.forEach((c, i) => {
+            c.style.display = i === index ? "block" : "none";
+            c.style.position = "relative";
+            c.style.left = "";
+            c.style.top = "";
+        });
+        if (typeof DotLottie !== 'undefined') {
+            new DotLottie({
+                autoplay: true,
+                loop: true,
+                canvas: canvases[index],
+                src: lottieSources[index]
+            });
+        } else {
+            console.warn("DotLottie library not loaded. Cannot play Lottie animations.");
+        }
+    }
+
+    switch (selectedProject) {
+        case 'Urban Air': // Changed from 'Storm Track'
+            showCanvas(0);
+            break;
+        case 'Fleet Pulse':
+            showCanvas(1);
+            break;
+        case 'Tech Ticketing System':
+            showCanvas(2);
+            break;
+        case 'Shop Swift':
+            showCanvas(0); // Assign a canvas if applicable, or default
+            break;
+        case 'ERP Operations':
+            showCanvas(3);
+            break;
+        default:
+            canvases.forEach(c => c.style.display = "none");
+            break;
+    }
 }
 /*End Update Information*/
 
@@ -406,7 +575,7 @@ $(function () {
                break;
            case "studentReference":
                 // Show aguirreReference popup
-                if ($("#aguirreReference-pop").length === 0) {
+                if ($("#studentReference-pop").length === 0) {
                      $("body").append(`
                           <div id="studentReference-pop" class="">
                             <div style="background:#fff;padding:2rem;border-radius:8px;max-width:90vw;max-height:90vh;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;">
@@ -415,8 +584,8 @@ $(function () {
                             </div>
                           </div>
                      `);
-                     $("#aguirreReference-pop .close").on("click", function () {
-                          $("#aguirreReference-pop").remove();
+                     $("#studentReference-pop .close").on("click", function () {
+                          $("#studentReference-pop").remove();
                           $(".overlay-app").removeClass("is-active");
                      });
                      }
@@ -460,4 +629,41 @@ document.querySelectorAll('.transition-link').forEach(link => {
 
 
 
+/*Multimedia Page Videos Cover Image Effect*/
 
+$(document).ready(function() {
+    // Other existing JavaScript code...
+
+    // Handle click on the Coca-Cola ad card
+    $('.coca-cola-ad-card').on('click', function() {
+        const $card = $(this);
+        const $video = $card.find('.video-trailer');
+
+        // Toggle the 'reveal-video' class
+        $card.toggleClass('reveal-video');
+
+        if ($card.hasClass('reveal-video')) {
+            // If revealing video, play it
+            $video[0].play();
+        } else {
+            // If hiding video (e.g., clicking again to hide, though typically you wouldn't for a trailer)
+            // Pause and reset video
+            $video[0].pause();
+            $video[0].currentTime = 0;
+        }
+    });
+
+    // Optional: Pause video if it's playing and the user navigates away or clicks elsewhere
+    // You might need more robust logic depending on your full page structure
+    $(document).on('click', function(event) {
+        if (!$(event.target).closest('.coca-cola-ad-card').length) {
+            $('.coca-cola-ad-card.reveal-video').each(function() {
+                const $card = $(this);
+                const $video = $card.find('.video-trailer');
+                $card.removeClass('reveal-video');
+                $video[0].pause();
+                $video[0].currentTime = 0;
+            });
+        }
+    });
+});

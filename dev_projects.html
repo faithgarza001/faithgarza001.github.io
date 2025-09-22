@@ -30,15 +30,15 @@
                     <li id="urbanAir" class="nav-item">
                         <a class="nav-link transition-link text-light project-title" href="#">Urban Air</a>
                     </li>
-                    <li id="fleetPulse" class="nav-item">
+                   <!-- <li id="fleetPulse" class="nav-item">
                         <a class="nav-link transition-link text-light project-title" href="#">Fleet Pulse</a>
-                    </li>
+                    </li>-->
                     <li id="techTicket" class="nav-item">
                         <a class="nav-link transition-link text-light project-title" href="#">Tech Ticketing System</a>
                     </li>
-                    <li id="shopSwift" class="nav-item">
+                   <!-- <li id="shopSwift" class="nav-item">
                         <a class="nav-link transition-link text-light project-title" href="#">Shop Swift</a>
-                    </li>
+                    </li>-->
                     <li id="erpOperations" class="nav-item">
                         <a class="nav-link transition-link text-light project-title" href="#">ERP Operations</a>
                     </li>
@@ -70,12 +70,12 @@
                         </svg>
                         Developer Projects
                     </a>
-                    <a href="#">
+                    <a href="analytics.html">
                         <svg viewBox="0 0 488.932 488.932" fill="currentColor">
                             <path d="M243.158 61.361v-57.6c0-3.2 4-4.9 6.7-2.9l118.4 87c2 1.5 2 4.4 0 5.9l-118.4 87c-2.7 2-6.7.2-6.7-2.9v-57.5c-87.8 1.4-158.1 76-152.1 165.4 5.1 76.8 67.7 139.1 144.5 144 81.4 5.2 150.6-53 163-129.9 2.3-14.3 14.7-24.7 29.2-24.7 17.9 0 31.8 15.9 29 33.5-17.4 109.7-118.5 192-235.7 178.9-98-11-176.7-89.4-187.8-187.4-14.7-128.2 84.9-237.4 209.9-238.8z" />
                         </svg>
                         Site Analytics
-                        <span class="notification-number updates">3</span>
+                        <span class="notification-number updates">live</span>
                     </a>
                 </div>
             </div>
@@ -175,6 +175,8 @@
                        <div class="col-6 d-flex justify-content-start">
                            <!--lottie animation-->
                            <div class="lottie-animation">
+                               <img src="img/erp_animation.gif" alt="Hero Image" class="hero-image col-6">
+
                                <canvas id="canvas" style="display: block;"></canvas>
                                <canvas id="canvasTwo" style="display: none;"></canvas>
                                <canvas id="canvasThree" style="display: none;"></canvas>
@@ -271,51 +273,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" xintegrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <script src="js/main.js"></script>
+<script src="js/tracking.js"></script>
 <script type="module">
- /* import { DotLottie } from "https://cdn.jsdelivr.net/npm/@lottiefiles/dotlottie-web/+esm";
 
-    new DotLottie({
-        autoplay: true,
-        loop: true,
-        canvas: document.getElementById("canvas"),
-        src: "https://lottie.host/3e24ec95-284e-43a1-abb8-342c449e7571/GlYuEWSKdC.lottie", // or .json file
-    });
-
-  const canvases = [
-    document.getElementById("canvas"),
-    document.getElementById("canvasTwo"),
-    document.getElementById("canvasThree"),
-    document.getElementById("canvasFour")
-];
-const lottieSources = [
-    "https://lottie.host/3e24ec95-284e-43a1-abb8-342c449e7571/GlYuEWSKdC.lottie",
-    "https://lottie.host/ef81b02d-b184-4b29-a4a5-b3a85061d778/vKmTGN9n9B.lottie",
-    "https://lottie.host/9cd1a629-019b-4e41-9d08-5b9212beab64/SqOxF0MRas.lottie",
-    "https://lottie.host/YOUR_ERP_OPERATIONS_LOTTIE_URL_HERE/animation.lottie" // Placeholder for ERP Operations Lottie
-];
-
-function showCanvas(index) {
-    canvases.forEach((c, i) => {
-        c.style.display = i === index ? "block" : "none";
-        // Reset position and size to prevent movement
-        c.style.position = "relative";
-        c.style.left = "";
-        c.style.top = "";
-    });
-    new DotLottie({
-        autoplay: true,
-        loop: true,
-        canvas: canvases[index],
-        src: lottieSources[index]
-    });
-}
-
-// Update event listeners to include ERP Operations
-document.getElementById("fleetPulse").onclick = () => showCanvas(0);
-document.getElementById("stormTrack").onclick = () => showCanvas(1);
-document.getElementById("techTicket").onclick = () => showCanvas(2);
-document.getElementById("erpOperations").onclick = () => showCanvas(3); // UPDATED: ERP Operations event listener
-*/
 </script>
-</body>
 </html>

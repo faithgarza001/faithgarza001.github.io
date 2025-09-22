@@ -49,6 +49,7 @@ html {
 
 body {
     font-family: var(--body-font);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     background-image: url(https://wallpapershome.com/images/wallpapers/macos-big-sur-1280x720-dark-wwdc-2020-22655.jpg);
     background-size: cover;
     background-position: center;
@@ -482,7 +483,6 @@ body.light-mode .video-bg:before {
     flex-direction: column;
 }
 .content-section-title {
-    color: var(--content-title-color);
     margin-bottom: 14px;
 }
 .content-section ul {

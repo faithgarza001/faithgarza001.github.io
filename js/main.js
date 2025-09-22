@@ -107,15 +107,15 @@ const cardData = {
             "id": "one",
             "title": "1. Real-Time Air Quality Monitoring",
             "desc": "🚀 <strong>Real-Time Air Quality Monitoring with Sensor Data & API Integration</strong><br><br>" +
-                "<u>What it shows:</u><br>" +
-                "• You understand real-time data ingestion, processing, and API integration for environmental monitoring.<br><br>" +
+                "<u>Technical Highlights:</u><br>" +
+                "• Real-time data ingestion, processing, and API integration for environmental monitoring.<br><br>" +
                 "<u>Feature:</u><br>" +
-                "• Integrates with various air quality sensors (e.g., PM2.5, CO2, Ozone) and public APIs.<br>" +
-                "• Displays real-time air quality index (AQI) data for urban areas.<br>" +
-                "• Provides historical trends and predictive insights for pollution levels.<br><br>" +
+                "• Integration with various air quality sensors (e.g., PM2.5, CO2, Ozone) and public APIs.<br>" +
+                "• Display of real-time air quality index (AQI) data for urban areas.<br>" +
+                "• Historical trends and predictive insights for pollution levels.<br><br>" +
                 "<u>Benefits:</u><br>" +
-                "• Enhances public health awareness and environmental decision-making.<br>" +
-                "• Supports urban planning and policy development.<br>" +
+                "• Enhancements of public health awareness and environmental decision-making.<br>" +
+                "• Support for Urban planning and policy development.<br>" +
                 "• Demonstrates IoT data handling and environmental data analysis.<br><br>" +
                 "<u>Resume Highlight:</u><br>" +
                 "“Developed a real-time urban air quality monitoring system, integrating sensor data and public APIs to provide actionable environmental insights.”",
@@ -125,15 +125,15 @@ const cardData = {
             "id": "two",
             "title": "2. Automated Alerting & Health Advisories",
             "desc": "🔔 <strong>Automated Air Quality Alerts & Health Advisories</strong><br><br>" +
-                "<u>What it shows:</u><br>" +
-                "• Your ability to build proactive notification systems for critical environmental conditions.<br><br>" +
+                "<u>Technical Highlights:</u><br>" +
+                "•Proactive notification systems for critical environmental conditions.<br><br>" +
                 "<u>Feature:</u><br>" +
                 "• Sends immediate alerts to users based on predefined AQI thresholds or sudden pollution spikes.<br>" +
                 "• Provides personalized health advisories and recommendations (e.g., 'limit outdoor activity').<br><br>" +
                 "<u>Benefits:</u><br>" +
                 "• Improves public safety and well-being.<br>" +
-                "• Enables timely preventive measures for sensitive groups.<br>" +
-                "• Demonstrates event-driven architecture and notification service integration.<br><br>" +
+                "• Enabling of timely preventive measures for sensitive groups.<br>" +
+                "• Event-driven architecture and notification service integration.<br><br>" +
                 "<u>Resume Highlight:</u><br>" +
                 "“Implemented an automated air quality alert system, delivering real-time health advisories based on environmental data thresholds.”",
             "skills": ["Automated Alerting", "Event-Driven Architecture", "Notification Services (SMS/Email)", "Backend Logic", "Environmental Health Data"]
@@ -142,11 +142,11 @@ const cardData = {
             "id": "three",
             "title": "3. Geospatial Visualization & Reporting",
             "desc": "📊 <strong>Interactive Geospatial Air Quality Visualization & Reporting</strong><br><br>" +
-                "<u>What it shows:</u><br>" +
-                "• Your expertise in geospatial data visualization and comprehensive reporting for environmental insights.<br><br>" +
+                "<u>Technical Highlights:</u><br>" +
+                "• Geospatial data visualization and comprehensive reporting for environmental insights.<br><br>" +
                 "<u>Feature:</u><br>" +
-                "• Visualizes air quality data on interactive maps, showing pollution hotspots and trends.<br>" +
-                "• Generates detailed reports on air quality metrics, sources of pollution, and compliance.<br>" +
+                "• Visualization of air quality data on interactive maps, showing pollution hotspots and trends.<br>" +
+                "• Detailed reports on air quality metrics, sources of pollution, and compliance.<br>" +
                 "• Supports custom data filtering and export options for research and policy.<br><br>" +
                 "<u>Benefits:</u><br>" +
                 "• Facilitates easy understanding of complex environmental data.<br>" +
@@ -162,8 +162,8 @@ const cardData = {
             "id": "one",
             "title": "1. Real-Time Fleet & Driver Monitoring",
             "desc": "🚛 <strong>Live Vehicle and Driver Behavior Tracking</strong><br><br>" +
-                "<u>What it shows:</u><br>" +
-                "• Your expertise in integrating GPS and telematics for fleet management.<br><br>" +
+                "<u>Technical Highlights:</u><br>" +
+                "• Integration of GPS and telematics for fleet management.<br><br>" +
                 "<u>Feature:</u><br>" +
                 "• Tracks vehicles' locations and trip details in real time.<br>" +
                 "• Monitors driver behavior such as seatbelt use, speeding, and harsh braking.<br><br>" +
@@ -178,8 +178,8 @@ const cardData = {
             "id": "two",
             "title": "2. Automated Maintenance & Alert System",
             "desc": "🔧 <strong>Proactive Vehicle Maintenance and Alerts</strong><br><br>" +
-                "<u>What it shows:</u><br>" +
-                "• Ability to build automated workflows for vehicle health monitoring.<br><br>" +
+                "<u>Technical Highlights:</u><br>" +
+                "• Automated workflows for vehicle health monitoring.<br><br>" +
                 "<u>Feature:</u><br>" +
                 "• Tracks vehicle maintenance schedules and service history.<br>" +
                 "• Sends automated alerts for engine issues, service due dates, and critical alerts.<br><br>" +
@@ -194,8 +194,8 @@ const cardData = {
             "id": "three",
             "title": "3. Data-Driven Reporting & Analytics",
             "desc": "📊 <strong>Comprehensive Fleet Performance and Fuel Analytics</strong><br><br>" +
-                "<u>What it shows:</u><br>" +
-                "• Your ability to generate actionable business insights through data.<br><br>" +
+                "<u>Technical Highlights:</u><br>" +
+                "•  Actionable business insights through data.<br><br>" +
                 "<u>Feature:</u><br>" +
                 "• Provides detailed reports on fuel consumption, maintenance costs, and route efficiency.<br>" +
                 "• Supports decision-making with fleet utilization and cost-effectiveness metrics.<br><br>" +
@@ -212,8 +212,8 @@ const cardData = {
             "id": "one",
             "title": "1. Database Management & Seeding",
             "desc": "💾 <strong>Automated Database Seeding for Testing and Development</strong><br><br>" +
-                "<u>What it shows:</u><br>" +
-                "• You understand database management and automation.<br><br>" +
+                "<u>Technical Highlights:</u><br>" +
+                "• Database management and automation.<br><br>" +
                 "<u>Feature:</u><br>" +
                 "• Automatically populates the database with sample data for testing.<br>" +
                 "• Includes both technical and client user roles with encrypted passwords.<br>" +
@@ -230,8 +230,8 @@ const cardData = {
             "id": "two",
             "title": "2. Secure User Authentication",
             "desc": "🔒 <strong>Secure User Authentication with Password Hashing</strong><br><br>" +
-                "<u>What it shows:</u><br>" +
-                "• You prioritize security in application development.<br><br>" +
+                "<u>Technical Highlights:</u><br>" +
+                "• Security in application development.<br><br>" +
                 "<u>Feature:</u><br>" +
                 "• Utilizes a password encoder to securely hash user passwords.<br>" +
                 "• Ensures sensitive data is never stored in plain text.<br>" +
@@ -247,8 +247,8 @@ const cardData = {
             "id": "three",
             "title": "3. Role-Based Access Control & UI",
             "desc": "👥 <strong>Dynamic Role Management for Users with Responsive UI</strong><br><br>" +
-                "<u>What it shows:</u><br>" +
-                "• You can implement flexible user role systems and design intuitive frontends.<br><br>" +
+                "<u>Technical Highlights:</u><br>" +
+                "• Flexible user role systems and design intuitive frontends.<br><br>" +
                 "<u>Feature:</u><br>" +
                 "• Supports multiple user roles (e.g., Technician, Client).<br>" +
                 "• Assigns permissions and access levels based on roles.<br>" +
@@ -267,8 +267,8 @@ const cardData = {
             "id": "one",
             "title": "1. Smart Inventory Management & Alerts",
             "desc": "📦 <strong>Real-Time Inventory Tracking with Predictive Restocking</strong><br><br>" +
-                "<u>What it shows:</u><br>" +
-                "• Your ability to manage backend inventory systems with real-time stock updates and smart alerting logic.<br><br>" +
+                "<u>Technical Highlights:</u><br>" +
+                "• Management of backend inventory systems with real-time stock updates and smart alerting logic.<br><br>" +
                 "<u>Feature:</u><br>" +
                 "• Tracks inventory levels across categories in real time.<br>" +
                 "• Triggers low-stock alerts with predictive replenishment suggestions.<br>" +
@@ -284,8 +284,8 @@ const cardData = {
             "id": "two",
             "title": "2. Customer Analytics & Personalized Insights",
             "desc": "🧠 <strong>Behavior-Driven Customer Intelligence Dashboard</strong><br><br>" +
-                "<u>What it shows:</u><br>" +
-                "• Your ability to gather, analyze, and visualize customer behavior data.<br><br>" +
+                "<u>Technical Highlights:</u><br>" +
+                "• Gather, analyze, and visualize customer behavior data.<br><br>" +
                 "<u>Feature:</u><br>" +
                 "• Captures customer purchase history, session activity, and product preferences.<br>" +
                 "• Provides visual BI dashboards (Admin view) for sales trends, product popularity, and churn risk indicators.<br>" +
@@ -301,8 +301,8 @@ const cardData = {
             "id": "three",
             "title": "3. Sales & KPI Performance Dashboard",
             "desc": "📈 <strong>Admin-Facing Business Intelligence for Sales & Operational Metrics</strong><br><br>" +
-                "<u>What it shows:</u><br>" +
-                "• Your strength in building BI solutions with clear KPIs for decision-makers.<br><br>" +
+                "<u>Technical Highlights:</u><br>" +
+                "• Building BI solutions with clear KPIs for decision-makers.<br><br>" +
                 "<u>Feature:</u><br>" +
                 "• Visualizes sales performance, order value, customer lifetime value (CLV), and conversion rates.<br>" +
                 "• Supports filtering by date ranges, categories, locations, and campaigns.<br>" +
@@ -320,8 +320,8 @@ const cardData = {
             "id": "one",
             "title": "1. Predictive Financial Forecasting",
             "desc": "🔮 <strong>ML.NET-Powered Cash Flow & Cost Predictions</strong><br><br>" +
-                "<u>What it shows:</u><br>" +
-                "• Your expertise in integrating machine learning (ML.NET) for business intelligence.<br><br>" +
+                "<u>Technical Highlights:</u><br>" +
+                "• Integrating machine learning (ML.NET) for business intelligence.<br><br>" +
                 "<u>Feature:</u><br>" +
                 "• Leverages historical financial snapshots to forecast cash balance, material costs, and equipment costs.<br>" +
                 "• Provides confidence intervals for predictions, indicating reliability.<br><br>" +
@@ -336,8 +336,8 @@ const cardData = {
             "id": "two",
             "title": "2. What-If Scenario Analysis",
             "desc": "📊 <strong>Interactive Cost Reduction Simulations</strong><br><br>" +
-                "<u>What it shows:</u><br>" +
-                "• Your ability to build analytical tools for strategic decision-making.<br><br>" +
+                "<u>Technical Highlights:</u><br>" +
+                "• Build of analytical tools for strategic decision-making.<br><br>" +
                 "<u>Feature:</u><br>" +
                 "• Allows users to simulate the financial impact of cost reductions (e.g., material, equipment).<br>" +
                 "• Instantly visualizes changes in net profit and cash balance under different scenarios.<br><br>" +
@@ -352,8 +352,8 @@ const cardData = {
             "id": "three",
             "title": "3. Integrated Financial Dashboard",
             "desc": "📈 <strong>Comprehensive Overview of Key Financial Metrics</strong><br><br>" +
-                "<u>What it shows:</u><br>" +
-                "• Your skill in creating intuitive and data-rich user interfaces for complex financial data.<br><br>" +
+                "<u>Technical Highlights:</u><br>" +
+                "• Creation of intuitive and data-rich user interfaces for complex financial data.<br><br>" +
                 "<u>Feature:</u><br>" +
                 "• Displays real-time KPIs (Cash Balance, AR/AP, Discounts).<br>" +
                 "• Presents interactive charts for cash flow, budget vs. actual, and AP aging.<br>" +
@@ -394,7 +394,7 @@ const projectUrls = {
     'Fleet Pulse': '#', // Replace with actual URL
     'Tech Ticketing System': 'https://springdemo-43am.onrender.com',
     'Shop Swift': '#', // Replace with actual URL
-    'ERP Operations': '/Finance', // Your ERP Operations dashboard URL
+    'ERP Operations': 'https://faithgarza-001-site1.rtempurl.com/', // Your ERP Operations dashboard URL
     'Additional Projects': 'developer_projects.html'
 };
 
@@ -420,7 +420,7 @@ navLinks.forEach(link => {
             "https://lottie.host/3e24ec95-284e-43a1-abb8-342c449e7571/GlYuEWSKdC.lottie", // Urban Air placeholder (was Storm Track)
             "https://lottie.host/ef81b02d-b184-4b29-a4a5-b3a85061d778/vKmTGN9n9B.lottie", // Fleet Pulse placeholder
             "https://lottie.host/9cd1a629-019b-4e41-9d08-5b9212beab64/SqOxF0MRas.lottie", // Tech Ticketing placeholder
-            "https://lottie.host/YOUR_ERP_OPERATIONS_LOTTIE_URL_HERE/animation.lottie" // ERP Operations placeholder
+            "img/erp_animation.gif" // ERP Operations GIF" // ERP Operations placeholder
         ];
 
         function showCanvas(index) {
@@ -431,7 +431,10 @@ navLinks.forEach(link => {
                 c.style.top = "";
             });
             // Ensure DotLottie is loaded before trying to use it
-            if (typeof DotLottie !== 'undefined') {
+            if (index === 3) {
+                // Show GIF for ERP Operations
+                canvases[index].innerHTML = `<img src="${lottieSources[index]}" alt="ERP Animation" style="width:100%;height:auto;">`;
+            } else if (typeof DotLottie !== 'undefined') {
                 new DotLottie({
                     autoplay: true,
                     loop: true,

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VØSS Cover</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <style>
+    body { margin:0; font-family:'Inter',sans-serif; overflow:hidden; background:linear-gradient(135deg,#ffb2d5,#ff2d78,#580b38); background-size:300% 300%; animation:bgShift 12s ease-in-out infinite; position:relative; }
+    @keyframes bgShift {0%,100%{background-position:0% 50%;}50%{background-position:100% 50%;}}
+    body.card-preview { background:linear-gradient(135deg,#ff90bf,#ff2d78,#c00052); }
+  .scene { position:relative; width:100vw; height:100vh; display:flex; justify-content:center; align-items:center; overflow:hidden; }
+  .can-container { position:relative; width:100%; height:100%; }
+  .voss-can { position:absolute; top:35%; left:50%; width:68%; height:auto; transform:translate(-50%,-14%) rotate(-8deg); opacity:0; filter:drop-shadow(0 24px 50px rgba(0,0,0,0.55)); transition:filter .3s ease; object-fit:contain; pointer-events:none; will-change: transform; }
+  body.card-preview .voss-can, html.pre-card .voss-can { width:68%; transform:translate(-50%,-20%) rotate(-6deg); }
+    .voss-can:hover { filter:drop-shadow(0 28px 55px rgba(0,0,0,0.6)); }
+    .tagline { position:absolute; top:12%; font-size:3.3rem; font-weight:800; letter-spacing:2px; color:#fff; text-shadow:0 4px 18px rgba(0,0,0,.55); opacity:0; mix-blend-mode:screen; }
+    .cta { position:absolute; bottom:15%; font-size:1.8rem; font-weight:600; color:#ffe6f2; opacity:0; letter-spacing:1px; text-shadow:0 3px 10px rgba(0,0,0,.6); }
+  body.card-preview .tagline, html.pre-card .tagline { font-size:2rem; top:12%; text-align:center; width:90%; left:50%; transform:translateX(-50%); }
+  body.card-preview .cta, html.pre-card .cta { font-size:1.1rem; bottom:12%; left:50%; transform:translateX(-50%); text-align:center; }
+    /* Floating glints */
+    .glint { position:absolute; width:140px; height:140px; border-radius:50%; background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.9),rgba(255,255,255,0)); mix-blend-mode:overlay; opacity:0; pointer-events:none; filter:blur(1px); }
+    .grain { position:absolute; inset:0; background:repeating-linear-gradient(45deg,rgba(255,255,255,.04) 0 2px, transparent 2px 4px); mix-blend-mode:overlay; opacity:.35; pointer-events:none; animation:grainMove 8s linear infinite; }
+    @keyframes grainMove {0%{transform:translate(0,0);}100%{transform:translate(-200px,-200px);}}
+  </style>
+  <script>
+    // Pre-apply card styles before first paint to avoid layout jank
+    (function(){
+      try{
+        var p = new URLSearchParams(location.search);
+        if(p.get('mode')==='card' || window.parent !== window){
+          document.documentElement.classList.add('pre-card');
+        }
+      }catch(e){}
+    })();
+  </script>
+</head>
+<body>
+  <div class="scene">
+    <div class="grain"></div>
+    <div class="can-container">
+  <!-- VOSS Raspberry Lime can -->
+  <img src="img/voss_can.png" alt="VØSS Raspberry Lime Can" id="vossCan" class="voss-can" />
+    </div>
+    <h1 class="tagline" id="tagline">VØSS IMMERSIVE</h1>
+    <h2 class="cta" id="cta">Raspberry • Lime • Energy</h2>
+    <div class="glint" id="glint1"></div>
+    <div class="glint" id="glint2"></div>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded',()=>{
+  const urlParams = new URLSearchParams(window.location.search);
+      const isCardMode = urlParams.get('mode') === 'card' || window.innerWidth <= 420 || window.innerHeight <= 420 || window.parent !== window;
+      if(isCardMode) document.body.classList.add('card-preview');
+      const can = document.getElementById('vossCan');
+      // Allow overriding can image via query param: ?img=relative%2Fpath.jpg
+      const imgParam = urlParams.get('img');
+      if(imgParam) {
+        try { can.src = decodeURIComponent(imgParam); } catch(_) { /* noop */ }
+      }
+      // Graceful fallback if the target image is missing: revert to placeholder but disguise label
+      can.onerror = () => {
+        can.src = 'img/Vintage-Cola.webp';
+        can.style.filter = 'grayscale(1) brightness(0.9) contrast(1.1) saturate(0) drop-shadow(0 20px 40px rgba(0,0,0,0.45))';
+      };
+      const tagline = document.getElementById('tagline');
+      const cta = document.getElementById('cta');
+      const gl1 = document.getElementById('glint1');
+      const gl2 = document.getElementById('glint2');
+      // Match JS start state with CSS to avoid any jump
+      gsap.set(can,{transformOrigin:'50% 50%', opacity:0});
+      const tl = gsap.timeline({defaults:{ease:'power3.out'}});
+      tl.fromTo(can,
+        { y:0, rotation:-8, scale:1, opacity:0 },
+        { y:0, rotation:-8, scale:1, opacity:1, duration:0.5 }
+      )
+        .to(can,{rotation:0, y:-10, duration:.6, ease:'bounce.out'})
+        .to(can,{y:0, duration:.4, ease:'bounce.out'},'>-0.2')
+        .fromTo(tagline,{y:40, opacity:0, scale:.9},{y:0, opacity:1, scale:1.05, duration:1}, '-=1')
+        .to(tagline,{scale:1, duration:.25},'>')
+        .fromTo(cta,{y:30, opacity:0},{y:0, opacity:1, duration:0.9}, '-=0.4')
+        .add(()=>{ spawnGlints(); });
+      function spawnGlints(){
+        [gl1,gl2].forEach((g,i)=>{
+          const baseX = window.innerWidth/2 + (i?140:-140);
+          const baseY = window.innerHeight/2 - 40 + (i?60:-60);
+          gsap.set(g,{x:baseX-70,y:baseY-70,opacity:0,scale:0.2});
+          gsap.to(g,{opacity:.9, scale:1, duration:1.2, ease:'sine.out', yoyo:true, repeat:-1, repeatDelay:2+i});
+          gsap.to(g,{x:`+=${(i?1:-1)*80}`, y:`+=${(i?1:-1)*40}`, duration:6, ease:'sine.inOut', yoyo:true, repeat:-1});
+        });
+      }
+  // Gentle idle motion
+  gsap.to(can,{y:'+=6', rotation:2, duration:7, repeat:-1, yoyo:true, ease:'sine.inOut'});
+    });
+  </script>
+</body>
+</html>

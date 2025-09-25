@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Home</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" xintegrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
           crossorigin="anonymous">
     <link rel="stylesheet"  href="css/home.css" />
 </head>
-<body>
+<body> 
+<div class="wrapper"></div>
 <div class="video-bg">
     <video width="320" height="240" autoplay loop muted>
         <source src="https://assets.codepen.io/3364143/7btrrd.mp4" type="video/mp4">
@@ -21,9 +22,76 @@
     <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
         <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" /></svg>
 </div>
-<div class="app">
-    <div class="wrapper">
-        <div class="left-side">
+<div class="app mt-3">
+    <!-- Mobile sidebar toggle (Bootstrap Offcanvas) -->
+    <button class="btn btn-outline-light d-md-none ms-2 mt-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar" aria-controls="mobileSidebar" aria-label="Open menu">
+        <i class="fas fa-bars"></i>
+    </button>
+    <!-- Offcanvas Sidebar for mobile -->
+    <div class="offcanvas offcanvas-start d-md-none" tabindex="-1" id="mobileSidebar" aria-labelledby="mobileSidebarLabel" style="--bs-offcanvas-width: 260px; background-color: var(--dropdown-bg); color: var(--theme-color);">
+        <div class="offcanvas-header border-bottom" style="border-color: var(--border-color);">
+            <h5 class="offcanvas-title" id="mobileSidebarLabel">Menu</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div class="mb-3">
+                <div class="text-uppercase small mb-2" style="color: var(--inactive-color);">Apps</div>
+                <div class="list-group list-group-flush">
+                    <a class="list-group-item list-group-item-action bg-transparent text-light" href="index.html">
+                        <i class="fas fa-brain me-2"></i> DevOS: Faith Garza
+                    </a>
+                    <a class="list-group-item list-group-item-action bg-transparent text-light" href="developer_projects.html">
+                        <i class="fas fa-th-large me-2"></i> Developer Projects
+                    </a>
+                    <a class="list-group-item list-group-item-action bg-transparent text-light" href="#">
+                        <i class="fas fa-chart-line me-2"></i> Site Analytics
+                        <span class="badge bg-danger ms-2">3</span>
+                    </a>
+                </div>
+            </div>
+            <div class="mb-3">
+                <div class="text-uppercase small mb-2" style="color: var(--inactive-color);">Categories</div>
+                <div class="list-group list-group-flush">
+                    <a class="list-group-item list-group-item-action bg-transparent text-light" href="#">
+                        <i class="fas fa-camera me-2"></i> Photography
+                    </a>
+                    <a class="list-group-item list-group-item-action bg-transparent text-light" href="web_design.html">
+                        <i class="fas fa-laptop-code me-2"></i> UI|UX Projects
+                    </a>
+                    <a class="list-group-item list-group-item-action bg-transparent text-light" href="#">
+                        <i class="fas fa-film me-2"></i> Videography
+                    </a>
+                    <a class="list-group-item list-group-item-action bg-transparent text-light" href="#">
+                        <i class="fas fa-pen-nib me-2"></i> Illustrations
+                    </a>
+                </div>
+            </div>
+            <div class="mb-3">
+                <div class="text-uppercase small mb-2" style="color: var(--inactive-color);">Exposure To</div>
+                <div class="list-group list-group-flush">
+                    <a class="list-group-item list-group-item-action bg-transparent text-light" href="#">
+                        <i class="fas fa-robot me-2"></i> Mechatronics
+                    </a>
+                </div>
+            </div>
+            <div>
+                <div class="text-uppercase small mb-2" style="color: var(--inactive-color);">Resource Links</div>
+                <div class="list-group list-group-flush">
+                    <a class="list-group-item list-group-item-action bg-transparent text-light" href="#">
+                        <i class="fas fa-book me-2"></i> Tutorials
+                    </a>
+                    <a class="list-group-item list-group-item-action bg-transparent text-light" href="#">
+                        <i class="fab fa-behance me-2"></i> Behance
+                    </a>
+                    <a class="list-group-item list-group-item-action bg-transparent text-light" href="#">
+                        <i class="fas fa-comments me-2"></i> Social Forum
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="wrapper">      
+    <div class="left-side d-none d-md-block">
             <div class="side-wrapper">
                 <div class="side-title">Apps</div>
                 <div class="side-menu">
@@ -36,7 +104,7 @@
                         </svg>
                         DevOS: Faith Garza
                     </a>
-                    <a href="dev_projects.html">
+                    <a href="developer_projects.html">
                         <svg viewBox="0 0 512 512">
                             <g xmlns="http://www.w3.org/2000/svg" fill="currentColor">
                                 <path d="M0 0h128v128H0zm0 0M192 0h128v128H192zm0 0M384 0h128v128H384zm0 0M0 192h128v128H0zm0 0" data-original="#bfc9d1" />
@@ -46,13 +114,10 @@
                         </svg>
                         Developer Projects
                     </a>
-                    <a href="#">
-                        <svg viewBox="0 0 488.932 488.932" fill="currentColor">
-                            <path d="M243.158 61.361v-57.6c0-3.2 4-4.9 6.7-2.9l118.4 87c2 1.5 2 4.4 0 5.9l-118.4 87c-2.7 2-6.7.2-6.7-2.9v-57.5c-87.8 1.4-158.1 76-152.1 165.4 5.1 76.8 67.7 139.1 144.5 144 81.4 5.2 150.6-53 163-129.9 2.3-14.3 14.7-24.7 29.2-24.7 17.9 0 31.8 15.9 29 33.5-17.4 109.7-118.5 192-235.7 178.9-98-11-176.7-89.4-187.8-187.4-14.7-128.2 84.9-237.4 209.9-238.8z" />
-                        </svg>
-                        Site Analytics
-                        <span class="notification-number updates">3</span>
-                    </a>
+                     <a class="list-group-item list-group-item-action bg-transparent text-light" href="analytics.html">
+                        <i class="fas fa-chart-line me-2"></i> Site Analytics
+                        <span class="badge bg-danger ms-2">live</span>
+                    </a>                    
                 </div>
             </div>
             <div class="side-wrapper">
@@ -78,14 +143,6 @@
                         </svg>
                         Videography
                     </a>
-                    <a href="#">
-                        <svg viewBox="0 0 512 512" fill="currentColor">
-                            <path d="M499.377 46.402c-8.014-8.006-18.662-12.485-29.985-12.613a41.13 41.13 0 00-.496-.003c-11.142 0-21.698 4.229-29.771 11.945L198.872 275.458c25.716 6.555 47.683 23.057 62.044 47.196a113.544 113.544 0 0110.453 23.179L500.06 106.661C507.759 98.604 512 88.031 512 76.89c0-11.507-4.478-22.33-12.623-30.488zM176.588 302.344a86.035 86.035 0 00-3.626-.076c-20.273 0-40.381 7.05-56.784 18.851-19.772 14.225-27.656 34.656-42.174 53.27C55.8 397.728 27.795 409.14 0 416.923c16.187 42.781 76.32 60.297 115.752 61.24 1.416.034 2.839.051 4.273.051 44.646 0 97.233-16.594 118.755-60.522 23.628-48.224-5.496-112.975-62.192-115.348z" />
-                        </svg>
-                        Illustrations
-                    </a>
-
-
                 </div>
             </div>
             <div class="side-wrapper">
@@ -102,12 +159,6 @@
             <div class="side-wrapper">
                 <div class="side-title">Resource Links</div>
                 <div class="side-menu">
-                    <!--   <a href="#">
-                           <svg viewBox="0 0 512 512" fill="currentColor">
-                               <path d="M467 0H45C20.186 0 0 20.186 0 45v422c0 24.814 20.186 45 45 45h422c24.814 0 45-20.186 45-45V45c0-24.814-20.186-45-45-45zM181 241c41.353 0 75 33.647 75 75s-33.647 75-75 75-75-33.647-75-75c0-8.291 6.709-15 15-15s15 6.709 15 15c0 24.814 20.186 45 45 45s45-20.186 45-45-20.186-45-45-45c-41.353 0-75-33.647-75-75s33.647-75 75-75 75 33.647 75 75c0 8.291-6.709 15-15 15s-15-6.709-15-15c0-24.814-20.186-45-45-45s-45 20.186-45 45 20.186 45 45 45zm180 120h30c8.291 0 15 6.709 15 15s-6.709 15-15 15h-30c-24.814 0-45-20.186-45-45V211h-15c-8.291 0-15-6.709-15-15s6.709-15 15-15h15v-45c0-8.291 6.709-15 15-15s15 6.709 15 15v45h45c8.291 0 15 6.709 15 15s-6.709 15-15 15h-45v135c0 8.276 6.724 15 15 15z" />
-                           </svg>
-                           Stock
-                       </a>-->
                     <a href="#">
                         <svg viewBox="0 0 511.441 511.441" fill="currentColor">
                             <path d="M255.721 347.484L90.22 266.751v106.57l165.51 73.503 165.509-73.503V266.742z" />
@@ -133,20 +184,42 @@
             </div>
         </div>
         <div class="main-container">
-            <!-- <div class="main-header">
-                 <a class="menu-link-main" href="#">All Apps</a>
-                 <div class="header-menu">
-                     <a class="main-header-link is-active" href="#">Desktop</a>
-                     <a class="main-header-link" href="#">Mobile</a>
-                     <a class="main-header-link" href="#">Web</a>
-                 </div>
-             </div>--->
+            <!-- Inline page-only style to keep header from affecting sidebar position -->
+            <style>
+                /* Page-local: position header only within main content so left sidebar stays flush */
+                .main-container > .header { 
+                    position: relative; /* keeps normal flow inside main content */
+                    margin-bottom: 4px; /* slight spacing from content */
+                }
+            </style>
+            <div class="header">
+                <div class="header-profile">
+                    <nav class="navbar">
+                        <ul class="nav nav-pills ms-auto">
+                            <li id="urbanAir" class="nav-item">
+                                <a class="nav-link text-light project-title" href="#" data-url="https://express-weather-world.onrender.com">Urban Air</a>
+                            </li>
+                            <!-- <li id="fleetPulse" class="nav-item">
+                                <a class="nav-link transition-link text-light project-title" href="#">Fleet Pulse</a>
+                            </li> -->
+                            <li id="techTicket" class="nav-item">
+                                <a class="nav-link text-light project-title" href="#" data-url="https://springdemo-43am.onrender.com">Tech Ticketing System</a>
+                            </li>
+                            <!-- <li id="shopSwift" class="nav-item">
+                                <a class="nav-link transition-link text-light project-title" href="#">Shop Swift</a>
+                            </li> -->
+                            <li id="erpOperations" class="nav-item">
+                                <a class="nav-link text-light project-title" href="#" data-url="http://faithgarza-001-site1.rtempurl.com/">ERP Operations</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
             <div class="content-wrapper">
                 <div class="hero-section">
                     <div class="row grey_glassMorphism">
                         <!-- Left Content Area -->
                         <div class="left-content col-6">
-
                         </div>
                     </div>
                 </div>
@@ -154,262 +227,232 @@
                     <div class="content-section-title">
                         Applied Design & Engineering
                     </div>
-                    <div class="row w-100 project-card">
-
-                    </div>
+                   <div class="row w-100 project-card align-items-center">
+                       <div class="col-6 d-flex justify-content-start">
+                           <!--lottie animation-->
+                           <div class="lottie-animation">
+                               <canvas id="canvas" style="display: block;"></canvas>
+                               <canvas id="canvasTwo" style="display: none;"></canvas>
+                               <canvas id="canvasThree" style="display: none;"></canvas>
+                               <canvas id="canvasFour" style="display: none;"></canvas>
+                           </div>
+                       </div>
+                       <div class="col-6 d-flex justify-content-end mb-5 pb-5">
+                           <button class="btn btn-primary" id="viewProject">View Project</button>
+                       </div>
+                   </div>
                     <div id="transition-overlay"></div>
                 </div>
-                <div class="content-section d-flex justify-content-center">
-                    <div class="content-section-title">
-                        <p id="appName" class="mb-2">Applied Framework Fundamentals</p>
+                <div class="content-section d-flex justify-content-center flex-wrap gap-3">
+                <div class="content-section-title">
+                  <span id="appName"></span>  Application Features At-A-Glance
+                </div>
+                <div class="apps-card">
+                    <div class="app-card" id="one">
                     </div>
-                <div class="apps-card row g-3">
-                     <div class="app-card col-12 col-md-6 col-lg-4 d-flex flex-column h-100">
-                         <div class="app-card-title d-flex align-items-center">
-                             <span class="text-nowrap">Railway_BI Dashboard</span>
-                             <span class="info-icon ms-5 px-5"
-                                   tabindex="0"
-                                   data-bs-toggle="tooltip"
-                                   data-bs-placement="top"
-                                   data-bs-html="true"
-                                   title="<div class='text-start'>
-                                     <strong>Highlights:</strong><br>
-                                     • Built with WPF (.NET) using MVVM architectural pattern<br>
-                • Real-time data updates via SignalR and WebSockets<br>
-                • Modular Microservices with RESTful .NET Web API backend<br>
-                • SSIS-powered ETL for heavy batch imports and transformation<br>
-                • SSRS scheduled reporting and PDF export delivery<br>
-                • Hosted on AWS EC2 Windows Server with CI/CD pipeline integration
-                                 </div>">
-                                 <i class="fas fa-info-circle"></i>
-                             </span>
-                         </div>
-                         <div class="app-card-description flex-grow-1">
-                             <p>Overview: RailwayBI is a real-time WPF-based operations dashboard tailored for field logistics,
-                                 maintenance monitoring, and compliance tracking in the rail industry. Leveraging SignalR for live updates and
-                                 a modular Web API backend hosted on AWS, RailwayBI delivers operational awareness and KPI visibility
-                                 through responsive UI components and scheduled reports. Enterprise-grade analytics dashboard
-                                 for decision-makers who need clean, fast, and actionable insights.</p>
-                         </div>
-                     </div>
-
-                     <div class="app-card col-12 col-md-6 col-lg-4 d-flex flex-column h-100">
-                         <div class="app-card-title d-flex align-items-center">
-                             <span class="text-nowrap">ForecastIQ: AI-Powered Sales Predictor</span>
-                             <span class="info-icon ms-5 px-5"
-                                   tabindex="0"
-                                   data-bs-toggle="tooltip"
-                                   data-bs-placement="top"
-                                   data-bs-html="true"
-                                   title="<div class='text-start'>
-                                     <strong>Highlights:</strong><br>
-                                     • AI/ML integration with real business data<br>
-                                     • Time-series modeling and hyperparameter tuning<br>
-                                     • Integration with Azure for scalability<br>
-                                     • Clear API-first architecture for extensibility
-                                 </div>">
-                                 <i class="fas fa-info-circle"></i>
-                             </span>
-                         </div>
-                         <div class="app-card-description flex-grow-1">
-                             <p>Overview: ForecastIQ is an intelligent forecasting tool that leverages ML.NET and time-series regression models to predict future sales trends based on historical data. Built using ASP.NET Web API and integrated with Azure Functions for scheduled inference runs, this tool empowers sales teams with foresight.
-                                 Key Features:
-                                 Historical sales data ingestion and cleanup
-                                 Machine learning regression pipeline
-                                 Forecast visualization and comparison tool
-                                 JSON-based REST API endpoints for predictions</p>
-                         </div>
-                     </div>
-
-                     <div class="app-card col-12 col-md-6 col-lg-4 d-flex flex-column h-100">
-                         <div class="app-card-title d-flex align-items-center">
-                             <span class="text-nowrap">PulseTrack: Real-Time Healthcare Monitoring</span>
-                             <span class="info-icon ms-5 px-4"
-                                   tabindex="0"
-                                   data-bs-toggle="tooltip"
-                                   data-bs-placement="top"
-                                   data-bs-html="true"
-                                   title="<div class='text-start'>
-                                     <strong>Highlights:</strong><br>
-                                     • Scalable real-time communication infrastructure<br>
-                                     • Secure medical data handling simulation<br>
-                                     • Responsive Blazor-based component UI<br>
-                                     • Robust state management for live data visualization
-                                 </div>">
-                                 <i class="fas fa-info-circle"></i>
-                             </span>
-                         </div>
-                         <div class="app-card-description flex-grow-1">
-                             <p>Overview: PulseTrack is a real-time vitals and appointment monitoring system tailored for small clinics and healthcare institutions. Built with Blazor Server and SignalR, it allows healthcare professionals to monitor patient activity, communicate securely, and respond to abnormal patterns quickly.
-                                 Key Features:
-                                 Vitals dashboard with dynamic thresholds and alerts
-                                 SignalR-based real-time updates and staff communication
-                                 Role-specific dashboards for nurses, doctors, and admins
-                                 PDF summaries and HIPAA-aware data handling</p>
-                         </div>
-                     </div>
-
-                     <div class="app-card col-12 col-md-6 col-lg-4 d-flex flex-column h-100">
-                         <div class="app-card-title d-flex align-items-center">
-                             <span class="text-nowrap">NeuroSort: AI + Servo-Powered Sorting Arm</span>
-                             <span class="info-icon ms-5 px-4"
-                                   tabindex="0"
-                                   data-bs-toggle="tooltip"
-                                   data-bs-placement="top"
-                                   data-bs-html="true"
-                                   title="<div class='text-start'>
-                                     <strong>Highlights:</strong><br>
-                                     • Object classification with onboard AI inference <br>
-                                     • Seamless machine-to-software communication<br>
-                                     • Reinforces concepts in automation, robotics, and computer vision 🤖<br>
-                                     • Real-world application of embedded + .NET stack
-                                 </div>">
-                                 <i class="fas fa-info-circle"></i>
-                             </span>
-                         </div>
-                         <div class="app-card-description flex-grow-1">
-                             <p>Overview:
-                                 AutoSortBot is a mechatronic system that classifies and sorts physical items using a camera sensor and servo mechanisms.
-                                 The control software is written in C# using .NET with serial communication to Arduino/Microcontroller firmware.
-                                 Key Features:
-                                 Hardware integration with Arduino/Microcontroller via Serial Port
-                                 Live camera feed and AI-based object detection
-                                 Servo-driven sorting arm based on classification
-                                 UI built with WinForms/WPF to monitor and control operations</p>
-                         </div>
-                     </div>
-
-                     <div class="app-card col-12 col-md-6 col-lg-4 d-flex flex-column h-100">
-                         <div class="app-card-title d-flex align-items-center">
-                             <span class="text-nowrap">SmartInvoice.AI: Automated Invoice Processor</span>
-                             <span class="info-icon ms-5 px-4"
-                                   tabindex="0"
-                                   data-bs-toggle="tooltip"
-                                   data-bs-placement="top"
-                                   data-bs-html="true"
-                                   title="<div class='text-start'>
-                                     <strong>Highlights:</strong><br>
-                                     • Practical AI use in business automation<br>
-                                     • OCR processing with high-confidence filtering<br>
-                                     • AI-assisted document classification<br>
-                                     • API-first design with Swagger documentation
-                                 </div>">
-                                 <i class="fas fa-info-circle"></i>
-                             </span>
-                         </div>
-                         <div class="app-card-description flex-grow-1">
-                             <p>Overview:SmartInvoice.AI streamlines finance operations by allowing users to upload scanned or digital invoices. Using Tesseract OCR and OpenAI/Azure Cognitive Services, it extracts invoice data and automatically classifies vendors, dates, and totals. The system integrates with accounting software via API.
-                                 Key Features:
-                                 Drag-and-drop UI for PDF upload
-                                 OCR and AI-powered field extraction
-                                 Vendor classification using NLP
-                                 Export to accounting tools like QuickBooks</p>
-                         </div>
-                     </div>
-
-                     <div class="app-card col-12 col-md-6 col-lg-4 d-flex flex-column h-100">
-                         <div class="app-card-title d-flex align-items-center">
-                             <span class="text-nowrap">ServiceMesh360: Microservices & Scalable Logistics</span>
-                             <span class="info-icon ms-4 px-3"
-                                   tabindex="0"
-                                   data-bs-toggle="tooltip"
-                                   data-bs-placement="top"
-                                   data-bs-html="true"
-                                   title="<div class='text-start'>
-                                     <strong>Highlights:</strong><br>
-                                     • Event-driven architecture with RabbitMQ and MassTransit<br>
-                                     • Health checks, retries, and circuit breaker patterns<br>
-                                     • Fully decoupled service-to-service communication<br>
-                                     • Hands-on microservice orchestration and DevOps principles<br>
-                                     • Ideal for cloud-native deployment and horizontal scaling 🚀
-                                 </div>">
-                                 <i class="fas fa-info-circle"></i>
-                             </span>
-                         </div>
-                         <div class="app-card-description flex-grow-1">
-                             <p>ServiceMesh360 is a distributed logistics management system built using a microservices architecture with .NET Core, Docker, and RabbitMQ. Designed to mimic enterprise supply chain operations, each service (Orders, Inventory, Notifications, Billing) is independently deployable, enabling CI/CD and horizontal scaling.
-                                 Key Features:
-                                 Event-driven messaging with RabbitMQ and MassTransit
-                                 Independent services: Auth, Inventory, Billing, and Notifications
-                                 API Gateway with Ocelot for centralized routing
-                                 Containerized deployment via Docker Compose / Kubernetes
-                             </p>
-                         </div>
-                     </div>
-                 </div>                </div>
-                <footer class="my-5" style="padding: 20px 0; font-size: 0.9rem;background-color: var(--content-bg)">
-                    <div class="container">
-                        <div class="row align-items-start">
-
-
-                            <div class="col-md-3 mb-3">
-                                <h6>Profile</h6>
-                                <ul class="list-unstyled mb-2">
-                                    <li><a href="about_me.html" class="text-decoration-none text-light">About Me</a></li>
-                                    <li><a href="#skills" class="text-decoration-none text-light">Skills</a></li>
-                                    <li><a href="#contact" class="text-decoration-none text-light">Contact</a></li>
-                                </ul>
-                            </div>
-
-
-                            <div class="col-md-3 mb-3">
-                                <h6>Resources</h6>
-                                <ul class="list-unstyled mb-2">
-                                    <li><a href="/blog" class="text-decoration-none text-light">Blog</a></li>
-                                    <li><a href="/resume.pdf" target="_blank" class="text-decoration-none text-light">Download Resume</a></li>
-                                    <li><a href="/case-studies" class="text-decoration-none text-light">Case Studies</a></li>
-                                    <li><a href="/style-guide" class="text-decoration-none text-light">Style Guide</a></li>
-                                </ul>
-                            </div>
-
-
-                            <div class="col-md-3 mb-3">
-                                <h6>Art Projects</h6>
-                                <ul class="list-unstyled mb-2">
-                                    <li><a href="https://store.steampowered.com/developer/yourprofile" target="_blank" class="text-decoration-none text-light">
-                                        <i class="fab fa-steam"></i> Steam Projects
-                                    </a></li>
-                                    <li><a href="/unreal-projects" class="text-decoration-none text-light">
-                                        <i class="fas fa-gamepad"></i> Unreal Engine Work
-                                    </a></li>
-                                    <li><a href="https://yourartportfolio.com" target="_blank" class="text-decoration-none text-light">
-                                        <i class="fas fa-palette"></i> Art Portfolio
-                                    </a></li>
-                                </ul>
-                            </div>
-                            <div class="col-md-3 mb-3">
-                                <h6>Stay Connected</h6>
-                                <form class="d-flex mb-2">
-                                    <input type="email" placeholder="Email" required
-                                           style="padding: 5px 8px; width: 65%; border: none; border-radius: 4px 0 0 4px;">
-                                    <button type="submit"
-                                            style="padding: 5px 12px; background-color: #ff6f61; color: white; border: none; border-radius: 0 4px 4px 0;">
-                                        Send Email
-                                    </button>
-                                </form>
-                                <ul class="list-inline mb-0">
-                                    <li class="list-inline-item"><a href="https://github.com/yourusername" target="_blank"><i class="fab fa-github text-light"></i></a></li>
-                                    <li class="list-inline-item"><a href="https://linkedin.com/in/yourprofile" target="_blank"><i class="fab fa-linkedin-in text-light"></i></a></li>
-                                    <li class="list-inline-item"><a href="https://twitter.com/yourprofile" target="_blank"><i class="fab fa-twitter text-light"></i></a></li>
-                                    <li class="list-inline-item"><a href="https://dribbble.com/yourprofile" target="_blank"><i class="fab fa-dribbble text-light"></i></a></li>
-                                </ul>
-                            </div>
-
-                        </div>
+                    <div class="app-card" id="two">
                     </div>
-                </footer>
+                    <div class="app-card" id="three">
+                    </div>
+                </div>
             </div>
+            <footer class="my-5" style="padding: 20px 0; font-size: 0.9rem;background-color: var(--content-bg)">
+                <div class="container">
+                    <div class="row align-items-start">
+
+
+                        <div class="col-md-3 mb-3">
+                            <h6>Profile</h6>
+                            <ul class="list-unstyled mb-2">
+                                <li><a href="about_me.html" class="text-decoration-none text-light">About Me</a></li>
+                                <li><a href="#skills" class="text-decoration-none text-light">Skills</a></li>
+                                <li><a href="#contact" class="text-decoration-none text-light">Contact</a></li>
+                            </ul>
+                        </div>
+
+
+                        <div class="col-md-3 mb-3">
+                            <h6>Resources</h6>
+                            <ul class="list-unstyled mb-2">
+                                <li><a href="/blog" class="text-decoration-none text-light">Blog</a></li>
+                                <li><a href="/resume.pdf" target="_blank" class="text-decoration-none text-light">Download Resume</a></li>
+                                <li><a href="/case-studies" class="text-decoration-none text-light">Case Studies</a></li>
+                                <li><a href="/style-guide" class="text-decoration-none text-light">Style Guide</a></li>
+                            </ul>
+                        </div>
+
+
+                        <div class="col-md-3 mb-3">
+                            <h6>Art Projects</h6>
+                            <ul class="list-unstyled mb-2">
+                                <li><a href="https://store.steampowered.com/developer/yourprofile" target="_blank" class="text-decoration-none text-light">
+                                    <i class="fab fa-steam"></i> Steam Projects
+                                </a></li>
+                                <li><a href="/unreal-projects" class="text-decoration-none text-light">
+                                    <i class="fas fa-gamepad"></i> Unreal Engine Work
+                                </a></li>
+                                <li><a href="https://yourartportfolio.com" target="_blank" class="text-decoration-none text-light">
+                                    <i class="fas fa-palette"></i> Art Portfolio
+                                </a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <h6>Stay Connected</h6>
+                            <form class="d-flex mb-2">
+                                <input type="email" placeholder="Email" required
+                                       style="padding: 5px 8px; width: 65%; border: none; border-radius: 4px 0 0 4px;">
+                                <button type="submit"
+                                        style="padding: 5px 12px; background-color: #ff6f61; color: white; border: none; border-radius: 0 4px 4px 0;">
+                                    Send Email
+                                </button>
+                            </form>
+                            <ul class="list-inline mb-0">
+                                <li class="list-inline-item"><a href="https://github.com/yourusername" target="_blank"><i class="fab fa-github text-light"></i></a></li>
+                                <li class="list-inline-item"><a href="https://linkedin.com/in/yourprofile" target="_blank"><i class="fab fa-linkedin-in text-light"></i></a></li>
+                                <li class="list-inline-item"><a href="https://twitter.com/yourprofile" target="_blank"><i class="fab fa-twitter text-light"></i></a></li>
+                                <li class="list-inline-item"><a href="https://dribbble.com/yourprofile" target="_blank"><i class="fab fa-dribbble text-light"></i></a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </footer>
+        </div>
         </div>
     </div>
 </div>
 <div class="overlay-app"></div>
 
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 <script src="js/main.js"></script>
+<script type="module"></script>
 
+<!-- Project Preview Modal -->
+<div class="modal fade" id="projectPreviewModal" tabindex="-1" aria-labelledby="projectPreviewTitle" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content" style="background-color: var(--popup-bg); color: var(--theme-color);">
+            <div class="modal-header border-0">
+                <h5 class="modal-title" id="projectPreviewTitle">Project</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="ratio ratio-16x9">
+                    <iframe id="projectPreviewFrame" src="" title="Project Preview" loading="lazy" allowfullscreen style="border:0;"></iframe>
+                </div>
+                <div id="projectPreviewFallback" class="mt-3 d-none" style="color: var(--inactive-color); font-size: .9rem;">
+                    Preview may be blocked by the site. Use "Open in New Tab" to view the project.
+                </div>
+            </div>
+            <div class="modal-footer border-0">
+                <a id="openFullScreenLink" href="#" target="_blank" rel="noopener" class="btn btn-primary">Open in New Tab</a>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+ </div>
+
+<script>
+    // Provide default URLs for project previews; will be merged with any existing window.projectUrls
+    window.projectUrls = Object.assign({
+        'Urban Air': 'https://express-weather-world.onrender.com',
+        'Tech Ticketing System': 'https://springdemo-43am.onrender.com',
+        'ERP Operations': 'http://faithgarza-001-site1.rtempurl.com/'
+    }, window.projectUrls || {});
+
+        document.addEventListener('DOMContentLoaded', function () {
+            // Track current project selection (default to Urban Air)
+            let currentProject = 'Urban Air';
+            let currentProjectUrl = null;
+            const projectMap = (window.projectUrls) ? window.projectUrls : {};
+
+            // Derive URLs from data-url attributes when present (non-navigating selectors)
+            // Data attributes take precedence over any defaults
+            document.querySelectorAll('.project-title').forEach((a) => {
+                const name = a.textContent.trim();
+                const url = a.getAttribute('data-url');
+                if (name && url) {
+                    projectMap[name] = url;
+                }
+            });
+
+        // Update current project on header nav clicks without interfering with navigation
+                document.querySelectorAll('.project-title').forEach((a) => {
+                    a.addEventListener('click', (e) => {
+                        e.preventDefault(); // keep selection on-page
+                        const name = a.textContent.trim();
+                        if (name) {
+                            currentProject = name;
+                            currentProjectUrl = a.getAttribute('data-url') || projectMap[name] || null;
+                        }
+                    });
+                });
+
+                    // Also support clicks anywhere in the nav item (not only the text link)
+                    document.querySelector('.navbar')?.addEventListener('click', (e) => {
+                        const link = e.target.closest('.project-title');
+                        if (!link) return;
+                        e.preventDefault();
+                        const name = link.textContent.trim();
+                        if (name) {
+                            currentProject = name;
+                            currentProjectUrl = link.getAttribute('data-url') || projectMap[name] || null;
+                        }
+                    }, true);
+
+        const viewBtn = document.getElementById('viewProject');
+        const modalEl = document.getElementById('projectPreviewModal');
+        const iframe = document.getElementById('projectPreviewFrame');
+        const fallbackMsg = document.getElementById('projectPreviewFallback');
+        const titleEl = document.getElementById('projectPreviewTitle');
+        const openLink = document.getElementById('openFullScreenLink');
+
+            function showProjectModal() {
+                const url = currentProjectUrl || projectMap[currentProject] || projectMap['Urban Air'] || '';
+            titleEl.textContent = currentProject || 'Project';
+            openLink.href = url || '#';
+            fallbackMsg.classList.add('d-none');
+
+                // Slightly widen the modal for Urban Air only
+                if (currentProject === 'Urban Air') {
+                    // default xl is ~1140px; bump to ~1220px for a subtle increase
+                    modalEl.style.setProperty('--bs-modal-width', '1220px');
+                } else {
+                    modalEl.style.removeProperty('--bs-modal-width');
+                }
+
+            // Load preview iframes are permitted
+            if (url) {
+                try {
+                    iframe.src = url;
+                } catch (e) {
+                    iframe.removeAttribute('src');
+                    fallbackMsg.classList.remove('d-none');
+                }
+            } else {
+                iframe.removeAttribute('src');
+            }
+
+            const modal = new bootstrap.Modal(modalEl);
+            modal.show();
+        }
+
+            // Wire up button (suppress other handlers that might open a new tab)
+            if (viewBtn) {
+                viewBtn.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    if (e.stopImmediatePropagation) e.stopImmediatePropagation();
+                    showProjectModal();
+                });
+            }
+
+        // Clear iframe when closing to stop loading/media
+        modalEl?.addEventListener('hidden.bs.modal', () => {
+            if (iframe) iframe.src = '';
+                // Reset any width override when closed
+                modalEl.style.removeProperty('--bs-modal-width');
+        });
+    });
+</script>
 </body>
 </html>
-
-

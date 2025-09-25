@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vintage Film Reel Animation</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        :root {
+            --dark-blue: #2c3e50;
+            --medium-blue: #34495e;
+            --dark-gray: #7f8c8d;
+            --light-gray: #bdc3c7;
+            --film-black: #1a1a1a;
+            --film-hole-color: #0f0f0f;
+            --lens-glow-color: #3498db;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, var(--dark-blue) 0%, var(--medium-blue) 50%, #4a6741 100%);
+            font-family: 'Georgia', serif;
+            overflow: hidden;
+            position: relative;
+            height: 100vh;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.02) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .film-projector {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            perspective: 1000px;
+        }
+
+        .projector-body {
+            position: relative;
+            width: 600px;
+            height: 400px;
+            background: linear-gradient(145deg, var(--medium-blue), var(--dark-blue));
+            border-radius: 20px;
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.6),
+                inset 0 2px 10px rgba(255, 255, 255, 0.1);
+            z-index: 10;
+        }
+
+        .projector-body::before, .projector-body::after {
+            content: '';
+            position: absolute;
+            background: var(--dark-blue);
+            border-radius: 10px;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.4);
+            z-index: 11;
+        }
+
+        .projector-body::before {
+            width: 50px;
+            height: 20px;
+            top: 20px;
+            left: 20px;
+            transform: skewX(-20deg);
+        }
+
+        .projector-body::after {
+            width: 30px;
+            height: 30px;
+            bottom: 20px;
+            right: 20px;
+            border-radius: 50%;
+            border: 2px solid var(--dark-gray);
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Film reels */
+        .film-reel {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 8px solid var(--medium-blue);
+            box-shadow: 
+                0 10px 30px rgba(0, 0, 0, 0.5),
+                inset 0 0 20px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            background-color: var(--light-gray);
+            transform-origin: center;
+        }
+
+        .film-reel::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 30px;
+            height: 30px;
+            background: radial-gradient(circle, var(--dark-blue), var(--medium-blue));
+            border-radius: 50%;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        /* Individual reel spokes for better control */
+        .reel-spoke {
+            position: absolute;
+            width: 8px;
+            height: 60px;
+            background-color: var(--dark-gray);
+            transform-origin: bottom center;
+            top: 50%;
+            left: 50%;
+            margin-left: -4px;
+            border-radius: 4px;
+        }
+
+        .left-reel {
+            top: -75px;
+            left: -75px;
+        }
+
+        .right-reel {
+            top: -75px;
+            right: -75px;
+        }
+
+        /* Film strip */
+        .film-strip {
+            position: absolute;
+            width: 80px;
+            height: 600px;
+            background: var(--film-black);
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 2px solid var(--film-hole-color);
+            overflow: hidden;
+            z-index: 5;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+        }
+
+        /* Film perforations with box-shadow for depth */
+        .film-strip::before, .film-strip::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 8px;
+            height: 100%;
+            background: repeating-linear-gradient(0deg, var(--film-black) 0px, var(--film-black) 8px, var(--film-hole-color) 8px, var(--film-hole-color) 16px);
+        }
+
+        .film-strip::before {
+            left: 5px;
+            box-shadow: inset 1px 0px 3px rgba(0,0,0,0.5);
+        }
+
+        .film-strip::after {
+            right: 5px;
+            box-shadow: inset -1px 0px 3px rgba(0,0,0,0.5);
+        }
+
+        /* Film frames with more dynamic styling */
+        .film-frame {
+            position: absolute;
+            width: 56px;
+            height: 40px;
+            left: 12px;
+            border: 1px solid var(--film-hole-color);
+            margin: 4px 0;
+            opacity: 0.9;
+            box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Animated content within frames */
+        .film-frame::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, 
+                rgba(255,255,255,0.2) 0%, 
+                transparent 25%, 
+                rgba(255,255,255,0.1) 50%, 
+                transparent 75%, 
+                rgba(255,255,255,0.2) 100%);
+            animation: filmScanlines 2s linear infinite;
+        }
+
+        .film-frame::after {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: frameFlicker 1.5s ease-in-out infinite;
+        }
+
+        @keyframes filmScanlines {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        @keyframes frameFlicker {
+            0%, 100% { opacity: 0.3; transform: translate(-50%, -50%) scale(0.5); }
+            50% { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
+        }
+
+        /* Different frame types with unique animations */
+        .film-frame:nth-child(even) {
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+        }
+
+        .film-frame:nth-child(even)::after {
+            animation: frameRotate 2s linear infinite;
+        }
+
+        .film-frame:nth-child(3n) {
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+        }
+
+        .film-frame:nth-child(3n)::before {
+            background: radial-gradient(circle at center, rgba(255,255,255,0.4) 0%, transparent 70%);
+            animation: framePulse 1.8s ease-in-out infinite;
+        }
+
+        .film-frame:nth-child(4n) {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+        }
+
+        .film-frame:nth-child(4n)::after {
+            width: 12px;
+            height: 2px;
+            border-radius: 0;
+            animation: frameBar 1.2s ease-in-out infinite;
+        }
+
+        .film-frame:nth-child(5n) {
+            background: linear-gradient(135deg, #9b59b6, #8e44ad);
+        }
+
+        .film-frame:nth-child(5n)::before {
+            background: linear-gradient(90deg, 
+                rgba(255,255,255,0.3) 0%, 
+                rgba(255,255,255,0.1) 20%, 
+                rgba(255,255,255,0.3) 40%, 
+                rgba(255,255,255,0.1) 60%, 
+                rgba(255,255,255,0.3) 80%, 
+                rgba(255,255,255,0.1) 100%);
+            animation: frameWave 2.5s ease-in-out infinite;
+        }
+
+        @keyframes frameRotate {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        @keyframes framePulse {
+            0%, 100% { transform: scale(0.8); opacity: 0.3; }
+            50% { transform: scale(1.2); opacity: 0.8; }
+        }
+
+        @keyframes frameBar {
+            0%, 100% { transform: translate(-50%, -50%) scaleX(0.3); }
+            50% { transform: translate(-50%, -50%) scaleX(1.5); }
+        }
+
+        @keyframes frameWave {
+            0%, 100% { transform: translateY(-100%); }
+            50% { transform: translateY(100%); }
+        }
+
+        /* Frame content that appears to move towards viewer */
+        .frame-content {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            animation: frameZoom 3s ease-in-out infinite;
+        }
+
+        @keyframes frameZoom {
+            0%, 100% { 
+                transform: scale(1); 
+                filter: brightness(0.8);
+            }
+            50% { 
+                transform: scale(1.1); 
+                filter: brightness(1.2);
+            }
+        }
+
+        /* Vintage film damage effects */
+        .film-damage {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(0,0,0,0.4) 2px, transparent 3px),
+                radial-gradient(circle at 80% 70%, rgba(0,0,0,0.3) 1px, transparent 2px),
+                linear-gradient(45deg, transparent 40%, rgba(0,0,0,0.1) 42%, transparent 44%);
+            animation: filmDamage 4s linear infinite;
+        }
+
+        @keyframes filmDamage {
+            0%, 100% { opacity: 0; }
+            25%, 75% { opacity: 0.6; }
+            50% { opacity: 0.2; }
+        }
+
+        /* Lens */
+        .projector-lens {
+            position: absolute;
+            right: -50px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.3), transparent 50%), radial-gradient(circle, var(--medium-blue), var(--dark-blue));
+            border-radius: 50%;
+            border: 5px solid #1a252f;
+            box-shadow: 0 0 30px rgba(52, 152, 219, 0.3), inset 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .projector-lens::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70px;
+            height: 70px;
+            background: radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 0.6), transparent 70%), radial-gradient(circle, rgba(52, 152, 219, 0.3), transparent);
+            border-radius: 50%;
+            animation: lensGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes lensGlow {
+            0%, 100% { 
+                box-shadow: 0 0 20px var(--lens-glow-color);
+                opacity: 0.7;
+            }
+            50% { 
+                box-shadow: 0 0 40px var(--lens-glow-color);
+                opacity: 1;
+            }
+        }
+
+        /* Title */
+        .film-title {
+            position: absolute;
+            top: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 3rem;
+            font-weight: bold;
+            color: #ecf0f1;
+            text-shadow: 
+                2px 2px 0px var(--dark-blue),
+                4px 4px 8px rgba(0, 0, 0, 0.7);
+            font-family: 'Georgia', serif;
+            letter-spacing: 3px;
+            opacity: 0;
+            z-index: 20;
+        }
+
+        .film-subtitle {
+            position: absolute;
+            bottom: 15%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.5rem;
+            color: var(--light-gray);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            font-style: italic;
+            opacity: 0;
+            z-index: 20;
+        }
+
+        .light-beam {
+            position: absolute;
+            right: -200px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 150px;
+            background: linear-gradient(90deg, 
+                rgba(52, 152, 219, 0.4) 0%,
+                rgba(52, 152, 219, 0.2) 50%,
+                rgba(52, 152, 219, 0.05) 100%);
+            clip-path: polygon(0 40%, 100% 0%, 100% 100%, 0 60%);
+            opacity: 0;
+            filter: blur(5px);
+        }
+
+        .dust-particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 50%;
+            opacity: 0;
+            pointer-events: none;
+            will-change: transform;
+        }
+    </style>
+</head>
+<body>
+    <div class="film-projector">
+        <div class="projector-body">
+            <div class="film-reel left-reel" id="leftReel">
+                <div class="reel-spoke" style="transform: rotate(45deg) translateY(-60px);"></div>
+                <div class="reel-spoke" style="transform: rotate(90deg) translateY(-60px);"></div>
+                <div class="reel-spoke" style="transform: rotate(135deg) translateY(-60px);"></div>
+                <div class="reel-spoke" style="transform: rotate(180deg) translateY(-60px);"></div>
+                <div class="reel-spoke" style="transform: rotate(225deg) translateY(-60px);"></div>
+                <div class="reel-spoke" style="transform: rotate(270deg) translateY(-60px);"></div>
+                <div class="reel-spoke" style="transform: rotate(315deg) translateY(-60px);"></div>
+                <div class="reel-spoke" style="transform: rotate(360deg) translateY(-60px);"></div>
+            </div>
+            
+            <div class="film-reel right-reel" id="rightReel">
+                <div class="reel-spoke" style="transform: rotate(45deg) translateY(-60px);"></div>
+                <div class="reel-spoke" style="transform: rotate(90deg) translateY(-60px);"></div>
+                <div class="reel-spoke" style="transform: rotate(135deg) translateY(-60px);"></div>
+                <div class="reel-spoke" style="transform: rotate(180deg) translateY(-60px);"></div>
+                <div class="reel-spoke" style="transform: rotate(225deg) translateY(-60px);"></div>
+                <div class="reel-spoke" style="transform: rotate(270deg) translateY(-60px);"></div>
+                <div class="reel-spoke" style="transform: rotate(315deg) translateY(-60px);"></div>
+                <div class="reel-spoke" style="transform: rotate(360deg) translateY(-60px);"></div>
+            </div>
+            
+            <div class="film-strip" id="filmStrip">
+                </div>
+            
+            <div class="projector-lens"></div>
+            
+            <div class="light-beam" id="lightBeam"></div>
+        </div>
+        
+        <h1 class="film-title" id="filmTitle">MOTION AND MEDIA WORKS</h1>
+        <h2 class="film-subtitle" id="filmSubtitle">A Classic Film Experience</h2>
+        
+        <div id="dustParticles"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const leftReel = document.getElementById('leftReel');
+            const rightReel = document.getElementById('rightReel');
+            const filmStrip = document.getElementById('filmStrip');
+            const lightBeam = document.getElementById('lightBeam');
+            const filmTitle = document.getElementById('filmTitle');
+            const filmSubtitle = document.getElementById('filmSubtitle');
+            const dustContainer = document.getElementById('dustParticles');
+
+            function createFilmFrames() {
+                const frameTypes = [
+                    'nature', 'tech', 'abstract', 'geometric', 'motion'
+                ];
+                
+                const frameContents = [
+                    // Nature scenes (simulated)
+                    'radial-gradient(circle at 30% 70%, #2ecc71 0%, #27ae60 50%, #1e8449 100%)',
+                    
+                    // Tech/UI elements
+                    'linear-gradient(45deg, #3498db 0%, #2980b9 25%, #3498db 50%, #2980b9 75%, #3498db 100%)',
+                    
+                    // Abstract art
+                    'conic-gradient(from 45deg, #e74c3c, #f39c12, #2ecc71, #3498db, #9b59b6, #e74c3c)',
+                    
+                    // Geometric patterns
+                    'repeating-linear-gradient(45deg, #f39c12 0px, #e67e22 5px, #f39c12 10px)',
+                    
+                    // Motion blur effect
+                    'linear-gradient(90deg, rgba(52,152,219,0) 0%, #3498db 50%, rgba(52,152,219,0) 100%)'
+                ];
+
+                for (let i = 0; i < 15; i++) {
+                    const frame = document.createElement('div');
+                    frame.classList.add('film-frame');
+                    frame.style.top = `${i * 44 + 10}px`;
+                    
+                    // Add animated content to each frame
+                    const content = document.createElement('div');
+                    content.classList.add('frame-content');
+                    content.style.background = frameContents[i % frameContents.length];
+                    
+                    // Add film damage overlay occasionally
+                    if (Math.random() < 0.3) {
+                        const damage = document.createElement('div');
+                        damage.classList.add('film-damage');
+                        frame.appendChild(damage);
+                    }
+                    
+                    // Add floating elements within some frames
+                    if (i % 3 === 0) {
+                        const floatingElement = document.createElement('div');
+                        floatingElement.style.cssText = `
+                            position: absolute;
+                            width: 4px;
+                            height: 4px;
+                            background: rgba(255, 255, 255, 0.8);
+                            border-radius: 50%;
+                            top: 20%;
+                            left: 20%;
+                            animation: floatInFrame 2s ease-in-out infinite;
+                        `;
+                        frame.appendChild(floatingElement);
+                        
+                        // Add CSS for floating animation
+                        if (!document.querySelector('#floatingFrameStyle')) {
+                            const style = document.createElement('style');
+                            style.id = 'floatingFrameStyle';
+                            style.textContent = `
+                                @keyframes floatInFrame {
+                                    0%, 100% { 
+                                        transform: translate(0, 0) scale(0.5);
+                                        opacity: 0.3;
+                                    }
+                                    25% { 
+                                        transform: translate(15px, -5px) scale(1);
+                                        opacity: 1;
+                                    }
+                                    50% { 
+                                        transform: translate(25px, 10px) scale(0.8);
+                                        opacity: 0.7;
+                                    }
+                                    75% { 
+                                        transform: translate(10px, 20px) scale(1.2);
+                                        opacity: 0.9;
+                                    }
+                                }
+                            `;
+                            document.head.appendChild(style);
+                        }
+                    }
+                    
+                    // Add text-like elements to some frames (simulating title cards)
+                    if (i % 4 === 1) {
+                        const textElement = document.createElement('div');
+                        textElement.style.cssText = `
+                            position: absolute;
+                            width: 80%;
+                            height: 2px;
+                            background: rgba(255, 255, 255, 0.9);
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                            animation: textScroll 1.8s linear infinite;
+                        `;
+                        frame.appendChild(textElement);
+                        
+                        const textElement2 = document.createElement('div');
+                        textElement2.style.cssText = `
+                            position: absolute;
+                            width: 60%;
+                            height: 1px;
+                            background: rgba(255, 255, 255, 0.7);
+                            top: 70%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                            animation: textScroll 1.8s linear infinite 0.3s;
+                        `;
+                        frame.appendChild(textElement2);
+                        
+                        // Add text scroll animation
+                        if (!document.querySelector('#textScrollStyle')) {
+                            const style = document.createElement('style');
+                            style.id = 'textScrollStyle';
+                            style.textContent = `
+                                @keyframes textScroll {
+                                    0% { 
+                                        width: 0%;
+                                        opacity: 0;
+                                    }
+                                    50% { 
+                                        width: 80%;
+                                        opacity: 1;
+                                    }
+                                    100% { 
+                                        width: 0%;
+                                        opacity: 0;
+                                    }
+                                }
+                            `;
+                            document.head.appendChild(style);
+                        }
+                    }
+                    
+                    frame.appendChild(content);
+                    filmStrip.appendChild(frame);
+                    
+                    // Add individual frame animations with delays
+                    gsap.set(frame, { 
+                        scale: 0.9,
+                        opacity: 0.7
+                    });
+                    
+                    gsap.to(frame, {
+                        scale: 1,
+                        opacity: 1,
+                        duration: 0.5,
+                        delay: i * 0.1,
+                        ease: "back.out(1.7)"
+                    });
+                }
+            }
+
+            function createDustParticles() {
+                for (let i = 0; i < 30; i++) {
+                    const particle = document.createElement('div');
+                    particle.classList.add('dust-particle');
+                    
+                    const size = Math.random() * 4 + 1;
+                    particle.style.width = `${size}px`;
+                    particle.style.height = `${size}px`;
+                    
+                    const x = Math.random() * window.innerWidth;
+                    const y = Math.random() * window.innerHeight;
+                    
+                    gsap.set(particle, { x, y, opacity: 0 });
+                    dustContainer.appendChild(particle);
+                    
+                    gsap.to(particle, {
+                        opacity: Math.random() * 0.6 + 0.2,
+                        duration: 2,
+                        ease: "power2.out",
+                        delay: Math.random() * 3
+                    });
+                    
+                    gsap.to(particle, {
+                        x: `+=${(Math.random() - 0.5) * 300}`,
+                        y: `+=${(Math.random() - 0.5) * 200}`,
+                        duration: 10 + Math.random() * 5,
+                        ease: "none",
+                        repeat: -1,
+                        yoyo: true,
+                        delay: Math.random() * 3
+                    });
+                }
+            }
+
+            createFilmFrames();
+            createDustParticles();
+
+            const masterTimeline = gsap.timeline();
+
+            // Entrance animation
+            masterTimeline.fromTo(filmTitle, { y: -100, opacity: 0, scale: 0.5 }, { y: 0, opacity: 1, scale: 1, duration: 2, ease: "back.out(1.7)" })
+                .fromTo(filmSubtitle, { y: 100, opacity: 0 }, { y: 0, opacity: 1, duration: 1.5, ease: "power3.out" }, "-=0.5")
+                .fromTo('.projector-body', { scale: 0, opacity: 0, rotationY: -90 }, { scale: 1, opacity: 1, rotationY: 0, duration: 2, ease: "power3.out" }, "-=1")
+                .to(lightBeam, { width: 400, opacity: 1, duration: 1.5, ease: "power2.out" }, "-=0.5")
+                .add("startContinuous")
+                
+            // Continuous animations
+            masterTimeline.to(leftReel, {
+                rotation: 360,
+                duration: 4,
+                ease: "power1.inOut",
+                repeat: -1,
+                yoyo: true
+            }, "startContinuous")
+            
+            .to(rightReel, {
+                rotation: -360,
+                duration: 3.5,
+                ease: "power1.inOut",
+                repeat: -1,
+                yoyo: true
+            }, "startContinuous")
+            
+            .to(filmStrip, {
+                y: -200,
+                duration: 6,
+                ease: "power1.inOut",
+                repeat: -1,
+                yoyo: true
+            }, "startContinuous")
+            
+            .to(lightBeam, {
+                opacity: 0.8,
+                duration: 0.1,
+                ease: "power2.inOut",
+                repeat: -1,
+                yoyo: true,
+                repeatDelay: "random(0.5, 3)"
+            }, "startContinuous");
+
+            // Add subtle reel wobble
+            gsap.to(".film-reel", {
+                rotationX: "random(-2, 2)",
+                rotationY: "random(-2, 2)",
+                duration: 5,
+                repeat: -1,
+                yoyo: true,
+                ease: "sine.inOut"
+            });
+        });
+    </script>
+    <script src="js/tracking.js"></script>
+</body>
+</html>

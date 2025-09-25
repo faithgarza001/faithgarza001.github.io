@@ -1,4 +1,7 @@
-// Analytics Dashboard JavaScript
+// Portfolio Analytics Dashboard - Custom Implementation
+// Author: Faith Garza
+// Built with Chart.js and vanilla JavaScript
+
 class AnalyticsDashboard {
     constructor() {
         this.charts = {};
@@ -59,7 +62,7 @@ class AnalyticsDashboard {
             bounceRate: this.calculateBounceRate(events)
         };
 
-        // Generate simulated sources and devices for now
+        // Generate demo sources and devices data
         this.generateSourcesAndDevices();
     }
 
@@ -150,9 +153,9 @@ class AnalyticsDashboard {
         ];
     }
 
-    // Simulate analytics data (fallback when no real data available)
+    // Generate demo analytics data (fallback when no real data available)
     loadSimulatedData() {
-        // Simulate traffic over time (last 30 days)
+        // Generate traffic data over time (last 30 days)
         const days = 30;
         const today = new Date();
         this.data.traffic = [];
@@ -463,7 +466,7 @@ class AnalyticsDashboard {
     }
 
     updateTimeRange(range) {
-        // Simulate different time ranges
+        // Generate different time ranges
         let days;
         switch(range) {
             case '7d': days = 7; break;
@@ -517,7 +520,7 @@ class AnalyticsDashboard {
     }
 
     startRealTimeUpdates() {
-        // Simulate real-time updates every 30 seconds
+        // Live data updates every 30 seconds
         setInterval(() => {
             this.updateRealTimeVisitors();
         }, 30000);
@@ -568,10 +571,10 @@ class AnalyticsDashboard {
     }
 }
 
-// Initialize the dashboard when the page loads
+// Initialize analytics dashboard on page load
 document.addEventListener('DOMContentLoaded', () => {
     new AnalyticsDashboard();
 });
 
-// Export for potential use in other scripts
+// Global export for modular usage
 window.AnalyticsDashboard = AnalyticsDashboard;

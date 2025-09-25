@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mystical Orb to Cherry Blossom Transformation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        :root {
+            --deep-space: #0a0b1e;
+            --midnight: #1a1b3a;
+            --cosmic-blue: #2d3561;
+            --orb-core: #00d4ff;
+            --orb-rim: #ff6b9d;
+            --magic-purple: #c471ed;
+            --petal-pink: #ffb3d1;
+            --petal-white: #ffeef8;
+            --trunk-brown: #4a2c2a;
+            --trunk-light: #6b4423;
+            --energy-gold: #ffd700;
+        }
+
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+
+        body {
+            height: 100vh;
+            background: radial-gradient(ellipse at center, var(--cosmic-blue) 0%, var(--midnight) 40%, var(--deep-space) 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: 
+                radial-gradient(2px 2px at 20px 30px, #ffffff20, transparent),
+                radial-gradient(2px 2px at 40px 70px, #ffffff15, transparent),
+                radial-gradient(1px 1px at 90px 40px, #ffffff25, transparent),
+                radial-gradient(1px 1px at 130px 80px, #ffffff20, transparent),
+                radial-gradient(2px 2px at 160px 30px, #ffffff15, transparent);
+            background-repeat: repeat;
+            background-size: 200px 100px;
+            animation: starsFloat 20s linear infinite;
+        }
+
+        @keyframes starsFloat {
+            0% { transform: translateY(0px); }
+            100% { transform: translateY(-100px); }
+        }
+
+        .scene {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .instruction {
+            position: absolute;
+            top: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255, 255, 255, 0.7);
+            font-family: 'Dancing Script', cursive;
+            font-size: 24px;
+            font-weight: 600;
+            text-align: center;
+            opacity: 1;
+            animation: pulseGlow 3s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 0.7; text-shadow: 0 0 10px rgba(255, 255, 255, 0.3); }
+            50% { opacity: 1; text-shadow: 0 0 20px rgba(255, 255, 255, 0.6); }
+        }
+
+        .orb-container {
+            position: relative;
+            width: 320px;
+            height: 320px;
+            z-index: 10;
+        }
+
+        /* Enhanced Mystical Orb */
+        .orb {
+            position: absolute;
+            top: 50%; left: 50%; 
+            transform: translate(-50%, -50%);
+            width: 100%; height: 100%;
+            border-radius: 50%;
+            background: 
+                radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.4) 0%, transparent 40%),
+                radial-gradient(circle at center, var(--orb-core) 0%, var(--magic-purple) 40%, var(--orb-rim) 100%);
+            box-shadow: 
+                0 0 50px var(--orb-core),
+                0 0 100px var(--magic-purple),
+                0 0 150px var(--orb-rim),
+                inset 0 0 50px rgba(255, 255, 255, 0.1);
+            overflow: visible;
+            filter: drop-shadow(0 0 30px var(--orb-core));
+        }
+
+        .orb::before {
+            content: '';
+            position: absolute;
+            top: -10px; left: -10px;
+            width: calc(100% + 20px);
+            height: calc(100% + 20px);
+            border-radius: 50%;
+            background: conic-gradient(
+                var(--energy-gold) 0deg,
+                var(--orb-core) 60deg,
+                var(--magic-purple) 120deg,
+                var(--orb-rim) 180deg,
+                var(--energy-gold) 240deg,
+                var(--orb-core) 300deg,
+                var(--energy-gold) 360deg
+            );
+            opacity: 0.6;
+            z-index: -1;
+            animation: rotateRing 8s linear infinite;
+        }
+
+        @keyframes rotateRing {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .orb-energy {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            border-radius: 50%;
+            background: linear-gradient(45deg, 
+                transparent 30%, 
+                var(--orb-core) 50%, 
+                transparent 70%
+            );
+            animation: energyPulse 4s ease-in-out infinite;
+            mix-blend-mode: screen;
+        }
+
+        @keyframes energyPulse {
+            0%, 100% { 
+                transform: scale(1) rotate(0deg); 
+                opacity: 0.8; 
+            }
+            50% { 
+                transform: scale(1.1) rotate(180deg); 
+                opacity: 1; 
+            }
+        }
+
+        .orb-core {
+            position: absolute;
+            top: 50%; left: 50%; 
+            transform: translate(-50%, -50%);
+            width: 40%; height: 40%;
+            background: radial-gradient(circle at 30% 30%, #ffffff 0%, var(--orb-core) 50%, transparent 100%);
+            border-radius: 50%;
+            animation: coreFlicker 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes coreFlicker {
+            0% { opacity: 0.8; transform: translate(-50%, -50%) scale(1); }
+            100% { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
+        }
+
+        /* Enhanced Tree System */
+        .tree-container {
+            position: absolute;
+            bottom: -50px;
+            left: 50%;
+            transform: translateX(-50%) scale(0);
+            transform-origin: bottom center;
+            opacity: 0;
+            width: 500px;
+            height: 600px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            z-index: 5;
+        }
+
+        .root-system {
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 40px;
+        }
+
+        .root {
+            position: absolute;
+            background: linear-gradient(90deg, var(--trunk-brown) 0%, var(--trunk-light) 50%, var(--trunk-brown) 100%);
+            border-radius: 20px;
+            opacity: 0.7;
+        }
+
+        .root-1 { bottom: 0; left: 30%; width: 80px; height: 8px; transform: rotate(-15deg); }
+        .root-2 { bottom: 0; right: 30%; width: 70px; height: 6px; transform: rotate(20deg); }
+        .root-3 { bottom: 5px; left: 45%; width: 60px; height: 5px; transform: rotate(-5deg); }
+
+        .trunk {
+            position: relative;
+            width: 45px;
+            height: 220px;
+            background: linear-gradient(180deg, 
+                var(--trunk-light) 0%, 
+                var(--trunk-brown) 30%, 
+                #3a1a1a 70%, 
+                var(--trunk-brown) 100%
+            );
+            border-radius: 25px 25px 15px 15px;
+            box-shadow: 
+                inset -8px 0 15px rgba(0,0,0,0.4),
+                inset 8px 0 15px rgba(255,255,255,0.1);
+            overflow: visible;
+        }
+
+        .trunk::before {
+            content: '';
+            position: absolute;
+            top: 20px; left: -5px;
+            width: 15px; height: 30px;
+            background: var(--trunk-brown);
+            border-radius: 10px;
+            opacity: 0.8;
+        }
+
+        .trunk::after {
+            content: '';
+            position: absolute;
+            top: 80px; right: -8px;
+            width: 20px; height: 25px;
+            background: var(--trunk-light);
+            border-radius: 12px;
+            opacity: 0.6;
+        }
+
+        .branch {
+            position: absolute;
+            background: linear-gradient(90deg, var(--trunk-brown) 0%, var(--trunk-light) 100%);
+            border-radius: 15px;
+            box-shadow: inset 0 -3px 8px rgba(0,0,0,0.3);
+        }
+
+        .branch-1 { 
+            top: 140px; right: 50%; 
+            width: 120px; height: 16px; 
+            transform-origin: right center; 
+            transform: rotate(-35deg); 
+        }
+        .branch-2 { 
+            top: 160px; left: 50%; 
+            width: 100px; height: 14px; 
+            transform-origin: left center; 
+            transform: rotate(25deg); 
+        }
+        .branch-3 { 
+            top: 100px; right: 50%; 
+            width: 140px; height: 18px; 
+            transform-origin: right center; 
+            transform: rotate(-50deg); 
+        }
+        .branch-4 { 
+            top: 120px; left: 50%; 
+            width: 130px; height: 15px; 
+            transform-origin: left center; 
+            transform: rotate(45deg); 
+        }
+        .branch-5 { 
+            top: 80px; right: 50%; 
+            width: 90px; height: 12px; 
+            transform-origin: right center; 
+            transform: rotate(-20deg); 
+        }
+        .branch-6 { 
+            top: 180px; left: 50%; 
+            width: 80px; height: 11px; 
+            transform-origin: left center; 
+            transform: rotate(15deg); 
+        }
+
+        .blossom-container {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            overflow: visible;
+        }
+
+        .blossom {
+            position: absolute;
+            width: 20px; height: 20px;
+            z-index: 10;
+            filter: drop-shadow(0 0 5px var(--petal-pink));
+        }
+
+        .blossom::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: radial-gradient(ellipse at center, var(--petal-white) 0%, var(--petal-pink) 100%);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            transform: rotate(0deg);
+        }
+
+        .blossom::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: radial-gradient(ellipse at center, var(--petal-white) 0%, var(--petal-pink) 100%);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            transform: rotate(72deg);
+        }
+
+        /* Enhanced Particles */
+        .magic-particle {
+            position: absolute;
+            background: radial-gradient(circle, var(--energy-gold) 0%, var(--orb-core) 50%, transparent 100%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 20;
+        }
+
+        .energy-trail {
+            position: absolute;
+            width: 3px;
+            height: 20px;
+            background: linear-gradient(180deg, var(--orb-core) 0%, transparent 100%);
+            border-radius: 2px;
+            pointer-events: none;
+        }
+
+        .petal-particle {
+            position: absolute;
+            width: 12px; 
+            height: 12px;
+            background: radial-gradient(ellipse at center, var(--petal-white) 0%, var(--petal-pink) 100%);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            pointer-events: none;
+            z-index: 15;
+        }
+
+        /* UI Enhancement: Click indicator */
+        .click-ripple {
+            position: absolute;
+            border: 2px solid var(--orb-core);
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0;
+        }
+
+        @media (max-width: 768px) {
+            .orb-container {
+                width: 250px;
+                height: 250px;
+            }
+            
+            .tree-container {
+                width: 350px;
+                height: 450px;
+            }
+            
+            .instruction {
+                font-size: 18px;
+                top: 15%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="scene">
+        <div class="instruction">Click the mystical orb to witness the transformation</div>
+        
+        <!-- Mystical Orb -->
+        <div class="orb-container" id="orbContainer">
+            <div class="orb" id="orb">
+                <div class="orb-energy"></div>
+                <div class="orb-core"></div>
+            </div>
+        </div>
+
+        <!-- Cherry Blossom Tree -->
+        <div class="tree-container" id="treeContainer">
+            <div class="root-system">
+                <div class="root root-1"></div>
+                <div class="root root-2"></div>
+                <div class="root root-3"></div>
+            </div>
+            
+            <div class="trunk">
+                <div class="branch branch-1"></div>
+                <div class="branch branch-2"></div>
+                <div class="branch branch-3"></div>
+                <div class="branch branch-4"></div>
+                <div class="branch branch-5"></div>
+                <div class="branch branch-6"></div>
+            </div>
+            
+            <div class="blossom-container" id="blossomContainer"></div>
+        </div>
+    </div>
+
+    <script>
+        // Enhanced UX-focused animation system
+        class MysticalTransformation {
+            constructor() {
+                this.orb = document.getElementById('orb');
+                this.orbContainer = document.getElementById('orbContainer');
+                this.treeContainer = document.getElementById('treeContainer');
+                this.blossomContainer = document.getElementById('blossomContainer');
+                this.scene = document.querySelector('.scene');
+                this.instruction = document.querySelector('.instruction');
+                
+                this.isTransformed = false;
+                this.isAnimating = false;
+                
+                this.setupEventListeners();
+                this.createAmbientEffects();
+            }
+
+            setupEventListeners() {
+                this.scene.addEventListener('click', (e) => this.handleClick(e));
+                
+                // Enhanced hover effects
+                this.orbContainer.addEventListener('mouseenter', () => {
+                    if (!this.isTransformed && !this.isAnimating) {
+                        gsap.to(this.orb, {
+                            scale: 1.05,
+                            duration: 0.5,
+                            ease: "power2.out"
+                        });
+                    }
+                });
+                
+                this.orbContainer.addEventListener('mouseleave', () => {
+                    if (!this.isTransformed && !this.isAnimating) {
+                        gsap.to(this.orb, {
+                            scale: 1,
+                            duration: 0.5,
+                            ease: "power2.out"
+                        });
+                    }
+                });
+            }
+
+            handleClick(e) {
+                if (this.isAnimating) return;
+                
+                this.createClickRipple(e.clientX, e.clientY);
+                
+                if (!this.isTransformed) {
+                    this.transformToTree();
+                } else {
+                    this.transformToOrb();
+                }
+            }
+
+            createClickRipple(x, y) {
+                const ripple = document.createElement('div');
+                ripple.className = 'click-ripple';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.style.width = '0px';
+                ripple.style.height = '0px';
+                document.body.appendChild(ripple);
+
+                gsap.fromTo(ripple, 
+                    { 
+                        width: 0, 
+                        height: 0, 
+                        opacity: 1,
+                        x: -0,
+                        y: -0
+                    },
+                    { 
+                        width: 300, 
+                        height: 300,
+                        x: -150,
+                        y: -150,
+                        opacity: 0,
+                        duration: 1,
+                        ease: "power2.out",
+                        onComplete: () => ripple.remove()
+                    }
+                );
+            }
+
+            transformToTree() {
+                this.isAnimating = true;
+                
+                // Hide instruction
+                gsap.to(this.instruction, { opacity: 0, duration: 0.5 });
+
+                const tl = gsap.timeline({
+                    onComplete: () => {
+                        this.isTransformed = true;
+                        this.isAnimating = false;
+                        this.addBlossoms();
+                        this.startPetalFall();
+                    }
+                });
+
+                // Phase 1: Orb energy buildup (2s)
+                tl.to(this.orb, {
+                    scale: 1.3,
+                    duration: 1,
+                    ease: "power2.inOut",
+                    onStart: () => this.createEnergyBuildup()
+                })
+                .to(this.orb, {
+                    scale: 0.8,
+                    duration: 0.5,
+                    ease: "power2.in"
+                })
+                .to(this.orb, {
+                    scale: 1.5,
+                    duration: 0.5,
+                    ease: "power2.out"
+                });
+
+                // Phase 2: Explosive transformation (1.5s)
+                tl.call(() => this.createEnergyExplosion())
+                .to(this.orbContainer, {
+                    scale: 0,
+                    opacity: 0,
+                    duration: 0.8,
+                    ease: "power3.in",
+                    onStart: () => this.createMagicParticles()
+                }, "-=0.3");
+
+                // Phase 3: Tree emergence (2.5s)
+                tl.fromTo(this.treeContainer, 
+                    { 
+                        scale: 0, 
+                        opacity: 0,
+                        y: 100,
+                        rotationX: -90
+                    },
+                    { 
+                        scale: 1, 
+                        opacity: 1,
+                        y: 0,
+                        rotationX: 0,
+                        duration: 1.5,
+                        ease: "elastic.out(1, 0.5)",
+                        onStart: () => this.createGrowthEffects()
+                    }, "-=0.5");
+
+                // Phase 4: Branch animation
+                const branches = document.querySelectorAll('.branch');
+                branches.forEach((branch, index) => {
+                    tl.fromTo(branch,
+                        { scaleX: 0 },
+                        { 
+                            scaleX: 1, 
+                            duration: 0.6,
+                            ease: "power2.out",
+                            delay: index * 0.1
+                        }, "-=1.2");
+                });
+
+                // Phase 5: Root system
+                const roots = document.querySelectorAll('.root');
+                roots.forEach((root, index) => {
+                    tl.fromTo(root,
+                        { scaleX: 0, opacity: 0 },
+                        { 
+                            scaleX: 1, 
+                            opacity: 0.7,
+                            duration: 0.4,
+                            ease: "power2.out",
+                            delay: index * 0.05
+                        }, "-=0.8");
+                });
+            }
+
+            transformToOrb() {
+                this.isAnimating = true;
+                
+                const tl = gsap.timeline({
+                    onComplete: () => {
+                        this.isTransformed = false;
+                        this.isAnimating = false;
+                        gsap.to(this.instruction, { opacity: 1, duration: 1 });
+                    }
+                });
+
+                // Clear existing blossoms
+                this.blossomContainer.innerHTML = '';
+
+                // Phase 1: Tree dissolution
+                tl.to(this.treeContainer, {
+                    scale: 0,
+                    opacity: 0,
+                    y: -50,
+                    duration: 1.2,
+                    ease: "power2.in",
+                    onStart: () => this.createDissolveEffect()
+                });
+
+                // Phase 2: Orb reformation
+                tl.fromTo(this.orbContainer,
+                    { 
+                        scale: 0, 
+                        opacity: 0,
+                        rotationY: 180
+                    },
+                    { 
+                        scale: 1, 
+                        opacity: 1,
+                        rotationY: 0,
+                        duration: 1.5,
+                        ease: "elastic.out(1, 0.3)",
+                        onStart: () => this.createReformationEffect()
+                    }, "-=0.3");
+            }
+
+            createEnergyBuildup() {
+                for (let i = 0; i < 20; i++) {
+                    setTimeout(() => {
+                        const particle = document.createElement('div');
+                        particle.className = 'magic-particle';
+                        particle.style.width = Math.random() * 8 + 4 + 'px';
+                        particle.style.height = particle.style.width;
+                        
+                        const orbRect = this.orb.getBoundingClientRect();
+                        const centerX = orbRect.left + orbRect.width / 2;
+                        const centerY = orbRect.top + orbRect.height / 2;
+                        
+                        particle.style.left = centerX + 'px';
+                        particle.style.top = centerY + 'px';
+                        document.body.appendChild(particle);
+
+                        gsap.fromTo(particle,
+                            { 
+                                scale: 0,
+                                x: 0,
+                                y: 0
+                            },
+                            { 
+                                scale: 1,
+                                x: (Math.random() - 0.5) * 300,
+                                y: (Math.random() - 0.5) * 300,
+                                opacity: 0,
+                                duration: 2,
+                                ease: "power2.out",
+                                onComplete: () => particle.remove()
+                            }
+                        );
+                    }, i * 50);
+                }
+            }
+
+            createEnergyExplosion() {
+                for (let i = 0; i < 50; i++) {
+                    const particle = document.createElement('div');
+                    particle.className = 'magic-particle';
+                    particle.style.width = Math.random() * 12 + 6 + 'px';
+                    particle.style.height = particle.style.width;
+                    
+                    const orbRect = this.orb.getBoundingClientRect();
+                    const centerX = orbRect.left + orbRect.width / 2;
+                    const centerY = orbRect.top + orbRect.height / 2;
+                    
+                    particle.style.left = centerX + 'px';
+                    particle.style.top = centerY + 'px';
+                    document.body.appendChild(particle);
+
+                    const angle = (Math.PI * 2 * i) / 50;
+                    const velocity = Math.random() * 400 + 200;
+                    const endX = Math.cos(angle) * velocity;
+                    const endY = Math.sin(angle) * velocity;
+
+                    gsap.fromTo(particle,
+                        { 
+                            scale: 1,
+                            x: 0,
+                            y: 0,
+                            opacity: 1
+                        },
+                        { 
+                            x: endX,
+                            y: endY,
+                            scale: 0,
+                            opacity: 0,
+                            duration: 1.5,
+                            ease: "power3.out",
+                            onComplete: () => particle.remove()
+                        }
+                    );
+                }
+            }
+
+            createMagicParticles() {
+                for (let i = 0; i < 30; i++) {
+                    setTimeout(() => {
+                        const particle = document.createElement('div');
+                        particle.className = 'petal-particle';
+                        
+                        const orbRect = this.orb.getBoundingClientRect();
+                        const centerX = orbRect.left + orbRect.width / 2;
+                        const centerY = orbRect.top + orbRect.height / 2;
+                        
+                        particle.style.left = centerX + (Math.random() - 0.5) * 100 + 'px';
+                        particle.style.top = centerY + (Math.random() - 0.5) * 100 + 'px';
+                        document.body.appendChild(particle);
+
+                        const treeRect = this.treeContainer.getBoundingClientRect();
+                        const treeCenterX = treeRect.left + treeRect.width / 2;
+                        const treeCenterY = treeRect.top + treeRect.height / 2;
+
+                        gsap.to(particle, {
+                            x: treeCenterX - parseFloat(particle.style.left),
+                            y: treeCenterY - parseFloat(particle.style.top),
+                            scale: 0,
+                            opacity: 0,
+                            duration: 1.5,
+                            ease: "power2.inOut",
+                            delay: Math.random() * 0.5,
+                            onComplete: () => particle.remove()
+                        });
+                    }, i * 30);
+                }
+            }
+
+            createGrowthEffects() {
+                for (let i = 0; i < 15; i++) {
+                    setTimeout(() => {
+                        const trail = document.createElement('div');
+                        trail.className = 'energy-trail';
+                        
+                        const treeRect = this.treeContainer.getBoundingClientRect();
+                        const centerX = treeRect.left + treeRect.width / 2;
+                        const baseY = treeRect.bottom;
+                        
+                        trail.style.left = centerX + (Math.random() - 0.5) * 100 + 'px';
+                        trail.style.top = baseY + 'px';
+                        document.body.appendChild(trail);
+
+                        gsap.fromTo(trail,
+                            { 
+                                y: 0,
+                                opacity: 1,
+                                scaleY: 0
+                            },
+                            { 
+                                y: -200,
+                                opacity: 0,
+                                scaleY: 1,
+                                duration: 2,
+                                ease: "power2.out",
+                                onComplete: () => trail.remove()
+                            }
+                        );
+                    }, i * 100);
+                }
+            }
+
+            addBlossoms() {
+                const branches = [
+                    { x: 0.3, y: 0.4, count: 8 },
+                    { x: 0.7, y: 0.45, count: 6 },
+                    { x: 0.2, y: 0.25, count: 10 },
+                    { x: 0.8, y: 0.3, count: 7 },
+                    { x: 0.35, y: 0.15, count: 5 },
+                    { x: 0.65, y: 0.5, count: 4 }
+                ];
+
+                branches.forEach((branch, branchIndex) => {
+                    for (let i = 0; i < branch.count; i++) {
+                        setTimeout(() => {
+                            const blossom = document.createElement('div');
+                            blossom.className = 'blossom';
+                            
+                            const offsetX = (Math.random() - 0.5) * 60;
+                            const offsetY = (Math.random() - 0.5) * 40;
+                            
+                            blossom.style.left = (branch.x * 100) + offsetX/5 + '%';
+                            blossom.style.top = (branch.y * 100) + offsetY/5 + '%';
+                            
+                            this.blossomContainer.appendChild(blossom);
+
+                            gsap.fromTo(blossom,
+                                { scale: 0, opacity: 0, rotation: 0 },
+                                { 
+                                    scale: 1, 
+                                    opacity: 1,
+                                    rotation: Math.random() * 360,
+                                    duration: 0.8,
+                                    ease: "elastic.out(1, 0.5)",
+                                    delay: Math.random() * 0.5
+                                }
+                            );
+                        }, (branchIndex * 100) + (i * 50));
+                    }
+                });
+            }
+
+            startPetalFall() {
+                setInterval(() => {
+                    if (this.isTransformed && Math.random() < 0.3) {
+                        this.createFallingPetal();
+                    }
+                }, 2000);
+            }
+
+            createFallingPetal() {
+                const petal = document.createElement('div');
+                petal.className = 'petal-particle';
+                petal.style.left = Math.random() * 100 + '%';
+                petal.style.top = '-20px';
+                document.body.appendChild(petal);
+
+                gsap.to(petal, {
+                    y: window.innerHeight + 50,
+                    x: (Math.random() - 0.5) * 200,
+                    rotation: Math.random() * 720,
+                    duration: Math.random() * 3 + 4,
+                    ease: "none",
+                    onComplete: () => petal.remove()
+                });
+            }
+
+            createDissolveEffect() {
+                const blossoms = this.blossomContainer.querySelectorAll('.blossom');
+                blossoms.forEach((blossom, index) => {
+                    gsap.to(blossom, {
+                        scale: 0,
+                        opacity: 0,
+                        y: -50,
+                        duration: 0.5,
+                        delay: index * 0.05,
+                        ease: "power2.in"
+                    });
+                });
+            }
+
+            createReformationEffect() {
+                for (let i = 0; i < 25; i++) {
+                    const particle = document.createElement('div');
+                    particle.className = 'magic-particle';
+                    particle.style.width = Math.random() * 6 + 3 + 'px';
+                    particle.style.height = particle.style.width;
+                    
+                    const startX = Math.random() * window.innerWidth;
+                    const startY = Math.random() * window.innerHeight;
+                    
+                    particle.style.left = startX + 'px';
+                    particle.style.top = startY + 'px';
+                    document.body.appendChild(particle);
+
+                    const orbRect = this.orb.getBoundingClientRect();
+                    const centerX = orbRect.left + orbRect.width / 2;
+                    const centerY = orbRect.top + orbRect.height / 2;
+
+                    gsap.fromTo(particle,
+                        { scale: 0, opacity: 0 },
+                        { 
+                            scale: 1,
+                            opacity: 1,
+                            duration: 0.3,
+                            ease: "power2.out"
+                        }
+                    );
+
+                    gsap.to(particle, {
+                        x: centerX - startX,
+                        y: centerY - startY,
+                        scale: 0,
+                        duration: 1.2,
+                        delay: 0.3,
+                        ease: "power2.inOut",
+                        onComplete: () => particle.remove()
+                    });
+                }
+            }
+
+            createAmbientEffects() {
+                // Subtle floating particles for ambience
+                setInterval(() => {
+                    if (Math.random() < 0.1) {
+                        const particle = document.createElement('div');
+                        particle.style.position = 'absolute';
+                        particle.style.width = '2px';
+                        particle.style.height = '2px';
+                        particle.style.background = 'rgba(255, 255, 255, 0.3)';
+                        particle.style.borderRadius = '50%';
+                        particle.style.pointerEvents = 'none';
+                        particle.style.left = Math.random() * window.innerWidth + 'px';
+                        particle.style.top = window.innerHeight + 'px';
+                        document.body.appendChild(particle);
+
+                        gsap.to(particle, {
+                            y: -50,
+                            x: (Math.random() - 0.5) * 100,
+                            opacity: 0,
+                            duration: Math.random() * 5 + 3,
+                            ease: "none",
+                            onComplete: () => particle.remove()
+                        });
+                    }
+                }, 3000);
+            }
+        }
+
+        // Initialize the transformation system
+        document.addEventListener('DOMContentLoaded', () => {
+            new MysticalTransformation();
+        });
+    </script>
+    <script src="js/tracking.js"></script>
+</body>
+</html>

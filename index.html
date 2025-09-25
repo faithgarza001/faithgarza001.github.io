@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Home</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
           crossorigin="anonymous">
     <link rel="stylesheet"  href="css/home.css" />
@@ -22,12 +22,73 @@
         <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" /></svg>
 </div>
 <div class="app">
-    <!-- Add this button in your main layout, above or inside the sidebar -->
-    <button id="sidebarToggle" class="sidebar-toggle d-md-none">
+    <!-- Mobile sidebar toggle (Bootstrap Offcanvas) -->
+    <button class="btn btn-outline-light d-md-none ms-2 mt-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar" aria-controls="mobileSidebar" aria-label="Open menu">
         <i class="fas fa-bars"></i>
     </button>
+    <!-- Offcanvas Sidebar for mobile -->
+    <div class="offcanvas offcanvas-start d-md-none" tabindex="-1" id="mobileSidebar" aria-labelledby="mobileSidebarLabel" style="--bs-offcanvas-width: 260px; background-color: var(--dropdown-bg); color: var(--theme-color);">
+        <div class="offcanvas-header border-bottom" style="border-color: var(--border-color);">
+            <h5 class="offcanvas-title" id="mobileSidebarLabel">Menu</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div class="mb-3">
+                <div class="text-uppercase small mb-2" style="color: var(--inactive-color);">Apps</div>
+                <div class="list-group list-group-flush">
+                    <a class="list-group-item list-group-item-action bg-transparent text-light" href="index.html">
+                        <i class="fas fa-brain me-2"></i> DevOS: Faith Garza
+                    </a>
+                    <a class="list-group-item list-group-item-action bg-transparent text-light" href="developer_projects.html">
+                        <i class="fas fa-th-large me-2"></i> Developer Projects
+                    </a>
+                    <a class="list-group-item list-group-item-action bg-transparent text-light" href="analytics.html">
+                        <i class="fas fa-chart-line me-2"></i> Site Analytics
+                        <span class="badge bg-danger ms-2">live</span>
+                    </a>
+                </div>
+            </div>
+            <div class="mb-3">
+                <div class="text-uppercase small mb-2" style="color: var(--inactive-color);">Categories</div>
+                <div class="list-group list-group-flush">
+                    <a class="list-group-item list-group-item-action bg-transparent text-light" href="photography.html">
+                        <i class="fas fa-camera me-2"></i> Photography
+                        <span class="badge bg-success ms-2">new</span>
+                    </a>
+                    <a class="list-group-item list-group-item-action bg-transparent text-light" href="web_design.html">
+                        <i class="fas fa-laptop-code me-2"></i> UI|UX Projects
+                    </a>
+                    <a class="list-group-item list-group-item-action bg-transparent text-light" href="Multimedia.html">
+                        <i class="fas fa-film me-2"></i> Videography
+                    </a>
+                </div>
+            </div>
+            <div class="mb-3">
+                <div class="text-uppercase small mb-2" style="color: var(--inactive-color);">Exposure To</div>
+                <div class="list-group list-group-flush">
+                    <a class="list-group-item list-group-item-action bg-transparent text-light" href="#">
+                        <i class="fas fa-robot me-2"></i> Mechatronics
+                    </a>
+                </div>
+            </div>
+            <div>
+                <div class="text-uppercase small mb-2" style="color: var(--inactive-color);">Resource Links</div>
+                <div class="list-group list-group-flush">
+                    <a class="list-group-item list-group-item-action bg-transparent text-light" href="about_me.html">
+                        <i class="fas fa-user me-2"></i> About Me
+                    </a>
+                    <a class="list-group-item list-group-item-action bg-transparent text-light" href="#">
+                        <i class="fab fa-behance me-2"></i> Behance
+                    </a>
+                    <a class="list-group-item list-group-item-action bg-transparent text-light" href="#">
+                        <i class="fas fa-comments me-2"></i> Social Forum
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="wrapper">
-        <div class="left-side">
+    <div class="left-side d-none d-md-block">
             <div class="side-wrapper">
                 <div class="side-title">Apps</div>
                 <div class="side-menu">
@@ -40,7 +101,7 @@
                         </svg>
                         DevOS: Faith Garza
                     </a>
-                    <a href="dev_projects.html">
+                    <a href="developer_projects.html">
                         <svg viewBox="0 0 512 512">
                             <g xmlns="http://www.w3.org/2000/svg" fill="currentColor">
                                 <path d="M0 0h128v128H0zm0 0M192 0h128v128H192zm0 0M384 0h128v128H384zm0 0M0 192h128v128H0zm0 0" data-original="#bfc9d1" />
@@ -62,12 +123,13 @@
             <div class="side-wrapper">
                 <div class="side-title">Categories</div>
                 <div class="side-menu">
-                    <a href="#">
+                    <a href="photography.html">
                         <svg viewBox="0 0 488.455 488.455" fill="currentColor">
                             <path d="M287.396 216.317c23.845 23.845 23.845 62.505 0 86.35s-62.505 23.845-86.35 0-23.845-62.505 0-86.35 62.505-23.845 86.35 0" />
                             <path d="M427.397 91.581H385.21l-30.544-61.059H133.76l-30.515 61.089-42.127.075C27.533 91.746.193 119.115.164 152.715L0 396.86c0 33.675 27.384 61.074 61.059 61.074h366.338c33.675 0 61.059-27.384 61.059-61.059V152.639c-.001-33.674-27.385-61.058-61.059-61.058zM244.22 381.61c-67.335 0-122.118-54.783-122.118-122.118s54.783-122.118 122.118-122.118 122.118 54.783 122.118 122.118S311.555 381.61 244.22 381.61z" />
                         </svg>
                         Photography
+                        <span class="notification-number creative">new</span>
                     </a>
                     <a href="web_design.html">
                         <svg viewBox="0 0 512 512" fill="currentColor">
@@ -82,12 +144,25 @@
                         </svg>
                         Videography
                     </a>
-                    <a href="#">
+                   <!--  <a href="videos_multimedia.html">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="23 7 16 12 23 17 23 7"></polygon>
+                            <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+                        </svg>
+                        Video Gallery
+                    </a>
+                  <a href="Art.html">
                         <svg viewBox="0 0 512 512" fill="currentColor">
                             <path d="M499.377 46.402c-8.014-8.006-18.662-12.485-29.985-12.613a41.13 41.13 0 00-.496-.003c-11.142 0-21.698 4.229-29.771 11.945L198.872 275.458c25.716 6.555 47.683 23.057 62.044 47.196a113.544 113.544 0 0110.453 23.179L500.06 106.661C507.759 98.604 512 88.031 512 76.89c0-11.507-4.478-22.33-12.623-30.488zM176.588 302.344a86.035 86.035 0 00-3.626-.076c-20.273 0-40.381 7.05-56.784 18.851-19.772 14.225-27.656 34.656-42.174 53.27C55.8 397.728 27.795 409.14 0 416.923c16.187 42.781 76.32 60.297 115.752 61.24 1.416.034 2.839.051 4.273.051 44.646 0 97.233-16.594 118.755-60.522 23.628-48.224-5.496-112.975-62.192-115.348z" />
                         </svg>
-                        Illustrations
+                        Digital Art
                     </a>
+                    <a href="animTest.html">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                        </svg>
+                        Animation Tests
+                    </a>-->
                 </div>
             </div>
             <div class="side-wrapper">
@@ -104,6 +179,13 @@
             <div class="side-wrapper">
                 <div class="side-title">Resource Links</div>
                 <div class="side-menu">
+                    <a href="about_me.html">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                        About Me
+                    </a>
                     <a href="#">
                         <svg viewBox="0 0 512 512" fill="currentColor">
                             <path d="M181 181h-60v60h60c16.54 0 30-13.46 30-30s-13.46-30-30-30zm0 0M181 271h-60v60h60c16.54 0 30-13.46 30-30s-13.46-30-30-30zm0 0M346 241c-19.555 0-36.238 12.54-42.438 30h84.875c-6.199-17.46-22.882-30-42.437-30zm0 0" />
@@ -141,7 +223,7 @@
                             <small class="fw-bold">Explore my work through an immersive experience featuring smooth animations and responsive design. Whether you're seeking a collaborator for your next digital venture or simply curious about my capabilities, you'll find everything you need to know right here.</small>
 
                             <div class="cta-buttons">
-                                <a href="dev_projects.html" class="btn btn-primary">View My Work</a>
+                                <a href="developer_projects.html" class="btn btn-primary">View My Work</a>
                                 <a href="img/LatestResume%202025.pdf" class="btn btn-secondary" download>Download Resume</a>
                                 <a href="#schedule" class="btn btn-info">Schedule a Call</a>
                             </div>
@@ -234,19 +316,53 @@
                              </div>
                          </div>
                      </div>
-                     <div class="app-card">
-                         <h5 class="fw-bold mb-3">
-                             Active Learning
-                         </h5>
-                         <div class="container-1 d-flex justify-content-center">
-
-                         </div>
-                     </div>
-                     <div class="app-card">
-                         <h5 class="fw-bold">
-                             Career Highlights
-                         </h5>
-                     </div>
+                    <div class="app-card" id="activeLearningCard">
+                        <style>
+                            /* Scoped: Active Learning + Career Highlights */
+                            #activeLearningCard, #careerHighlightsCard {position:relative; overflow:hidden;}
+                            #activeLearningCard h5, #careerHighlightsCard h5 {font-weight:700;}
+                            /* Progress */
+                            #activeLearningCard .al-progress-block {margin-top:.15rem; margin-bottom:1.15rem;}
+                            #activeLearningCard .al-progress-head {font-size:.72rem; letter-spacing:.04em; font-weight:600; opacity:.9; display:flex; justify-content:space-between; align-items:center; margin-bottom:.45rem;}
+                            #activeLearningCard .al-bar {height:8px; width:100%; background:rgba(255,255,255,0.15); border-radius:6px; position:relative; overflow:hidden;}
+                            #activeLearningCard .al-bar span {position:absolute; inset:0; width:60%; background:linear-gradient(90deg,#4BE7B0,#2DBA76); box-shadow:0 0 0 1px rgba(255,255,255,0.12) inset;}
+                            /* Lines */
+                            #activeLearningCard .al-line {display:flex; gap:.65rem; font-size:.75rem; line-height:1.15rem; margin-bottom:.65rem; align-items:flex-start;}
+                            #activeLearningCard .al-line:last-child{margin-bottom:0;}
+                            #activeLearningCard .al-line i {font-size:.9rem; opacity:.95; width:18px; text-align:center;}
+                            #activeLearningCard .al-emph {font-weight:500;}
+                            /* Career Highlights list */
+                            #careerHighlightsCard .ch-list {list-style:none; margin:0; padding:0;}
+                            #careerHighlightsCard .ch-item {display:flex; gap:.7rem; font-size:.74rem; line-height:1.18rem; margin-bottom:.75rem;}
+                            #careerHighlightsCard .ch-item:last-child{margin-bottom:0;}
+                            #careerHighlightsCard .ch-item i {font-size:.95rem; width:18px; text-align:center; opacity:.95;}
+                            @media (max-width:768px){
+                                #activeLearningCard .al-line, #careerHighlightsCard .ch-item {font-size:.72rem;}
+                                #activeLearningCard .al-bar {height:7px;}
+                            }
+                        </style>
+                        <h5 class="mb-3">Active Learning</h5>
+                        <div class="al-progress-block">
+                            <div class="al-progress-head"><span>Unreal Systems Architecture</span><span class="text-muted" style="font-weight:500;">60%</span></div>
+                            <div class="al-bar" role="progressbar" aria-label="Unreal Systems Architecture" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"><span></span></div>
+                        </div>
+                        <div class="al-line">
+                            <i class="fas fa-book"></i>
+                            <div>Reading: <span class="al-emph">“Designing Data‑Intensive Applications”</span></div>
+                        </div>
+                        <div class="al-line">
+                            <i class="fas fa-code"></i>
+                            <div>Experimenting with: <span class="al-emph">WebSockets + React</span></div>
+                        </div>
+                    </div>
+                    <div class="app-card" id="careerHighlightsCard">
+                        <h5 class="mb-3">Career Highlights</h5>
+                        <ul class="ch-list">
+                            <li class="ch-item"><i class="fas fa-rocket"></i><div>Optimized dashboard load time by <strong>70%</strong> across applications</div></li>
+                            <li class="ch-item"><i class="far fa-lightbulb"></i><div>Architected microservice reducing infra costs <strong>20%</strong></div></li>
+                            <li class="ch-item"><i class="fas fa-chart-line"></i><div>Led feature launch increasing user retention <strong>10%</strong></div></li>
+                        </ul>
+                    </div>
                  </div>
                 </div>
                 <div class="content-section d-flex justify-content-center flex-wrap gap-3">
@@ -254,7 +370,7 @@
                        Featured Projects
                     </div>
                     <div class="apps-card">
-                        <div class="app-card h-50">
+                        <div class="app-card">
                             <div class="app-card-title d-flex align-items-center">
                                <span class="d-flex justify-content-between align-items-center w-100">
                                    <strong class="text-nowrap">MechaNest Solar Homes</strong>
@@ -281,7 +397,7 @@
                                 <button class="content-button status-button">Enter</button>
                             </div>
                         </div>
-                        <div class="app-card h-50">
+                        <div class="app-card">
                             <div class="app-card-title d-flex align-items-center">
                                <span class="d-flex justify-content-between align-items-center w-100">
                                    <strong class="text-nowrap">CoinQuest: UE5  Adventure</strong>
@@ -307,7 +423,7 @@
                                 <button class="content-button status-button">Enter</button>
                             </div>
                         </div>
-                        <div class="app-card h-50">
+                        <div class="app-card">
                             <div class="app-card-title d-flex align-items-center">
                                <span class="d-flex justify-content-between align-items-center w-100">
                                    <strong class="text-nowrap">Data Forge BI</strong>
@@ -335,69 +451,65 @@
                         </div>
                     </div>
                 </div>
-                <footer class="my-5" style="padding: 20px 0; font-size: 0.9rem;background-color: var(--content-bg)">
-                    <div class="container">
-                        <div class="row align-items-start">
+        <footer class="my-5" style="padding: 20px 0; font-size: 0.9rem;background-color: var(--content-bg)">
+            <div class="container">
+              <div class="row align-items-start">
+                <div class="col-md-3 mb-3">
+                  <h6>Profile</h6>
+                  <ul class="list-unstyled mb-2">
+                    <li><a href="about_me.html" class="text-decoration-none text-light">About Me</a></li>
+                    <li><a href="#skills" class="text-decoration-none text-light">Skills</a></li>
+                    <li><a href="#contact" class="text-decoration-none text-light">Contact</a></li>
+                  </ul>
+                </div>
 
+                <div class="col-md-3 mb-3">
+                  <h6>Resources</h6>
+                  <ul class="list-unstyled mb-2">
+                    <li><a href="/resume.pdf" target="_blank" class="text-decoration-none text-light">Download Resume</a></li>
+                    <li><a href="/case-studies" class="text-decoration-none text-light">Case Studies</a></li>
+                    <li><a href="/style-guide" class="text-decoration-none text-light">Style Guide</a></li>
+                  </ul>
+                </div>
 
-                            <div class="col-md-3 mb-3">
-                                <h6>Profile</h6>
-                                <ul class="list-unstyled mb-2">
-                                    <li><a href="about_me.html" class="text-decoration-none text-light">About Me</a></li>
-                                    <li><a href="#skills" class="text-decoration-none text-light">Skills</a></li>
-                                    <li><a href="#contact" class="text-decoration-none text-light">Contact</a></li>
-                                </ul>
-                            </div>
+                <div class="col-md-3 mb-3">
+                  <h6>Art Projects</h6>
+                  <ul class="list-unstyled mb-2">
+                    <li><a href="https://store.steampowered.com/developer/yourprofile" target="_blank" class="text-decoration-none text-light">
+                      <i class="fab fa-steam"></i> Steam Projects
+                    </a></li>
+                    <li><a href="/unreal-projects" class="text-decoration-none text-light">
+                      <i class="fas fa-gamepad"></i> Unreal Engine Work
+                    </a></li>
+                    <li><a href="https://yourartportfolio.com" target="_blank" class="text-decoration-none text-light">
+                      <i class="fas fa-palette"></i> Art Portfolio
+                    </a></li>
+                  </ul>
+                </div>
 
+                <div class="col-md-3 mb-3">
+                  <h6>Stay Connected</h6>
+                  <form class="d-flex mb-2">
+                    <input type="email" placeholder="Email" required
+                      style="padding: 5px 8px; width: 65%; border: none; border-radius: 4px 0 0 4px;">
+                    <button type="submit"
+                      style="padding: 5px 12px; background-color: #ff6f61; color: white; border: none; border-radius: 0 4px 4px 0;">
+                      Send Email
+                    </button>
+                  </form>
+                  <ul class="list-inline mb-0">
+                    <li class="list-inline-item"><a href="https://github.com/yourusername" target="_blank"><i class="fab fa-github text-light"></i></a></li>
+                    <li class="list-inline-item"><a href="https://linkedin.com/in/yourprofile" target="_blank"><i class="fab fa-linkedin-in text-light"></i></a></li>
+                    <li class="list-inline-item"><a href="https://twitter.com/yourprofile" target="_blank"><i class="fab fa-twitter text-light"></i></a></li>
+                    <li class="list-inline-item"><a href="https://dribbble.com/yourprofile" target="_blank"><i class="fab fa-dribbble text-light"></i></a></li>
+                  </ul>
+                </div>
 
-                            <div class="col-md-3 mb-3">
-                                <h6>Resources</h6>
-                                <ul class="list-unstyled mb-2">
-                                    <li><a href="/resume.pdf" target="_blank" class="text-decoration-none text-light">Download Resume</a></li>
-                                    <li><a href="/case-studies" class="text-decoration-none text-light">Case Studies</a></li>
-                                    <li><a href="/style-guide" class="text-decoration-none text-light">Style Guide</a></li>
-                                </ul>
-                            </div>
-
-
-                            <div class="col-md-3 mb-3">
-                                <h6>Art Projects</h6>
-                                <ul class="list-unstyled mb-2">
-                                    <li><a href="https://store.steampowered.com/developer/yourprofile" target="_blank" class="text-decoration-none text-light">
-                                        <i class="fab fa-steam"></i> Steam Projects
-                                    </a></li>
-                                    <li><a href="/unreal-projects" class="text-decoration-none text-light">
-                                        <i class="fas fa-gamepad"></i> Unreal Engine Work
-                                    </a></li>
-                                    <li><a href="https://yourartportfolio.com" target="_blank" class="text-decoration-none text-light">
-                                        <i class="fas fa-palette"></i> Art Portfolio
-                                    </a></li>
-                                </ul>
-                            </div>
-                            <div class="col-md-3 mb-3">
-                                <h6>Stay Connected</h6>
-                                <form id="stayConnectedForm" class="d-flex mb-2">
-                                    <input type="email" id="connectedEmail" placeholder="Email" required
-                                           style="padding: 5px 8px; width: 65%; border: none; border-radius: 4px 0 0 4px;">
-                                    <button type="button" id="openEmailModalBtn"
-                                            style="padding: 5px 12px; background-color: #ff6f61; color: white; border: none; border-radius: 0 4px 4px 0;">
-                                        Send Email
-                                    </button>
-                                </form>
-                                <ul class="list-inline mb-0">
-                                    <li class="list-inline-item"><a href="https://github.com/yourusername" target="_blank"><i class="fab fa-github text-light"></i></a></li>
-                                    <li class="list-inline-item"><a href="https://linkedin.com/in/yourprofile" target="_blank"><i class="fab fa-linkedin-in text-light"></i></a></li>
-                                    <li class="list-inline-item"><a href="https://twitter.com/yourprofile" target="_blank"><i class="fab fa-twitter text-light"></i></a></li>
-                                    <li class="list-inline-item"><a href="https://dribbble.com/yourprofile" target="_blank"><i class="fab fa-dribbble text-light"></i></a></li>
-                                </ul>
-                            </div>
-
-                        </div>
-                    </div>
-                </footer>
-
+              </div>
             </div>
+          </footer>
         </div>
+    </div>
     </div>
     <div class="overlay-app"></div>
 </div>
@@ -435,89 +547,64 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
 
 
 <script src="js/main.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        // Handle sidebar menu link active state
-        const sidebar = document.querySelector('.side-wrapper');
-        const toggleBtn = document.getElementById('sidebarToggle');
-        toggleBtn.addEventListener('click', function () {
-            sidebar.classList.toggle('active');
-        });
-        // Dropdown toggle
-        const dropdowns = document.querySelectorAll(".dropdown");
+        // Dropdown toggle (kept from existing behavior)
+        const dropdowns = document.querySelectorAll('.dropdown');
         dropdowns.forEach((dropdown) => {
-            dropdown.addEventListener("click", (e) => {
+            dropdown.addEventListener('click', (e) => {
                 e.stopPropagation();
-                dropdowns.forEach((c) => c.classList.remove("is-active"));
-                dropdown.classList.add("is-active");
-                document.querySelector(".content-wrapper")?.classList.add("overlay");
+                dropdowns.forEach((c) => c.classList.remove('is-active'));
+                dropdown.classList.add('is-active');
+                document.querySelector('.content-wrapper')?.classList.add('overlay');
             });
         });
-
-        // Remove dropdown active on outside click
-        document.addEventListener("click", function (e) {
-            dropdowns.forEach((c) => c.classList.remove("is-active"));
-            document.querySelector(".content-wrapper")?.classList.remove("overlay");
+        document.addEventListener('click', function () {
+            dropdowns.forEach((c) => c.classList.remove('is-active'));
+            document.querySelector('.content-wrapper')?.classList.remove('overlay');
         });
-
-        // Search bar focus
-        $(".search-bar input")
-            .focus(function () {
-                $(".header").addClass("wide");
-            })
-            .blur(function () {
-                $(".header").removeClass("wide");
-            });
-
-        // Pop-up modal toggle
-        $(".status-button:not(.open)").on("click", function () {
-            $(".overlay-app").addClass("is-active");
-            $(".pop-up").addClass("visible");
-        });
-
-        $(".pop-up .close").click(function () {
-            $(".overlay-app").removeClass("is-active");
-            $(".pop-up").removeClass("visible");
-        });
-
 
         // EmailJS setup
-        emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your EmailJS public key
+        if (window.emailjs) {
+            emailjs.init('YOUR_PUBLIC_KEY'); // Replace with your EmailJS public key
+            const openModalBtn = document.getElementById('openEmailModalBtn');
+            const connectedEmailInput = document.getElementById('connectedEmail');
+            const modalEmailInput = document.getElementById('modalEmail');
+            const emailModal = new bootstrap.Modal(document.getElementById('emailModal'));
+            const feedbackForm = document.getElementById('feedbackForm');
 
-        const openModalBtn = document.getElementById("openEmailModalBtn");
-        const connectedEmailInput = document.getElementById("connectedEmail");
-        const modalEmailInput = document.getElementById("modalEmail");
-        const emailModal = new bootstrap.Modal(document.getElementById('emailModal'));
-        const feedbackForm = document.getElementById("feedbackForm");
-
-        openModalBtn.addEventListener("click", () => {
-            const userEmail = connectedEmailInput.value.trim();
-            if (userEmail) {
-                modalEmailInput.value = userEmail;
-                emailModal.show();
-            } else {
-                alert("Please enter your email address first.");
-            }
-        });
-
-        feedbackForm.addEventListener("submit", function (e) {
-            e.preventDefault();
-
-            emailjs.sendForm("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", this)
-                .then(() => {
-                    alert("✅ Message sent successfully!");
-                    feedbackForm.reset();
-                    emailModal.hide();
-                }, (error) => {
-                    console.error("❌ Failed to send:", error);
-                    alert("❌ Something went wrong. Try again later.");
+            if (openModalBtn && connectedEmailInput && modalEmailInput) {
+                openModalBtn.addEventListener('click', () => {
+                    const userEmail = connectedEmailInput.value.trim();
+                    if (userEmail) {
+                        modalEmailInput.value = userEmail;
+                        emailModal.show();
+                    } else {
+                        alert('Please enter your email address first.');
+                    }
                 });
-        });
+            }
+
+            if (feedbackForm) {
+                feedbackForm.addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this)
+                        .then(() => {
+                            alert('✅ Message sent successfully!');
+                            feedbackForm.reset();
+                            emailModal.hide();
+                        }, (error) => {
+                            console.error('❌ Failed to send:', error);
+                            alert('❌ Something went wrong. Try again later.');
+                        });
+                });
+            }
+        }
     });
 </script>
 <script src="js/tracking.js"></script>

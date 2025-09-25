@@ -5,7 +5,8 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta content="ie=edge" http-equiv="X-UA-Compatible" />
     <title>Cinema</title>
-    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" rel="stylesheet">
+    <!-- Unified Bootstrap version (match index & web_design) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
           rel="stylesheet">
     <link href="css/home.css"  rel="stylesheet" />
@@ -87,6 +88,36 @@
     opacity: 1;
     z-index: 1; /* Brings the video to the front */
 }
+
+/* Soda animation specific hover effects */
+.soda-cover-animation:hover .soda-overlay {
+    background: rgba(0,0,0,0.05) !important;
+}
+
+.soda-cover-animation:hover #sodaIframe {
+    transform: scale(1.02) !important;
+}
+
+.soda-cover-animation:hover .custom-play-button-overlay {
+    background-color: rgba(0, 0, 0, 0.8) !important;
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+/* Unified corner ribbon component */
+.ribbon { position:absolute; top:0; right:0; width:110px; height:110px; overflow:hidden; z-index:30; pointer-events:none; }
+.ribbon span { position:absolute; display:block; width:195px; top:30px; right:-50px; transform:rotate(45deg); font:700 .68rem/1 'Poppins',sans-serif; letter-spacing:.18em; text-transform:uppercase; text-align:center; color:#fff; padding:8px 0; background:linear-gradient(var(--rb-from),var(--rb-to)); box-shadow:0 4px 10px rgba(0,0,0,.45); text-shadow:0 1px 2px rgba(0,0,0,.55); }
+.ribbon span:before,.ribbon span:after{content:""; position:absolute; top:100%; width:0; height:0; border:5px solid transparent; border-top-color:rgba(0,0,0,.35);} 
+.ribbon span:before{left:0;} .ribbon span:after{right:0;}
+.ribbon.red span{--rb-from:#ff4d65;--rb-to:#c40000;}
+.ribbon.pink span{--rb-from:#ff2d78;--rb-to:#d40055;}
+.ribbon.orange span{--rb-from:#F9522D;--rb-to:#e03d1a;}
+.app-card:hover .ribbon span{box-shadow:0 6px 16px rgba(0,0,0,.55);} 
+
+/* Coca-Cola inline playback transition */
+.coke-cover-animation { transition: transform .7s cubic-bezier(.83,.04,.17,1), opacity .6s ease; }
+.coke-cover-animation.playing { transform: translateY(-110%); }
+.coke-overlay { transition: opacity .5s ease, background .3s ease; }
+.coke-overlay.fading { opacity:0; }
 </style>
 <body>
 <div class="video-bg">
@@ -100,6 +131,10 @@
         <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" /></svg>
 </div>
 <div class="app">
+    <!-- Mobile sidebar toggle (Bootstrap Offcanvas) -->
+    <button class="btn btn-outline-light d-md-none ms-2 mt-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar" aria-controls="mobileSidebar" aria-label="Open menu">
+        <i class="fas fa-bars"></i>
+    </button>
     <div class="header">
         <div class="header-profile">
             <nav class="navbar">
@@ -114,76 +149,69 @@
         </div>
     </div>
     <div class="wrapper">
-        <div class="left-side">
+        <div class="left-side d-none d-md-block">
             <div class="side-wrapper">
                 <div class="side-title">Apps</div>
                 <div class="side-menu">
-                    <a class="menu-link is-active" href="index.html">
-                        <svg class="lucide lucide-brain-circuit" fill="none" stroke="#FFFF" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <a href="index.html" data-href="/home" class="menu-link is-active">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#FFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-brain-circuit">
                             <path d="M9 3a3 3 0 0 0-3 3v1H5V5a4 4 0 0 1 8 0v2h-1V6a3 3 0 0 0-3-3z"/>
                             <path d="M15 3a3 3 0 0 1 3 3v1h1V5a4 4 0 0 0-8 0v2h1V6a3 3 0 0 1 3-3z"/>
-                            <rect height="12" rx="6" width="20" x="2" y="8"/>
+                            <rect x="2" y="8" width="20" height="12" rx="6"/>
                             <path d="M8 12h2v4H8zM14 12h2v4h-2zM12 8v2M12 20v2M6 14H2M18 14h4"/>
                         </svg>
                         DevOS: Faith Garza
                     </a>
-                    <a href="dev_projects.html">
+                    <a href="developer_projects.html">
                         <svg viewBox="0 0 512 512">
-                            <g fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <g xmlns="http://www.w3.org/2000/svg" fill="currentColor">
                                 <path d="M0 0h128v128H0zm0 0M192 0h128v128H192zm0 0M384 0h128v128H384zm0 0M0 192h128v128H0zm0 0" data-original="#bfc9d1" />
                             </g>
-                            <path d="M192 192h128v128H192zm0 0" data-original="#82b1ff" fill="currentColor" xmlns="http://www.w3.org/2000/svg" />
-                            <path d="M384 192h128v128H384zm0 0M0 384h128v128H0zm0 0M192 384h128v128H192zm0 0M384 384h128v128H384zm0 0" data-original="#bfc9d1" fill="currentColor" xmlns="http://www.w3.org/2000/svg" />
+                            <path xmlns="http://www.w3.org/2000/svg" d="M192 192h128v128H192zm0 0" fill="currentColor" data-original="#82b1ff" />
+                            <path xmlns="http://www.w3.org/2000/svg" d="M384 192h128v128H384zm0 0M0 384h128v128H0zm0 0M192 384h128v128H192zm0 0M384 384h128v128H384zm0 0" fill="currentColor" data-original="#bfc9d1" />
                         </svg>
                         Developer Projects
                     </a>
-                    <a href="#">
-                        <svg fill="currentColor" viewBox="0 0 488.932 488.932">
+                    <a href="analytics.html">
+                        <svg viewBox="0 0 488.932 488.932" fill="currentColor">
                             <path d="M243.158 61.361v-57.6c0-3.2 4-4.9 6.7-2.9l118.4 87c2 1.5 2 4.4 0 5.9l-118.4 87c-2.7 2-6.7.2-6.7-2.9v-57.5c-87.8 1.4-158.1 76-152.1 165.4 5.1 76.8 67.7 139.1 144.5 144 81.4 5.2 150.6-53 163-129.9 2.3-14.3 14.7-24.7 29.2-24.7 17.9 0 31.8 15.9 29 33.5-17.4 109.7-118.5 192-235.7 178.9-98-11-176.7-89.4-187.8-187.4-14.7-128.2 84.9-237.4 209.9-238.8z" />
                         </svg>
                         Site Analytics
-                        <span class="notification-number updates">3</span>
+                        <span class="notification-number updates">live</span>
                     </a>
                 </div>
             </div>
             <div class="side-wrapper">
                 <div class="side-title">Categories</div>
                 <div class="side-menu">
-                    <a href="#">
-                        <svg fill="currentColor" viewBox="0 0 488.455 488.455">
+                    <a href="photography.html">
+                        <svg viewBox="0 0 488.455 488.455" fill="currentColor">
                             <path d="M287.396 216.317c23.845 23.845 23.845 62.505 0 86.35s-62.505 23.845-86.35 0-23.845-62.505 0-86.35 62.505-23.845 86.35 0" />
                             <path d="M427.397 91.581H385.21l-30.544-61.059H133.76l-30.515 61.089-42.127.075C27.533 91.746.193 119.115.164 152.715L0 396.86c0 33.675 27.384 61.074 61.059 61.074h366.338c33.675 0 61.059-27.384 61.059-61.059V152.639c-.001-33.674-27.385-61.058-61.059-61.058zM244.22 381.61c-67.335 0-122.118-54.783-122.118-122.118s54.783-122.118 122.118-122.118 122.118 54.783 122.118 122.118S311.555 381.61 244.22 381.61z" />
                         </svg>
                         Photography
+                        <span class="notification-number creative">new</span>
                     </a>
                     <a href="web_design.html">
-                        <svg fill="currentColor" viewBox="0 0 512 512">
+                        <svg viewBox="0 0 512 512" fill="currentColor">
                             <path d="M497 151H316c-8.401 0-15 6.599-15 15v300c0 8.401 6.599 15 15 15h181c8.401 0 15-6.599 15-15V166c0-8.401-6.599-15-15-15zm-76 270h-30c-8.401 0-15-6.599-15-15s6.599-15 15-15h30c8.401 0 15 6.599 15 15s-6.599 15-15 15zm0-180h-30c-8.401 0-15-6.599-15-15s6.599-15 15-15h30c8.401 0 15 6.599 15 15s-6.599 15-15 15z" />
                             <path d="M15 331h196v60h-75c-8.291 0-15 6.709-15 15s6.709 15 15 15h135v-30h-30v-60h30V166c0-24.814 20.186-45 45-45h135V46c0-8.284-6.716-15-15-15H15C6.716 31 0 37.716 0 46v270c0 8.284 6.716 15 15 15z" />
                         </svg>
-                        UI/UX Projects
+                        UI|UX Projects
                     </a>
-                    <a href="Multimedia.html">
-                        <svg fill="currentColor" viewBox="0 0 58 58">
+                    <a href="Multimedia.html" class="menu-link is-active" aria-current="page">
+                        <svg viewBox="0 0 58 58" fill="currentColor">
                             <path d="M57 6H1a1 1 0 00-1 1v44a1 1 0 001 1h56a1 1 0 001-1V7a1 1 0 00-1-1zM10 50H2v-9h8v9zm0-11H2v-9h8v9zm0-11H2v-9h8v9zm0-11H2V8h8v9zm26.537 12.844l-11 7a1.007 1.007 0 01-1.018.033A1.001 1.001 0 0124 36V22a1.001 1.001 0 011.538-.844l11 7a1.003 1.003 0 01-.001 1.688zM56 50h-8v-9h8v9zm0-11h-8v-9h8v9zm0-11h-8v-9h8v9zm0-11h-8V8h8v9z" />
                         </svg>
                         Videography
                     </a>
-                    <a href="#">
-                        <svg fill="currentColor" viewBox="0 0 512 512">
-                            <path d="M499.377 46.402c-8.014-8.006-18.662-12.485-29.985-12.613a41.13 41.13 0 00-.496-.003c-11.142 0-21.698 4.229-29.771 11.945L198.872 275.458c25.716 6.555 47.683 23.057 62.044 47.196a113.544 113.544 0 0110.453 23.179L500.06 106.661C507.759 98.604 512 88.031 512 76.89c0-11.507-4.478-22.33-12.623-30.488zM176.588 302.344a86.035 86.035 0 00-3.626-.076c-20.273 0-40.381 7.05-56.784 18.851-19.772 14.225-27.656 34.656-42.174 53.27C55.8 397.728 27.795 409.14 0 416.923c16.187 42.781 76.32 60.297 115.752 61.24 1.416.034 2.839.051 4.273.051 44.646 0 97.233-16.594 118.755-60.522 23.628-48.224-5.496-112.975-62.192-115.348z" />
-                        </svg>
-                        Illustrations
-                    </a>
-
-
                 </div>
             </div>
             <div class="side-wrapper">
                 <div class="side-title">Exposure To:</div>
                 <div class="side-menu">
                     <a href="#">
-                        <svg fill="currentColor" viewBox="0 0 332 332">
+                        <svg viewBox="0 0 332 332" fill="currentColor">
                             <path d="M282.341 8.283C275.765 2.705 266.211 0 253.103 0c-18.951 0-36.359 5.634-51.756 16.743-14.972 10.794-29.274 28.637-42.482 53.028-4.358 7.993-7.428 11.041-8.973 12.179h-26.255c-10.84 0-19.626 8.786-19.626 19.626 0 8.989 6.077 16.486 14.323 18.809l-.05.165h.589c1.531.385 3.109.651 4.757.651h18.833l-32.688 128.001c-7.208 27.848-10.323 37.782-11.666 41.24-1.445 3.711-3.266 7.062-5.542 10.135-.42-5.39-2.637-10.143-6.508-13.854-4.264-4.079-10.109-6.136-17.364-6.136-8.227 0-15.08 2.433-20.37 7.229-5.416 4.93-8.283 11.193-8.283 18.134 0 5.157 1.701 12.712 9.828 19.348 6.139 4.97 14.845 7.382 26.621 7.382 17.096 0 32.541-4.568 45.891-13.577 13.112-8.845 24.612-22.489 34.166-40.522 9.391-17.678 18.696-45.124 28.427-83.9l18.598-73.479h30.016c10.841 0 19.625-8.785 19.625-19.625s-8.784-19.626-19.625-19.626h-19.628c6.34-21.62 14.175-37.948 23.443-48.578 2.284-2.695 5.246-5.692 8.412-7.678-1.543 3.392-2.325 6.767-2.325 10.055 0 6.164 2.409 11.714 6.909 16.03 4.484 4.336 10.167 6.54 16.888 6.54 7.085 0 13.373-2.667 18.17-7.716 4.76-5.005 7.185-11.633 7.185-19.703.017-9.079-3.554-16.899-10.302-22.618z" />
                         </svg>
                         Mechatronics
@@ -192,29 +220,23 @@
             </div>
             <div class="side-wrapper">
                 <div class="side-title">Resource Links</div>
-                <div class="side-menu">
-                    <!--   <a href="#">
-                           <svg viewBox="0 0 512 512" fill="currentColor">
-                               <path d="M467 0H45C20.186 0 0 20.186 0 45v422c0 24.814 20.186 45 45 45h422c24.814 0 45-20.186 45-45V45c0-24.814-20.186-45-45-45zM181 241c41.353 0 75 33.647 75 75s-33.647 75-75 75-75-33.647-75-75c0-8.291 6.709-15 15-15s15 6.709 15 15c0 24.814 20.186 45 45 45s45-20.186 45-45-20.186-45-45-45c-41.353 0-75-33.647-75-75s33.647-75 75-75 75 33.647 75 75c0 8.291-6.709 15-15 15s-15-6.709-15-15c0-24.814-20.186-45-45-45s-45 20.186-45 45 20.186 45 45 45zm180 120h30c8.291 0 15 6.709 15 15s-6.709 15-15 15h-30c-24.814 0-45-20.186-45-45V211h-15c-8.291 0-15-6.709-15-15s6.709-15 15-15h15v-45c0-8.291 6.709-15 15-15s15 6.709 15 15v45h45c8.291 0 15 6.709 15 15s-6.709 15-15 15h-45v135c0 8.276 6.724 15 15 15z" />
-                           </svg>
-                           Stock
-                       </a>-->
-                    <a href="#">
-                        <svg fill="currentColor" viewBox="0 0 511.441 511.441">
-                            <path d="M255.721 347.484L90.22 266.751v106.57l165.51 73.503 165.509-73.503V266.742z" />
-                            <path d="M511.441 189.361L255.721 64.617 0 189.361l255.721 124.744 195.522-95.378v111.032h30V204.092z" />
+                <div class="side-menu">                    
+                    <a href="about_me.html">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
                         </svg>
-                        Tutorials
+                        About Me
                     </a>
                     <a href="#">
-                        <svg fill="currentColor" viewBox="0 0 512 512">
+                        <svg viewBox="0 0 512 512" fill="currentColor">
                             <path d="M181 181h-60v60h60c16.54 0 30-13.46 30-30s-13.46-30-30-30zm0 0M181 271h-60v60h60c16.54 0 30-13.46 30-30s-13.46-30-30-30zm0 0M346 241c-19.555 0-36.238 12.54-42.438 30h84.875c-6.199-17.46-22.882-30-42.437-30zm0 0" />
                             <path d="M436 0H75C33.648 0 0 33.648 0 75v362c0 41.352 33.648 75 75 75h361c41.352 0 76-33.648 76-75V75c0-41.352-34.648-75-76-75zM286 151h120v30H286zm-45 150c0 33.09-26.91 60-60 60H91V151h90c33.09 0 60 26.91 60 60 0 18.008-8.133 33.996-20.73 45 12.597 11.004 20.73 26.992 20.73 45zm180 0H303.562c6.196 17.46 22.883 30 42.438 30 16.012 0 30.953-8.629 38.992-22.516l25.957 15.032C397.58 346.629 372.687 361 346 361c-41.352 0-75-33.648-75-75s33.648-75 75-75 75 33.648 75 75zm0 0" />
                         </svg>
                         Behance
                     </a>
                     <a href="#">
-                        <svg fill="currentColor" viewBox="0 0 512 512">
+                        <svg viewBox="0 0 512 512" fill="currentColor">
                             <path d="M352 0H64C28.704 0 0 28.704 0 64v320a16.02 16.02 0 009.216 14.496A16.232 16.232 0 0016 400c3.68 0 7.328-1.248 10.24-3.712L117.792 320H352c35.296 0 64-28.704 64-64V64c0-35.296-28.704-64-64-64z" />
                             <path d="M464 128h-16v128c0 52.928-43.072 96-96 96H129.376L128 353.152V400c0 26.464 21.536 48 48 48h234.368l75.616 60.512A16.158 16.158 0 00496 512c2.336 0 4.704-.544 6.944-1.6A15.968 15.968 0 00512 496V176c0-26.464-21.536-48-48-48z" />
                         </svg>
@@ -233,29 +255,13 @@
                  </div>
              </div>--->
     <div class="content-wrapper">
-        <div class="hero-section mb-4">
-            <div class="row grey_glassMorphism">
-                <!-- Left Content Area -->
-                <div class="left-content col-12">
-
-                </div>
-            </div>
-        </div>
-        <div class="content-section d-flex justify-content-center flex-wrap gap-3">
-            <div class="content-section-title w-100 text-center mb-3">
-                Motion &amp; Media Works
-            </div>
-            <div class="row w-100 project-card">
-
-            </div>
-            <div id="transition-overlay"></div>
-        </div>
+    
         <div class="content-section d-flex justify-content-center flex-wrap gap-3">
             <div class="content-section-title w-100 text-center mb-3">
                 <span id="appName"></span> Frame by Frame: My Multimedia Journey
             </div>
             <div class="apps-card d-flex flex-wrap justify-content-center gap-4 w-100">
-                <div class="app-card" id="one" style="height: 350px; width: 350px; max-width: 100%;">
+                <!--<div class="app-card" id="one" style="height: 350px; width: 350px; max-width: 100%;">
                     <div class="video-cover-container-custom" style="height: 100%; width: 100%;">
                         <img alt="Video Cover" class="video-cover-image-custom" src="img/blackandgold.png">
                         <div class="custom-play-button-overlay">
@@ -268,46 +274,68 @@
                             Your browser does not support the video tag.
                         </video>
                     </div>
-                </div>
-                <div class="app-card" id="two" style="height: 350px; width: 350px; max-width: 100%;">
-                    <div class="video-cover-container-custom" style="height: 100%; width: 100%;">
-                        <img alt="Video Cover" class="video-cover-image-custom" src="img/blackandgold.png">
-                        <div class="custom-play-button-overlay">
-                            <svg class="custom-play-icon" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M8 5v14l11-7z"/>
-                            </svg>
+                </div>-->
+                <div class="app-card" id="coke" style="height: 350px; width: 350px; max-width: 100%; position:relative;">
+                    <div class="ribbon red"><span>3D Cover</span></div>
+                    <div class="video-cover-container-custom" style="height:100%; width:100%;">
+                        <div class="coke-cover-animation" style="width:100%; height:100%; position:relative; overflow:hidden; cursor:pointer;">
+                            <!-- Corrected src: original pointed to CocaCola_3D_Cover.html (missing). Using existing CocaCola_Cover.html -->
+                            <iframe src="CocaCola_Cover.html?mode=card&controls=all" id="cokeCoverIframe" style="width:100%; height:100%; border:none; pointer-events:auto; transform:scale(1); transition:transform .3s ease; background:transparent;" title="Coca-Cola 3D Cover" allowfullscreen></iframe>
+                            <div id="cokeCoverFallback" style="position:absolute; inset:0; display:none; align-items:center; justify-content:center; background:rgba(0,0,0,0.35); color:#fff; font-size:.9rem; text-align:center; padding:1rem; z-index:5;">
+                                Coca-Cola cover unavailable.<br><button class="btn btn-sm btn-outline-light mt-2" type="button" id="reloadCokeCover">Retry</button>
+                            </div>
+                            <div class="coke-overlay" style="position:absolute; inset:0; background:rgba(0,0,0,0.18); display:flex; align-items:center; justify-content:center; z-index:10; transition:all .3s ease;">
+                                <div class="custom-play-button-overlay" style="position:relative; z-index:11;">
+                                    <svg class="custom-play-icon" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M8 5v14l11-7z"/>
+                                    </svg>
+                                </div>
+                            </div>
                         </div>
-                        <video class="video-player-custom" controls preload="metadata">
-                            <source src="mp4/CocaColaAd.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
+                        <!-- Inline mp4 playback element -->
+                        <video class="video-player-custom" preload="metadata">
+                            <source src="mp4/CocaColaAd.mp4" type="video/mp4" />
                         </video>
                     </div>
                 </div>
-                <div class="app-card" id="three" style="height: 350px; width: 350px; max-width: 100%;">
+                <div class="app-card" id="three" style="height: 350px; width: 350px; max-width: 100%; position: relative;">
+                    <div class="ribbon pink"><span>3D Experience</span></div>
                     <div class="video-cover-container-custom" style="height: 100%; width: 100%;">
-                        <img alt="Video Cover" class="video-cover-image-custom" src="img/blackandgold.png">
-                        <div class="custom-play-button-overlay">
-                            <svg class="custom-play-icon" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M8 5v14l11-7z"/>
-                            </svg>
+                        <!-- VOSS 3D Experience Cover (iframe for animated cover) -->
+                        <div class="voss-cover-animation" style="width:100%; height:100%; position:relative; overflow:hidden; cursor:pointer;">
+                            <iframe src="voss_cover.html?mode=card" id="vossCoverIframe" style="width:100%; height:100%; border:none; pointer-events:none; transform:scale(1); transition:transform .3s ease;"></iframe>
+                            <div class="voss-overlay" style="position:absolute; inset:0; background:rgba(0,0,0,0.15); display:flex; align-items:center; justify-content:center; z-index:10; transition:all .3s ease;">
+                                <div class="custom-play-button-overlay" style="position:relative; z-index:11;">
+                                    <svg class="custom-play-icon" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M8 5v14l11-7z"/>
+                                    </svg>
+                                </div>
+                            </div>
                         </div>
-                        <video class="video-player-custom" controls preload="metadata">
-                            <source src="mp4/FinalProject.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
+                        <video class="video-player-custom" preload="metadata" style="display:none;">
+                            <source src="mp4/Voss_Draft.mp4" type="video/mp4" />
                         </video>
                     </div>
                 </div>
-                <div class="app-card" id="four" style="height: 350px; width: 350px; max-width: 100%;">
+                <div class="app-card" id="soda" style="height: 350px; width: 350px; max-width: 100%; position: relative;">
+                    <div class="ribbon orange"><span>Premium</span></div>
                     <div class="video-cover-container-custom" style="height: 100%; width: 100%;">
-                        <img alt="Video Cover" class="video-cover-image-custom" src="img/blackandgold.png">
-                        <div class="custom-play-button-overlay">
-                            <svg class="custom-play-icon" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M8 5v14l11-7z"/>
-                            </svg>
+                        <!-- Soda Animation Cover -->
+                        <div class="soda-cover-animation" style="width: 100%; height: 100%; position: relative; overflow: hidden; cursor: pointer;">
+                            <iframe src="soda.html?mode=card" 
+                                    style="width: 100%; height: 100%; border: none; pointer-events: none; transform: scale(1); transition: transform 0.3s ease;"
+                                    id="sodaIframe">
+                            </iframe>
+                            <div class="soda-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: center; z-index: 10; transition: all 0.3s ease;">
+                                <div class="custom-play-button-overlay" style="position: relative; z-index: 11;">
+                                    <svg class="custom-play-icon" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M8 5v14l11-7z"/>
+                                    </svg>
+                                </div>
+                            </div>
                         </div>
-                        <video class="video-player-custom" controls preload="metadata">
-                            <source src="mp4/FinalProject.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
+                                 <video class="video-player-custom" preload="metadata" style="display:none;">
+                                     <source src="mp4/fresh_ad.mp4" type="video/mp4" />
                         </video>
                     </div>
                 </div>
@@ -325,7 +353,7 @@
                         </video>
                     </div>
                 </div>
-                <div class="app-card" id="four" style="height: 350px; width: 350px; max-width: 100%;">
+                <div class="app-card" id="six" style="height: 350px; width: 350px; max-width: 100%;">
                     <div class="video-cover-container-custom" style="height: 100%; width: 100%;">
                         <img alt="Video Cover" class="video-cover-image-custom" src="img/blackandgold.png">
                         <div class="custom-play-button-overlay">
@@ -335,6 +363,22 @@
                         </div>
                         <video class="video-player-custom" controls preload="metadata">
                             <source src="mp4/FinalProject.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+                <!-- Olipop / Fresh Ad Card -->
+                <div class="app-card" id="olipop" style="height: 350px; width: 350px; max-width: 100%; position: relative;">
+                    <div class="ribbon pink"><span>Ad Spot</span></div>
+                    <div class="video-cover-container-custom" style="height: 100%; width: 100%;">
+                        <img alt="Olipop Ad Cover" class="video-cover-image-custom" src="img/blackandgold.png">
+                        <div class="custom-play-button-overlay">
+                            <svg class="custom-play-icon" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M8 5v14l11-7z"/>
+                            </svg>
+                        </div>
+                        <video class="video-player-custom" preload="metadata">
+                            <source src="mp4/FRESH.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
@@ -404,7 +448,8 @@
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script crossorigin="anonymous" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Single Bootstrap bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 <script src="js/main.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -414,36 +459,215 @@
         const video = container.querySelector('.video-player-custom');
         const coverImage = container.querySelector('.video-cover-image-custom');
         const playButton = container.querySelector('.custom-play-button-overlay');
+        const sodaCover = container.querySelector('.soda-cover-animation');
+        const sodaOverlay = container.querySelector('.soda-overlay');
+        const vossCover = container.querySelector('.voss-cover-animation');
+        const vossOverlay = container.querySelector('.voss-overlay');
+        const cokeCover = container.querySelector('.coke-cover-animation');
+        const cokeOverlay = container.querySelector('.coke-overlay');
 
-        function playVideo() {
-            container.classList.add('playing');
-            video.play();
-            video.controls = true; // Show controls when playing
+        // Handle regular video cards
+        if (coverImage && video && !sodaCover) {
+            function playVideo() {
+                container.classList.add('playing');
+                video.play();
+                video.controls = true; // Show controls when playing
+            }
+
+            // Play video when the cover image is clicked
+            coverImage.addEventListener('click', playVideo);
+
+            // Play video when the play button is clicked
+            playButton.addEventListener('click', playVideo);
+
+            // Optional: Reset when video ends
+            video.addEventListener('ended', function() {
+                container.classList.remove('playing');
+                video.currentTime = 0; // Reset video to the beginning
+                video.controls = false; // Hide controls again
+            });
+
+            // Optional: Pause video and show cover if video is paused manually
+            video.addEventListener('pause', function() {
+                if (!video.ended) { // Only show cover if not at the end
+                    container.classList.remove('playing');
+                    video.controls = false;
+                }
+            });
+        }
+        
+        // Handle soda animation card (inline playback of FRESH.mp4)
+        if (sodaCover && sodaOverlay) {
+            const sodaVideo = container.querySelector('video.video-player-custom');
+            playButton.addEventListener('click', function() {
+                if(!sodaVideo) return;
+                // fade overlay & then hide iframe
+                sodaOverlay.style.transition = 'opacity .55s ease, background .3s ease';
+                sodaOverlay.style.opacity = '0';
+                // show video
+                sodaVideo.style.display='block';
+                sodaVideo.style.opacity='0';
+                requestAnimationFrame(()=>{ sodaVideo.style.transition='opacity .6s ease'; sodaVideo.style.opacity='1'; });
+                // hide iframe after fade to save cycles
+                setTimeout(()=>{ const iframe = sodaCover.querySelector('#sodaIframe'); if(iframe) iframe.style.display='none'; },600);
+                sodaVideo.play();
+                sodaVideo.controls = true;
+            });
+            if(sodaVideo){
+                sodaVideo.addEventListener('ended', ()=>{
+                    // restore state
+                    sodaVideo.pause(); sodaVideo.currentTime = 0; sodaVideo.controls = false;
+                    sodaVideo.style.display='none';
+                    const iframe = sodaCover.querySelector('#sodaIframe'); if(iframe){ iframe.style.display='block'; iframe.style.transform='scale(1)'; }
+                    sodaOverlay.style.opacity='1';
+                });
+            }
         }
 
-        // Play video when the cover image is clicked
-        coverImage.addEventListener('click', playVideo);
+        // Handle VOSS experience card
+        if (vossCover && vossOverlay) {
+            // Hover effects similar pattern
+            vossCover.addEventListener('mouseenter', ()=>{
+                vossOverlay.style.background = 'rgba(0,0,0,0.25)';
+                const iframe = vossCover.querySelector('iframe');
+                if(iframe) iframe.style.transform = 'scale(1.02)';
+            });
+            vossCover.addEventListener('mouseleave', ()=>{
+                vossOverlay.style.background = 'rgba(0,0,0,0.15)';
+                const iframe = vossCover.querySelector('iframe');
+                if(iframe) iframe.style.transform = 'scale(1)';
+            });
+            playButton.addEventListener('click', function(){
+                window.open('Voss.html', '_blank', 'width=1400,height=900,scrollbars=no,resizable=yes');
+            });
+        }
 
-        // Play video when the play button is clicked
-        playButton.addEventListener('click', playVideo);
-
-        // Optional: Reset when video ends
-        video.addEventListener('ended', function() {
-            container.classList.remove('playing');
-            video.currentTime = 0; // Reset video to the beginning
-            video.controls = false; // Hide controls again
-        });
-
-        // Optional: Pause video and show cover if video is paused manually
-        video.addEventListener('pause', function() {
-            if (!video.ended) { // Only show cover if not at the end
-                container.classList.remove('playing');
-                video.controls = false;
+        // Handle Coca-Cola 3D cover card
+        if (cokeCover && cokeOverlay) {
+            const cokeVideo = container.querySelector('video.video-player-custom');
+            cokeCover.addEventListener('mouseenter', ()=>{
+                cokeOverlay.style.background = 'rgba(0,0,0,0.28)';
+                const iframe = cokeCover.querySelector('iframe');
+                if(iframe) iframe.style.transform = 'scale(1.02)';
+            });
+            cokeCover.addEventListener('mouseleave', ()=>{
+                cokeOverlay.style.background = 'rgba(0,0,0,0.18)';
+                const iframe = cokeCover.querySelector('iframe');
+                if(iframe) iframe.style.transform = 'scale(1)';
+            });
+            playButton.addEventListener('click', function(){
+                // Fade out overlay + iframe transition, then play inline MP4
+                cokeOverlay.classList.add('fading');
+                cokeCover.classList.add('playing');
+                if(cokeVideo){
+                    cokeVideo.style.display='block';
+                    cokeVideo.style.opacity='0';
+                    requestAnimationFrame(()=>{ cokeVideo.style.transition='opacity .6s ease'; cokeVideo.style.opacity='1'; });
+                    cokeVideo.play();
+                    cokeVideo.controls = true;
+                }
+                // After animation, optionally hide iframe for performance
+                setTimeout(()=>{
+                  const iframe = cokeCover.querySelector('#cokeCoverIframe');
+                  if(iframe) iframe.style.display='none';
+                },700);
+            });
+            if(cokeVideo){
+              cokeVideo.addEventListener('ended', ()=>{
+                cokeVideo.currentTime=0; cokeVideo.pause(); cokeVideo.controls=false;
+                cokeVideo.style.display='none';
+                const iframe = cokeCover.querySelector('#cokeCoverIframe');
+                if(iframe){ iframe.style.display='block'; iframe.style.transform='scale(1)'; }
+                cokeOverlay.classList.remove('fading');
+                cokeCover.classList.remove('playing');
+              });
             }
-        });
+        }
+
+        // Olipop / Fresh Ad card
+        if(container.closest('.app-card')?.id === 'olipop'){
+            if(playButton && video){
+                playButton.addEventListener('click', ()=>{
+                    container.classList.add('playing');
+                    video.play();
+                    video.controls = true;
+                });
+                video.addEventListener('ended', ()=>{
+                    container.classList.remove('playing');
+                    video.currentTime=0; video.controls=false;
+                });
+            }
+        }
     });
 });
+// Coca-Cola cover iframe load/error handling
+document.addEventListener('DOMContentLoaded', function(){
+    const iframe = document.getElementById('cokeCoverIframe');
+    const fallback = document.getElementById('cokeCoverFallback');
+    const retryBtn = document.getElementById('reloadCokeCover');
+    if(!iframe) return;
+    let loaded = false;
+    const showFallback = ()=>{
+        if(!loaded && fallback){ fallback.style.display='flex'; }
+    };
+    // If it loads within same origin it will trigger load
+    iframe.addEventListener('load', ()=>{ loaded = true; if(fallback) fallback.style.display='none'; });
+    // Timeout fallback if no load event after 3s
+    setTimeout(showFallback, 3000);
+    if(retryBtn){
+        retryBtn.addEventListener('click', ()=>{
+            loaded = false; if(fallback) fallback.style.display='none';
+            // Bust cache with timestamp
+            const base = 'CocaCola_Cover.html?mode=card&ts=' + Date.now();
+            iframe.src = base;
+            setTimeout(showFallback, 3000);
+        });
+    }
+});
 </script>
+
+<script src="js/tracking.js"></script>
+
+<!-- Offcanvas Sidebar (mobile) -->
+<div class="offcanvas offcanvas-start d-md-none" tabindex="-1" id="mobileSidebar" aria-labelledby="mobileSidebarLabel" style="--bs-offcanvas-width:260px;background-color:var(--dropdown-bg);color:var(--theme-color);">
+    <div class="offcanvas-header border-bottom" style="border-color:var(--border-color);">
+        <h5 class="offcanvas-title" id="mobileSidebarLabel">Menu</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <div class="mb-3">
+            <div class="text-uppercase small mb-2" style="color:var(--inactive-color);">Apps</div>
+            <div class="list-group list-group-flush">
+                <a class="list-group-item list-group-item-action bg-transparent text-light" href="index.html"><i class="fas fa-brain me-2"></i> DevOS: Faith Garza</a>
+                <a class="list-group-item list-group-item-action bg-transparent text-light" href="developer_projects.html"><i class="fas fa-th-large me-2"></i> Developer Projects</a>
+                <a class="list-group-item list-group-item-action bg-transparent text-light" href="analytics.html"><i class="fas fa-chart-line me-2"></i> Site Analytics <span class="badge bg-danger ms-2">live</span></a>
+            </div>
+        </div>
+        <div class="mb-3">
+            <div class="text-uppercase small mb-2" style="color:var(--inactive-color);">Categories</div>
+            <div class="list-group list-group-flush">
+                <a class="list-group-item list-group-item-action bg-transparent text-light" href="photography.html"><i class="fas fa-camera me-2"></i> Photography <span class="badge bg-success ms-2">new</span></a>
+                <a class="list-group-item list-group-item-action bg-transparent text-light" href="web_design.html"><i class="fas fa-laptop-code me-2"></i> UI|UX Projects</a>
+                <a class="list-group-item list-group-item-action bg-transparent active" aria-current="page" href="Multimedia.html"><i class="fas fa-film me-2"></i> Videography</a>
+                <a class="list-group-item list-group-item-action bg-transparent text-light" href="videos_multimedia.html"><i class="fas fa-video me-2"></i> Video Gallery</a>
+            </div>
+        </div>
+        <div class="mb-3">
+            <div class="text-uppercase small mb-2" style="color:var(--inactive-color);">Exposure To</div>
+            <div class="list-group list-group-flush">
+                <a class="list-group-item list-group-item-action bg-transparent text-light" href="#"><i class="fas fa-robot me-2"></i> Mechatronics</a>
+            </div>
+        </div>
+        <div>
+            <div class="text-uppercase small mb-2" style="color:var(--inactive-color);">Resource Links</div>
+            <div class="list-group list-group-flush">
+                <a class="list-group-item list-group-item-action bg-transparent text-light" href="about_me.html"><i class="fas fa-user me-2"></i> About Me</a>
+                <a class="list-group-item list-group-item-action bg-transparent text-light" href="#"><i class="fab fa-behance me-2"></i> Behance</a>
+                <a class="list-group-item list-group-item-action bg-transparent text-light" href="#"><i class="fas fa-comments me-2"></i> Social Forum</a>
+            </div>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>

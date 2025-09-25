@@ -1,4 +1,7 @@
-// Simple Analytics Tracking System
+// Custom Analytics Tracking System
+// Author: Faith Garza
+// Lightweight privacy-focused tracking solution
+
 class SimpleAnalytics {
     constructor() {
         this.sessionId = this.generateSessionId();
@@ -81,8 +84,7 @@ class SimpleAnalytics {
     }
 
     sendEvent(eventType, data) {
-        // Store in localStorage for the dashboard to read
-        // In a real implementation, you'd send this to your analytics server
+        // Store locally for dashboard - can be extended to send to analytics server
         const events = JSON.parse(localStorage.getItem('portfolio_analytics') || '[]');
         events.push({
             type: eventType,
@@ -136,10 +138,10 @@ class SimpleAnalytics {
     }
 }
 
-// Initialize analytics tracking
+// Initialize analytics tracking on page load
 document.addEventListener('DOMContentLoaded', () => {
     new SimpleAnalytics();
 });
 
-// Export for dashboard use
+// Global export for dashboard integration
 window.SimpleAnalytics = SimpleAnalytics;

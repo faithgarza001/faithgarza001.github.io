@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Future Last Supper - Pure CSS Art</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Arial', sans-serif;
+      overflow-x: auto;
+    }
+    .supper-container {
+      position: relative;
+      width: 1200px;
+      height: 700px;
+      background: linear-gradient(180deg, #2c5aa0 0%, #1e3c72 30%, #2a1810 70%, #0f0f0f 100%);
+      border-radius: 15px;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1);
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .supper-container:hover { transform: scale(1.02); }
+    
+    /* Enhanced dramatic lighting system */
+    .dramatic-lighting {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      background: radial-gradient(ellipse at 50% 20%, rgba(0,255,255,0.1) 0%, transparent 40%),
+                  radial-gradient(ellipse at 30% 60%, rgba(255,255,255,0.05) 0%, transparent 30%),
+                  radial-gradient(ellipse at 70% 60%, rgba(255,255,255,0.05) 0%, transparent 30%);
+      pointer-events: none;
+      z-index: 1;
+    }
+    
+    /* Scanlines for retro-futuristic effect */
+    .scanlines {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent 0px,
+        transparent 2px,
+        rgba(0,255,255,0.03) 2px,
+        rgba(0,255,255,0.03) 4px
+      );
+      pointer-events: none;
+      z-index: 5;
+      animation: scanlineMove 8s linear infinite;
+    }
+    
+    @keyframes scanlineMove {
+      0% { transform: translateY(0px); }
+      100% { transform: translateY(8px); }
+    }
+    
+    /* Digital rain effect */
+    .digital-rain {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none; z-index: 2;
+    }
+    
+    .rain-drop {
+      position: absolute; width: 1px; height: 20px;
+      background: linear-gradient(to bottom, transparent 0%, #00ffff 50%, transparent 100%);
+      animation: rainFall linear infinite;
+    }
+    
+    @keyframes rainFall {
+      0% { transform: translateY(-100px); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translateY(800px); opacity: 0; }
+    }
+    
+    /* Sound visualization wave patterns */
+    .audio-waves {
+      position: absolute; bottom: 20%; left: 50%; transform: translateX(-50%);
+      width: 200px; height: 40px; z-index: 3;
+    }
+    
+    .wave-bar {
+      position: absolute; bottom: 0; width: 4px;
+      background: linear-gradient(to top, #00ffff, #ffffff);
+      border-radius: 2px;
+      animation: waveAnimation 1.5s ease-in-out infinite;
+    }
+    
+    @keyframes waveAnimation {
+      0%, 100% { height: 5px; opacity: 0.5; }
+      50% { height: 30px; opacity: 1; }
+    }
+    
+    /* Holographic interface elements */
+    .holo-interface {
+      position: absolute; top: 10%; right: 5%;
+      width: 100px; height: 60px;
+      border: 1px solid rgba(0,255,255,0.4);
+      border-radius: 5px;
+      background: rgba(0,255,255,0.05);
+      backdrop-filter: blur(5px);
+    }
+    
+    .holo-interface::before {
+      content: "∀Ι ∩ИΤΣ";
+      position: absolute; top: 5px; left: 10px;
+      color: #00ffff; font-size: 8px; font-family: monospace;
+      text-shadow: 0 0 5px #00ffff;
+    }
+    
+    .holo-interface::after {
+      content: "";
+      position: absolute; bottom: 5px; left: 10px;
+      width: 80px; height: 1px;
+      background: linear-gradient(90deg, #00ffff, transparent);
+      animation: dataStream 2s linear infinite;
+    }
+    
+    @keyframes dataStream {
+      0% { width: 0; }
+      100% { width: 80px; }
+    }
+    .ceiling {
+      position: absolute; top: 0; left: 0; width: 100%; height: 30%;
+      background: linear-gradient(180deg, #4a90e2 0%, #357abd 40%, #2c5aa0 100%);
+      clip-path: polygon(0% 0%, 100% 0%, 90% 100%, 10% 100%);
+    }
+    .neon-light {
+      position: absolute; top: 8%; left: 50%; transform: translateX(-50%);
+      width: 400px; height: 8px;
+      background: linear-gradient(90deg, transparent 0%, #00ffff 20%, #ffffff 50%, #00ffff 80%, transparent 100%);
+      border-radius: 50px;
+      box-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff, 0 0 80px #00ffff;
+      animation: neonFlicker 3s ease-in-out infinite alternate;
+    }
+    @keyframes neonFlicker { 0% { opacity: 0.8; } 100% { opacity: 1; } }
+    .window {
+      position: absolute; top: 15%; width: 120px; height: 80px;
+      background: radial-gradient(ellipse at center, rgba(0,255,255,0.3) 0%, rgba(0,100,255,0.2) 50%, transparent 100%);
+      border: 2px solid rgba(0,255,255,0.5);
+      border-radius: 10px;
+    }
+    .window-left { left: 10%; }
+    .window-center { left: 50%; transform: translateX(-50%); }
+    .window-right { right: 10%; }
+    .table {
+      position: absolute; bottom: 35%; left: 50%; transform: translateX(-50%);
+      width: 800px; height: 80px;
+      background: linear-gradient(145deg, #2a2a2a 0%, #404040 50%, #1a1a1a 100%);
+      border-radius: 40px;
+      box-shadow: 0 -20px 40px rgba(0,0,0,0.5), inset 0 2px 0 rgba(255,255,255,0.1), 0 0 30px rgba(0,255,255,0.2);
+    }
+    .table::before {
+      content: ''; position: absolute; top: -5px; left: 50px; right: 50px; height: 3px;
+      background: linear-gradient(90deg, transparent 0%, #00ffff 50%, transparent 100%);
+      border-radius: 50px;
+      box-shadow: 0 0 10px #00ffff;
+    }
+    /* Central Figure - The Christ-like Android */
+    .central-figure {
+      position: absolute; bottom: 40%; left: 50%; transform: translateX(-50%);
+      width: 60px; height: 120px; z-index: 10;
+    }
+    .central-head {
+      position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+      width: 45px; height: 55px;
+      background: radial-gradient(ellipse at 40% 30%, #f0f0f0 0%, #d0d0d0 50%, #a0a0a0 100%);
+      border-radius: 50%;
+      box-shadow: inset -5px -5px 10px rgba(0,0,0,0.3), 0 0 20px rgba(255,255,255,0.2);
+    }
+    .central-halo {
+      position: absolute; top: -10px; left: 50%; transform: translateX(-50%);
+      width: 60px; height: 60px;
+      border: 2px solid #00ffff; border-radius: 50%;
+      box-shadow: 0 0 20px #00ffff, inset 0 0 20px #00ffff;
+      animation: haloGlow 2s ease-in-out infinite alternate;
+    }
+    @keyframes haloGlow {
+      0% { box-shadow: 0 0 20px #00ffff, inset 0 0 20px #00ffff; }
+      100% { box-shadow: 0 0 40px #00ffff, inset 0 0 30px #00ffff; }
+    }
+    .central-eyes {
+      position: absolute; top: 20px; left: 50%; transform: translateX(-50%);
+      width: 30px; height: 8px;
+    }
+    .central-eye {
+      position: absolute; width: 8px; height: 8px;
+      background: #00ffff; border-radius: 50%;
+      box-shadow: 0 0 10px #00ffff;
+      animation: eyeGlow 1.5s ease-in-out infinite alternate;
+    }
+    .central-eye-left { left: 0; }
+    .central-eye-right { right: 0; }
+    @keyframes eyeGlow {
+      0% { box-shadow: 0 0 5px #00ffff; }
+      100% { box-shadow: 0 0 15px #00ffff; }
+    }
+    .central-body {
+      position: absolute; top: 50px; left: 50%; transform: translateX(-50%);
+      width: 50px; height: 70px;
+      background: linear-gradient(180deg, #e0e0e0 0%, #b0b0b0 50%, #808080 100%);
+      border-radius: 10px;
+      box-shadow: inset -5px 0 10px rgba(0,0,0,0.2);
+    }
+    /* Disciples - Mix of humans, cyborgs, and robots with interactive highlighting */
+    .disciple {
+      position: absolute; bottom: 40%; width: 40px; height: 100px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    
+    .disciple:hover {
+      transform: scale(1.1) translateY(-5px);
+      filter: drop-shadow(0 0 20px #00ffff);
+      z-index: 10;
+    }
+    
+    .disciple.highlighted {
+      animation: discipleHighlight 2s ease-in-out infinite alternate;
+    }
+    
+    @keyframes discipleHighlight {
+      0% { 
+        transform: scale(1.05) translateY(-2px); 
+        filter: drop-shadow(0 0 15px #00ffff) brightness(1.2);
+      }
+      100% { 
+        transform: scale(1.1) translateY(-8px); 
+        filter: drop-shadow(0 0 25px #00ffff) brightness(1.4);
+      }
+    }
+    
+    /* Enhanced human heads with different emotions */
+    .human-head {
+      position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+      width: 35px; height: 45px;
+      background: radial-gradient(ellipse at 40% 30%, #fde3c8 0%, #f8d6b2 30%, #e6c283 60%, #c7813a 100%);
+      border-radius: 50%;
+      box-shadow: 0 2px 8px 0 #b88b4a, 0 0 0 2px #fff2, 0 0 0 6px #0002,
+                  inset -3px -3px 8px rgba(0,0,0,0.2), inset 3px 3px 8px rgba(255,255,255,0.1);
+      z-index: 2;
+    }
+    
+    /* Different emotional expressions */
+    .human-head.surprised .human-eye {
+      width: 8px; height: 8px;
+      animation: eyeBlink 3s ease-in-out infinite;
+    }
+    
+    .human-head.concerned .human-eyebrow {
+      transform: rotate(-20deg) translateY(2px);
+    }
+    
+    .human-head.concerned.right .human-eyebrow {
+      transform: rotate(20deg) translateY(2px);
+    }
+    
+    .human-head.sad .human-mouth {
+      transform: translateX(-50%) rotate(180deg);
+      top: 32px;
+    }
+    
+    .human-head.questioning .human-head {
+      animation: headTilt 4s ease-in-out infinite alternate;
+    }
+    
+    @keyframes headTilt {
+      0% { transform: translateX(-50%) rotate(-2deg); }
+      100% { transform: translateX(-50%) rotate(2deg); }
+    }
+    
+    @keyframes eyeBlink {
+      0%, 95% { height: 8px; }
+      96%, 99% { height: 2px; }
+      100% { height: 8px; }
+    }
+    .human-head::before {
+      content: '';
+      position: absolute; left: 6px; top: 22px;
+      width: 8px; height: 8px;
+      background: radial-gradient(circle, #f7bfa3 60%, transparent 100%);
+      border-radius: 50%;
+      box-shadow: 15px 0 #f7bfa3;
+      opacity: 0.7;
+    }
+    .human-head::after {
+      content: '';
+      position: absolute; left: 10px; top: 6px;
+      width: 15px; height: 8px;
+      background: radial-gradient(ellipse at center, #fff6 60%, transparent 100%);
+      border-radius: 50%;
+      opacity: 0.5;
+    }
+    .human-eye {
+      position: absolute; top: 18px; width: 6px; height: 6px;
+      background: radial-gradient(circle, #fff 60%, #2c5aa0 100%);
+      border-radius: 50%;
+      box-shadow: 0 0 2px #2c5aa0;
+    }
+    .human-eye.left { left: 8px; }
+    .human-eye.right { right: 8px; }
+    .human-eyelid {
+      position: absolute; top: 17px; width: 8px; height: 4px;
+      background: linear-gradient(to bottom, #e6c283 60%, transparent 100%);
+      border-radius: 50%;
+      opacity: 0.7;
+    }
+    .human-eyelid.left { left: 7px; }
+    .human-eyelid.right { right: 7px; }
+    .human-nose {
+      position: absolute; top: 25px; left: 50%; transform: translateX(-50%);
+      width: 5px; height: 8px;
+      background: radial-gradient(ellipse at 60% 60%, #f4a09c 60%, #e8968f 100%);
+      border-radius: 50% 50% 60% 60%;
+      box-shadow: 0 1px 2px #c7813a44;
+    }
+    .human-mouth {
+      position: absolute; top: 34px; left: 50%; transform: translateX(-50%);
+      width: 12px; height: 5px;
+      background: radial-gradient(ellipse at center, #d1455d 60%, #b8344a 100%);
+      border-radius: 0 0 12px 12px;
+      box-shadow: 0 1px 2px #9e2937;
+    }
+    .human-eyebrow {
+      position: absolute; top: 12px; width: 10px; height: 3px;
+      background: linear-gradient(90deg, #654321 0%, #8B4513 100%);
+      border-radius: 50%;
+    }
+    .human-eyebrow.left { left: 5px; transform: rotate(-10deg);}
+    .human-eyebrow.right { right: 5px; transform: rotate(10deg);}
+    .human-body {
+      position: absolute; top: 40px; left: 50%; transform: translateX(-50%);
+      width: 40px; height: 60px;
+      background: linear-gradient(180deg, #4a90e2 0%, #357abd 50%, #2171b5 100%);
+      border-radius: 8px;
+      box-shadow: inset 0 2px 0 rgba(255,255,255,0.1), 0 2px 4px rgba(0,0,0,0.2);
+    }
+    /* Enhanced cyborg disciples with more tech details */
+    .cyborg-head {
+      position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+      width: 35px; height: 45px;
+      background: linear-gradient(90deg, #fde3c8 0 55%, #b0b0b0 55% 100%);
+      border-radius: 50%;
+      box-shadow: 0 2px 8px 0 #888, 0 0 0 2px #fff2, 0 0 0 6px #0002,
+                  inset -2px 0 5px rgba(255,0,0,0.2);
+      z-index: 2;
+    }
+    .cyborg-head::before {
+      content: '';
+      position: absolute; left: 18px; top: 0;
+      width: 2px; height: 45px;
+      background: linear-gradient(to bottom, #ff0000 0 10%, #888 10% 90%, #ff0000 90% 100%);
+      border-radius: 1px;
+      opacity: 0.7;
+      animation: techPulse 2s ease-in-out infinite alternate;
+    }
+    
+    @keyframes techPulse {
+      0% { box-shadow: 0 0 5px #ff0000; }
+      100% { box-shadow: 0 0 15px #ff0000, 0 0 25px #ff0000; }
+    }
+    
+    .cyborg-implant {
+      position: absolute; top: 15px; right: 5px;
+      width: 8px; height: 8px;
+      background: #ff0000;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #ff0000, 0 0 2px #fff;
+      animation: implantBlink 1.5s linear infinite;
+    }
+    
+    @keyframes implantBlink {
+      0%, 90% { opacity: 1; }
+      95% { opacity: 0.3; }
+      100% { opacity: 1; }
+    }
+    
+    /* Enhanced robot disciples with more mechanical details */
+    .robot-head {
+      position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+      width: 35px; height: 45px;
+      background: linear-gradient(145deg, #e0e0e0 0%, #b0b0b0 50%, #606060 100%);
+      border-radius: 20%;
+      box-shadow: 0 2px 8px 0 #888, 0 0 0 2px #fff2, 0 0 0 6px #0002,
+                  inset -3px -3px 8px rgba(0,0,0,0.3), inset 3px 3px 8px rgba(255,255,255,0.2);
+      z-index: 2;
+      border-bottom: 4px solid #00ffff88;
+    }
+    
+    .robot-head::before {
+      content: '';
+      position: absolute; top: 10px; left: 5px;
+      width: 25px; height: 2px;
+      background: linear-gradient(90deg, transparent 0%, #00ffff 50%, transparent 100%);
+      animation: scanLine 3s linear infinite;
+    }
+    
+    @keyframes scanLine {
+      0% { transform: translateX(-10px); opacity: 0; }
+      50% { opacity: 1; }
+      100% { transform: translateX(10px); opacity: 0; }
+    }
+    .cyborg-eye {
+      position: absolute; top: 18px; width: 6px; height: 6px;
+      background: radial-gradient(circle, #fff 60%, #2c5aa0 100%);
+      border-radius: 50%;
+      box-shadow: 0 0 2px #2c5aa0;
+    }
+    .cyborg-eye.left { left: 8px; }
+    .cyborg-eye.right { right: 18px; }
+    .cyborg-body {
+      position: absolute; top: 40px; left: 50%; transform: translateX(-50%);
+      width: 40px; height: 60px;
+      background: linear-gradient(180deg, #2171b5 0%, #404040 50%, #1a1a1a 100%);
+      border-radius: 8px;
+    }
+    /* Enhanced robot disciples with detailed mechanical faces */
+    .robot-head {
+      position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+      width: 35px; height: 45px;
+      background: linear-gradient(145deg, #e0e0e0 0%, #b0b0b0 30%, #808080 60%, #606060 100%);
+      border-radius: 15% 15% 25% 25%;
+      box-shadow: 0 2px 8px 0 #888, 0 0 0 2px #fff2, 0 0 0 6px #0002,
+                  inset -3px -3px 8px rgba(0,0,0,0.4), inset 3px 3px 8px rgba(255,255,255,0.3);
+      z-index: 2;
+      border: 1px solid #404040;
+    }
+    
+    /* Detailed robotic features */
+    .robot-head::before {
+      content: '';
+      position: absolute; top: 8px; left: 3px; right: 3px; height: 3px;
+      background: linear-gradient(90deg, transparent 0%, #00ffff 20%, #ffffff 50%, #00ffff 80%, transparent 100%);
+      border-radius: 2px;
+      animation: scanLine 3s linear infinite;
+      box-shadow: 0 0 5px #00ffff;
+    }
+    
+    .robot-head::after {
+      content: '';
+      position: absolute; bottom: 5px; left: 5px; right: 5px; height: 2px;
+      background: linear-gradient(90deg, #ff0000 0%, #ff4444 50%, #ff0000 100%);
+      border-radius: 1px;
+      opacity: 0.8;
+      animation: statusLight 2s ease-in-out infinite alternate;
+    }
+    
+    @keyframes scanLine {
+      0% { transform: translateX(-15px); opacity: 0; }
+      30% { opacity: 1; }
+      70% { opacity: 1; }
+      100% { transform: translateX(15px); opacity: 0; }
+    }
+    
+    @keyframes statusLight {
+      0% { opacity: 0.5; box-shadow: 0 0 3px #ff0000; }
+      100% { opacity: 1; box-shadow: 0 0 8px #ff0000; }
+    }
+    
+    .robot-antenna {
+      position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+      width: 3px; height: 18px; background: linear-gradient(180deg, #808080 0%, #606060 100%);
+      border-radius: 2px;
+      box-shadow: inset 1px 0 2px rgba(255,255,255,0.3);
+    }
+    .robot-antenna::after {
+      content: ''; position: absolute; top: -4px; left: -3px;
+      width: 8px; height: 8px;
+      background: radial-gradient(circle, #ff4444 0%, #cc0000 100%);
+      border-radius: 50%;
+      box-shadow: 0 0 8px #ff4444, inset 1px 1px 2px rgba(255,255,255,0.3);
+      animation: antennaBlink 2s ease-in-out infinite alternate;
+    }
+    
+    .robot-antenna::before {
+      content: '';
+      position: absolute; top: -2px; left: -1px;
+      width: 5px; height: 3px;
+      background: linear-gradient(90deg, #c0c0c0 0%, #ffffff 100%);
+      border-radius: 2px;
+      opacity: 0.7;
+    }
+    
+    @keyframes antennaBlink {
+      0% { box-shadow: 0 0 8px #ff4444, inset 1px 1px 2px rgba(255,255,255,0.3); }
+      100% { box-shadow: 0 0 20px #ff4444, 0 0 30px #ff0000, inset 1px 1px 2px rgba(255,255,255,0.5); }
+    }
+    
+    .robot-eyes {
+      position: absolute; top: 15px; left: 50%; transform: translateX(-50%);
+      width: 28px; height: 10px;
+    }
+    .robot-eye {
+      position: absolute; width: 8px; height: 8px;
+      background: radial-gradient(circle at 30% 30%, #ff6666 0%, #ff0000 60%, #cc0000 100%);
+      border-radius: 50%;
+      box-shadow: 0 0 10px #ff0000, inset 1px 1px 2px rgba(255,255,255,0.2);
+      border: 1px solid #990000;
+    }
+    .robot-eye-left { left: 2px; }
+    .robot-eye-right { right: 2px; }
+    
+    /* Add mechanical eye details */
+    .robot-eye::before {
+      content: '';
+      position: absolute; top: 1px; left: 1px;
+      width: 3px; height: 3px;
+      background: radial-gradient(circle, #ffffff 0%, transparent 70%);
+      border-radius: 50%;
+      opacity: 0.8;
+    }
+    
+    .robot-eye::after {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 50%;
+    }
+    
+    .robot-mouth {
+      position: absolute; left: 50%; top: 28px; transform: translateX(-50%);
+      width: 18px; height: 8px;
+      background: linear-gradient(90deg, #333 0%, #00ffff 30%, #ffffff 50%, #00ffff 70%, #333 100%);
+      border-radius: 0 0 9px 9px;
+      box-shadow: 0 1px 3px rgba(0,255,255,0.5), inset 0 -1px 2px rgba(0,0,0,0.3);
+      border: 1px solid #404040;
+      border-top: none;
+    }
+    
+    .robot-mouth::before {
+      content: '';
+      position: absolute; top: 1px; left: 2px; right: 2px; height: 2px;
+      background: linear-gradient(90deg, transparent 0%, #00ffff 50%, transparent 100%);
+      border-radius: 1px;
+      animation: voicePattern 1.8s ease-in-out infinite;
+    }
+    
+    @keyframes voicePattern {
+      0%, 100% { opacity: 0.3; transform: scaleX(0.5); }
+      50% { opacity: 1; transform: scaleX(1); }
+    }
+    
+    .robot-jaw {
+      position: absolute; left: 50%; top: 34px; transform: translateX(-50%);
+      width: 22px; height: 10px;
+      background: linear-gradient(145deg, #b0b0b0 0%, #808080 50%, #606060 100%);
+      border-radius: 0 0 11px 11px;
+      opacity: 0.9;
+      box-shadow: inset 0 -2px 4px rgba(0,0,0,0.3), 0 1px 2px rgba(255,255,255,0.1);
+      border: 1px solid #505050;
+      border-top: none;
+    }
+    
+    /* Add neck connector details */
+    .robot-neck {
+      position: absolute; top: 42px; left: 50%; transform: translateX(-50%);
+      width: 25px; height: 8px;
+      background: linear-gradient(145deg, #909090 0%, #707070 50%, #505050 100%);
+      border-radius: 4px;
+      box-shadow: inset 0 1px 2px rgba(255,255,255,0.2), inset 0 -1px 2px rgba(0,0,0,0.3);
+    }
+    
+    .robot-neck::before {
+      content: '';
+      position: absolute; top: 2px; left: 3px; right: 3px; height: 1px;
+      background: linear-gradient(90deg, transparent 0%, #00ffff 50%, transparent 100%);
+      border-radius: 1px;
+      opacity: 0.6;
+    }
+    .robot-eyes {
+      position: absolute; top: 15px; left: 50%; transform: translateX(-50%);
+      width: 28px; height: 10px;
+    }
+    .robot-eye {
+      position: absolute; width: 8px; height: 8px;
+      background: radial-gradient(circle at 30% 30%, #ff6666 0%, #ff0000 60%, #cc0000 100%);
+      border-radius: 50%;
+      box-shadow: 0 0 10px #ff0000, inset 1px 1px 2px rgba(255,255,255,0.2);
+      border: 1px solid #990000;
+    }
+    .robot-eye-left { left: 2px; }
+    .robot-eye-right { right: 2px; }
+    
+    /* Add mechanical eye details */
+    .robot-eye::before {
+      content: '';
+      position: absolute; top: 1px; left: 1px;
+      width: 3px; height: 3px;
+      background: radial-gradient(circle, #ffffff 0%, transparent 70%);
+      border-radius: 50%;
+      opacity: 0.8;
+    }
+    
+    .robot-eye::after {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 50%;
+    }
+    
+    .robot-mouth {
+      position: absolute; left: 50%; top: 28px; transform: translateX(-50%);
+      width: 18px; height: 8px;
+      background: linear-gradient(90deg, #333 0%, #00ffff 30%, #ffffff 50%, #00ffff 70%, #333 100%);
+      border-radius: 0 0 9px 9px;
+      box-shadow: 0 1px 3px rgba(0,255,255,0.5), inset 0 -1px 2px rgba(0,0,0,0.3);
+      border: 1px solid #404040;
+      border-top: none;
+    }
+    
+    .robot-mouth::before {
+      content: '';
+      position: absolute; top: 1px; left: 2px; right: 2px; height: 2px;
+      background: linear-gradient(90deg, transparent 0%, #00ffff 50%, transparent 100%);
+      border-radius: 1px;
+      animation: voicePattern 1.8s ease-in-out infinite;
+    }
+    
+    @keyframes voicePattern {
+      0%, 100% { opacity: 0.3; transform: scaleX(0.5); }
+      50% { opacity: 1; transform: scaleX(1); }
+    }
+    
+    .robot-jaw {
+      position: absolute; left: 50%; top: 34px; transform: translateX(-50%);
+      width: 22px; height: 10px;
+      background: linear-gradient(145deg, #b0b0b0 0%, #808080 50%, #606060 100%);
+      border-radius: 0 0 11px 11px;
+      opacity: 0.9;
+      box-shadow: inset 0 -2px 4px rgba(0,0,0,0.3), 0 1px 2px rgba(255,255,255,0.1);
+      border: 1px solid #505050;
+      border-top: none;
+    }
+    
+    /* Add neck connector details */
+    .robot-neck {
+      position: absolute; top: 42px; left: 50%; transform: translateX(-50%);
+      width: 25px; height: 8px;
+      background: linear-gradient(145deg, #909090 0%, #707070 50%, #505050 100%);
+      border-radius: 4px;
+      box-shadow: inset 0 1px 2px rgba(255,255,255,0.2), inset 0 -1px 2px rgba(0,0,0,0.3);
+    }
+    
+    .robot-neck::before {
+      content: '';
+      position: absolute; top: 2px; left: 3px; right: 3px; height: 1px;
+      background: linear-gradient(90deg, transparent 0%, #00ffff 50%, transparent 100%);
+      border-radius: 1px;
+      opacity: 0.6;
+    }
+    .robot-body {
+      position: absolute; top: 40px; left: 50%; transform: translateX(-50%);
+      width: 40px; height: 60px;
+      background: linear-gradient(180deg, #c0c0c0 0%, #808080 50%, #404040 100%);
+      border-radius: 5px;
+      box-shadow: inset 0 0 10px rgba(0,0,0,0.3);
+    }
+    /* Position disciples around the table - Classic Last Supper formation with depth and grouping */
+    .disciple-1 { left: 5%; bottom: 42%; }    /* Far left, leaning forward */
+    .disciple-2 { left: 12%; bottom: 40%; }   /* Left group, sitting back */
+    .disciple-3 { left: 19%; bottom: 38%; }   /* Left group, leaning in */
+    .disciple-4 { left: 28%; bottom: 41%; }   /* Left-center, animated discussion */
+    .disciple-5 { left: 36%; bottom: 39%; }   /* Left of center, closer to table */
+    .disciple-6 { left: 64%; bottom: 39%; }   /* Right of center, closer to table */
+    .disciple-7 { left: 72%; bottom: 41%; }   /* Right-center, animated discussion */
+    .disciple-8 { left: 81%; bottom: 38%; }   /* Right group, leaning in */
+    .disciple-9 { left: 88%; bottom: 40%; }   /* Right group, sitting back */
+    .disciple-10 { left: 95%; bottom: 42%; }  /* Far right, leaning forward */
+    
+    /* Add depth variation to create realistic seating arrangement */
+    .disciple-1, .disciple-10 { 
+      transform: scale(0.9); 
+      z-index: 8; 
+    }
+    .disciple-2, .disciple-9 { 
+      transform: scale(0.95); 
+      z-index: 7; 
+    }
+    .disciple-3, .disciple-8 { 
+      transform: scale(1.05); 
+      z-index: 9; 
+    }
+    .disciple-4, .disciple-7 { 
+      transform: scale(1.02); 
+      z-index: 8; 
+      animation: groupDiscussion 4s ease-in-out infinite alternate;
+    }
+    .disciple-5, .disciple-6 { 
+      transform: scale(1.08); 
+      z-index: 10; 
+    }
+    
+    @keyframes groupDiscussion {
+      0% { transform: scale(1.02) rotate(-1deg); }
+      100% { transform: scale(1.04) rotate(1deg); }
+    }
+    /* Holographic chalice in center */
+    .holy-chalice {
+      position: absolute; bottom: 50%; left: 50%; transform: translateX(-50%);
+      width: 20px; height: 30px;
+      background: radial-gradient(ellipse at center, rgba(0,255,255,0.8) 0%, rgba(0,255,255,0.4) 50%, transparent 100%);
+      border: 1px solid #00ffff;
+      border-radius: 0 0 50% 50%;
+      box-shadow: 0 0 20px #00ffff, inset 0 0 10px #00ffff;
+      animation: chaliceGlow 2s ease-in-out infinite alternate;
+    }
+    @keyframes chaliceGlow {
+      0% { box-shadow: 0 0 20px #00ffff, inset 0 0 10px #00ffff; transform: translateX(-50%) translateY(0px); }
+      100% { box-shadow: 0 0 40px #00ffff, inset 0 0 20px #00ffff; transform: translateX(-50%) translateY(-2px); }
+    }
+    /* Enhanced floating data particles with digital rain effect */
+    .data-particle {
+      position: absolute; width: 3px; height: 3px;
+      background: #00ffff; border-radius: 50%;
+      box-shadow: 0 0 10px #00ffff;
+      animation: float 4s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) translateX(0px); opacity: 0.7; }
+      25% { transform: translateY(-20px) translateX(10px); opacity: 1; }
+      50% { transform: translateY(-10px) translateX(-5px); opacity: 0.8; }
+      75% { transform: translateY(-30px) translateX(-10px); opacity: 1; }
+    }
+    
+    /* Extended particle system */
+    .particle-1 { top: 60%; left: 20%; animation-delay: 0s; }
+    .particle-2 { top: 65%; left: 40%; animation-delay: 1s; }
+    .particle-3 { top: 70%; left: 60%; animation-delay: 2s; }
+    .particle-4 { top: 55%; left: 80%; animation-delay: 1.5s; }
+    .particle-5 { top: 50%; left: 30%; animation-delay: 0.5s; }
+    .particle-6 { top: 45%; left: 15%; animation-delay: 0.8s; }
+    .particle-7 { top: 75%; left: 75%; animation-delay: 2.2s; }
+    .particle-8 { top: 40%; left: 50%; animation-delay: 1.8s; }
+    .particle-9 { top: 58%; left: 85%; animation-delay: 0.3s; }
+    .particle-10 { top: 52%; left: 10%; animation-delay: 2.5s; }
+    
+    /* Matrix-style character particles */
+    .matrix-char {
+      position: absolute; color: #00ff00; font-family: monospace;
+      font-size: 10px; opacity: 0.6;
+      animation: matrixFall 8s linear infinite;
+    }
+    
+    @keyframes matrixFall {
+      0% { transform: translateY(-100px); opacity: 0; }
+      10% { opacity: 0.8; }
+      90% { opacity: 0.8; }
+      100% { transform: translateY(800px); opacity: 0; }
+    }
+    
+    .matrix-1 { left: 10%; animation-delay: 0s; }
+    .matrix-2 { left: 25%; animation-delay: 2s; }
+    .matrix-3 { left: 45%; animation-delay: 4s; }
+    .matrix-4 { left: 65%; animation-delay: 1s; }
+    .matrix-5 { left: 85%; animation-delay: 3s; }
+    
+    /* Holographic display overlays */
+    .holo-display {
+      position: absolute; width: 80px; height: 50px;
+      border: 1px solid rgba(0,255,255,0.3);
+      border-radius: 3px;
+      background: rgba(0,255,255,0.02);
+      backdrop-filter: blur(3px);
+    }
+    
+    .holo-display-1 { top: 20%; left: 15%; }
+    .holo-display-2 { top: 25%; right: 20%; }
+    .holo-display-3 { bottom: 25%; left: 10%; }
+    
+    .holo-display::before {
+      content: attr(data-text);
+      position: absolute; top: 5px; left: 5px;
+      color: #00ffff; font-size: 6px; font-family: monospace;
+      text-shadow: 0 0 3px #00ffff;
+    }
+    
+    .holo-display::after {
+      content: "";
+      position: absolute; bottom: 5px; left: 5px;
+      width: 70px; height: 1px;
+      background: linear-gradient(90deg, transparent, #00ffff, transparent);
+      animation: dataFlow 3s ease-in-out infinite;
+    }
+    
+    @keyframes dataFlow {
+      0% { transform: translateX(-20px); opacity: 0; }
+      50% { opacity: 1; }
+      100% { transform: translateX(20px); opacity: 0; }
+    }
+    /* Info overlay */
+    .info-overlay {
+      position: absolute; bottom: -60px; left: 50%; transform: translateX(-50%);
+      background: rgba(0,0,0,0.9); color: #00ffff;
+      padding: 15px 30px; border-radius: 25px; font-size: 16px;
+      opacity: 0; transition: all 0.3s ease; backdrop-filter: blur(10px);
+      border: 1px solid #00ffff; text-align: center; font-weight: bold;
+      text-shadow: 0 0 10px #00ffff;
+    }
+    .supper-container:hover .info-overlay { opacity: 1; bottom: -50px; }
+    /* Responsive */
+    @media (max-width: 1300px) {
+      .supper-container { width: 95vw; height: 60vh; min-height: 500px; }
+      .table { width: 70%; }
+      .neon-light { width: 60%; }
+    }
+    @media (max-width: 768px) {
+      .supper-container { height: 50vh; min-height: 400px; }
+      .disciple { width: 30px; height: 80px; }
+      .central-figure { width: 45px; height: 100px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="supper-container">
+    <!-- Enhanced environmental effects -->
+    <div class="dramatic-lighting"></div>
+    <div class="scanlines"></div>
+    <div class="digital-rain">
+      <!-- Digital rain drops -->
+      <div class="rain-drop" style="left: 10%; animation-duration: 3s; animation-delay: 0s;"></div>
+      <div class="rain-drop" style="left: 15%; animation-duration: 4s; animation-delay: 0.5s;"></div>
+      <div class="rain-drop" style="left: 25%; animation-duration: 3.5s; animation-delay: 1s;"></div>
+      <div class="rain-drop" style="left: 35%; animation-duration: 4.2s; animation-delay: 1.5s;"></div>
+      <div class="rain-drop" style="left: 45%; animation-duration: 3.8s; animation-delay: 0.8s;"></div>
+      <div class="rain-drop" style="left: 55%; animation-duration: 4.1s; animation-delay: 2s;"></div>
+      <div class="rain-drop" style="left: 65%; animation-duration: 3.3s; animation-delay: 0.3s;"></div>
+      <div class="rain-drop" style="left: 75%; animation-duration: 4.5s; animation-delay: 1.2s;"></div>
+      <div class="rain-drop" style="left: 85%; animation-duration: 3.7s; animation-delay: 1.8s;"></div>
+      <div class="rain-drop" style="left: 90%; animation-duration: 4.3s; animation-delay: 0.7s;"></div>
+    </div>
+    
+    <!-- Sound visualization -->
+    <div class="audio-waves">
+      <div class="wave-bar" style="left: 0px; animation-delay: 0s;"></div>
+      <div class="wave-bar" style="left: 8px; animation-delay: 0.1s;"></div>
+      <div class="wave-bar" style="left: 16px; animation-delay: 0.2s;"></div>
+      <div class="wave-bar" style="left: 24px; animation-delay: 0.3s;"></div>
+      <div class="wave-bar" style="left: 32px; animation-delay: 0.4s;"></div>
+      <div class="wave-bar" style="left: 40px; animation-delay: 0.5s;"></div>
+      <div class="wave-bar" style="left: 48px; animation-delay: 0.4s;"></div>
+      <div class="wave-bar" style="left: 56px; animation-delay: 0.3s;"></div>
+      <div class="wave-bar" style="left: 64px; animation-delay: 0.2s;"></div>
+      <div class="wave-bar" style="left: 72px; animation-delay: 0.1s;"></div>
+      <div class="wave-bar" style="left: 80px; animation-delay: 0s;"></div>
+    </div>
+    
+    <!-- Holographic interface elements -->
+    <div class="holo-interface"></div>
+    <div class="holo-display holo-display-1" data-text="SUPPER.EXE"></div>
+    <div class="holo-display holo-display-2" data-text="DISCIPLES: 12"></div>
+    <div class="holo-display holo-display-3" data-text="STATUS: ACTIVE"></div>
+    
+    <!-- Matrix-style falling characters -->
+    <div class="matrix-char matrix-1">0110100110</div>
+    <div class="matrix-char matrix-2">1001101001</div>
+    <div class="matrix-char matrix-3">0101110010</div>
+    <div class="matrix-char matrix-4">1010001101</div>
+    <div class="matrix-char matrix-5">0011101110</div>
+    
+    <!-- Futuristic ceiling and lighting -->
+    <div class="ceiling"></div>
+    <div class="neon-light"></div>
+    <!-- Holographic windows -->
+    <div class="window window-left"></div>
+    <div class="window window-center"></div>
+    <div class="window window-right"></div>
+    <!-- The table -->
+    <div class="table"></div>
+    <!-- Central Figure - The Android Christ -->
+    <div class="central-figure">
+      <div class="central-halo"></div>
+      <div class="central-head">
+        <div class="central-eyes">
+          <div class="central-eye central-eye-left"></div>
+          <div class="central-eye central-eye-right"></div>
+        </div>
+      </div>
+      <div class="central-body"></div>
+    </div>
+    <!-- Holy Chalice -->
+    <div class="holy-chalice"></div>
+    <!-- Disciples with enhanced emotional expressions and interactivity -->
+    <!-- Human disciples with different emotions -->
+    <div class="disciple disciple-1" onclick="highlightDisciple(this)" data-name="Peter" data-emotion="surprised">
+      <div class="human-head surprised">
+        <div class="human-eyebrow left"></div>
+        <div class="human-eyebrow right"></div>
+        <div class="human-eye left"></div>
+        <div class="human-eye right"></div>
+        <div class="human-eyelid left"></div>
+        <div class="human-eyelid right"></div>
+        <div class="human-nose"></div>
+        <div class="human-mouth"></div>
+      </div>
+      <div class="human-body"></div>
+    </div>
+    <div class="disciple disciple-2" onclick="highlightDisciple(this)" data-name="John" data-emotion="concerned">
+      <div class="human-head concerned">
+        <div class="human-eyebrow left"></div>
+        <div class="human-eyebrow right"></div>
+        <div class="human-eye left"></div>
+        <div class="human-eye right"></div>
+        <div class="human-eyelid left"></div>
+        <div class="human-eyelid right"></div>
+        <div class="human-nose"></div>
+        <div class="human-mouth"></div>
+      </div>
+      <div class="human-body"></div>
+    </div>
+    <!-- Enhanced cyborg disciples -->
+    <div class="disciple disciple-3" onclick="highlightDisciple(this)" data-name="CY-800" data-type="cyborg">
+      <div class="cyborg-head">
+        <div class="cyborg-eye left"></div>
+        <div class="cyborg-eye right"></div>
+        <div class="cyborg-implant"></div>
+      </div>
+      <div class="cyborg-body"></div>
+    </div>
+    <div class="disciple disciple-4" onclick="highlightDisciple(this)" data-name="CY-801" data-type="cyborg">
+      <div class="cyborg-head">
+        <div class="cyborg-eye left"></div>
+        <div class="cyborg-eye right"></div>
+        <div class="cyborg-implant"></div>
+      </div>
+      <div class="cyborg-body"></div>
+    </div>
+    <div class="disciple disciple-5" onclick="highlightDisciple(this)" data-name="CY-802" data-type="cyborg">
+      <div class="cyborg-head">
+        <div class="cyborg-eye left"></div>
+        <div class="cyborg-eye right"></div>
+        <div class="cyborg-implant"></div>
+      </div>
+      <div class="cyborg-body"></div>
+    </div>
+    <!-- Enhanced robot disciples -->
+    <div class="disciple disciple-6" onclick="highlightDisciple(this)" data-name="R-3PO" data-type="robot">
+      <div class="robot-head">
+        <div class="robot-antenna"></div>
+        <div class="robot-eyes">
+          <div class="robot-eye robot-eye-left"></div>
+          <div class="robot-eye robot-eye-right"></div>
+        </div>
+        <div class="robot-mouth"></div>
+        <div class="robot-jaw"></div>
+        <div class="robot-neck"></div>
+      </div>
+      <div class="robot-body"></div>
+    </div>
+    <div class="disciple disciple-7" onclick="highlightDisciple(this)" data-name="R-2D2" data-type="robot">
+      <div class="robot-head">
+        <div class="robot-antenna"></div>
+        <div class="robot-eyes">
+          <div class="robot-eye robot-eye-left"></div>
+          <div class="robot-eye robot-eye-right"></div>
+        </div>
+        <div class="robot-mouth"></div>
+        <div class="robot-jaw"></div>
+        <div class="robot-neck"></div>
+      </div>
+      <div class="robot-body"></div>
+    </div>
+    <div class="disciple disciple-8" onclick="highlightDisciple(this)" data-name="R-BB8" data-type="robot">
+      <div class="robot-head">
+        <div class="robot-antenna"></div>
+        <div class="robot-eyes">
+          <div class="robot-eye robot-eye-left"></div>
+          <div class="robot-eye robot-eye-right"></div>
+        </div>
+        <div class="robot-mouth"></div>
+        <div class="robot-jaw"></div>
+        <div class="robot-neck"></div>
+      </div>
+      <div class="robot-body"></div>
+    </div>
+    <!-- More human disciples with different emotions -->
+    <div class="disciple disciple-9" onclick="highlightDisciple(this)" data-name="Matthew" data-emotion="sad">
+      <div class="human-head sad">
+        <div class="human-eyebrow left"></div>
+        <div class="human-eyebrow right"></div>
+        <div class="human-eye left"></div>
+        <div class="human-eye right"></div>
+        <div class="human-eyelid left"></div>
+        <div class="human-eyelid right"></div>
+        <div class="human-nose"></div>
+        <div class="human-mouth"></div>
+      </div>
+      <div class="human-body"></div>
+    </div>
+    <div class="disciple disciple-10" onclick="highlightDisciple(this)" data-name="James" data-emotion="questioning">
+      <div class="human-head questioning">
+        <div class="human-eyebrow left"></div>
+        <div class="human-eyebrow right"></div>
+        <div class="human-eye left"></div>
+        <div class="human-eye right"></div>
+        <div class="human-eyelid left"></div>
+        <div class="human-eyelid right"></div>
+        <div class="human-nose"></div>
+        <div class="human-mouth"></div>
+      </div>
+      <div class="human-body"></div>
+    </div>
+    <!-- Enhanced floating data particles with digital rain effect -->
+    <div class="data-particle particle-1"></div>
+    <div class="data-particle particle-2"></div>
+    <div class="data-particle particle-3"></div>
+    <div class="data-particle particle-4"></div>
+    <div class="data-particle particle-5"></div>
+    <div class="data-particle particle-6"></div>
+    <div class="data-particle particle-7"></div>
+    <div class="data-particle particle-8"></div>
+    <div class="data-particle particle-9"></div>
+    <div class="data-particle particle-10"></div>
+    
+    <!-- Info overlay with enhanced interaction -->
+    <div class="info-overlay">
+      THE FUTURE LAST SUPPER<br>
+      Pure CSS Art • 300+ Elements • Interactive Disciples<br>
+      <span id="disciple-info">Click disciples to highlight • Hover for details</span>
+    </div>
+  </div>
+
+  <script>
+    // Interactive disciple highlighting system
+    function highlightDisciple(element) {
+      // Remove highlight from all disciples
+      document.querySelectorAll('.disciple').forEach(d => d.classList.remove('highlighted'));
+      
+      // Add highlight to clicked disciple
+      element.classList.add('highlighted');
+      
+      // Update info display
+      const name = element.getAttribute('data-name');
+      const type = element.getAttribute('data-type') || 'human';
+      const emotion = element.getAttribute('data-emotion') || 'neutral';
+      
+      const infoElement = document.getElementById('disciple-info');
+      infoElement.innerHTML = `${name} • Type: ${type} • Emotion: ${emotion}`;
+      
+      // Auto-remove highlight after 5 seconds
+      setTimeout(() => {
+        element.classList.remove('highlighted');
+        infoElement.innerHTML = 'Click disciples to highlight • Hover for details';
+      }, 5000);
+    }
+    
+    // Add hover effects for additional information
+    document.querySelectorAll('.disciple').forEach(disciple => {
+      disciple.addEventListener('mouseenter', function() {
+        const name = this.getAttribute('data-name');
+        const type = this.getAttribute('data-type') || 'human';
+        const emotion = this.getAttribute('data-emotion') || 'neutral';
+        
+        const infoElement = document.getElementById('disciple-info');
+        infoElement.innerHTML = `Hovering: ${name} • Type: ${type} • Emotion: ${emotion}`;
+      });
+      
+      disciple.addEventListener('mouseleave', function() {
+        if (!this.classList.contains('highlighted')) {
+          const infoElement = document.getElementById('disciple-info');
+          infoElement.innerHTML = 'Click disciples to highlight • Hover for details';
+        }
+      });
+    });
+    
+    // Random blinking for cyborg implants and robot antennas
+    setInterval(() => {
+      const implants = document.querySelectorAll('.cyborg-implant, .robot-antenna::after');
+      implants.forEach(implant => {
+        if (Math.random() < 0.3) {
+          implant.style.animationDuration = `${Math.random() * 0.5 + 0.5}s`;
+        }
+      });
+    }, 2000);
+    
+    // Dynamic matrix text generation
+    const matrixChars = ['0', '1', 'α', 'β', 'γ', 'δ', 'Ω', '∞', '∆', '∑'];
+    setInterval(() => {
+      document.querySelectorAll('.matrix-char').forEach(char => {
+        let newText = '';
+        for (let i = 0; i < 10; i++) {
+          newText += matrixChars[Math.floor(Math.random() * matrixChars.length)];
+        }
+        char.textContent = newText;
+      });
+    }, 3000);
+  </script>
+  <script src="js/tracking.js"></script>
+</body>
+</html>

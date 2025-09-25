@@ -1,4 +1,38 @@
 /*dev_projects JS*/
+// === Minimal Page Fade Transition Logic ===
+// Applies only to same-site .html navigations to soften hard refresh blink.
+(function() {
+    const enableFade = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (enableFade) {
+        // On initial load fade in once DOM is interactive
+        document.addEventListener('DOMContentLoaded', () => {
+            requestAnimationFrame(() => document.body.classList.add('page-ready'));
+        });
+
+        // Delegate link clicks
+        document.addEventListener('click', (e) => {
+            const a = e.target.closest('a');
+            if (!a) return;
+            // Ignore anchors meant to open modals, offcanvas, or JS-only actions
+            if (a.hasAttribute('data-bs-toggle') || a.getAttribute('target') === '_blank') return;
+            const href = a.getAttribute('href');
+            if (!href || href.startsWith('#')) return; // in-page anchors
+            // Only fade for same-directory .html files (simple static site nav)
+            if (!/\.html(?:[?#].*)?$/.test(href)) return;
+            e.preventDefault();
+            // If already fading, block duplicate nav
+            if (document.body.classList.contains('page-fade-out')) return;
+            document.body.classList.add('page-fade-out');
+            // Navigate after transition
+            const delay = 300; // ms (should match CSS ~ .35s)
+            setTimeout(() => { window.location.href = href; }, delay);
+        }, true);
+    } else {
+        // If reduced motion preferred, show immediately
+        document.addEventListener('DOMContentLoaded', () => document.body.classList.add('page-ready'));
+    }
+})();
+// === End Page Fade Transition Logic ===
 $(function () {
     $(".menu-link").click(function () {
         $(".menu-link").removeClass("is-active");
@@ -472,18 +506,27 @@ navLinks.forEach(link => {
 
 
 // Set URL when "View Project" is clicked
-document.getElementById('viewProject').addEventListener('click', function (e) {
-    // Prevent default navigation if the href is '#' or not set
-    if (this.href === window.location.origin + '/' || this.href === '#') {
-        e.preventDefault();
-        console.warn("Project URL is not set or is a placeholder. Please update projectUrls in main.js.");
-        // Optionally, display a user-friendly message on the UI
-        // alert("Project link not available yet!"); // Avoid using alert in production if possible
-    } else {
-        // Open in a new tab
-        window.open(this.href, '_blank');
-    }
-});
+const viewProjectElement = document.getElementById('viewProject');
+if (viewProjectElement) {
+    viewProjectElement.addEventListener('click', function (e) {
+        // If a project preview modal exists on the page, do NOT open a new tab here.
+        // Page-specific logic will handle showing the modal and full-screen actions.
+        if (document.getElementById('projectPreviewModal')) {
+            e.preventDefault();
+            return;
+        }
+
+        // Only open in a new tab when this is an anchor with a valid href and no modal exists
+        const isAnchor = this.tagName && this.tagName.toLowerCase() === 'a';
+        const href = isAnchor ? this.getAttribute('href') : null;
+        if (!isAnchor || !href || href === '#' || href === '') {
+            e.preventDefault();
+            console.warn('Project URL is not set or not applicable for this element.');
+            return;
+        }
+        window.open(href, '_blank');
+    });
+}
 
 // Optionally, initialize with the first app on page load
 if (navLinks.length > 0) {
@@ -620,11 +663,14 @@ window.addEventListener('DOMContentLoaded', hideOverlays);
 window.addEventListener('popstate', hideOverlays);
 
 document.querySelectorAll('.transition-link').forEach(link => {
-    link.addEventListener('click', function () {
+    link.addEventListener('click', function (e) {
+        // Ignore project-title links; they now act as selectors only
+        if (this.classList.contains('project-title')) return;
         const targetHref = this.getAttribute('data-href');
         if (targetHref) {
-            document.getElementById('viewProject').setAttribute('href', targetHref);
-            // Update the browser URL
+            e.preventDefault();
+            document.getElementById('viewProject')?.setAttribute('href', targetHref);
+            // Update the browser URL without leaving the page
             history.pushState({}, '', targetHref);
         }
     });

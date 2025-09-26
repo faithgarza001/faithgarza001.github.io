@@ -8,27 +8,33 @@ class FuturisticPhotographyGallery {
         this.filteredImages = [];
         this.currentFilter = 'all';
         this.mousePosition = { x: 0, y: 0 };
+        this.isLuxury = document.querySelector('.photography-wrapper')?.classList.contains('luxury-mode');
         this.init();
     }
 
     init() {
-        this.setupParallax();
+        // In luxury mode, minimize movement and effects
+        if (!this.isLuxury) {
+            this.setupParallax();
+        }
         this.setupFilterSystem();
         this.setupLightbox();
         this.setupCounters();
         this.setupIntersectionObserver();
-        this.setupInteractiveLens();
-        this.setupDynamicLighting();
-        this.setupHolographicEffects();
+        if (!this.isLuxury) {
+            this.setupInteractiveLens();
+            this.setupDynamicLighting();
+            this.setupHolographicEffects();
+        }
         this.collectImages();
     }
 
     // Interactive Lens Effect - cursor acts like camera lens
     setupInteractiveLens() {
-        const gallery = document.querySelector('.futuristic-gallery');
+    const gallery = document.querySelector('.futuristic-gallery');
         const photos = document.querySelectorAll('.photo-card img');
         
-        if (!gallery) return;
+    if (!gallery || this.isLuxury) return;
 
         // Create lens element
         const lens = document.createElement('div');
@@ -107,8 +113,8 @@ class FuturisticPhotographyGallery {
 
     // Dynamic Lighting System - spotlight follows cursor
     setupDynamicLighting() {
-        const gallery = document.querySelector('.futuristic-gallery');
-        if (!gallery) return;
+    const gallery = document.querySelector('.futuristic-gallery');
+    if (!gallery || this.isLuxury) return;
 
         // Create spotlight element
         const spotlight = document.createElement('div');
@@ -163,7 +169,8 @@ class FuturisticPhotographyGallery {
 
     // Holographic Effects and Glitch Animations
     setupHolographicEffects() {
-        const frames = document.querySelectorAll('.hologram-frame');
+    const frames = document.querySelectorAll('.hologram-frame');
+    if (this.isLuxury) return; // skip busy effects
         
         frames.forEach((frame, index) => {
             // Random glitch intervals
@@ -226,22 +233,28 @@ class FuturisticPhotographyGallery {
 
     // Enhanced Filter System with Futuristic Animations
     setupFilterSystem() {
-        const filterBtns = document.querySelectorAll('.filter-btn');
         const photoItems = document.querySelectorAll('.photo-item');
+        const select = document.getElementById('categorySelect');
+        const legacyButtons = document.querySelectorAll('.filter-btn');
 
-        filterBtns.forEach(btn => {
+        if (select) {
+            select.addEventListener('change', (e) => {
+                const filter = e.target.value;
+                this.matrixFilterPhotos(filter, photoItems);
+                this.currentFilter = filter;
+                // Reset to page 1 on filter change
+                if (this.pagination) {
+                    this.pagination.currentPage = 1;
+                    this.renderPagination();
+                }
+            });
+        }
+
+        // Keep legacy buttons functional if present
+        legacyButtons.forEach(btn => {
             btn.addEventListener('click', (e) => {
-                const filter = e.target.dataset.filter;
-                
-                // Update active button with glitch effect
-                filterBtns.forEach(b => {
-                    b.classList.remove('active');
-                    b.style.animation = 'none';
-                });
-                e.target.classList.add('active');
-                e.target.style.animation = 'filterActivate 0.5s ease';
-                
-                // Filter photos with matrix-like animation
+                const filter = e.currentTarget.dataset.filter;
+                legacyButtons.forEach(b => b.classList.toggle('active', b === e.currentTarget));
                 this.matrixFilterPhotos(filter, photoItems);
                 this.currentFilter = filter;
             });
@@ -249,26 +262,21 @@ class FuturisticPhotographyGallery {
     }
 
     matrixFilterPhotos(filter, items) {
+        const elegant = this.isLuxury;
         items.forEach((item, index) => {
             const category = item.dataset.category;
             const shouldShow = filter === 'all' || category === filter;
-            
             if (shouldShow) {
                 item.style.display = 'block';
-                // Matrix-style reveal animation
                 setTimeout(() => {
                     item.style.opacity = '1';
-                    item.style.transform = 'translateY(0) scale(1)';
-                    item.style.filter = 'brightness(1) contrast(1)';
-                }, index * 150);
+                    item.style.transform = elegant ? 'none' : 'translateY(0) scale(1)';
+                    item.style.filter = 'none';
+                }, elegant ? 0 : index * 80);
             } else {
-                // Digital dissolve effect
-                item.style.opacity = '0';
-                item.style.transform = 'translateY(30px) scale(0.8)';
-                item.style.filter = 'brightness(0) contrast(2)';
-                setTimeout(() => {
-                    item.style.display = 'none';
-                }, 500);
+                item.style.opacity = elegant ? '0' : '0';
+                item.style.transform = elegant ? 'none' : 'translateY(16px) scale(0.98)';
+                setTimeout(() => { item.style.display = 'none'; }, elegant ? 200 : 400);
             }
         });
     }
@@ -363,7 +371,7 @@ class FuturisticPhotographyGallery {
     // Animated counters with digital effect
     setupCounters() {
         const counters = document.querySelectorAll('.stat-number');
-        
+
         const animateCounter = (counter) => {
             const target = parseInt(counter.dataset.count);
             const increment = target / 60; // Slower, more digital feel
@@ -392,6 +400,14 @@ class FuturisticPhotographyGallery {
             updateCounter();
         };
 
+        // In one-pager mode, run immediately when dock is visible
+        const dock = document.querySelector('.stats-dock');
+        if (dock) {
+            counters.forEach(c => animateCounter(c));
+            return;
+        }
+
+        // Fallback for non-dock layouts
         const counterObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -500,12 +516,15 @@ class FuturisticPhotographyGallery {
 // Scroll effects and parallax elements
 class ScrollEffects {
     constructor() {
+        this.isLuxury = document.querySelector('.photography-wrapper')?.classList.contains('luxury-mode');
         this.init();
     }
 
     init() {
-        this.setupScrollIndicator();
-        this.setupSmoothScrolling();
+        if (!this.isLuxury) {
+            this.setupScrollIndicator();
+            this.setupSmoothScrolling();
+        }
     }
 
     setupScrollIndicator() {
@@ -636,3 +655,125 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('Futuristic photography gallery initialized with', lazyImages.length, 'images');
     console.log('Interactive lens and holographic effects active');
 });
+
+// =====================
+// One-Pager Enhancements
+// =====================
+(function onePagerInit(){
+    document.addEventListener('DOMContentLoaded', ()=>{
+        const grid = document.getElementById('galleryGrid');
+        if(!grid) return;
+
+        // Pagination state
+        const state = {
+            perPage: 6,
+            currentPage: 1
+        };
+
+        // Build pagination API on gallery instance-like object
+        const photoItems = Array.from(grid.querySelectorAll('.photo-item'));
+
+        function getFilteredItems(){
+            const filter = document.getElementById('categorySelect')?.value || 'all';
+            return photoItems.filter(item => filter==='all' || item.dataset.category===filter);
+        }
+
+        function render(){
+            const items = getFilteredItems();
+            const totalPages = Math.max(1, Math.ceil(items.length / state.perPage));
+            if(state.currentPage>totalPages) state.currentPage = totalPages;
+            const start = (state.currentPage-1)*state.perPage;
+            const end = start + state.perPage;
+            // Hide all
+            photoItems.forEach(el=> el.style.display='none');
+            // Show current slice
+            items.slice(start,end).forEach(el=> el.style.display='block');
+            // Update indicator
+            const indicator = document.getElementById('pageIndicator');
+            if(indicator) indicator.textContent = `${state.currentPage}/${totalPages}`;
+            // Enable/disable buttons
+            const prev = document.getElementById('pagePrev');
+            const next = document.getElementById('pageNext');
+            if(prev) prev.disabled = state.currentPage===1;
+            if(next) next.disabled = state.currentPage===totalPages;
+        }
+
+        function attachPager(){
+            const prev = document.getElementById('pagePrev');
+            const next = document.getElementById('pageNext');
+            prev?.addEventListener('click', ()=>{ if(state.currentPage>1){ state.currentPage--; render(); }});
+            next?.addEventListener('click', ()=>{ state.currentPage++; render(); });
+            const select = document.getElementById('categorySelect');
+            select?.addEventListener('change', ()=>{ state.currentPage=1; render(); });
+        }
+
+        attachPager();
+        render();
+
+        // Segmented tabs (Gallery/Stats)
+        const tabGallery = document.getElementById('tabGallery');
+        const tabStats = document.getElementById('tabStats');
+        const dock = document.querySelector('.stats-dock');
+        function setTab(which){
+                const gallerySection = document.querySelector('.one-pager-gallery');
+                if(which==='gallery'){
+                    tabGallery?.classList.add('active');
+                    tabStats?.classList.remove('active');
+                    gallerySection?.classList.remove('d-none');
+                    dock?.classList.remove('only-stats');
+                } else {
+                    tabStats?.classList.add('active');
+                    tabGallery?.classList.remove('active');
+                    gallerySection?.classList.add('d-none');
+                    dock?.classList.add('only-stats');
+                }
+        }
+        tabGallery?.addEventListener('click', ()=> setTab('gallery'));
+        tabStats?.addEventListener('click', ()=> setTab('stats'));
+
+        // Stats dock collapse
+        const toggle = document.getElementById('statsToggle');
+        toggle?.addEventListener('click', ()=>{
+                const wrapper = document.querySelector('.stats-dock');
+                wrapper?.classList.toggle('dock-collapsed');
+                const expanded = !wrapper?.classList.contains('dock-collapsed');
+                toggle.setAttribute('aria-expanded', expanded? 'true':'false');
+        });
+
+        // Draggable stat tiles with persistence
+        const container = document.getElementById('statsContainer');
+        const key = 'photo_stats_order';
+        function loadOrder(){
+                try {
+                        const saved = JSON.parse(localStorage.getItem(key)||'[]');
+                        if(Array.isArray(saved) && saved.length){
+                                saved.forEach(k=>{
+                                        const el = container.querySelector(`[data-key="${k}"]`);
+                                        if(el) container.appendChild(el);
+                                });
+                        }
+                } catch(_){}
+        }
+        function saveOrder(){
+                const order = Array.from(container.children).map(c=>c.getAttribute('data-key'));
+                localStorage.setItem(key, JSON.stringify(order));
+        }
+        function enableDrag(){
+                let dragEl=null;
+                container?.addEventListener('dragstart', (e)=>{
+                        dragEl = e.target.closest('.stat-item');
+                });
+                container?.addEventListener('dragover', (e)=>{
+                        e.preventDefault();
+                        const target = e.target.closest('.stat-item');
+                        if(!dragEl || !target || dragEl===target) return;
+                        const rect = target.getBoundingClientRect();
+                        const before = (e.clientY - rect.top) < rect.height/2;
+                        container.insertBefore(dragEl, before? target : target.nextSibling);
+                });
+                container?.addEventListener('drop', ()=>{ saveOrder(); });
+        }
+        loadOrder();
+        enableDrag();
+    });
+})();

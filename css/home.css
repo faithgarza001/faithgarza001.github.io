@@ -58,6 +58,8 @@ body.page-fade-out { opacity: 0 !important; transition: opacity .35s ease; }
     --search-bg:  #14162b;
     --overlay-bg: rgba(36, 39, 59, 0.3);
     --scrollbar-bg: rgb(1 2 3 / 40%);
+    /* SVG theming: used by inline style color: var(--svg-main-color, #222) */
+    --svg-main-color: var(--theme-color);
 }
 
 .light-mode {
@@ -74,7 +76,12 @@ body.page-fade-out { opacity: 0 !important; transition: opacity .35s ease; }
     --hover-menu-bg: rgba(255 255 255 / 35%);
     --scrollbar-bg: rgb(255 253 253 / 57%);
     --content-title-color: var(--theme-color);
+    --svg-main-color: var(--theme-color);
 }
+
+
+/* If you later add custom brain color just target .fa-brain */
+/* .light-mode .fa-brain { color: #222 !important; } */
 
 html {
     box-sizing: border-box;
@@ -193,6 +200,31 @@ body.light-mode .video-bg:before {
     padding: 0 30px;
     white-space: nowrap;
 }
+
+
+                            /* Scoped: Active Learning + Career Highlights */
+                            #activeLearningCard, #careerHighlightsCard {position:relative; overflow:hidden;}
+                            #activeLearningCard h5, #careerHighlightsCard h5 {font-weight:700;}
+                            /* Progress */
+                            #activeLearningCard .al-progress-block {margin-top:.15rem; margin-bottom:1.15rem;}
+                            #activeLearningCard .al-progress-head {font-size:.72rem; letter-spacing:.04em; font-weight:600; opacity:.9; display:flex; justify-content:space-between; align-items:center; margin-bottom:.45rem;}
+                            #activeLearningCard .al-bar {height:8px; width:100%; background:rgba(255,255,255,0.15); border-radius:6px; position:relative; overflow:hidden;}
+                            #activeLearningCard .al-bar span {position:absolute; inset:0; width:60%; background:linear-gradient(90deg,#4BE7B0,#2DBA76); box-shadow:0 0 0 1px rgba(255,255,255,0.12) inset;}
+                            /* Lines */
+                            #activeLearningCard .al-line {display:flex; gap:.65rem; font-size:.75rem; line-height:1.15rem; margin-bottom:.65rem; align-items:flex-start;}
+                            #activeLearningCard .al-line:last-child{margin-bottom:0;}
+                            #activeLearningCard .al-line i {font-size:.9rem; opacity:.95; width:18px; text-align:center;}
+                            #activeLearningCard .al-emph {font-weight:500;}
+                            /* Career Highlights list */
+                            #careerHighlightsCard .ch-list {list-style:none; margin:0; padding:0;}
+                            #careerHighlightsCard .ch-item {display:flex; gap:.7rem; font-size:.74rem; line-height:1.18rem; margin-bottom:.75rem;}
+                            #careerHighlightsCard .ch-item:last-child{margin-bottom:0;}
+                            #careerHighlightsCard .ch-item i {font-size:.95rem; width:18px; text-align:center; opacity:.95;}
+                            @media (max-width:768px){
+                                #activeLearningCard .al-line, #careerHighlightsCard .ch-item {font-size:.72rem;}
+                                #activeLearningCard .al-bar {height:7px;}
+                            }
+                        
 @media screen and (max-width: 480px) {
     .header {
         padding: 0 16px;
@@ -320,6 +352,15 @@ body.light-mode .video-bg:before {
     flex-shrink: 0; /* Prevent SVG from shrinking */
 }
 
+/* Mobile offcanvas menu links (replacing Bootstrap text-light) */
+.menu-link-mobile {
+    color: var(--theme-color) !important;
+}
+.menu-link-mobile i { color: var(--theme-color) !important; }
+.menu-link-mobile:hover { background: var(--hover-menu-bg); }
+.light-mode .menu-link-mobile,
+.light-mode .menu-link-mobile i { color: var(--theme-color) !important; }
+
 .img-content {
     font-weight: 500;
     font-size: 17px;
@@ -339,6 +380,7 @@ body.light-mode .video-bg:before {
     line-height: 1.7em;
     color: #ebecec;
     display: -webkit-box;
+    line-clamp: 4;
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
     overflow: hidden;
@@ -581,11 +623,8 @@ body.light-mode .video-bg:before {
     width: 100%;
     height: 100%;
     justify-content: space-around;
-    background-color: var(--content-bg);
     padding-left: 0;
     margin: 0;
-    border-radius: 14px;
-    border: 1px solid var(--theme-bg-color);
     cursor: pointer;
 }
 .content-section ul li {
@@ -882,10 +921,6 @@ body.light-mode .video-bg:before {
 .app-card + .app-card {
     margin-left: 20px;
 }
-.app-card span {
-    display: flex;
-    align-items: center;
-}
 .app-card__subtext {
     font-size: 14px;
     font-weight: 400;
@@ -963,12 +998,7 @@ body.light-mode .video-bg:before {
     align-items: center;
     color: #fff;
 }
-.container .glass svg {
-    font-size: 2em;
-    fill: #fff;
-    margin-left: 20px;
-    padding-bottom: 10px;
-}
+
 
 /* Responsive Media Queries */
 @media screen and (max-width: 412px) {
@@ -1172,6 +1202,46 @@ body.light-mode .video-bg:before {
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
     border-color: rgba(255, 255, 255, 0.3);
     transform: translateY(-2px);
+}
+
+/* ===============================
+   Light Mode Overrides: Project Cards
+   Ensure readable dark text & lighter UI surfaces
+   =============================== */
+.light-mode .project-card-enhanced {
+    background: rgba(255,255,255,0.65);
+    border: 1px solid rgba(0,0,0,0.08);
+}
+.light-mode .project-card-enhanced:hover {
+    border-color: rgba(0,0,0,0.15);
+    box-shadow: 0 14px 30px rgba(0,0,0,0.10);
+}
+.light-mode .project-card-enhanced::before { opacity: .85; }
+.light-mode .project-icon {
+    background: linear-gradient(135deg, rgba(0,0,0,0.08), rgba(0,0,0,0.02));
+    border: 1px solid rgba(0,0,0,0.08);
+}
+.light-mode .project-icon svg { color: var(--theme-color); }
+.light-mode .project-badge { color:#fff; }
+.light-mode .project-title {
+    background: none;
+    -webkit-text-fill-color: initial;
+    color: var(--theme-color);
+}
+.light-mode .project-subtitle { color: rgba(0,0,0,0.70); }
+.light-mode .project-description { color: rgba(0,0,0,0.72); }
+.light-mode .tag {
+    background: rgba(0,0,0,0.06);
+    color: rgba(0,0,0,0.78);
+    border: 1px solid rgba(0,0,0,0.10);
+}
+.light-mode .project-btn { color: #fff; }
+.light-mode .project-btn.secondary {
+    background: linear-gradient(135deg, rgba(0,0,0,0.05), rgba(0,0,0,0.02));
+    border: 1px solid rgba(0,0,0,0.15);
+}
+.light-mode .project-btn.secondary:hover {
+    background: linear-gradient(135deg, rgba(0,0,0,0.10), rgba(0,0,0,0.05));
 }
 
 /* Mobile Responsiveness */

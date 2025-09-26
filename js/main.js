@@ -114,20 +114,55 @@ const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl =>
 
 /*Icon Hover End*/
 
-/*Light Dark Mode*/
-const toggleButton = document.querySelector('.dark-light');
+/* Light / Dark Mode with Persistence */
+(function initTheme() {
+    const STORAGE_KEY = 'portfolio_theme'; // values: 'light' | 'dark'
 
-toggleButton.addEventListener('click', () => {
-    document.body.classList.toggle('light-mode');
-    //change text-light to text-dark
-    const textElements = document.querySelectorAll('.text-light, .text-dark');
-    textElements.forEach((element) => {
-        element.classList.toggle('text-dark');
-        element.classList.toggle('text-light');
-    });
+    function applyTheme(theme) {
+        const isLight = theme === 'light';
+        document.body.classList.toggle('light-mode', isLight);
+        // Normalize Bootstrap text utility classes used in menus/offcanvas
+        const textElements = document.querySelectorAll('.text-light, .text-dark');
+        textElements.forEach((el) => {
+            if (isLight) {
+                el.classList.add('text-dark');
+                el.classList.remove('text-light');
+            } else {
+                el.classList.add('text-light');
+                el.classList.remove('text-dark');
+            }
+        });
+        // Optional: update toggle icon state (moon/sun), if you add a stateful icon later
+    }
 
-});
-/*End of Light Dark Mode*/
+    function getStoredTheme() {
+        try { return localStorage.getItem(STORAGE_KEY); } catch { return null; }
+    }
+    function storeTheme(theme) {
+        try { localStorage.setItem(STORAGE_KEY, theme); } catch {}
+    }
+
+    // Apply initial theme ASAP
+    const saved = getStoredTheme();
+    if (saved === 'light' || saved === 'dark') {
+        applyTheme(saved);
+    } else {
+        // Default to dark (no body.light-mode) to match current design
+        storeTheme('dark');
+        applyTheme('dark');
+    }
+
+    // Wire up toggle if present on the page
+    const toggleButton = document.querySelector('.dark-light');
+    if (toggleButton) {
+        toggleButton.addEventListener('click', () => {
+            const next = document.body.classList.contains('light-mode') ? 'dark' : 'light';
+            storeTheme(next);
+            applyTheme(next);
+        });
+    }
+})();
+/* End Light / Dark Mode */
 
 //Onclick of nav link, change the app name
 const appNameElem = document.getElementById('appName');

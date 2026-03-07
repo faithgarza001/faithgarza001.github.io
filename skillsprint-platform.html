@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillSprint Platform - Level Up Your Skills</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" crossorigin="anonymous">
+    <style>
+        :root {
+            --primary-dark: #0a0a0a;
+            --secondary-dark: #111827;
+            --sprint-purple: #6d28d9;
+            --sprint-purple-light: #8b5cf6;
+            --sprint-violet: #7c3aed;
+            --sprint-indigo: #4338ca;
+            --accent-cyan: #06b6d4;
+            --accent-cyan-light: #22d3ee;
+            --accent-green: #10b981;
+            --accent-amber: #f59e0b;
+            --text-primary: #ffffff;
+            --text-secondary: #e5e7eb;
+            --text-muted: #9ca3af;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --shadow-color: rgba(0, 0, 0, 0.5);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--sprint-indigo) 50%, var(--primary-dark) 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background:
+                radial-gradient(ellipse at 20% 20%, rgba(109, 40, 217, 0.3) 0%, transparent 55%),
+                radial-gradient(ellipse at 80% 80%, rgba(6, 182, 212, 0.2) 0%, transparent 55%),
+                radial-gradient(ellipse at 60% 40%, rgba(16, 185, 129, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Floating ambient spheres */
+        .floating-elements {
+            position: fixed; top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none; z-index: 1;
+        }
+
+        .floating-sphere {
+            position: absolute; border-radius: 50%;
+            background: linear-gradient(135deg, var(--sprint-purple-light), var(--accent-cyan));
+            filter: blur(40px); opacity: 0.25;
+            animation: float 10s ease-in-out infinite;
+        }
+
+        .floating-sphere:nth-child(1) { width: 220px; height: 220px; top: 15%; left: 8%;  animation-delay: 0s; }
+        .floating-sphere:nth-child(2) { width: 320px; height: 320px; top: 55%; right: 8%; animation-delay: -4s; }
+        .floating-sphere:nth-child(3) { width: 160px; height: 160px; top: 75%; left: 35%; animation-delay: -7s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            33%       { transform: translateY(-35px) scale(1.08); }
+            66%       { transform: translateY(20px) scale(0.95); }
+        }
+
+        /* Navigation Circles */
+        .nav-circles {
+            position: fixed; right: 28px; top: 50%; transform: translateY(-50%);
+            z-index: 1000; display: flex; flex-direction: column; gap: 14px;
+            backdrop-filter: blur(20px); background: var(--glass-bg);
+            border: 1px solid var(--glass-border); border-radius: 50px;
+            padding: 18px 10px;
+            box-shadow: 0 20px 40px var(--shadow-color);
+        }
+
+        .nav-circle {
+            width: 40px; height: 40px; border: 2px solid var(--glass-border);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            cursor: pointer; transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            background: var(--glass-bg); color: var(--text-muted);
+            font-size: 13px; font-weight: 600; text-decoration: none;
+        }
+
+        .nav-circle.active,
+        .nav-circle:hover {
+            border-color: var(--accent-amber); color: var(--text-primary);
+            transform: scale(1.1); box-shadow: 0 0 28px rgba(245, 158, 11, 0.5);
+        }
+
+        @media (max-width: 768px) { .nav-circles { display: none; } }
+
+        /* Back link */
+        .back-link {
+            position: fixed; top: 24px; left: 24px; z-index: 1000;
+            display: flex; align-items: center; gap: 8px; padding: 10px 18px;
+            background: var(--glass-bg); border: 1px solid var(--glass-border);
+            border-radius: 50px; backdrop-filter: blur(12px);
+            color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+        .back-link:hover { color: #fff; border-color: var(--sprint-purple-light); }
+
+        /* === HERO === */
+        #hero {
+            min-height: 100vh; display: flex; align-items: center;
+            padding: 100px 60px 80px; position: relative; z-index: 2;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.8rem, 6vw, 5.5rem);
+            font-weight: 800; line-height: 1.1;
+            background: linear-gradient(135deg, #fff 0%, var(--sprint-purple-light) 50%, var(--accent-cyan) 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text; margin-bottom: 1.5rem;
+        }
+
+        .hero-content .subtitle {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            color: var(--text-secondary); max-width: 560px; margin-bottom: 2rem; line-height: 1.7;
+        }
+
+        .hero-badges { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 2.5rem; }
+
+        .badge-pill {
+            padding: 6px 16px; border-radius: 50px; font-size: 0.8rem; font-weight: 600;
+            border: 1px solid var(--glass-border); background: var(--glass-bg);
+            backdrop-filter: blur(8px); color: var(--text-secondary);
+        }
+
+        .badge-pill.purple  { border-color: var(--sprint-purple-light); color: var(--sprint-purple-light); }
+        .badge-pill.cyan    { border-color: var(--accent-cyan); color: var(--accent-cyan); }
+        .badge-pill.green   { border-color: var(--accent-green); color: var(--accent-green); }
+        .badge-pill.amber   { border-color: var(--accent-amber); color: var(--accent-amber); }
+
+        .hero-cta { display: flex; gap: 14px; flex-wrap: wrap; }
+
+        .btn-sprint {
+            padding: 14px 32px; border-radius: 50px; font-weight: 700; font-size: 0.95rem;
+            cursor: pointer; transition: all 0.3s ease; text-decoration: none; display: inline-block;
+        }
+
+        .btn-sprint-primary {
+            background: linear-gradient(135deg, var(--sprint-purple), var(--accent-cyan));
+            border: none; color: #fff;
+            box-shadow: 0 8px 25px rgba(109, 40, 217, 0.4);
+        }
+        .btn-sprint-primary:hover { transform: translateY(-3px); box-shadow: 0 14px 35px rgba(109, 40, 217, 0.6); color: #fff; }
+
+        .btn-sprint-outline {
+            background: transparent; border: 2px solid var(--glass-border); color: var(--text-secondary);
+        }
+        .btn-sprint-outline:hover { border-color: var(--sprint-purple-light); color: #fff; }
+
+        /* Hero visual */
+        .hero-visual {
+            display: flex; align-items: center; justify-content: center;
+            position: relative;
+        }
+
+        .dashboard-mockup {
+            width: 100%; max-width: 500px; border-radius: 20px;
+            background: var(--glass-bg); border: 1px solid var(--glass-border);
+            backdrop-filter: blur(20px); padding: 28px;
+            box-shadow: 0 30px 80px rgba(109, 40, 217, 0.3);
+        }
+
+        .mockup-header {
+            display: flex; align-items: center; justify-content: space-between;
+            margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid var(--glass-border);
+        }
+
+        .mockup-title { font-size: 1rem; font-weight: 700; color: #fff; }
+        .mockup-dots { display: flex; gap: 6px; }
+        .mockup-dots span { width: 10px; height: 10px; border-radius: 50%; }
+        .dot-red { background: #ef4444; }
+        .dot-yellow { background: var(--accent-amber); }
+        .dot-green { background: var(--accent-green); }
+
+        .xp-bar-wrap { margin-bottom: 16px; }
+        .xp-label { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 4px; display: flex; justify-content: space-between; }
+
+        .xp-bar { height: 8px; background: rgba(255,255,255,0.1); border-radius: 10px; overflow: hidden; }
+        .xp-fill {
+            height: 100%; border-radius: 10px;
+            background: linear-gradient(90deg, var(--sprint-purple-light), var(--accent-cyan));
+            animation: fillBar 2s ease-out forwards;
+        }
+        @keyframes fillBar { from { width: 0; } to { width: var(--fill-width, 72%); } }
+
+        .sprint-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
+
+        .sprint-mini-card {
+            padding: 14px; border-radius: 12px; background: rgba(255,255,255,0.04);
+            border: 1px solid var(--glass-border);
+        }
+        .sprint-mini-card .card-icon { font-size: 1.3rem; margin-bottom: 6px; }
+        .sprint-mini-card .card-label { font-size: 0.7rem; color: var(--text-muted); }
+        .sprint-mini-card .card-value { font-size: 1.1rem; font-weight: 700; color: #fff; }
+
+        .leaderboard-row {
+            display: flex; align-items: center; gap: 10px; padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            font-size: 0.82rem;
+        }
+        .leaderboard-row:last-child { border-bottom: none; }
+        .rank { width: 22px; color: var(--text-muted); font-weight: 700; }
+        .lb-name { flex: 1; color: var(--text-secondary); }
+        .lb-xp { color: var(--accent-amber); font-weight: 700; }
+
+        /* === FEATURES === */
+        #features {
+            padding: 100px 60px; position: relative; z-index: 2;
+        }
+
+        .section-header { text-align: center; margin-bottom: 64px; }
+
+        .section-header h2 {
+            font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 800;
+            background: linear-gradient(135deg, #fff, var(--sprint-purple-light));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text; margin-bottom: 1rem;
+        }
+        .section-header p { color: var(--text-muted); font-size: 1.05rem; max-width: 600px; margin: 0 auto; }
+
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 28px; }
+
+        .feature-card {
+            padding: 36px 28px; border-radius: 20px;
+            background: var(--glass-bg); border: 1px solid var(--glass-border);
+            backdrop-filter: blur(12px); transition: all 0.35s ease;
+            position: relative; overflow: hidden;
+        }
+        .feature-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+            background: linear-gradient(90deg, var(--sprint-purple-light), var(--accent-cyan));
+            opacity: 0; transition: opacity 0.35s ease;
+        }
+        .feature-card:hover { transform: translateY(-8px); border-color: rgba(109, 40, 217, 0.4); }
+        .feature-card:hover::before { opacity: 1; }
+
+        .feature-icon {
+            width: 60px; height: 60px; border-radius: 16px; margin-bottom: 20px;
+            display: flex; align-items: center; justify-content: center; font-size: 1.6rem;
+        }
+
+        .icon-purple { background: rgba(109, 40, 217, 0.2); border: 1px solid rgba(109, 40, 217, 0.4); }
+        .icon-cyan   { background: rgba(6, 182, 212, 0.2); border: 1px solid rgba(6, 182, 212, 0.4); }
+        .icon-green  { background: rgba(16, 185, 129, 0.2); border: 1px solid rgba(16, 185, 129, 0.4); }
+        .icon-amber  { background: rgba(245, 158, 11, 0.2); border: 1px solid rgba(245, 158, 11, 0.4); }
+        .icon-pink   { background: rgba(236, 72, 153, 0.2); border: 1px solid rgba(236, 72, 153, 0.4); }
+        .icon-indigo { background: rgba(67, 56, 202, 0.2); border: 1px solid rgba(67, 56, 202, 0.4); }
+
+        .feature-card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 12px; color: #fff; }
+        .feature-card p  { color: var(--text-muted); font-size: 0.9rem; line-height: 1.65; }
+
+        .tech-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
+        .tech-tag {
+            font-size: 0.7rem; padding: 3px 10px; border-radius: 50px;
+            background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border);
+            color: var(--text-muted);
+        }
+
+        /* === TECH STACK === */
+        #tech-stack { padding: 100px 60px; position: relative; z-index: 2; }
+
+        .tech-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 20px; }
+
+        .tech-item {
+            padding: 24px 20px; border-radius: 16px; text-align: center;
+            background: var(--glass-bg); border: 1px solid var(--glass-border);
+            transition: all 0.3s ease;
+        }
+        .tech-item:hover { border-color: var(--sprint-purple-light); transform: translateY(-4px); }
+        .tech-item .tech-icon { font-size: 2rem; margin-bottom: 10px; }
+        .tech-item .tech-name { font-size: 0.85rem; font-weight: 600; color: var(--text-secondary); }
+        .tech-item .tech-role { font-size: 0.7rem; color: var(--text-muted); margin-top: 4px; }
+
+        /* === STATS === */
+        #stats { padding: 80px 60px; position: relative; z-index: 2; }
+
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; }
+
+        .stat-card {
+            padding: 36px 24px; border-radius: 20px; text-align: center;
+            background: var(--glass-bg); border: 1px solid var(--glass-border);
+        }
+        .stat-number {
+            font-size: 3rem; font-weight: 800;
+            background: linear-gradient(135deg, var(--sprint-purple-light), var(--accent-cyan));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text; line-height: 1;
+        }
+        .stat-label { color: var(--text-muted); font-size: 0.9rem; margin-top: 8px; }
+
+        /* === FOOTER === */
+        footer {
+            padding: 48px 60px 32px; position: relative; z-index: 2;
+            border-top: 1px solid var(--glass-border);
+            background: rgba(0,0,0,0.25);
+        }
+
+        .footer-inner {
+            max-width: 1200px; margin: 0 auto;
+            display: flex; flex-wrap: wrap; justify-content: space-between;
+            align-items: center; gap: 20px;
+        }
+
+        .footer-brand .brand-name {
+            font-size: 1.2rem; font-weight: 800;
+            background: linear-gradient(135deg, var(--sprint-purple-light), var(--accent-cyan));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .footer-brand p { color: var(--text-muted); font-size: 0.8rem; margin-top: 4px; }
+
+        .footer-links { display: flex; gap: 20px; }
+        .footer-links a { color: var(--text-muted); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+        .footer-links a:hover { color: #fff; }
+
+        .footer-copy { color: var(--text-muted); font-size: 0.78rem; width: 100%; text-align: center; padding-top: 24px; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            #hero { padding: 80px 24px 60px; flex-direction: column; }
+            #features, #tech-stack, #stats { padding: 70px 24px; }
+            footer { padding: 40px 24px 28px; }
+            .hero-content h1 { font-size: 2.4rem; }
+            .back-link { top: 14px; left: 14px; padding: 8px 14px; font-size: 0.78rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Ambient spheres -->
+<div class="floating-elements">
+    <div class="floating-sphere"></div>
+    <div class="floating-sphere"></div>
+    <div class="floating-sphere"></div>
+</div>
+
+<!-- Back to portfolio -->
+<a href="developer_projects.html" class="back-link">
+    <i class="fas fa-arrow-left"></i> Back to Projects
+</a>
+
+<!-- Side nav -->
+<nav class="nav-circles" aria-label="Page sections">
+    <a class="nav-circle active" href="#hero"    title="Hero">01</a>
+    <a class="nav-circle"       href="#features" title="Features">02</a>
+    <a class="nav-circle"       href="#tech-stack" title="Tech Stack">03</a>
+    <a class="nav-circle"       href="#stats"    title="Stats">04</a>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section id="hero">
+    <div class="container-fluid">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-6 hero-content">
+                <div class="hero-badges">
+                    <span class="badge-pill purple">🎯 Gamified Learning</span>
+                    <span class="badge-pill cyan">🤖 AI-Powered</span>
+                    <span class="badge-pill green">📊 Analytics</span>
+                    <span class="badge-pill amber">🚀 EdTech</span>
+                </div>
+                <h1>SkillSprint<br>Platform</h1>
+                <p class="subtitle">
+                    A full-stack learning platform that transforms professional skill development into gamified,
+                    AI-guided micro-sprints — helping learners close skill gaps faster with measurable results.
+                </p>
+                <div class="hero-cta">
+                    <a href="developer_projects.html" class="btn-sprint btn-sprint-primary">
+                        <i class="fas fa-th-large me-2"></i> View All Projects
+                    </a>
+                    <a href="#features" class="btn-sprint btn-sprint-outline">
+                        <i class="fas fa-chevron-down me-2"></i> Explore Features
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-6 hero-visual">
+                <div class="dashboard-mockup">
+                    <div class="mockup-header">
+                        <span class="mockup-title">🏆 SkillSprint Dashboard</span>
+                        <div class="mockup-dots">
+                            <span class="dot-red"></span>
+                            <span class="dot-yellow"></span>
+                            <span class="dot-green"></span>
+                        </div>
+                    </div>
+
+                    <div class="xp-bar-wrap">
+                        <div class="xp-label">
+                            <span>Level 7 — React Fundamentals Sprint</span>
+                            <span>72 / 100 XP</span>
+                        </div>
+                        <div class="xp-bar">
+                            <div class="xp-fill" style="--fill-width: 72%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="sprint-cards">
+                        <div class="sprint-mini-card">
+                            <div class="card-icon">🔥</div>
+                            <div class="card-label">Day Streak</div>
+                            <div class="card-value">14 days</div>
+                        </div>
+                        <div class="sprint-mini-card">
+                            <div class="card-icon">⚡</div>
+                            <div class="card-label">Sprints Done</div>
+                            <div class="card-value">38</div>
+                        </div>
+                        <div class="sprint-mini-card">
+                            <div class="card-icon">🎯</div>
+                            <div class="card-label">Skill Score</div>
+                            <div class="card-value">840 pts</div>
+                        </div>
+                        <div class="sprint-mini-card">
+                            <div class="card-icon">🏅</div>
+                            <div class="card-label">Badges</div>
+                            <div class="card-value">12</div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="xp-label" style="margin-bottom: 8px;"><span>🏆 Leaderboard</span></div>
+                        <div class="leaderboard-row">
+                            <span class="rank">1</span>
+                            <span class="lb-name">Alex M.</span>
+                            <span class="lb-xp">2,140 XP</span>
+                        </div>
+                        <div class="leaderboard-row">
+                            <span class="rank">2</span>
+                            <span class="lb-name">Jordan L.</span>
+                            <span class="lb-xp">1,980 XP</span>
+                        </div>
+                        <div class="leaderboard-row" style="border: 1px solid rgba(109,40,217,0.5); border-radius: 8px; padding: 8px; background: rgba(109,40,217,0.1);">
+                            <span class="rank">3</span>
+                            <span class="lb-name" style="color: var(--sprint-purple-light);">You 🚀</span>
+                            <span class="lb-xp">1,720 XP</span>
+                        </div>
+                        <div class="leaderboard-row">
+                            <span class="rank">4</span>
+                            <span class="lb-name">Sam K.</span>
+                            <span class="lb-xp">1,590 XP</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FEATURES ===== -->
+<section id="features">
+    <div class="container-fluid">
+        <div class="section-header">
+            <h2>Core Platform Features</h2>
+            <p>Everything needed to build, track, and accelerate skill growth at scale.</p>
+        </div>
+        <div class="features-grid">
+
+            <div class="feature-card">
+                <div class="feature-icon icon-purple">🎯</div>
+                <h3>Gamified Sprint Engine</h3>
+                <p>
+                    Learners complete time-boxed micro-courses earning XP, badges, and level-ups.
+                    Adaptive difficulty adjusts in real time based on quiz performance and completion speed.
+                </p>
+                <div class="tech-tags">
+                    <span class="tech-tag">Node.js</span>
+                    <span class="tech-tag">PostgreSQL</span>
+                    <span class="tech-tag">WebSockets</span>
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon icon-cyan">🤖</div>
+                <h3>AI Skill Gap Analysis</h3>
+                <p>
+                    ML model maps diagnostic assessment results against industry benchmarks, then
+                    recommends the optimal sprint sequence to close identified gaps in the shortest time.
+                </p>
+                <div class="tech-tags">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">scikit-learn</span>
+                    <span class="tech-tag">REST API</span>
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon icon-green">📊</div>
+                <h3>Real-Time Analytics Dashboard</h3>
+                <p>
+                    Live metrics covering sprint completion rates, quiz scores, streaks, and time-on-task.
+                    Instructors receive at-risk learner alerts and cohort-level heat maps.
+                </p>
+                <div class="tech-tags">
+                    <span class="tech-tag">React.js</span>
+                    <span class="tech-tag">Chart.js</span>
+                    <span class="tech-tag">SSE</span>
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon icon-amber">🏆</div>
+                <h3>Live Leaderboards</h3>
+                <p>
+                    Real-time leaderboards at individual, cohort, and organisation levels powered by
+                    WebSocket broadcasts, keeping learners motivated through friendly competition.
+                </p>
+                <div class="tech-tags">
+                    <span class="tech-tag">WebSockets</span>
+                    <span class="tech-tag">Redis</span>
+                    <span class="tech-tag">Node.js</span>
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon icon-pink">🔒</div>
+                <h3>Role-Based Access Control</h3>
+                <p>
+                    JWT-secured multi-tenant architecture with distinct portals for Learners, Instructors,
+                    and Enterprise Admins — each with granular permissions and data isolation.
+                </p>
+                <div class="tech-tags">
+                    <span class="tech-tag">JWT</span>
+                    <span class="tech-tag">Spring Security</span>
+                    <span class="tech-tag">OAuth 2.0</span>
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon icon-indigo">📄</div>
+                <h3>Exportable Compliance Reports</h3>
+                <p>
+                    Enterprise admins can generate CSV and PDF reports on team skill progress, course
+                    completions, and certification status for HR and compliance workflows.
+                </p>
+                <div class="tech-tags">
+                    <span class="tech-tag">iText PDF</span>
+                    <span class="tech-tag">Apache POI</span>
+                    <span class="tech-tag">Java</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ===== TECH STACK ===== -->
+<section id="tech-stack">
+    <div class="container-fluid">
+        <div class="section-header">
+            <h2>Technology Stack</h2>
+            <p>Modern, production-ready technologies chosen for scalability and developer experience.</p>
+        </div>
+        <div class="tech-grid">
+            <div class="tech-item">
+                <div class="tech-icon">⚛️</div>
+                <div class="tech-name">React.js</div>
+                <div class="tech-role">Frontend UI</div>
+            </div>
+            <div class="tech-item">
+                <div class="tech-icon">🟩</div>
+                <div class="tech-name">Node.js</div>
+                <div class="tech-role">API Server</div>
+            </div>
+            <div class="tech-item">
+                <div class="tech-icon">🐍</div>
+                <div class="tech-name">Python</div>
+                <div class="tech-role">ML Pipeline</div>
+            </div>
+            <div class="tech-item">
+                <div class="tech-icon">🐘</div>
+                <div class="tech-name">PostgreSQL</div>
+                <div class="tech-role">Primary Database</div>
+            </div>
+            <div class="tech-item">
+                <div class="tech-icon">🔴</div>
+                <div class="tech-name">Redis</div>
+                <div class="tech-role">Caching & Pub/Sub</div>
+            </div>
+            <div class="tech-item">
+                <div class="tech-icon">🐳</div>
+                <div class="tech-name">Docker</div>
+                <div class="tech-role">Containerisation</div>
+            </div>
+            <div class="tech-item">
+                <div class="tech-icon">☁️</div>
+                <div class="tech-name">AWS / Azure</div>
+                <div class="tech-role">Cloud Hosting</div>
+            </div>
+            <div class="tech-item">
+                <div class="tech-icon">🔐</div>
+                <div class="tech-name">JWT / OAuth 2.0</div>
+                <div class="tech-role">Auth & Security</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== STATS ===== -->
+<section id="stats">
+    <div class="container-fluid">
+        <div class="section-header">
+            <h2>Platform Impact</h2>
+            <p>Measurable outcomes that demonstrate the value of sprint-based learning.</p>
+        </div>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">45%</div>
+                <div class="stat-label">Increase in learner retention vs. traditional courses</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">30%</div>
+                <div class="stat-label">Reduction in time-to-competency with AI-guided paths</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">1K+</div>
+                <div class="stat-label">Learners supported with real-time analytics</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">20%</div>
+                <div class="stat-label">Drop in at-risk dropout rates after instructor alerts</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+    <div class="footer-inner">
+        <div class="footer-brand">
+            <div class="brand-name">SkillSprint Platform</div>
+            <p>Full-stack EdTech project — Faith Garza Portfolio</p>
+        </div>
+        <div class="footer-links">
+            <a href="developer_projects.html"><i class="fas fa-arrow-left me-1"></i> All Projects</a>
+            <a href="index.html"><i class="fas fa-home me-1"></i> Home</a>
+            <a href="about_me.html"><i class="fas fa-user me-1"></i> About</a>
+        </div>
+        <div class="footer-copy">
+            &copy; <span id="year"></span> Faith Garza · Built with HTML, CSS &amp; JavaScript
+        </div>
+    </div>
+</footer>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc4s9bIOgUxi8T/jzmqVrNnCOK8P67n36oQ5OdOGmNwN" crossorigin="anonymous"></script>
+<script>
+    // Current year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Active nav circle on scroll
+    const sections = document.querySelectorAll('section[id]');
+    const navCircles = document.querySelectorAll('.nav-circle');
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                navCircles.forEach(c => c.classList.remove('active'));
+                const active = document.querySelector(`.nav-circle[href="#${entry.target.id}"]`);
+                if (active) active.classList.add('active');
+            }
+        });
+    }, { threshold: 0.4 });
+
+    sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>

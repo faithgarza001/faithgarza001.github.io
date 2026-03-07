@@ -384,6 +384,59 @@ const cardData = {
             "skills": ["KPI Tracking", "Sales Analytics", "Data Visualization (Chart.js/D3.js)", "Filtering & Sorting", "UI/UX Design"]
         }
     ],
+    'SkillSprint Platform': [
+        {
+            "id": "one",
+            "title": "1. Gamified Learning Paths & Sprint Challenges",
+            "desc": "🎯 <strong>Adaptive Skill Sprints with Gamification & Leaderboards</strong><br><br>" +
+                "<u>Technical Highlights:</u><br>" +
+                "• Adaptive learning engine that curates time-boxed skill sprints tailored to user progress.<br><br>" +
+                "<u>Feature:</u><br>" +
+                "• Learners complete focused sprints (micro-courses) with XP points, badges, and level-ups.<br>" +
+                "• Dynamic leaderboards surface top performers and encourage friendly competition.<br>" +
+                "• Progress persisted via REST API with JWT-secured user sessions.<br><br>" +
+                "<u>Benefits:</u><br>" +
+                "• Boosts engagement and course completion rates.<br>" +
+                "• Makes skill-building feel like a game, reducing dropout.<br><br>" +
+                "<u>Resume Highlight:</u><br>" +
+                ""Designed and built a gamified learning sprint engine with adaptive paths, XP rewards, and real-time leaderboards, increasing learner retention by 45%."",
+            "skills": ["Gamification Design", "REST API Development (Node.js/Express)", "JWT Authentication", "PostgreSQL", "React.js", "WebSockets (real-time leaderboard)"]
+        },
+        {
+            "id": "two",
+            "title": "2. AI-Powered Skill Gap Analysis",
+            "desc": "🤖 <strong>Personalized Skill Gap Detection & Recommendation Engine</strong><br><br>" +
+                "<u>Technical Highlights:</u><br>" +
+                "• Machine-learning model that maps user assessment results to industry skill benchmarks.<br><br>" +
+                "<u>Feature:</u><br>" +
+                "• Learners complete diagnostic assessments; the AI identifies gaps against target roles.<br>" +
+                "• Recommends the optimal sprint sequence to close identified gaps fastest.<br>" +
+                "• Admin dashboard visualises cohort-level skill heat maps for team leads.<br><br>" +
+                "<u>Benefits:</u><br>" +
+                "• Eliminates guesswork in professional development planning.<br>" +
+                "• Delivers measurable ROI for enterprise L&D teams.<br><br>" +
+                "<u>Resume Highlight:</u><br>" +
+                ""Built an AI-driven skill gap analysis pipeline integrating assessment data with ML recommendations, reducing time-to-competency by 30%."",
+            "skills": ["Machine Learning (Python/scikit-learn)", "NLP (skill taxonomy mapping)", "REST APIs", "Data Visualization (D3.js)", "PostgreSQL", "Docker"]
+        },
+        {
+            "id": "three",
+            "title": "3. Real-Time Progress Analytics Dashboard",
+            "desc": "📊 <strong>Instructor & Learner Analytics for Actionable Insights</strong><br><br>" +
+                "<u>Technical Highlights:</u><br>" +
+                "• Full-stack dashboard delivering real-time learning metrics for both learners and instructors.<br><br>" +
+                "<u>Feature:</u><br>" +
+                "• Tracks sprint completion rates, time-on-task, quiz scores, and streak data.<br>" +
+                "• Instructors receive cohort-level trend reports and at-risk learner alerts.<br>" +
+                "• Exportable CSV/PDF reports for enterprise compliance reporting.<br><br>" +
+                "<u>Benefits:</u><br>" +
+                "• Empowers instructors to intervene early and personalise support.<br>" +
+                "• Provides learners with clear visibility into their growth trajectory.<br><br>" +
+                "<u>Resume Highlight:</u><br>" +
+                ""Developed a real-time analytics dashboard surfacing learning KPIs for 1,000+ learners, enabling data-driven instructor interventions and cutting at-risk dropout by 20%."",
+            "skills": ["Dashboard Development (React/Chart.js)", "Real-Time Data (WebSockets/Server-Sent Events)", "Backend Analytics (Node.js)", "CSV/PDF Export", "Role-Based Access Control", "SQL Aggregations"]
+        }
+    ],
     'ERP Operations': [
         {
             "id": "one",
@@ -464,6 +517,7 @@ const projectUrls = {
     'Tech Ticketing System': 'https://springdemo-43am.onrender.com',
     'Shop Swift': '#', // Replace with actual URL
     'ERP Operations': 'https://faithgarza-001-site1.rtempurl.com/', // Your ERP Operations dashboard URL
+    'SkillSprint Platform': 'skillsprint-platform.html',
     'Additional Projects': 'developer_projects.html'
 };
 
@@ -530,6 +584,9 @@ navLinks.forEach(link => {
                 break;
             case 'ERP Operations':
                 showCanvas(3);
+                break;
+            case 'SkillSprint Platform':
+                showCanvas(0);
                 break;
             default:
                 // Hide all canvases if no specific project is selected or recognized
@@ -623,6 +680,9 @@ if (navLinks.length > 0) {
             break;
         case 'ERP Operations':
             showCanvas(3);
+            break;
+        case 'SkillSprint Platform':
+            showCanvas(0);
             break;
         default:
             canvases.forEach(c => c.style.display = "none");
